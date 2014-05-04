@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event.location %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @event.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @event.end_time %>
+</p>
+
+<p>
+  <strong>Is all day:</strong>
+  <%= @event.is_all_day %>
+</p>
+
+<p>
+  <strong>Organizer:</strong>
+  <%= @event.organizer %>
+</p>
+
+<p>
+  <strong>Is reccurnce:</strong>
+  <%= @event.is_reccurnce %>
+</p>
+
+<p>
+    <strong>Users</strong>
+    <br>
+    <% @event.event_users.each do |u|  %>
+      <%= u.email %>
+      <br>
+    <% end %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
