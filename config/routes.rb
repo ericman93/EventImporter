@@ -3,6 +3,10 @@ Calendar::Application.routes.draw do
 
   resources :users
 
+  get '/calendar/:email', to: 'users#events', :constraints => { :email => /.*/ }
+  post '/calendarapi/insert', to: 'calendar_api#insert'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,8 @@
+<% if @events.empty? %>
+	No events found
+<% else %>
+	<% @events.each do |e| %>
+		<%= e.name %> at <%= e.location %> ( <%= e.start_time %> - <%= e.end_time %> )
+		<br>
+	<% end %>
+<% end %>

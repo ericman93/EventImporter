@@ -12,6 +12,14 @@ class UsersController < ApplicationController
     # check that session is not null
   end
 
+  def events
+    email = params[:email]
+    #logger.debug "this is a test #{email}"
+    user = User.where("email = ?",email).first
+
+    @events = user.events
+  end
+
   # GET /users
   # GET /users.json
   def index
