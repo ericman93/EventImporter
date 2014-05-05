@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 
   def events
     email = params[:email]
-    #logger.debug "this is a test #{email}"
     user = User.where("email = ?",email).first
 
     @events = user.events

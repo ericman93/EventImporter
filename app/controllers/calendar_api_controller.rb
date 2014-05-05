@@ -8,6 +8,7 @@ class CalendarApiController < ApplicationController
 		if !User.authenticate(user_id, hashed_password)
 			render :text => "Faild to authenticate", :status => 302, :content_type => 'text/html'
 		else
+			# maybe insted of add the user that attached to the event , add only the user with the user id 
 			events = Event.from_json params[:events] 
 			CalendarApiHelper.handle_request(events, logger)
 

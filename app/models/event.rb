@@ -12,6 +12,8 @@ class Event < ActiveRecord::Base
 	def update(other)
 		self.subject = other.subject
 		self.location = other.location
+		self.start_time = other.start_time
+		self.end_time = other.end_time
 	end
 
 	def self.from_json(events)
@@ -21,15 +23,19 @@ class Event < ActiveRecord::Base
 			event = Event.new
 
 			hash_event.each do |prop_name, prop_value|
-				#TODO: if prop_value is hash , create new instance of prop_name and user the from_json on the prop_value
+				#TODO: if prop_value is hash , create new instance of prop_name and user the from_json on the prop_value ( and not change the name of the prop)
 				if prop_name == 'EventUsers'
 					prop_value = prop_value.map{|v| EventUser.new(:email => v["Email"], 
 																  :is_approved => v["Approved"])
 											}
+				elsif prop_name.end_with?('Time')
+					unix = prop_value.match /\d+/
+					prop_value = DateTime.strptime(unix[0],'%Q').utc # in the case that i resive milisconds from 1970
 				end
 
-				event.send("#{to_underscore(prop_name)}=",prop_value)
+				event.send("#{to_underscore(prop_name)}=", prop_value)
 			end
+			logger.debug "event time #{event.start_time}"
 
 			event
 		end

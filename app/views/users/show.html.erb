@@ -18,8 +18,9 @@
 <p>
 	<strong>Events: </strong>
 	<br>
+	<strong style="color:red">All the dates are in UTC , i need to parse then to the current GMT time</strong><br>
 	<% @user.events.each do |e| %>
-		<%= e.subject %> - <%= e.location %>
+		<%= e.subject %> - <%= e.location %> ( start at <%= e.start_time %> )
 		<br>
 	<% end %>
 </p>
