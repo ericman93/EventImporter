@@ -5,6 +5,15 @@ class Event < ActiveRecord::Base
 		Event.exists?(:event_id => self.event_id)
 	end
 
+	def get_db_instnace
+		Event.where(:event_id => self.event_id).first
+	end
+
+	def update(other)
+		self.subject = other.subject
+		self.location = other.location
+	end
+
 	def self.from_json(events)
 		events = JSON.parse events
 
@@ -12,13 +21,13 @@ class Event < ActiveRecord::Base
 			event = Event.new
 
 			hash_event.each do |prop_name, prop_value|
+				#TODO: if prop_value is hash , create new instance of prop_name and user the from_json on the prop_value
 				if prop_name == 'EventUsers'
 					prop_value = prop_value.map{|v| EventUser.new(:email => v["Email"], 
 																  :is_approved => v["Approved"])
 											}
 				end
 
-				logger.debug "tiras ham2 #{prop_value[0].email}" if prop_name == 'EventUsers'
 				event.send("#{to_underscore(prop_name)}=",prop_value)
 			end
 

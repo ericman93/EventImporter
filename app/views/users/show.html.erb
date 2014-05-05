@@ -19,7 +19,7 @@
 	<strong>Events: </strong>
 	<br>
 	<% @user.events.each do |e| %>
-		<%= e.subject %>
+		<%= e.subject %> - <%= e.location %>
 		<br>
 	<% end %>
 </p>
