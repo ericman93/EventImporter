@@ -12,11 +12,8 @@ class UsersController < ApplicationController
     # check that session is not null
   end
 
-  def events
-    email = params[:email]
-    user = User.where("email = ?",email).first
-
-    @events = user.events
+  def calendar
+    @user = params[:email]
   end
 
   # GET /users

@@ -16,6 +16,17 @@ class Event < ActiveRecord::Base
 		self.end_time = other.end_time
 	end
 
+	def to_fullcalendar_json
+		{
+			'start' => self.start_time.to_i,
+			'end' => self.end_time.to_i,
+			'title' => self.subject, 
+			'color' => 'blue',
+			'location' => self.location,
+			'allDay' => false
+		}
+	end
+
 	def self.from_json(events)
 		events = JSON.parse events
 

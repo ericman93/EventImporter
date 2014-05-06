@@ -1,6 +1,14 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
+  def user_events
+    email = params[:email]
+    user = User.where("email = ?",email).first
+
+    render json: user.events.map{|e| e.to_fullcalendar_json }
+  end
+
+
   # GET /events
   # GET /events.json
   def index

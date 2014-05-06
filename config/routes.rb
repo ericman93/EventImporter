@@ -1,9 +1,10 @@
 Calendar::Application.routes.draw do
-  resources :events
+  #resources :events
 
   resources :users
 
-  get '/calendar/:email', to: 'users#events', :constraints => { :email => /.*/ }
+  get '/calendar/:email', to: 'users#calendar', :constraints => { :email => /.*/ }
+  get '/events/:email', to: 'events#user_events', :constraints => { :email => /.*/ }
   post '/calendarapi/insert', to: 'calendar_api#insert'
 
 
@@ -13,7 +14,7 @@ Calendar::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  # Example of regular route:
+  # Example of regular route:key => "value", 
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

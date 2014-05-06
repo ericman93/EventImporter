@@ -1,0 +1,24 @@
+<% content_for :stylesheets do %>
+	<%= stylesheet_link_tag "fullcalendar" %>
+<% end %>
+<% content_for :javascripts do %>
+	<%= javascript_include_tag "fullcalendar.min" %>
+	<%= javascript_include_tag "calendar" %>
+<% end %>
+
+<script>
+	$(document).ready(function () {
+	        var user_mail = '<%= @user %>';
+	        //var is_user_specifed = check_if_user_null(user_mail)
+
+	        load_event_to_calendar(user_mail, true);
+
+	        $('.importer').change(function () {
+
+	            //$(this).closest("form").ajaxForm();
+	            $(this).closest("form").submit();
+	        });
+	    });
+</script>
+
+<div id='calendar' style='width: 90%'></div>

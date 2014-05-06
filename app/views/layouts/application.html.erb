@@ -3,10 +3,23 @@
 <head>
   <title>Calendar</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "pop_up" %>
+  <%= yield :stylesheets %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "pop_up" %>
+  <%= yield :javascripts %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<div id="pop_up_stuff">
+    <div id="toPopup">    	
+        <div class="close"></div>
+        <div id="popup_content"> <h1>Loading</h1> </div>
+    </div>
+    <div class="loader"></div>
+    <div id="backgroundPopup"></div>
+</div>
 
 <%= yield %>
 
