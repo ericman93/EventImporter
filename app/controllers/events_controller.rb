@@ -5,7 +5,11 @@ class EventsController < ApplicationController
     email = params[:email]
     user = User.where("email = ?",email).first
 
-    render json: user.events.map{|e| e.to_fullcalendar_json }
+    # if logged on user request his events , not combine !
+    events = user.events.sort{|x,y| x.start_time <=> y.start_time}
+    events = CalendarApiHelper.combine_events(events, logger)
+
+    render json: events.map{|e| e.to_fullcalendar_json }
   end
 
 
