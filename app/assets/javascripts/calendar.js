@@ -21,15 +21,16 @@ function load_event_to_calendar(user_mail, should_load_events) {
         selectable: true,
         selectHelper: true,
         select: function(start, end, allDay) {
-            add_new_date(start, end, allDay,'@Model.UserEmail');
-            cal.fullCalendar('renderEvent',
-					{
-					    start: start,
-					    end: end,
-					    allDay: allDay
-					},
-					true // make the event "stick"
-				);
+            //add_new_date(start, end, allDay,'@Model.UserEmail');
+            //cal.fullCalendar('renderEvent',
+			//		{
+			//		    start: start,
+			//		    end: end,
+			//		    allDay: allDay
+			//		},
+			//		true // make the event "stick"
+			//	);
+            console.log('should add event')
         },
         editable: true,
     });
