@@ -1,0 +1,13 @@
+#temp_events{
+	display: none;
+}
+
+#calendar{
+	width: 95%;
+	float:left;
+}
+
+#side{
+	float: right;
+}
+

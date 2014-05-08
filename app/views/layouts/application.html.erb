@@ -2,9 +2,12 @@
 <html>
 <head>
   <title>Calendar</title>
+  <%= stylesheet_link_tag    "bootstrap.min" %>
+  <%= stylesheet_link_tag    "bootstrap-responsive.min" %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag    "pop_up" %>
   <%= yield :stylesheets %>
+  <%= javascript_include_tag "jquery.min" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "pop_up" %>
   <%= yield :javascripts %>

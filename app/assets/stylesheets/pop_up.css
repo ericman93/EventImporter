@@ -16,10 +16,12 @@
     display: none;
     right:25%;
     top: 25%;
-    bottom: 60%;
+    /*bottom: 60%;*/
     width: 50%;
     position: fixed;
     z-index: 100;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 div.loader {
     background: url("../img/loading.gif") no-repeat scroll 0 0 transparent;

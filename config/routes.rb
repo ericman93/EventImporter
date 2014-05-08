@@ -5,7 +5,9 @@ Calendar::Application.routes.draw do
 
   get '/calendar/:email', to: 'users#calendar', :constraints => { :email => /.*/ }
   get '/events/:email', to: 'events#user_events', :constraints => { :email => /.*/ }
+  
   post '/calendarapi/insert', to: 'calendar_api#insert'
+  post '/calendarapi/insertTempEvent', to: 'calendar_api#send_user_event_options'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -8,8 +8,6 @@
     });
 });
 
-
-
 function loading() {
     $("div.loader").show();
 }

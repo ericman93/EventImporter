@@ -15,4 +15,14 @@ class CalendarApiController < ApplicationController
 			render json: events #:nothing => true, :status => 200, :content_type => 'text/html'
 		end
 	end
+
+	def send_user_event_options
+		user_mail = params[:email]
+		requester_info = params[:request_info]
+		proposals = params[:proposals]
+		event_subject = params[:subject]
+		gmt_offset = params[:gmt_offset]
+
+		logger.debug "this is another test #{user_mail} #{requester_info['mail']}"
+	end
 end
