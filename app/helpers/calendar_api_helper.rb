@@ -33,12 +33,6 @@ module CalendarApiHelper
 			busy << temp
 		end
 
-		# remove private data
-		busy.each do |b|
-			b.subject = ""
-			b.location = ""
-		end
-
 		busy
 	end
 

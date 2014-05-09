@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+	validates_presence_of :start_time
 	has_many :event_users
 
 	def exists?
@@ -16,13 +17,14 @@ class Event < ActiveRecord::Base
 		self.end_time = other.end_time
 	end
 
-	def to_fullcalendar_json
+	# return json representation of the events as the fullCalendar know to handle
+	def to_fullcalendar_json(should_remove_private_data)
 		{
 			'start' => self.start_time.to_i,
 			'end' => self.end_time.to_i,
-			'title' => self.subject, 
-			'color' => 'blue',
-			'location' => self.location,
+			'title' => should_remove_private_data ? "Busy" : self.subject, 
+			'color' => should_remove_private_data ? 'red' : 'blue',
+			'location' => should_remove_private_data ? "" : self.location,
 			'allDay' => false
 		}
 	end

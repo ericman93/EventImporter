@@ -3,7 +3,7 @@ Calendar::Application.routes.draw do
 
   resources :users
 
-  get '/calendar/:email', to: 'users#calendar', :constraints => { :email => /.*/ }
+  get '/calendar/:email', to: 'users#calendar', :constraints => { :email => /.*/ }, :as => :calendar
   get '/events/:email', to: 'events#user_events', :constraints => { :email => /.*/ }
   
   post '/calendarapi/insert', to: 'calendar_api#insert'
