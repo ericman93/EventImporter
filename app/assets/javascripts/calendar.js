@@ -65,6 +65,7 @@ function send_to_server(){
     })
    .success(function (d) {
        //$('#dates tbody').remove();
+       options = []
        $('#popup_content').html("<h1>Reuqest has sent successfuly ;)</h1>")
    })
    .fail(function (data) {
