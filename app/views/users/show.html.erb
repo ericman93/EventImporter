@@ -25,6 +25,19 @@
 	<% end %>
 </p>
 
+<p>
+	<strong>Requests :</strong>
+	<br>
+	<% @user.requests.each do |r| %>
+		<%= r.subject %> ( from <%= r.return_name %> - <%= r.return_mail %> )
+		<br>
+		<% r.request_proposals.each do |p| %>
+			<%= p.start_time %> - <%= p.end_time %>
+			<br>
+		<% end %>
+	<% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

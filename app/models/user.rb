@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :requests
 	validates :email, uniqueness: true
 	
 	def events

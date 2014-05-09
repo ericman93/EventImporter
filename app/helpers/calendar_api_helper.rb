@@ -36,6 +36,19 @@ module CalendarApiHelper
 		busy
 	end
 
+	def self.handle_proposle(proposels, user, requester, event_metadata)
+		request = Request.new()
+		request.subject = event_metadata['subject'] 
+		request.location = event_metadata['location'] 
+		request.return_mail = requester['mail'] 
+		request.return_name = requester['name']
+
+		request.request_proposals = proposels
+		user.requests << request
+
+		user.save
+	end
+
 	private
 		def self.is_start_between(first, second)
 			first.start_time <= second.start_time and first.end_time >= second.start_time

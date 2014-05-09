@@ -45,30 +45,34 @@ function send_to_server(){
         return;
     }
 
+    change_request_input_disable(true)
+    data = {
+        proposals: options,
+        request_info : { 'mail' : $('#request_mail_input').val(),
+                         'name' : $('#request_name_input').val() },
+        event_metadata : {'subject' : $('#event_subject_input').val(),
+                           'location' : $('#event_location_input').val()},
+        email: user_email,
+        gmt_offset: get_gmt_offset()
+    }
+
     $.ajax({
         type: "POST",
         url: "/calendarapi/insertTempEvent",
         //contentType: "application/json",
-        //dataType: 'json',
-        data: {
-            proposals: options,
-            request_info : { 'mail' : $('#request_mail_input').val(),
-                             'name' : $('#request_name_input').val() },
-            subject : $('#event_subject_input').val(),
-            email: user_email,
-            gmt_offset: get_gmt_offset(),
-        }
+        dataType: 'json',
+        data: data
     })
    .success(function (d) {
        //$('#dates tbody').remove();
-       clear_form();
-       disable_or_unable_form(false);
+       $('#popup_content').html("<h1>Reuqest has sent successfuly ;)</h1>")
    })
    .fail(function (data) {
        alert('error');
        console.log(data);
-       disable_or_unable_form(false);
-   });;
+   });
+
+   change_request_input_disable(false)
 }
 
 function add_new_proposal(start, end, allday){
@@ -85,6 +89,11 @@ function add_new_proposal(start, end, allday){
 }
 
 function show_temp_events(){
+    if(options.length == 0){
+        alert('Please select proposals before sending')
+        return;
+    }
+
     var div_html = $('#temp_events').html()
     $('#popup_content').html(div_html)
 
@@ -98,5 +107,14 @@ function add_proposal_to_table(proposel){
 }
 
 function get_remove_button_td() {
-    return '<button type="submit" class="btn btn-danger" onclick="remove_date(this)">X</button>'
+    return '<button type="submit" class="btn btn-danger remove-prop-btn" onclick="remove_date(this)">X</button>'
+}
+
+function change_request_input_disable(disable){
+    $("#event_subject_input").prop('disabled', disable);
+    $("#event_location_input").prop('disabled', disable);
+    $("#request_mail_input").prop('disabled', disable);
+    $("#request_name_input").prop('disabled', disable);
+    $("#send_request_btn").prop('disabled', disable);
+    $(".remove-prop-btn").prop('disabled', disable);
 }

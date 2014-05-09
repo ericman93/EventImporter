@@ -17,12 +17,17 @@ class CalendarApiController < ApplicationController
 	end
 
 	def send_user_event_options
-		user_mail = params[:email]
+		user_mail = "ericfeldman93@gmail.com" #params[:email]
 		requester_info = params[:request_info]
-		proposals = params[:proposals]
-		event_subject = params[:subject]
+		param_proposals = params[:proposals].to_a
+		event_metadata = params[:event_metadata]
 		gmt_offset = params[:gmt_offset]
 
-		logger.debug "this is another test #{user_mail} #{requester_info['mail']}"
+		user = User.where("email = ?",user_mail).first
+		props = RequestProposal.from_json(param_proposals)
+
+		CalendarApiHelper.handle_proposle(props, user, requester_info, event_metadata)
+
+		render json: event_metadata
 	end
 end
