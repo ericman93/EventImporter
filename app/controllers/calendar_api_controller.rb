@@ -12,7 +12,7 @@ class CalendarApiController < ApplicationController
 			events = Event.from_json params[:events] 
 			CalendarApiHelper.handle_request(events, logger)
 
-			render json: events #:nothing => true, :status => 200, :content_type => 'text/html'
+			render :nothing => true, :status => 200, :content_type => 'text/html'
 		end
 	end
 
