@@ -26,7 +26,8 @@ class CalendarApiController < ApplicationController
 		user = User.where("email = ?",user_mail).first
 		props = RequestProposal.from_json(param_proposals)
 
-		CalendarApiHelper.handle_proposle(props, user, requester_info, event_metadata)
+		request = CalendarApiHelper.handle_proposle(props, user, requester_info, event_metadata)
+		RequestMailer.requests_email(request, user_mail).deliver
 
 		render json: event_metadata
 	end

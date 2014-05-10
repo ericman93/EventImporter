@@ -47,6 +47,8 @@ module CalendarApiHelper
 		user.requests << request
 
 		user.save
+
+		return request
 	end
 
 	private
