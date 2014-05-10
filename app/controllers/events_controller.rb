@@ -3,9 +3,12 @@ class EventsController < ApplicationController
 
   def user_events
     email = params[:email]
+    start_time = params[:start]
+    end_time = params[:end]
+
     user = User.where("email = ?",email).first
 
-    request_self_events = true;
+    request_self_events = true; # should be calculated via session
     events = user.events.sort{|x,y| x.start_time <=> y.start_time}
     
     if !request_self_events
