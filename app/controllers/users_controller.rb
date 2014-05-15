@@ -1,30 +1,37 @@
+require 'digest/md5'
+
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  #before_action :set_user, only: [:show, :edit, :update, :destroy]
   # user before_filter for functions that need autorization
 
   def login
+    render :login
   end
 
   def logout
   end
 
-  def autorize
-    # check that session is not null
+  def authenticate
+    plaintext_password = params[:password]
+    email = params[:email]
+
+    #if authenticate?(email, plaintext_password)
+    if(!User.authenticate_by_mail(email, plaintext_password))
+        redirect_to action: :login, status: 302
+    else
+        session[:current_user] = User.find_by email: email
+        redirect_to action: :calendar, status: 302, email: email
+    end
   end
 
   def calendar
     @user = params[:email]
   end
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-  end
-
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -53,4 +60,10 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :password, :email)
     end
+
+    def authenticate?(email, plain_password)
+      if(!User.authenticate_by_mail(email, plain_password))
+        redirect_to action: :login, status: 302
+      end
+  end
 end

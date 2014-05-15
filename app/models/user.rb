@@ -10,4 +10,12 @@ class User < ActiveRecord::Base
 		#User.any?{|u| u.id == user_id and u.password == password}
 		true
 	end
+
+	def self.authenticate_by_mail(email, plain_password)
+		#hashed_password = Digest::MD5.hexdigest(plain_password)
+		hashed_password = plain_password
+
+    	puts "aaaaaaaaaaaaaaaaaa--------------- #{email} - #{plain_password}"
+		User.where("upper(email) = ? and password = ?", email.upcase, hashed_password).any?
+	end
 end

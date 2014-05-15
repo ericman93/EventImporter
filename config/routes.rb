@@ -1,9 +1,13 @@
 Calendar::Application.routes.draw do
   #resources :events
+  #resources :users
 
-  resources :users
-
+  post '/users/authenticate', to: 'users#authenticate'
+  get '/users/login', to: 'users#login'
+  get '/users/:id', to: 'users#show', :constraints => { :id => /\d+/ }, :as => :user
+  get '/users/:id', to: 'users#edit', :constraints => { :id => /\d+/ }, :as => :edit_user
   get '/calendar/:email', to: 'users#calendar', :constraints => { :email => /.*/ }, :as => :calendar
+  
   get '/events/:email', to: 'events#user_events', :constraints => { :email => /.*/ }
   
   post '/calendarapi/insert', to: 'calendar_api#insert'

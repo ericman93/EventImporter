@@ -1,5 +1,5 @@
 .menu{
-/*position:fixed;*/
+position:fixed;
 top:0;
 left:0;
 width:100%;
@@ -112,5 +112,5 @@ font-size:0;
 }
 
 #content{
-	padding-top: 20px;
+	padding-top: 50px;
 }
