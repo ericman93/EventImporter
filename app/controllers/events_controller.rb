@@ -6,9 +6,10 @@ class EventsController < ApplicationController
     start_time = params[:start]
     end_time = params[:end]
 
+    # use the timstamps for better selection
     user = User.where("email = ?",email).first
 
-    request_self_events = true; # should be calculated via session
+    request_self_events = !(@current_user.nil?) and @current_user.email == email;
     events = user.events.sort{|x,y| x.start_time <=> y.start_time}
     
     if !request_self_events
