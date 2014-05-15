@@ -3,7 +3,8 @@ Calendar::Application.routes.draw do
   #resources :users
 
   post '/users/authenticate', to: 'users#authenticate'
-  get '/users/login', to: 'users#login'
+  get '/users/login', to: 'users#login', :as => :login
+  get '/users/logout', to: 'users#logout', :as => :logout
   get '/users/:id', to: 'users#show', :constraints => { :id => /\d+/ }, :as => :user
   get '/users/:id', to: 'users#edit', :constraints => { :id => /\d+/ }, :as => :edit_user
   get '/calendar/:email', to: 'users#calendar', :constraints => { :email => /.*/ }, :as => :calendar

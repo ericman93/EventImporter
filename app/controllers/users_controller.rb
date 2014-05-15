@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def logout
+    session[:current_user] = nil
+    redirect_to action: :login, status: 302
   end
 
   def authenticate
