@@ -1,7 +1,7 @@
 var options = []
 var user_email
 
-function load_event_to_calendar(user_mail, should_load_events) {
+function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
     $('#calendar').html('');
 
     user_email = user_mail;
@@ -22,8 +22,8 @@ function load_event_to_calendar(user_mail, should_load_events) {
             }
         },
         defaultView: 'agendaWeek',
-        selectable: true,
-        selectHelper: true,
+        selectable: !is_self_user,
+        selectHelper: !is_self_user,
         select: function(start, end, allDay) {
             add_new_proposal(start, end, allDay);
             cal.fullCalendar('renderEvent',
@@ -32,10 +32,10 @@ function load_event_to_calendar(user_mail, should_load_events) {
 					    end: end,
 					    allDay: allDay
 					},
-					true // make the event "stick"
+					!is_self_user // make the event "stick"
 				);
         },
-        editable: true,
+        editable: !is_self_user,
     });
 }
 

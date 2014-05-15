@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   # user before_filter for functions that need autorization
 
   def login
-    render :login
+    if !@current_user.nil?
+       redirect_to @current_user
+    else
+      render :login
+    end
   end
 
   def logout

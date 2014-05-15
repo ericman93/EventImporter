@@ -7,12 +7,13 @@
 	<%= javascript_include_tag "calendar" %>
 <% end %>
 
+<% is_self_user = !(@current_user.nil?) and @user == @current_user.email %>
 <script>
 	$(document).ready(function () {
 	        var user_mail = '<%= @user %>';
 	        //var is_user_specifed = check_if_user_null(user_mail)
 
-	        load_event_to_calendar(user_mail, true);
+	        load_event_to_calendar(user_mail, true, <%= is_self_user %>);
 
 	        $('.importer').change(function () {
 
@@ -23,9 +24,12 @@
 </script>
 
 <div id='calendar'></div>
-<div id='side'>
-	<button id="add_temps_btn" onclick="show_temp_events()">Add</button>
-</div>
+
+<% if !is_self_user %>
+	<div id='side'>
+		<button id="add_temps_btn" onclick="show_temp_events()">Add</button>
+	</div>
+<% end %>
 
 <div id="temp_events">
 	<form action="javascript:void(0);" onsubmit="send_to_server()">
