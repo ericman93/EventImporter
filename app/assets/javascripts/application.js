@@ -1,3 +1,16 @@
+$(function () {
+    $.ajax({
+        url: "/users/requests_count",
+        type: "get",
+        success: function(data){
+            $('#request_count').html("Requests ("+data+")")
+        },
+        error:function(data){
+            console.log(data)
+        }
+    });
+});
+
 function date_to_human(date) {
     return date.toLocaleTimeString() + ' ' + date.toLocaleDateString();
 }

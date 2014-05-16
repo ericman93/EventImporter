@@ -30,6 +30,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def requests_count
+    requests_count = 0
+    if !session[:current_user].nil?
+      requests_count = User.find(session[:current_user].id).requests.size
+    end
+
+    render json: requests_count
+  end
+
   def calendar
     @user = params[:email]
   end

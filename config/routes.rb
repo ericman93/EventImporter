@@ -8,6 +8,7 @@ Calendar::Application.routes.draw do
   get '/users/:id', to: 'users#show', :constraints => { :id => /\d+/ }, :as => :user
   get '/users/:id', to: 'users#edit', :constraints => { :id => /\d+/ }, :as => :edit_user
   get '/calendar/:email', to: 'users#calendar', :constraints => { :email => /.*/ }, :as => :calendar
+  get '/users/requests_count', to:'users#requests_count'
   
   get '/events/:email', to: 'events#user_events', :constraints => { :email => /.*/ }
   
