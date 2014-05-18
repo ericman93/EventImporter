@@ -30,7 +30,7 @@
       <li class="single-link %>"><a href="#">Bla</a></li> <!-- use 'current' if current_page?(:controller => "users", :action => "show") -->
       <li class="single-link"><a target="_blank" href="#">About</a></li>
       <% if !@current_user.nil? %>
-        <li class="single-link"><a target="_blank" href="#" id="request_count">Requests (0)</a></li>  
+        <li class="single-link"><%= link_to "Requests  (...)", requests_path, {:id => "request_count"} %></li>  
       <% end %>
 
       <% if @current_user.nil? %>
