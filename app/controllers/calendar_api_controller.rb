@@ -12,7 +12,8 @@ class CalendarApiController < ApplicationController
 			events = Event.from_json params[:events] 
 			CalendarApiHelper.handle_request(events, logger)
 
-			render :nothing => true, :status => 200, :content_type => 'text/html'
+			#render :nothing => true, :status => 200, :content_type => 'text/html' -> jquery parse this is an error because it cannot prarse none as json
+			render json: true
 		end
 	end
 
@@ -29,6 +30,6 @@ class CalendarApiController < ApplicationController
 		request = CalendarApiHelper.handle_proposle(props, user, requester_info, event_metadata)
 		RequestMailer.requests_email(request, user_mail).deliver
 
-		render json: event_metadata
+		render json: true
 	end
 end

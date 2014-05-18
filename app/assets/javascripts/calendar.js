@@ -67,13 +67,13 @@ function send_to_server(){
        //$('#dates tbody').remove();
        options = []
        $('#popup_content').html("<h1>Reuqest has sent successfuly ;)</h1>")
+       change_request_input_disable(false)
    })
-   .fail(function (data) {
+   .fail(function () {
        alert('error');
        console.log(data);
+       change_request_input_disable(false)
    });
-
-   change_request_input_disable(false)
 }
 
 function add_new_proposal(start, end, allday){
