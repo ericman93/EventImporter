@@ -30,11 +30,20 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
 					{
 					    start: start,
 					    end: end,
-					    allDay: allDay
+					    allDay: allDay,
+                        title: "Option",
+                        requested: true,
 					},
 					!is_self_user // make the event "stick"
 				);
         },
+        eventRender: function(event, element) {
+              element.bind('dblclick', function() {
+                $('#calendar').fullCalendar('removeEvents', function(e) {
+                    return should_be_deleted(event, e)
+                })
+              });
+           },
         editable: !is_self_user,
     });
 }
@@ -69,11 +78,27 @@ function send_to_server(){
        $('#popup_content').html("<h1>Reuqest has sent successfuly ;)</h1>")
        change_request_input_disable(false)
    })
-   .fail(function () {
+   .fail(function (data) {
        alert('error');
        console.log(data);
        change_request_input_disable(false)
    });
+}
+
+function should_be_deleted(event_to_remove, calendar_event){
+    if(event_to_remove.requested && event_to_remove.start == calendar_event.start && event_to_remove.end == calendar_event.end){
+
+        item = $.each(options, function(i, option) {
+          if(option != undefined && option.start_time == event_to_remove.start && option.end_time == event_to_remove.end){
+            options.splice(i,1);
+            return true
+          }
+        });
+
+        return true
+    }
+
+    return false;
 }
 
 function add_new_proposal(start, end, allday){
@@ -85,8 +110,8 @@ function add_new_proposal(start, end, allday){
         'is_all_day': allday
     }
 
-    add_proposal_to_table(proposel)
     options.push(proposel)
+    console.log(options)
 }
 
 function show_temp_events(){
@@ -94,6 +119,11 @@ function show_temp_events(){
         alert('Please select proposals before sending')
         return;
     }
+
+    $("#proposal_table tbody").html('')
+    $.each(options, function(i, option){
+        add_proposal_to_table(option)
+    })
 
     var div_html = $('#temp_events').html()
     $('#popup_content').html(div_html)
