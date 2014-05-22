@@ -18,7 +18,7 @@ class CalendarApiController < ApplicationController
 	end
 
 	def send_user_event_options
-		user_mail = "ericfeldman93@gmail.com" #params[:email]
+		user_mail = params[:email]
 		requester_info = params[:request_info]
 		param_proposals = params[:proposals].to_a
 		event_metadata = params[:event_metadata]

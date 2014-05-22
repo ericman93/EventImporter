@@ -6,6 +6,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
 
     user_email = user_mail;
     var cal = $('#calendar').fullCalendar({
+        //theme: true,
         header: {
             left: 'prev,next today',
             center: 'title',
