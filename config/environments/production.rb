@@ -84,7 +84,7 @@ Calendar::Application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :domain               => 'your.host.name',
+    :domain               => 'polar-wave-8764.herokuapp.com',
     :user_name            => 'ericfeldman93@gmail.com',
     :password             => 'ericfeldman789798',
     :authentication       => 'plain',

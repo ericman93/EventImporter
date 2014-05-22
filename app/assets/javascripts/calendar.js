@@ -78,7 +78,6 @@ function send_to_server(){
     })
     .success(function (d) {
         //$('#dates tbody').remove();
-        alert('a')
         options = []
         $('#popup_content').html("<h1>Reuqest has sent successfuly ;)</h1>")
         change_request_input_disable(false)
