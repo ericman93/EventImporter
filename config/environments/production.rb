@@ -76,4 +76,17 @@ Calendar::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # mail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'your.host.name',
+    :user_name            => 'ericfeldman93@gmail.com',
+    :password             => 'ericfeldman789798',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 end
