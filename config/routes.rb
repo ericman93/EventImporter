@@ -18,6 +18,8 @@ Calendar::Application.routes.draw do
   post '/calendarapi/insert', to: 'calendar_api#insert'
   post '/calendarapi/insertTempEvent', to: 'calendar_api#send_user_event_options'
 
+  get '/about', to: 'about#about', :as => :about
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
