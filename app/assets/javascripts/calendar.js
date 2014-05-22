@@ -71,19 +71,23 @@ function send_to_server(){
         url: "/calendarapi/insertTempEvent",
         //contentType: "application/json",
         dataType: 'json',
-        data: data
+        data: data,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+        }
     })
-   .success(function (d) {
-       //$('#dates tbody').remove();
-       options = []
-       $('#popup_content').html("<h1>Reuqest has sent successfuly ;)</h1>")
-       change_request_input_disable(false)
-   })
-   .fail(function (data) {
-       alert('error');
-       console.log(data);
-       change_request_input_disable(false)
-   });
+    .success(function (d) {
+        //$('#dates tbody').remove();
+        alert('a')
+        options = []
+        $('#popup_content').html("<h1>Reuqest has sent successfuly ;)</h1>")
+        change_request_input_disable(false)
+    })
+    .fail(function (data) {
+        alert('error');
+        console.log(data);
+        change_request_input_disable(false)
+    });
 }
 
 function should_be_deleted(event_to_remove, calendar_event){
