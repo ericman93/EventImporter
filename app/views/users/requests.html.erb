@@ -1,7 +1,12 @@
 <% content_for :javascripts do %>
+	<%= javascript_include_tag "fullcalendar.min" %>
 	<%= javascript_include_tag "requests" %>
+<% end %>
+<% content_for :stylesheets do %>
+	<%= stylesheet_link_tag "fullcalendar" %>
+	<%= stylesheet_link_tag "requests" %>
 <% end %>
 
 <div id="request_data">
-	Fake data
+	Loading ... Pleace wait :)
 </div>

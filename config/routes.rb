@@ -13,6 +13,7 @@ Calendar::Application.routes.draw do
   post '/users/requests_partial', to:'users#requests_partial'
   
   get '/events/:email', to: 'events#user_events', :constraints => { :email => /.*/ }
+  get '/requests/:request_id', to: 'events#user_requests_events'
   
   post '/calendarapi/insert', to: 'calendar_api#insert'
   post '/calendarapi/insertTempEvent', to: 'calendar_api#send_user_event_options'

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :has_user_session?, only: [:user_requests_events]
 
   def user_events
     email = params[:email]
@@ -19,14 +19,22 @@ class EventsController < ApplicationController
     render json: events.map{|e| e.to_fullcalendar_json(!request_self_events) }
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
+  def user_requests_events
+    start_time = params[:start]
+    end_time = params[:end]
+    request_id = params[:request_id]
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:name, :location, :start_time, :end_time, :is_all_day, :organizer, :is_reccurnce)
+    request = Request.find(request_id)
+    proposals = request.request_proposals.map{|p| p.to_fullcalendar_json(request.location)}
+    user_events = request.user.events.map{|e| e.to_fullcalendar_json(false)}
+
+    render json: proposals + user_events
+  end
+
+  private
+    def has_user_session?
+      if session[:current_user].nil?
+        redirect_to action: :login, controller: :users, status: 302
+      end
     end
 end

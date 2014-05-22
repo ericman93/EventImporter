@@ -20,7 +20,7 @@ function get_gmt_offset() {
     return -current_date.getTimezoneOffset() / 60;
 }
 
-function get_partial_data(url, content_to){
+function get_partial_data(url, content_to, callback){
     $.ajax({
         url: url,
         type: "post",
@@ -33,6 +33,11 @@ function get_partial_data(url, content_to){
         error:function(data, res){
             $(content_to).html(data)
             console.log(data)
+        },
+        complete: function(data){
+            if(callback != undefined){
+                callback();
+            }
         }
     });
 }

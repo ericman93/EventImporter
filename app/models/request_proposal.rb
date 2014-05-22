@@ -14,4 +14,15 @@ class RequestProposal < ActiveRecord::Base
 			r
 		end
 	end
+
+	def to_fullcalendar_json(location)
+		{
+			'start' => self.start_time.to_i,
+			'end' => self.end_time.to_i,
+			'title' => 'Option',
+			'color' => 'green',
+			'location' => location,
+			'allDay' => false
+		}
+	end
 end
