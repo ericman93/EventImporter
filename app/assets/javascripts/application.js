@@ -1,4 +1,8 @@
 $(function () {
+    set_request_count()
+});
+
+function set_request_count(){
     $.ajax({
         url: "/users/requests_count",
         type: "get",
@@ -9,7 +13,7 @@ $(function () {
             console.log(data)
         }
     });
-});
+}
 
 function date_to_human(date) {
     return date.toLocaleTimeString() + ' ' + date.toLocaleDateString();

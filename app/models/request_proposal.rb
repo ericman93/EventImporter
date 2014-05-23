@@ -22,7 +22,8 @@ class RequestProposal < ActiveRecord::Base
 			'title' => 'Option',
 			'color' => 'green',
 			'location' => location,
-			'allDay' => false
+			'allDay' => false,
+			'id' => self.id
 		}
 	end
 end

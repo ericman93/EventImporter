@@ -17,6 +17,7 @@ Calendar::Application.routes.draw do
   
   post '/calendarapi/insert', to: 'calendar_api#insert'
   post '/calendarapi/insertTempEvent', to: 'calendar_api#send_user_event_options'
+  post '/calendarapi/select_proposal', to: 'calendar_api#select_proposal'
 
   get '/about', to: 'about#about', :as => :about
 

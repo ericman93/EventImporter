@@ -1,5 +1,6 @@
 class CalendarApiController < ApplicationController
 	protect_from_forgery with: :null_session
+	before_action :has_user_session?, only: [:select_proposal]
 
 	def insert
 		user_id = params[:userId]
@@ -32,4 +33,21 @@ class CalendarApiController < ApplicationController
 
 		render json: true
 	end
+
+	def select_proposal
+		proposal_id = params[:proposal_id]
+
+		proposal = RequestProposal.find(proposal_id)
+		RequestMailer.proposle_accept_email(proposal, @current_user).deliver
+		Request.destroy(proposal.request.id)
+
+		render json: true
+	end
+
+	private
+    	def has_user_session?
+      		if session[:current_user].nil?
+        		redirect_to action: :login, controller: :users, status: 302
+      		end
+    end
 end
