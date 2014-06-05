@@ -4,6 +4,18 @@
 	}
 </style>
 
+<script>
+	$(function () {
+		var time_day = []
+		$.get("/user/<%= @current_user.email %>/work_day?gmt="+get_gmt_offset(), function(data) {
+	      time_day = data
+	    })
+	    .done(function(){
+	        set_up(time_day)
+	    })
+	});
+</script>
+
 <table>
 	<tr>
 		<th>Day</th>
@@ -16,7 +28,7 @@
 			<td id="<%= work_day.short_day_name %>"><%= work_day.day %></td>
 			<td>
 				<div class="input-group bootstrap-timepicker">
-				    <input id="timepicker-start-<%= work_day.short_day_name %>" type="text" value="<%= work_day.to_am_show('start') %>">
+				    <input id="timepicker-start-<%= work_day.short_day_name %>" type="text">
 				    <span class="input-group-addon time-button">
 				    	<i class="glyphicon glyphicon-time"></i>
 				    </span>
@@ -24,7 +36,7 @@
 			</td>
 			<td>
 				<div class="input-group bootstrap-timepicker">
-				    <input id="timepicker-end-<%= work_day.short_day_name %>" type="text" value="<%= work_day.to_am_show('end') %>">
+				    <input id="timepicker-end-<%= work_day.short_day_name %>" type="text">
 				    <span class="input-group-addon time-button">
 				    	<i class="glyphicon glyphicon-time"></i>
 				    </span>

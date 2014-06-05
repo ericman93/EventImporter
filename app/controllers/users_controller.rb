@@ -31,14 +31,16 @@ class UsersController < ApplicationController
   end
 
   def get_work_days
+    gmt_offset = params[:gmt].to_i
     email = params[:email]
+
     work_days = []
     user = User.where("email = ?",email).first
     if !user.nil?
       work_days = user.work_hours
     end
 
-    render json: work_days.map{|d| {day: d.short_day_name, hours: [d.start_at, d.end_at]}} 
+    render json: work_days.map{|d| {day: d.short_day_name, hours: [(d.start_at + (gmt_offset * 3600)), (d.end_at + (gmt_offset * 3600))]}} 
   end
 
   def requests_count
@@ -90,12 +92,14 @@ class UsersController < ApplicationController
   end
 
   def save_work_days
+    gmt_offset = params[:gmt].to_i
+
     user = User.find(@current_user.id)
     if(user.work_hours.empty?)
-      user.work_hours.build(work_hours_params)
+      user.work_hours.build(work_hours_params(gmt_offset))
       user.save
     else
-      user.update_work_days(work_hours_params)    
+      user.update_work_days(work_hours_params(gmt_offset))    
     end
 
     render json: true
@@ -112,8 +116,11 @@ class UsersController < ApplicationController
       params.require(:user).permit(:day, :start_at, :end_at, :short_day_name)
     end
 
-    def work_hours_params
-      params.require(:work_days).map{|day| day[1]}
+    def work_hours_params(gmt_offset)
+      params.require(:work_days).map{|day| day[1]}.each{|d| 
+        d['start_at'] = d['start_at'].to_i - (gmt_offset * 3600)
+        d['end_at'] = d['end_at'].to_i - (gmt_offset * 3600)
+      }
     end
 
     def authenticate?#(email, plain_password)

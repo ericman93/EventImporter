@@ -45,3 +45,8 @@ function get_partial_data(url, content_to, callback){
         }
     });
 }
+
+function get_gmt_offset() {
+    var current_date = new Date();
+    return -current_date.getTimezoneOffset() / 60;
+}

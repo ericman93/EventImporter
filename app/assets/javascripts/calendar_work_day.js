@@ -39,16 +39,16 @@ function markDisableTimes(startWorkRowNo, endWorkRowNo, endCalendarRowNo , dayNa
     var height = $('.fc-slot0').height();
 
     var disableSartHeight = (startWorkRowNo * height) + startWorkRowNo;
-    add_disable_time(disableSartHeight, width, marging, 0, cellClass)
+    add_disable_time(disableSartHeight, width, marging, 0, cellClass,height)
 
     var disableEveningSlotCount = endCalendarRowNo - endWorkRowNo
     var disableStartHeight = (disableEveningSlotCount * height) + disableEveningSlotCount;
-    add_disable_time(disableStartHeight, width, marging, endWorkRowNo, cellClass)
+    add_disable_time(disableStartHeight, width, marging, endWorkRowNo, cellClass,height)
 }
 
-function add_disable_time(height, width, marging, slot_num, disable_class){
+function add_disable_time(height, width, marging, slot_num, disable_class, slot_height){
     slot_num = Math.round(slot_num)
-    var div = "<div class='"+disable_class+"' style='height:"+height+"px; width:"+width+"px; margin-left:"+marging+"px'></div>"
+    var div = "<div class='"+disable_class+"' style='height:"+height+"px; width:"+width+"px; margin-left:"+marging+"px; margin-top:-"+slot_height+"px;'></div>"
     var full_div = $('.fc-slot'+slot_num+' .fc-widget-content').html() + div;
     $('.fc-slot'+slot_num+' .fc-widget-content').html(full_div)
 }

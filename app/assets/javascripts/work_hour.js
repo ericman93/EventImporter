@@ -2,16 +2,15 @@ var days = [
     'sun','mon','tue','wed','thu','fri','sat'
 ]
 
-$(function () {
-	$.each(days, function(index, day){
-		set_up_timepicker('timepicker-end-'+day);
-		set_up_timepicker('timepicker-start-'+day);
-
-		$('#vication_'+day).change(function(){
-			on_checkbox_chnage(day, $(this).prop("checked"))
-		});
+function set_up(work_days){
+	$.each(work_days, function(index, day){
+		set_up_timepicker('timepicker-end-'+day['day'], day['hours'][1]);
+		set_up_timepicker('timepicker-start-'+day['day'], day['hours'][0]);
+		//$('#vication_'+day).change(function(){
+		//	on_checkbox_chnage(day, $(this).prop("checked"))
+		//});
 	});
-});
+}
 
 function on_checkbox_chnage(day, is_checked){
 	if(is_checked){
@@ -23,15 +22,18 @@ function on_checkbox_chnage(day, is_checked){
 	$('#timepicker-end-'+day).prop('disabled', is_checked);
 }
 
-function set_up_timepicker(timepicker_id){
+function set_up_timepicker(timepicker_id, seconds_from_midnight){
+	console.log(from_seconds_to_view(seconds_from_midnight))
 	$('#'+timepicker_id).timepicker({
-		showMeridian: false
+		showMeridian: false,
+		defaultTime: from_seconds_to_view(seconds_from_midnight)
 	});
 }
 
 function send_to_server(){
 	var data = {
-		work_days: get_data_as_json()
+		work_days: get_data_as_json(),
+		gmt: get_gmt_offset()
 	}
 
 	$.ajax({
@@ -75,4 +77,11 @@ function get_data_as_json(){
 function get_seconds_from_midnight(timepicker_id){
 	var time = $('#'+timepicker_id).data("timepicker")
 	return (time.hour * 3600) + (time.minute * 60)
+}
+
+function from_seconds_to_view(seconds){
+	hour = seconds / 3600.0
+	min = (hour % 1) * 60
+	//console.log(hour)
+	return Math.floor(hour)+":"+min
 }
