@@ -9,14 +9,14 @@ class EventsController < ApplicationController
     # use the timstamps for better selection
     user = User.where("email = ?",email).first
 
-    request_self_events = !(@current_user.nil?) and @current_user.email == email;
+    other_user = (@current_user.nil? or @current_user.email != email)
     events = user.events.sort{|x,y| x.start_time <=> y.start_time}
     
-    if !request_self_events
+    if other_user
       events = CalendarApiHelper.combine_events(events, logger)
     end
 
-    render json: events.map{|e| e.to_fullcalendar_json(!request_self_events) }
+    render json: events.map{|e| e.to_fullcalendar_json(other_user) }
   end
 
   def user_requests_events
