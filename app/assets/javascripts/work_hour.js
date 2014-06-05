@@ -50,9 +50,8 @@ function send_to_server(){
     })
     .fail(function (data) {
         alert('error');
-        console.log(data)
     })
-    .done(function()
+    .always(function()
     {
 		$('#save_work_days').prop('disabled', false);
     })
