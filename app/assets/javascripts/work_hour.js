@@ -3,12 +3,21 @@ var days = [
 ]
 
 function set_up(work_days){
+	// default initalize
+	$.each(days, function(index,day){
+		set_up_timepicker('timepicker-end-'+day);
+		set_up_timepicker('timepicker-start-'+day);
+
+		$('#vication_'+day).change(function(){
+			on_checkbox_chnage(day, $(this).prop("checked"))
+		});
+	});
+
+	// set user time
 	$.each(work_days, function(index, day){
-		set_up_timepicker('timepicker-end-'+day['day'], day['hours'][1]);
-		set_up_timepicker('timepicker-start-'+day['day'], day['hours'][0]);
-		//$('#vication_'+day).change(function(){
-		//	on_checkbox_chnage(day, $(this).prop("checked"))
-		//});
+		console.log(day)
+		$('#timepicker-start-'+day['day']).timepicker('setTime', from_seconds_to_view(day['hours'][0]));
+		$('#timepicker-end-'+day['day']).timepicker('setTime', from_seconds_to_view(day['hours'][1]));
 	});
 }
 
@@ -22,11 +31,10 @@ function on_checkbox_chnage(day, is_checked){
 	$('#timepicker-end-'+day).prop('disabled', is_checked);
 }
 
-function set_up_timepicker(timepicker_id, seconds_from_midnight){
-	console.log(from_seconds_to_view(seconds_from_midnight))
+function set_up_timepicker(timepicker_id){
 	$('#'+timepicker_id).timepicker({
 		showMeridian: false,
-		defaultTime: from_seconds_to_view(seconds_from_midnight)
+		defaultTime: '00:00'
 	});
 }
 
@@ -82,6 +90,5 @@ function get_seconds_from_midnight(timepicker_id){
 function from_seconds_to_view(seconds){
 	hour = seconds / 3600.0
 	min = (hour % 1) * 60
-	//console.log(hour)
 	return Math.floor(hour)+":"+min
 }
