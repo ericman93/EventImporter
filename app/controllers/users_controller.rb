@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   def settings
     @days = [{short_name: 'sun' , full_name: 'Sunday'},
              {short_name: 'mon' , full_name: 'Monday'},
-             {short_name: 'tue' , full_name: 'Thursday'},
+             {short_name: 'tue' , full_name: 'Tuesday'},
              {short_name: 'wed' , full_name: 'Wednesday'},
              {short_name: 'thu' , full_name: 'Thursday'},
              {short_name: 'fri' , full_name: 'Friday'},
