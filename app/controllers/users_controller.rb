@@ -1,7 +1,7 @@
 require 'digest/md5'
 
 class UsersController < ApplicationController
-  before_action :has_user_session?, only: [:requests, :requests_partial]
+  before_action :has_user_session?, only: [:requests, :requests_partial, :settings]
   #protect_from_forgery with: :null_session
   # user before_filter for functions that need autorization
 
@@ -28,6 +28,17 @@ class UsersController < ApplicationController
         session[:current_user] = User.find_by email: email
         redirect_to action: :calendar, status: 302, email: email
     end
+  end
+
+  def get_work_days
+    email = params[:email]
+    work_days = []
+    user = User.where("email = ?",email).first
+    if !user.nil?
+      work_days = user.work_hours
+    end
+
+    render json: work_days.map{|d| {day: d.short_day_name, hours: [d.start_at, d.end_at]}} 
   end
 
   def requests_count
@@ -73,6 +84,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def settings
+    @work_hours = User.find(@current_user.id).work_hours
+    @work_hours = create_work_hours if @work_hours.empty?
+  end
+
+  def save_work_days
+    user = User.find(@current_user.id)
+    if(user.work_hours.empty?)
+      user.work_hours.build(work_hours_params)
+    else
+      user.update_work_days(work_hours_params)    
+    end
+
+    render json: true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -81,7 +108,11 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :password, :email)
+      params.require(:user).permit(:day, :start_at, :end_at, :short_day_name)
+    end
+
+    def work_hours_params
+      params.require(:work_days).map{|day| day[1]}
     end
 
     def authenticate?#(email, plain_password)
@@ -94,5 +125,16 @@ class UsersController < ApplicationController
       if session[:current_user].nil?
         redirect_to action: :login, status: 302
       end
+    end
+
+    def create_work_hours
+      [WorkHour.buildWorkDay('Sunday'),
+       WorkHour.buildWorkDay('Monday'),
+       WorkHour.buildWorkDay('Tuesday'),
+       WorkHour.buildWorkDay('Wednesday'),
+       WorkHour.buildWorkDay('Thursday'),
+       WorkHour.buildWorkDay('Friday'),
+       WorkHour.buildWorkDay('Saturday')]
+
     end
 end

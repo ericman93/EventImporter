@@ -12,3 +12,20 @@
 	float: right;
 }
 
+.fc-work-time-day{
+    background-color: yellow;
+    opacity: 0.3;
+    filter: alpha(opacity=30); /* for IE */
+}
+
+.fc-work-time{
+    position: absolute;
+    background-color: yellow;
+    z-index:10;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    z-index: 0;
+    opacity: 0.3;
+    filter: alpha(opacity=30); /* for IE */
+}

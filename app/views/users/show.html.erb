@@ -38,4 +38,14 @@
 	<% end %>
 </p>
 
+<p>
+	<strong>Work Hours :</strong>
+	<br>
+	<% @user.work_hours.each do |day| %>
+		<b><%= day.day %></b> start at <%= day.start_at %> ends at <%= day.end_at %> ( <%= day.short_day_name %> )
+		<br>
+	<% end %>
+</p>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |

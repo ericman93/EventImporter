@@ -1,0 +1,38 @@
+<style>
+	.time-button{
+		display: inline;
+	}
+</style>
+
+<table>
+	<tr>
+		<th>Day</th>
+		<th>Start at</th>
+		<th>End at</th>
+		<th>Vication</th>
+	</tr>
+	<% @work_hours.each do |work_day| %>
+		<tr>
+			<td id="<%= work_day.short_day_name %>"><%= work_day.day %></td>
+			<td>
+				<div class="input-group bootstrap-timepicker">
+				    <input id="timepicker-start-<%= work_day.short_day_name %>" type="text" value="<%= work_day.to_am_show('start') %>">
+				    <span class="input-group-addon time-button">
+				    	<i class="glyphicon glyphicon-time"></i>
+				    </span>
+				</div>
+			</td>
+			<td>
+				<div class="input-group bootstrap-timepicker">
+				    <input id="timepicker-end-<%= work_day.short_day_name %>" type="text" value="<%= work_day.to_am_show('end') %>">
+				    <span class="input-group-addon time-button">
+				    	<i class="glyphicon glyphicon-time"></i>
+				    </span>
+				</div>
+			</td>
+			<td><input type="checkbox" value="" id="vication_<%= work_day.short_day_name %>"></td>
+		</tr>
+	<% end %>
+</table>
+
+<button id="save_work_days" onclick="send_to_server()" class="btn btn-info">Update</button>

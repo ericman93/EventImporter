@@ -3,14 +3,20 @@ Calendar::Application.routes.draw do
   #resources :users
 
   post '/users/authenticate', to: 'users#authenticate'
-  get '/users/login', to: 'users#login', :as => :login
-  get '/users/logout', to: 'users#logout', :as => :logout
+  get '/login', to: 'users#login', :as => :login
+  get '/logout', to: 'users#logout', :as => :logout
   get '/users/:id', to: 'users#show', :constraints => { :id => /\d+/ }, :as => :user
   get '/users/:id', to: 'users#edit', :constraints => { :id => /\d+/ }, :as => :edit_user
   get '/calendar/:email', to: 'users#calendar', :constraints => { :email => /.*/ }, :as => :calendar
   get '/users/requests_count', to:'users#requests_count'
   get '/users/requests', to:'users#requests', :as => :requests
+  get '/user/:email/work_day', to:'users#get_work_days', :constraints => { :email => /.*/ }
   post '/users/requests_partial', to:'users#requests_partial'
+
+  get '/user/settings', to:'users#settings', :as => :uset_settings
+  post '/user/save_work_days', to:'users#save_work_days'
+
+
   
   get '/events/:email', to: 'events#user_events', :constraints => { :email => /.*/ }
   get '/requests/:request_id', to: 'events#user_requests_events'

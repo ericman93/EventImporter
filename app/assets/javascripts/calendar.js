@@ -47,6 +47,14 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
            },
         editable: !is_self_user,
     });
+
+    time_day = []
+    $.get("/user/ericfeldman93@gmail.com/work_day", function(data) {
+      time_day = data
+    })
+    .done(function(){
+        selectWorkTime(time_day, 30, 0, 24, true)
+    })
 }
 
 function send_to_server(){

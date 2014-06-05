@@ -5,6 +5,7 @@
 <% content_for :javascripts do %>
 	<%= javascript_include_tag "fullcalendar.min" %>
 	<%= javascript_include_tag "calendar" %>
+	<%= javascript_include_tag "calendar_work_day" %>
 <% end %>
 
 <% is_self_user = !(@current_user.nil?) and @user == @current_user.email %>

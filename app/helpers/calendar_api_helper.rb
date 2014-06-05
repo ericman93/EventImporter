@@ -51,10 +51,6 @@ module CalendarApiHelper
 		return request
 	end
 
-	def self.accept_proposle(proposel, user)
-		
-	end
-
 	private
 		def self.is_start_between(first, second)
 			first.start_time <= second.start_time and first.end_time >= second.start_time

@@ -1,0 +1,15 @@
+<% content_for :stylesheets do %>
+	<%= stylesheet_link_tag "bootstrap-timepicker.min" %>
+<% end %>
+<% content_for :javascripts do %>
+	<%= javascript_include_tag "bootstrap-timepicker" %>
+	<%= javascript_include_tag "work_hour" %>
+<% end %>
+
+<div id="user-settings">
+	<h1>Settings</h1>
+	<h2> Work Hours </h2>
+	<div id="work-hours">
+		<%= render partial: 'work_hours' %>
+	</div>
+</div>
