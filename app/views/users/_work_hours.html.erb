@@ -23,12 +23,12 @@
 		<th>End at</th>
 		<th>Vication</th>
 	</tr>
-	<% @work_hours.each do |work_day| %>
+	<% @days.each do |day| %>
 		<tr>
-			<td id="<%= work_day.short_day_name %>"><%= work_day.day %></td>
+			<td id="<%= day[:short_name] %>"><%= day[:full_name] %></td>
 			<td>
 				<div class="input-group bootstrap-timepicker">
-				    <input id="timepicker-start-<%= work_day.short_day_name %>" type="text">
+				    <input id="timepicker-start-<%= day[:short_name] %>" type="text">
 				    <span class="input-group-addon time-button">
 				    	<i class="glyphicon glyphicon-time"></i>
 				    </span>
@@ -36,13 +36,13 @@
 			</td>
 			<td>
 				<div class="input-group bootstrap-timepicker">
-				    <input id="timepicker-end-<%= work_day.short_day_name %>" type="text">
+				    <input id="timepicker-end-<%= day[:short_name] %>" type="text">
 				    <span class="input-group-addon time-button">
 				    	<i class="glyphicon glyphicon-time"></i>
 				    </span>
 				</div>
 			</td>
-			<td><input type="checkbox" value="" id="vication_<%= work_day.short_day_name %>"></td>
+			<td><input type="checkbox" value="" id="vication_<%= day[:short_name] %>"></td>
 		</tr>
 	<% end %>
 </table>

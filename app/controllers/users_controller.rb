@@ -87,8 +87,13 @@ class UsersController < ApplicationController
   end
 
   def settings
-    @work_hours = User.find(@current_user.id).work_hours
-    @work_hours = create_work_hours if @work_hours.empty?
+    @days = [{short_name: 'sun' , full_name: 'Sunday'},
+             {short_name: 'mon' , full_name: 'Monday'},
+             {short_name: 'tue' , full_name: 'Thursday'},
+             {short_name: 'wed' , full_name: 'Wednesday'},
+             {short_name: 'thu' , full_name: 'Thursday'},
+             {short_name: 'fri' , full_name: 'Friday'},
+             {short_name: 'sat' , full_name: 'Saturday'}]
   end
 
   def save_work_days
@@ -135,14 +140,4 @@ class UsersController < ApplicationController
       end
     end
 
-    def create_work_hours
-      [WorkHour.buildWorkDay('Sunday'),
-       WorkHour.buildWorkDay('Monday'),
-       WorkHour.buildWorkDay('Tuesday'),
-       WorkHour.buildWorkDay('Wednesday'),
-       WorkHour.buildWorkDay('Thursday'),
-       WorkHour.buildWorkDay('Friday'),
-       WorkHour.buildWorkDay('Saturday')]
-
-    end
 end
