@@ -93,6 +93,7 @@ class UsersController < ApplicationController
     user = User.find(@current_user.id)
     if(user.work_hours.empty?)
       user.work_hours.build(work_hours_params)
+      user.save
     else
       user.update_work_days(work_hours_params)    
     end
