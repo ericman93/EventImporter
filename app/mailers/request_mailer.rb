@@ -15,25 +15,6 @@ class RequestMailer < ActionMailer::Base
   def proposle_accept_email(proposal, user)
   	request = proposal.request
 
-  	GBody = "BEGIN:VCALENDAR
-			PRODID:-//setwith.me
-			VERSION:2.0
-			METHOD:REQUEST
-			BEGIN:VEVENT
-			DTSTART:
-			DTSTAMP: #{proposal.start_time.strftime('%Y%m%dT%H%m00Z')}
-			DTEND:#{proposal.end_time.strftime('%Y%m%dT%H%m00Z')}
-			LOCATION: #{request.location}
-			UID:40000008200E00074C5B7101A82E0080000000020DC2A139243C601000000
-			DESCRIPTION: #{bla}
-			X-ALT-DESC;FMTTYPE=text/html:0
-			SUMMARY: #{request.subject}
-			ORGANIZER:MAILTO: #{}
-			ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=TENTATIVE;CN=Eric Feldman:MAILTO:ericfeldman93@gmail.com
-			ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=TENTATIVE;CN=Gadi Feldman:MAILTO:gadi_fe@hotmail.com
-			END:VEVENT
-			END:VCALENDAR"
-
   	mail(to: request.return_mail, subject: "#{user.name} as accept meeting your reuqest") do |format|
   		format.ics {
   		   cal = Icalendar::Calendar.new
