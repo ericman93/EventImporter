@@ -64,7 +64,6 @@ function get_data_as_json(){
 		var work_day = {
 			start_at : get_seconds_from_midnight('timepicker-start-'+day),
 			end_at : get_seconds_from_midnight('timepicker-end-'+day),
-			short_day_name: day,
 			day: $('#'+day).html()
 		}
 
