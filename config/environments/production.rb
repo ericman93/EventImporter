@@ -82,11 +82,12 @@ Calendar::Application.configure do
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'polar-wave-8764.herokuapp.com',
-    :user_name            => 'ericfeldman93@gmail.com',
-    :password             => 'ericfeldman789798',
+    :address              => "vhummuscom.ipage.com", 
+    :port                 => "587",
+    :domain               => '127.0.0.1',
+    :user_name            => 'gadi@vhummus.com',
+    :password             => 'Aueujo12!',
     :authentication       => 'plain',
-    :enable_starttls_auto => true  }
+    :enable_starttls_auto => false     
+  }
 end

@@ -39,7 +39,7 @@ class CalendarApiController < ApplicationController
 
 		proposal = RequestProposal.find(proposal_id)
 		RequestMailer.proposle_accept_email(proposal, @current_user).deliver
-		Request.destroy(proposal.request.id)
+		#Request.destroy(proposal.request.id)
 
 		render json: true
 	end
@@ -49,5 +49,5 @@ class CalendarApiController < ApplicationController
       		if session[:current_user].nil?
         		redirect_to action: :login, controller: :users, status: 302
       		end
-    end
+  		end
 end

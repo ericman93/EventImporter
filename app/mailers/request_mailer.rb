@@ -15,27 +15,31 @@ class RequestMailer < ActionMailer::Base
   def proposle_accept_email(proposal, user)
   	request = proposal.request
 
-  	mail(to: request.return_mail, subject: "#{user.name} as accept meeting your reuqest") do |format|
-  		format.ics {
-  		   cal = Icalendar::Calendar.new
-	       cal.event do |e|
-			  e.dtstart     = Icalendar::Values::DateTime.new proposal.start_time, 'tzid' => "UTC"
-			  e.dtend       = Icalendar::Values::DateTime.new proposal.end_time, 'tzid' => "UTC"
-			  e.summary     = request.subject
-			  e.location    = request.location
-			  e.append_attendee request.return_mail
-			  e.append_attendee user.email
-			  e.description = "Have a long lunch meeting and decide nothing..."
-			  e.ip_class    = "PRIVATE"
-			  e.uid         = SecureRandom.uuid
-		   end
-		   cal.timezone do |t|
-		   	t.tzid = "UTC"
-		   end
-	       
-	       cal.publish
-	       render :text => cal.to_ical, :layout => false
-      }
-  	end
+  	ics_body = "BEGIN:VCALENDAR
+PRODID:-//setwith.me
+VERSION:2.0
+METHOD:REQUEST
+BEGIN:VEVENT
+DTSTART:#{proposal.start_time.to_ics_time}
+DTSTAMP:#{proposal.start_time.to_ics_time}
+DTEND:#{proposal.end_time.to_ics_time}
+LOCATION: #{request.location}
+UID:#{SecureRandom.uuid}
+DESCRIPTION:Just test
+X-ALT-DESC;FMTTYPE=text/html:0
+SUMMARY:#{request.subject}
+ORGANIZER:#{request.return_mail}
+ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=TENTATIVE;CN=#{user.name}:MAILTO:#{user.email}
+ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=TENTATIVE;CN=#{request.return_name}:MAILTO:#{request.return_mail}
+END:VEVENT
+END:VCALENDAR"
+
+  	mail(:from => request.return_mail, :reply_to => request.return_mail,
+  		 :to => [request.return_mail, user.email], 
+		 :subject => "Calendar #{Time.now.to_i}", :content_type => "text/calendar") do |format|
+  			format.ics{
+  				render :text => ics_body, :layout => false
+  			}
+  	end	
   end
 end
