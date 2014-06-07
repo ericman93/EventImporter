@@ -26,11 +26,13 @@
 
 <div id='calendar'></div>
 
+<!--
 <% if !is_self_user %>
 	<div id='side'>
 		<button id="add_temps_btn" onclick="show_temp_events()">Add</button>
 	</div>
 <% end %>
+-->
 
 <div id="temp_events">
 	<form action="javascript:void(0);" onsubmit="send_to_server()">
@@ -60,8 +62,11 @@
 			</table>
 		</div>
 
-		<center>
-			<input type="submit" value="Send" class="btn btn-success" id="send_request_btn">
-		</center>
+		<button type="submit" class="btn btn-success" id="send_request_btn">	
+			 <span class="glyphicon glyphicon-send"></span> &nbsp Send
+		</button>
+
+		<br><br>
+		<div id="result_alert"></div>
 	</from>
 </div>

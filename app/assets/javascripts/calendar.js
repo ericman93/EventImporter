@@ -12,6 +12,8 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
+        //minTime: 5,
+        firstHour: 2,
         events: should_load_events ? "/events/"+user_mail : [],
         loading: function (bool) {
             if (bool) {
@@ -26,9 +28,11 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         selectable: !is_self_user,
         selectHelper: !is_self_user,
         select: function(start, end, allDay) {
-            add_new_proposal(start, end, allDay);
+            var temp_id = "temp_" + options.length;
+            add_new_proposal(start, end, allDay, temp_id); 
             cal.fullCalendar('renderEvent',
 					{
+                        id: temp_id, // I'm addind the poposel in the add_new_proposal function , so the array size increase by 1 
 					    start: start,
 					    end: end,
 					    allDay: allDay,
@@ -40,9 +44,9 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         },
         eventRender: function(event, element) {
               element.bind('dblclick', function() {
-                $('#calendar').fullCalendar('removeEvents', function(e) {
-                    return should_be_deleted(event, e)
-                })
+                //if(event.requested){
+                //    $('#calendar').fullCalendar( 'removeEvents', event.id );
+                //}
               });
            },
         editable: !is_self_user,
@@ -86,47 +90,42 @@ function send_to_server(){
     })
     .success(function (d) {
         //$('#dates tbody').remove();
+        $.each(options, function(index,item){
+            $('#calendar').fullCalendar('removeEvents', item.temp_id );
+        });
         options = []
-        $('#popup_content').html("<h1>Reuqest has sent successfuly ;)</h1>")
-        change_request_input_disable(false)
+        $("#proposal_table tbody").empty();
+        
+        $('#result_alert').removeClass()
+        $('#result_alert').addClass('alert alert-success')
+        $('#result_alert').html('Reuqest has sent successfuly ;)')
     })
     .fail(function (data) {
-        alert('error');
+        $('#result_alert').removeClass()    
+        $('#result_alert').addClass('alert alert-danger')
+        $('#result_alert').html('An error as occurred :(')
         console.log(data);
-        change_request_input_disable(false)
+    })
+    .done(function(data){
+        change_request_input_disable(false)  
     });
 }
 
-function should_be_deleted(event_to_remove, calendar_event){
-    if(event_to_remove.requested && event_to_remove.start == calendar_event.start && event_to_remove.end == calendar_event.end){
-
-        item = $.each(options, function(i, option) {
-          if(option != undefined && option.start_time == event_to_remove.start && option.end_time == event_to_remove.end){
-            options.splice(i,1);
-            return true
-          }
-        });
-
-        return true
-    }
-
-    return false;
-}
-
-function add_new_proposal(start, end, allday){
+function add_new_proposal(start, end, allday, temp_id){
     proposel = {
         'start_time': start,
         'start_ticks' :start.getTime(),
         'end_time': end,
         'end_ticks': end.getTime(),
-        'is_all_day': allday
+        'is_all_day': allday,
+        'temp_id': temp_id
     }
 
+    add_proposal_to_table(proposel, options.length)
     options.push(proposel)
-    console.log(options)
 }
 
-function show_temp_events(){
+/*function show_temp_events(){
     if(options.length == 0){
         alert('Please select proposals before sending')
         return;
@@ -134,23 +133,38 @@ function show_temp_events(){
 
     $("#proposal_table tbody").html('')
     $.each(options, function(i, option){
-        add_proposal_to_table(option)
+        add_proposal_to_table(option, i)
     })
 
     var div_html = $('#temp_events').html()
     $('#popup_content').html(div_html)
 
     loadPopup()
-}
+}*/
 
 function add_proposal_to_table(proposel){
-    $("#proposal_table tbody").append('<tr><td>' + get_remove_button_td() + 
+    $("#proposal_table tbody").append('<tr id="remove_prop_'+proposel.temp_id+'"><td>' + get_remove_button_td(proposel.temp_id) + 
                                       '</td><td>' + date_to_human(proposel.start_time) + 
                                       '</td><td>' + date_to_human(proposel.end_time) + '</tr>')
 }
 
-function get_remove_button_td() {
-    return '<button type="submit" class="btn btn-danger remove-prop-btn" onclick="remove_date(this)">X</button>'
+function get_remove_button_td(proposel_id) {
+    return '<button type="button" class="btn btn-danger remove-prop-btn" onclick="remove_date('+"'"+proposel_id+"'"+')"> <span class="glyphicon glyphicon-remove"/></button>'
+}
+
+function remove_date(proposel_id) {
+    // remove from grid
+    $("#remove_prop_"+proposel_id).fadeOut(300, function () {
+        $(this).remove();
+    });
+
+    // remove from options array
+    var to_delete = options.filter( function(item){return (item.temp_id == proposel_id);} );
+    index = $(options).index(to_delete[0])
+    options.splice(index,1);
+
+    // remove from calendar
+    $('#calendar').fullCalendar('removeEvents', proposel_id );
 }
 
 function change_request_input_disable(disable){
