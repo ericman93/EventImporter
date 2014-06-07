@@ -24,54 +24,50 @@
 	    });
 </script>
 
-<div id='calendar' style="width: <%= is_self_user ? '95' : '74' %>%;"></div>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div id='calendar' class="span<%= is_self_user ? '12' : '9' %>"></div>
 
-<!--
-<% if !is_self_user %>
-	<div id='side'>
-		<button id="add_temps_btn" onclick="show_temp_events()">Add</button>
-	</div>
-<% end %>
--->
-
-<% if !is_self_user %>
-	<div id="temp_events">
-		<form action="javascript:void(0);" onsubmit="send_to_server()">
-			<u><h1>New Event Proposal</h1></u>
-			<table>
-				<tr>
-					<td>Subject : </td>
-					<td><input id="event_subject_input" type="text" placeholder="enter subject here" required></td>
-					<td class="require_field">*</td>
-				</tr>
-				<tr>
-					<td>Location : </td>
-					<td><input id="event_location_input" type="text" placeholder="enter location here"></td>
-				</tr>
-				<tr>
-					<td>Your Email : </td>
-					<td><input id="request_mail_input" type="text" placeholder="enter mail here" required></td>
-					<td class="require_field">*</td>
-				</tr>
-				<tr>
-					<td>Your Name : </td>
-					<td><input id="request_name_input" type="text" placeholder="enter name here" required></td>
-					<td class="require_field">*</td>
-				</tr>
-			</table>
-
-			<div id="proposals">
-				<table id="proposal_table" class="table">
-					<tbody></tbody>
+		<% if !is_self_user %>
+		<div id="temp_events" class="span3">
+			<form action="javascript:void(0);" onsubmit="send_to_server()">
+				<u><h1>New Event Proposal</h1></u>
+				<table>
+					<tr>
+						<td>Subject : </td>
+						<td><input id="event_subject_input" type="text" placeholder="enter subject here" required></td>
+						<td class="require_field">*</td>
+					</tr>
+					<tr>
+						<td>Location : </td>
+						<td><input id="event_location_input" type="text" placeholder="enter location here"></td>
+					</tr>
+					<tr>
+						<td>Your Email : </td>
+						<td><input id="request_mail_input" type="text" placeholder="enter mail here" required></td>
+						<td class="require_field">*</td>
+					</tr>
+					<tr>
+						<td>Your Name : </td>
+						<td><input id="request_name_input" type="text" placeholder="enter name here" required></td>
+						<td class="require_field">*</td>
+					</tr>
 				</table>
-			</div>
 
-			<button type="submit" class="btn btn-success" id="send_request_btn">	
-				 <span class="glyphicon glyphicon-send"></span> &nbsp Send
-			</button>
+				<div id="proposals">
+					<table id="proposal_table" class="table">
+						<tbody></tbody>
+					</table>
+				</div>
 
-			<br><br>
-			<div id="result_alert"></div>
-		</from>
+				<button type="submit" class="btn btn-success" id="send_request_btn">	
+					 <span class="glyphicon glyphicon-send"></span> &nbsp Send
+				</button>
+
+				<br><br>
+				<div id="result_alert"></div>
+			</from>
+		</div>
+		<% end %>
 	</div>
-<% end %>
+</div>

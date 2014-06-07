@@ -1,6 +1,6 @@
 #temp_events{
 	/*display: none;*/
-    width: 25%;
+    /*width: 25%;*/
     float: right;
 }
 
@@ -12,6 +12,8 @@
 #side{
 	float: right;
 }
+
+.fc-agenda-slots td div { height: 30px; }
 
 .fc-work-time-day{
     background-color: yellow;

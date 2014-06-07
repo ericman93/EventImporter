@@ -5,7 +5,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
     $('#calendar').html('');
 
     user_email = user_mail;
-    var slot_min = 20;
+    var slot_min = 30;
 
     var cal = $('#calendar').fullCalendar({
         //theme: true,
