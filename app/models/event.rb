@@ -25,9 +25,9 @@ class Event < ActiveRecord::Base
 			'start' => self.start_time.to_i,
 			'end' => self.end_time.to_i,
 			'title' => should_remove_private_data ? "Busy" : self.subject, 
-			'color' => should_remove_private_data ? 'red' : 'blue',
 			'location' => should_remove_private_data ? "" : self.location,
-			'allDay' => false
+			'allDay' => false,
+			'className' => should_remove_private_data ? "busy_event" : "user_event",
 		}
 	end
 

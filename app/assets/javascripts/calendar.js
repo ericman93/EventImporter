@@ -30,6 +30,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         defaultView: 'agendaWeek',
         selectable: !is_self_user,
         selectHelper: !is_self_user,
+        eventBorderColor: 'black',
         select: function(start, end, allDay) {
             var temp_id = "temp_" + options.length;
             add_new_proposal(start, end, allDay, temp_id); 
@@ -41,6 +42,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
 					    allDay: allDay,
                         title: "Option",
                         requested: true,
+                        className: 'proposel_event'
 					},
 					!is_self_user // make the event "stick"
 				);

@@ -14,6 +14,7 @@ function show_calendar(){
             right: 'month,agendaWeek,agendaDay'
         },
         events:  "/events/"+user_mail,
+        eventBorderColor: 'black',
         loading: function (bool) {
             if (bool) {
                 loadPopup();
@@ -59,11 +60,11 @@ function proposal_selected(proposal_id, request_id){
     $('#calendar').fullCalendar('gotoDate',start_time)
     var new_event = {
       title:"Proposel",
-      color:'Green',
       start: start_time,
       allDay: false,
       id: "prop_"+proposal_id,
-      end: new Date(proposal.end_time)
+      end: new Date(proposal.end_time),
+      className: 'option_event'
     };
 
     set_propoal_active(proposal_id);
