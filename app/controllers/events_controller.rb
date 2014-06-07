@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     start_time = params[:start]
     end_time = params[:end]
 
-    # use the timstamps for better selection
+    # use the timstamps for better selection !!!!
     user = User.where("email = ?",email).first
 
     other_user = (@current_user.nil? or @current_user.email != email)

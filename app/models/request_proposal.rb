@@ -1,4 +1,7 @@
 class RequestProposal < ActiveRecord::Base
+	validates :start_time, :presence => { :message => "Start time is required" }
+	validates :end_time, :presence => { :message => "End time is required" }
+
 	belongs_to :request
 
 	def self.from_json(propsels)

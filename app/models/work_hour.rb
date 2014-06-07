@@ -1,4 +1,8 @@
 class WorkHour < ActiveRecord::Base
+	validates :start_at, :presence => { :message => "Work day start time is required" }
+	validates :end_at, :presence => { :message => "Work day end time is required" }
+	validates :day, :presence => { :message => "Work day name is required" }
+
 	belongs_to :user
 	#start_at - seconds from 0am
 	#end_at - seconds from 0am

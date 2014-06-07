@@ -46,9 +46,11 @@ module CalendarApiHelper
 		request.request_proposals = proposels
 		user.requests << request
 
-		user.save
-
-		return request
+		if user.save
+			return request, nil
+		else
+			return nil, request.errors.first[1]
+		end
 	end
 
 	private

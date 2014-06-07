@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
-	validates_presence_of :start_time
+	validates :start_time, :presence => { :message => "Event start time name is required" }
+	validates :end_time, :presence => { :message => "Event end time name is required" }
+
 	has_many :event_users
 
 	def exists?

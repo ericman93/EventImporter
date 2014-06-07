@@ -30,3 +30,9 @@
     opacity: 0.3;
     filter: alpha(opacity=30); /* for IE */
 }
+
+.require_field{
+    color:red;
+    font-weight:bold;
+    font-size:150%;
+}

@@ -98,17 +98,30 @@ function send_to_server(){
         
         $('#result_alert').removeClass()
         $('#result_alert').addClass('alert alert-success')
-        $('#result_alert').html('Reuqest has sent successfuly ;)')
+        $('#result_alert').html('Request was sent successfuly ;)')
+
+        change_request_input_disable(false)  
     })
     .fail(function (data) {
+        var error_text = ""
+        switch(data.status){
+            case 400:
+                error_text = data.responseText
+                break;
+            case 500:
+                error_text = "Something went wrong :("
+                break;
+            default:
+                error_text = 'An error as occurred :('
+        }
+
         $('#result_alert').removeClass()    
         $('#result_alert').addClass('alert alert-danger')
-        $('#result_alert').html('An error as occurred :(')
+        $('#result_alert').html(error_text)
         console.log(data);
-    })
-    .done(function(data){
+
         change_request_input_disable(false)  
-    });
+    })
 }
 
 function add_new_proposal(start, end, allday, temp_id){

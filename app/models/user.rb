@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+	validates_format_of :email, :with => /@/ ,:message => "Invalid email address" 
+	validates :name, :presence => { :message => "Name is required" }
+	validates :password, :presence => { :message => "Password is required" }
+
 	has_many :requests
 	has_many :work_hours
 	validates :email, uniqueness: true

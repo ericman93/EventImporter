@@ -28,10 +28,13 @@ class CalendarApiController < ApplicationController
 		user = User.where("email = ?",user_mail).first
 		props = RequestProposal.from_json(param_proposals)
 
-		request = CalendarApiHelper.handle_proposle(props, user, requester_info, event_metadata)
-		RequestMailer.requests_email(request, user_mail).deliver
-
-		render json: true
+		request, error = CalendarApiHelper.handle_proposle(props, user, requester_info, event_metadata)
+		if request.nil?
+			render text: error, status: 400
+		else
+			RequestMailer.requests_email(request, user_mail).deliver
+			render json: true
+		end
 	end
 
 	def select_proposal
@@ -45,6 +48,7 @@ class CalendarApiController < ApplicationController
 	end
 
 	private
+		# remove the appliaction controller
     	def has_user_session?
       		if session[:current_user].nil?
         		redirect_to action: :login, controller: :users, status: 302
