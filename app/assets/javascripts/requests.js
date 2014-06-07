@@ -1,4 +1,4 @@
-var current_active = 0;
+var current_request = 0;
 var current_proposel = 0;
 
 $(function () {
@@ -23,6 +23,7 @@ function show_calendar(){
         },
         eventRender: function(event, element) {
               element.bind('dblclick', function() {
+                // if evevnt.id start with "prop_"
                 send_option_selection(event.id)
               });
            },
@@ -31,18 +32,19 @@ function show_calendar(){
 }
 
 function show_request_proposels(request_id){
-    set_as_active(request_id);
+    set_request_active(request_id);
     var request = requests.filter( function(item){return (item.id==request_id);} );
     build_proposel_list(request[0].request_proposals)
 }
 
 function build_proposel_list(proposals){
+    $('#calendar').fullCalendar( 'removeEvents', "prop_"+current_proposel );
     $("#request_proposels_list").empty();
     $.each(proposals, function(index, proposal){
         start = new Date(proposal.start_time)
         end = new Date(proposal.end_time)
 
-        var item = '<li id="'+proposal.id+'"><a href="#" onclick="proposal_selected('+proposal.id+","+proposal.request_id+')">'+start.toLocaleString()+" - "+end.toLocaleString()+'</a></li>'
+        var item = '<li id="proposel_'+proposal.id+'"><a href="#" onclick="proposal_selected('+proposal.id+","+proposal.request_id+')">'+start.toLocaleString()+" - "+end.toLocaleString()+'</a></li>'
         $("#request_proposels_list").append(item)
     });
 }
@@ -60,24 +62,31 @@ function proposal_selected(proposal_id, request_id){
       color:'Green',
       start: start_time,
       allDay: false,
-      id: proposal_id,
+      id: "prop_"+proposal_id,
       end: new Date(proposal.end_time)
     };
-        
-    $('#calendar').fullCalendar( 'removeEvents', current_proposel );
+
+    set_propoal_active(proposal_id);
+    $('#calendar').fullCalendar( 'removeEvents', "prop_"+current_proposel );
     current_proposel = proposal_id;
     $('#calendar').fullCalendar( 'renderEvent', new_event );
 
 }
 
-function set_as_active(request_id){
-    $('#request_'+current_active).removeClass('active');
+function set_request_active(request_id){
+    $('#request_'+current_request).removeClass('active');
     $('#request_'+request_id).addClass('active');
 
-    current_active = request_id;
+    current_request = request_id;
 }
 
-function send_option_selection(option_id){
+function set_propoal_active(proposel_id){
+    $('#proposel_'+current_proposel).removeClass('active');
+    $('#proposel_'+proposel_id).addClass('active');
+}
+
+function send_option_selection(option_name){
+    option_id = option_name.substring(5) // remove the 'prop_' in the begging of the name
     $.ajax({
         type: "POST",
         url: "/calendarapi/select_proposal",
@@ -96,7 +105,11 @@ function send_option_selection(option_id){
 }
 
 function remove_request(){
-    $('#request_'+current_active).remove();
+    $('#request_'+current_request).remove();
+    $('#proposel_'+current_proposel).remove();
+    $("#request_proposels_list").empty()
+    $('#calendar').fullCalendar( 'removeEvents', "prop_"+current_proposel );
+
     set_request_count()
-    show_calendar()
+    //show_calendar()
 }

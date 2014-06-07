@@ -39,7 +39,7 @@ class CalendarApiController < ApplicationController
 
 		proposal = RequestProposal.find(proposal_id)
 		RequestMailer.proposle_accept_email(proposal, @current_user).deliver
-		Request.destroy(proposal.request.id)
+		#Request.destroy(proposal.request.id)
 
 		render json: true
 	end
