@@ -5,6 +5,8 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
     $('#calendar').html('');
 
     user_email = user_mail;
+    var slot_min = 20;
+
     var cal = $('#calendar').fullCalendar({
         //theme: true,
         header: {
@@ -13,7 +15,8 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
             right: 'month,agendaWeek,agendaDay'
         },
         //minTime: 5,
-        firstHour: 2,
+        firstHour: 9,
+        slotMinutes: slot_min,
         events: should_load_events ? "/events/"+user_mail : [],
         loading: function (bool) {
             if (bool) {
@@ -57,7 +60,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
       time_day = data
     })
     .done(function(){
-        selectWorkTime(time_day, 30, 0, 24, true)
+        selectWorkTime(time_day, slot_min, 0, 24, true)
     })
 }
 
