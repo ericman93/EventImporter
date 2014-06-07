@@ -25,7 +25,7 @@ DTSTAMP:#{proposal.start_time.to_ics_time}
 DTEND:#{proposal.end_time.to_ics_time}
 LOCATION: #{request.location}
 UID:#{SecureRandom.uuid}
-DESCRIPTION:Just test
+DESCRIPTION:Change !
 X-ALT-DESC;FMTTYPE=text/html:0
 SUMMARY:#{request.subject}
 ORGANIZER:#{request.return_mail}
