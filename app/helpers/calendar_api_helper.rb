@@ -1,6 +1,7 @@
 module CalendarApiHelper
 	def self.handle_request(events, logger)
 		events.each do |event|
+			logger.debug("start inserting meeting - '#{event.subject}'")
 			db_event = event.get_db_instnace
 
 			if db_event.nil? 
@@ -9,7 +10,9 @@ module CalendarApiHelper
 			else
 				# event already exists, update the event data
 				db_event.update(event)
-				db_event.save
+				if !db_event.save
+					logger.error("could not save #{event.subject} : #{event.errors.first[1]}")
+				end
 			end
 		end
 	end
