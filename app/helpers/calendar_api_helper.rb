@@ -6,12 +6,13 @@ module CalendarApiHelper
 
 			if db_event.nil? 
 				# no event in the db with the same event id, create new one
-				event.save
+				if !event.save
+					logger.error("could not insert #{event.subject} : #{event.errors.first[1]}")
+				end
 			else
 				# event already exists, update the event data
-				db_event.update(event)
-				if !db_event.save
-					logger.error("could not save #{event.subject} : #{event.errors.first[1]}")
+				if !db_event.update(event)
+					logger.error("could not update #{db_event.subject} : #{db_event.errors.first[1]}")
 				end
 			end
 		end

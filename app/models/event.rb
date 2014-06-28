@@ -9,7 +9,16 @@ class Event < ActiveRecord::Base
 	end
 
 	def get_db_instnace
-		Event.where(:event_id => self.event_id).first
+		if self.is_reccurnce
+			# all reccurence events has the same id
+			# so i need to check that this isn't a new instance of the event.
+			# otherwize only the newest instance will save
+			Event.where("event_id = ? and start_time = ? and end_time = ?" ,
+						self.event_id, self.start_time, self.end_time)
+			     .first
+		else
+			Event.where(:event_id => self.event_id).first
+		end
 	end
 
 	def update(other)
