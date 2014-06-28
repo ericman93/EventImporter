@@ -78,7 +78,7 @@ function get_work_hours(user_mail){
 function get_holidays(work_days){
     var holidays = $.map(work_days, function(day, key){
         if (day.hours[0] == 0 && day.hours[1] == 0){
-            return key - 1
+            return key
         }
     })
 
