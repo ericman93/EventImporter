@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     work_days = []
     user = User.where("email = ?",email).first
     if !user.nil?
-      work_days = user.work_hours.order(id: :desc)
+      work_days = user.work_hours.order(day_index: :desc)
     end
 
     render json: work_days.map{|d| {day: d.short_day_name, hours: [(d.start_at + (gmt_offset * 3600)), (d.end_at + (gmt_offset * 3600))]}} 
