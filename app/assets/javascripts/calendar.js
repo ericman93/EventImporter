@@ -8,7 +8,6 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
     var slot_min = 30;
 
     var time_day = get_work_hours(user_mail)
-    console.log(get_holidays(time_day))
 
     var cal = $('#calendar').fullCalendar({
         //theme: true,

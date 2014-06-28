@@ -73,8 +73,10 @@ function get_data_as_json(){
 		var work_day = {
 			start_at : get_seconds_from_midnight('timepicker-start-'+day),
 			end_at : get_seconds_from_midnight('timepicker-end-'+day),
+			day_index: index,
 			day: $('#'+day).html()
 		}
+		console.log(work_day)
 
 		work_days.push(work_day)
 	});
