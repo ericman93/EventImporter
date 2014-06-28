@@ -76,8 +76,7 @@ function get_data_as_json(){
 			day_index: index,
 			day: $('#'+day).html()
 		}
-		console.log(work_day)
-
+		
 		work_days.push(work_day)
 	});
 
