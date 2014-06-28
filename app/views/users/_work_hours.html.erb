@@ -23,7 +23,7 @@
 		<th>End at</th>
 		<th>Vication</th>
 	</tr>
-	<% @days.each do |day| %>
+	<% @days.each do |day, day_index| %>
 		<tr>
 			<td id="<%= day[:short_name] %>"><%= day[:full_name] %></td>
 			<td>

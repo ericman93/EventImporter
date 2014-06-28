@@ -15,7 +15,6 @@ function set_up(work_days){
 
 	// set user time
 	$.each(work_days, function(index, day){
-		console.log(day)
 		$('#timepicker-start-'+day['day']).timepicker('setTime', from_seconds_to_view(day['hours'][0]));
 		$('#timepicker-end-'+day['day']).timepicker('setTime', from_seconds_to_view(day['hours'][1]));
 	});
@@ -76,7 +75,7 @@ function get_data_as_json(){
 			day_index: index,
 			day: $('#'+day).html()
 		}
-		
+
 		work_days.push(work_day)
 	});
 
