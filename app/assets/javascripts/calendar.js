@@ -7,6 +7,9 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
     user_email = user_mail;
     var slot_min = 30;
 
+    var time_day = get_work_hours(user_mail)
+    console.log(get_holidays(time_day))
+
     var cal = $('#calendar').fullCalendar({
         //theme: true,
         header: {
@@ -16,6 +19,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         },
         //minTime: 5,
         firstHour: 9,
+        hiddenDays: get_holidays(time_day),
         slotMinutes: slot_min,
         events: should_load_events ? "/events/"+user_mail : [],
         loading: function (bool) {
@@ -57,13 +61,29 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         editable: !is_self_user,
     });
 
+    selectWorkTime(time_day, slot_min, 0, 24, true)
+}
+
+function get_work_hours(user_mail){
     time_day = []
-    $.get("/user/"+user_mail+"/work_day?gmt="+get_gmt_offset(), function(data) {
-      time_day = data
+    $.ajax({url:"/user/"+user_mail+"/work_day?gmt="+get_gmt_offset(),
+            async: false,
+            success: function(data){
+                time_day = data
+            }
+        })
+
+    return time_day
+}
+
+function get_holidays(work_days){
+    var holidays = $.map(work_days, function(day, key){
+        if (day.hours[0] == 0 && day.hours[1] == 0){
+            return key - 1
+        }
     })
-    .done(function(){
-        selectWorkTime(time_day, slot_min, 0, 24, true)
-    })
+
+    return holidays
 }
 
 function send_to_server(){
