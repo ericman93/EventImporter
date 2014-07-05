@@ -97,7 +97,7 @@ function delete_request(id){
         }
     })
     .success(function (d) {
-        $('#request_'+id).remove();
+        remove_request(id)
     })
     .fail(function (data) {
         alert('error')
@@ -120,15 +120,23 @@ function send_option_selection(option_name){
     })
     .fail(function (data) {
         alert('error')
+        console.log(data)
     });
 }
 
-function remove_request(){
-    $('#request_'+current_request).remove();
-    $('#proposel_'+current_proposel).remove();
-    $("#request_proposels_list").empty()
-    $('#calendar').fullCalendar( 'removeEvents', "prop_"+current_proposel );
+function remove_request(request_id){
+    if(request_id == undefined){
+        request_id = current_request
+    }
+
+    $('#request_'+request_id).remove();
+    $('#delete_request_'+request_id).remove();
+
+    if(request_id == current_request){
+        $('#proposel_'+current_proposel).remove();
+        $("#request_proposels_list").empty()
+        $('#calendar').fullCalendar( 'removeEvents', "prop_"+current_proposel );
+    }
 
     set_request_count()
-    //show_calendar()
 }

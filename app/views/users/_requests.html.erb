@@ -3,12 +3,13 @@
 	var requests = <%= @requests.to_json({:include => :request_proposals}).html_safe %>;
 </script>
 
-<div id="delete" style="width:15px;">
-    <b>.</b>
+<div id="delete">
+    <br>
     <% @requests.each do |request| %>
-        <button type="button" class="btn delete btn-danger" onclick="delete_request(<%= request.id %>)">
+        <button type="button" class="btn delete btn-danger" onclick="delete_request(<%= request.id %>)" id="delete_request_<%= request.id %>">
             <span class="glyphicon glyphicon-remove"/>
         </button>
+        <br>
     <% end %>
 </div>
 

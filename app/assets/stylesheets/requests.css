@@ -1,11 +1,11 @@
 #requests{
 	float: left;
-	width: 15%;
+	width: calc(15%-5px);
 }
 
 #delete{
     float: left;
-    width: 5%;
+    width: 15px;
 }
 
 #proposels{
