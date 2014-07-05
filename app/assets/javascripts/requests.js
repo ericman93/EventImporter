@@ -2,7 +2,7 @@ var current_request = 0;
 var current_proposel = 0;
 
 $(function () {
-    get_partial_data('requests_partial', '#request_data', show_calendar)   
+    get_partial_data('requests/user', '#request_data', show_calendar, 'get')   
 });
 
 function show_calendar(){
@@ -89,9 +89,8 @@ function set_propoal_active(proposel_id){
 function delete_request(id){
     $.ajax({
         type: "DELETE",
-        url: "/calendarapi/remove_request",
+        url: "/requests/"+id,
         dataType: 'json',
-        data: {'request_id': id},
         beforeSend: function(xhr) {
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
         }
@@ -108,9 +107,8 @@ function send_option_selection(option_name){
     option_id = option_name.substring(5) // remove the 'prop_' in the begging of the name
     $.ajax({
         type: "POST",
-        url: "/calendarapi/select_proposal",
+        url: "/requests/"+option_id,
         dataType: 'json',
-        data: {'proposal_id': option_id},
         beforeSend: function(xhr) {
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
         }

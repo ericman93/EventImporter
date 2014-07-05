@@ -30,7 +30,7 @@
       <!-- use 'current' if current_page?(:controller => "users", :action => "show") -->
       <li class="single-link"><%= link_to "About", about_path %></li>
       <% if !@current_user.nil? %>
-        <li class="single-link %>"><%= link_to "Settings", uset_settings_path %></li> 
+        <li class="single-link %>"><%= link_to "Settings", settings_path %></li> 
         <li class="single-link"><%= link_to "Requests  (...)", requests_path, {:id => "request_count"} %></li>  
       <% end %>
 

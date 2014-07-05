@@ -1,64 +1,9 @@
 require 'digest/md5'
 
 class UsersController < ApplicationController
-  before_action :has_user_session?, only: [:requests, :requests_partial, :settings]
+  before_action :has_user_session?, only: [:requests, :requests_partial, :settings, :save_work_days]
   #protect_from_forgery with: :null_session
   # user before_filter for functions that need autorization
-
-  def login
-    if !@current_user.nil?
-       redirect_to @current_user
-    else
-      render :login
-    end
-  end
-
-  def logout
-    session[:current_user] = nil
-    redirect_to action: :login, status: 302
-  end
-
-  def authenticate
-    plaintext_password = params[:password]
-    email = params[:email]
-
-    if(!User.authenticate_by_mail(email, plaintext_password))
-        redirect_to action: :login, status: 302
-    else
-        session[:current_user] = User.find_by email: email
-        redirect_to action: :calendar, status: 302, email: email
-    end
-  end
-
-  def get_work_days
-    gmt_offset = params[:gmt].to_i
-    email = params[:email]
-
-    work_days = []
-    user = User.where("email = ?",email).first
-    if !user.nil?
-      work_days = user.work_hours.order(:day_index)
-    end
-
-    render json: work_days.map{|d| {day: d.short_day_name, hours: [(d.start_at + (gmt_offset * 3600)), (d.end_at + (gmt_offset * 3600))]}} 
-  end
-
-  def requests_count
-    requests_count = 0
-    if !session[:current_user].nil?
-      requests_count = User.find(session[:current_user].id).requests.size
-    end
-
-    render json: requests_count
-  end
-
-  def requests
-  end
-
-  def requests_partial
-    @requests = User.find(@current_user.id).requests
-    render partial: 'requests'
-  end
 
   def calendar
     @user = params[:email]
@@ -86,6 +31,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # maybe move the prefernces controller
   def settings
     @days = [{short_name: 'sun' , full_name: 'Sunday'},
              {short_name: 'mon' , full_name: 'Monday'},
@@ -94,6 +40,19 @@ class UsersController < ApplicationController
              {short_name: 'thu' , full_name: 'Thursday'},
              {short_name: 'fri' , full_name: 'Friday'},
              {short_name: 'sat' , full_name: 'Saturday'}]
+  end
+
+  def get_work_days
+    gmt_offset = params[:gmt].to_i
+    email = params[:email]
+
+    work_days = []
+    user = User.where("email = ?",email).first
+    if !user.nil?
+      work_days = user.work_hours.order(:day_index)
+    end
+
+    render json: work_days.map{|d| {day: d.short_day_name, hours: [(d.start_at + (gmt_offset * 3600)), (d.end_at + (gmt_offset * 3600))]}} 
   end
 
   def save_work_days

@@ -2,29 +2,30 @@ Calendar::Application.routes.draw do
   #resources :events
   #resources :users
 
-  post '/users/authenticate', to: 'users#authenticate'
-  get '/login', to: 'users#login', :as => :login
-  get '/logout', to: 'users#logout', :as => :logout
+  post '/authenticate', to: 'permissions#authenticate'
+  get '/login', to: 'permissions#login', :as => :login
+  get '/logout', to: 'permissions#logout', :as => :logout
+
   get '/users/:id', to: 'users#show', :constraints => { :id => /\d+/ }, :as => :user
   get '/users/:id', to: 'users#edit', :constraints => { :id => /\d+/ }, :as => :edit_user
+
   get '/calendar/:email', to: 'users#calendar', :constraints => { :email => /.*/ }, :as => :calendar
-  get '/users/requests_count', to:'users#requests_count'
-  get '/users/requests', to:'users#requests', :as => :requests
   get '/user/:email/work_day', to:'users#get_work_days', :constraints => { :email => /.*/ }
-  post '/users/requests_partial', to:'users#requests_partial'
 
-  get '/user/settings', to:'users#settings', :as => :uset_settings
-  post '/user/save_work_days', to:'users#save_work_days'
-
-
+  get '/settings', to:'users#settings', :as => :settings
+  post '/user/work_days', to:'users#save_work_days'
   
   get '/events/:email', to: 'events#user_events', :constraints => { :email => /.*/ }
-  get '/requests/:request_id', to: 'events#user_requests_events'
+  #get '/requests/:request_id', to: 'events#user_requests_events'
   
   post '/calendarapi/insert', to: 'calendar_api#insert'
-  post '/calendarapi/insertTempEvent', to: 'calendar_api#send_user_event_options'
-  post '/calendarapi/select_proposal', to: 'calendar_api#select_proposal'
-  delete '/calendarapi/remove_request', to: 'calendar_api#remove_request'
+  
+  get '/requests', to:'requests#requests', :as => :requests
+  get  '/requests/count', to:'requests#requests_count'
+  get  '/requests/user', to:'requests#user_requests'
+  post '/requests/insert_proposels', to: 'requests#insert_proposels'
+  post '/requests/:proposal_id', to: 'requests#select_proposal'
+  delete '/requests/:request_id', to: 'requests#remove_request'
   
   get '/about', to: 'about#about', :as => :about
 

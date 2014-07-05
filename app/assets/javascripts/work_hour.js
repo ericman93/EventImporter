@@ -45,7 +45,7 @@ function send_to_server(){
 
 	$.ajax({
         type: "POST",
-        url: "/user/save_work_days",
+        url: "/user/work_days",
         //contentType: "application/json",
         dataType: 'json',
         data: data,

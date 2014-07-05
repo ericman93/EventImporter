@@ -4,7 +4,7 @@ $(function () {
 
 function set_request_count(){
     $.ajax({
-        url: "/users/requests_count",
+        url: "/requests/count",
         type: "get",
         success: function(data){
             $('#request_count').html("Requests ("+data+")")
@@ -24,10 +24,10 @@ function get_gmt_offset() {
     return -current_date.getTimezoneOffset() / 60;
 }
 
-function get_partial_data(url, content_to, callback){
+function get_partial_data(url, content_to, callback, http_method){
     $.ajax({
         url: url,
-        type: "post",
+        type: http_method,
         beforeSend: function(xhr) {
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
         },

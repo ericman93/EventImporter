@@ -104,7 +104,7 @@ function send_to_server(){
 
     $.ajax({
         type: "POST",
-        url: "/calendarapi/insertTempEvent",
+        url: "/requests/insert_proposels",
         //contentType: "application/json",
         dataType: 'json',
         data: data,
