@@ -3,13 +3,24 @@
 	var requests = <%= @requests.to_json({:include => :request_proposals}).html_safe %>;
 </script>
 
+<div id="delete" style="width:15px;">
+    <b>.</b>
+    <% @requests.each do |request| %>
+        <button type="button" class="btn delete btn-danger" onclick="delete_request(<%= request.id %>)">
+            <span class="glyphicon glyphicon-remove"/>
+        </button>
+    <% end %>
+</div>
+
 <div id="requests">
 	<b>Requests</b>
     <ul class="nav nav-pills nav-stacked">
         <!--li class="active"><a href="#">Home</a></li-->
         <% @requests.each do |request| %>
             <li id="request_<%= request.id %>">
-                <a href="#" onclick="show_request_proposels(<%= request.id %>)"><%= request.subject %> from <%= request.return_name %></a>
+                <a href="#" onclick="show_request_proposels(<%= request.id %>)" style="margin-left:10px">
+                   <%= request.subject %> from <%= request.return_name %>
+                </a>
             </li>
         <% end %>
     </ul>

@@ -47,6 +47,13 @@ class CalendarApiController < ApplicationController
 		render json: true
 	end
 
+	def remove_request
+		request_id = params[:request_id]
+		Request.destroy(request_id)
+
+		render json: true
+	end
+
 	private
 		# remove the appliaction controller
     	def has_user_session?

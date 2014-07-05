@@ -86,6 +86,24 @@ function set_propoal_active(proposel_id){
     $('#proposel_'+proposel_id).addClass('active');
 }
 
+function delete_request(id){
+    $.ajax({
+        type: "DELETE",
+        url: "/calendarapi/remove_request",
+        dataType: 'json',
+        data: {'request_id': id},
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+        }
+    })
+    .success(function (d) {
+        $('#request_'+id).remove();
+    })
+    .fail(function (data) {
+        alert('error')
+    });
+}
+
 function send_option_selection(option_name){
     option_id = option_name.substring(5) // remove the 'prop_' in the begging of the name
     $.ajax({
