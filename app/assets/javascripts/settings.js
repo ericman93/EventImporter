@@ -1,5 +1,5 @@
 var callback = {
-'work_hours': undefined,
+'work_hours': setUpTimePickers,
 'web_mails' : undefined
 }
 
