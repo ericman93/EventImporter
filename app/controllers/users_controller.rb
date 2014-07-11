@@ -1,7 +1,6 @@
 require 'digest/md5'
 
 class UsersController < ApplicationController
-  before_action :has_user_session?, only: [:requests, :requests_partial, :settings, :save_work_days]
   #protect_from_forgery with: :null_session
   # user before_filter for functions that need autorization
 
@@ -31,17 +30,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # maybe move the prefernces controller
-  def settings
-    @days = [{short_name: 'sun' , full_name: 'Sunday'},
-             {short_name: 'mon' , full_name: 'Monday'},
-             {short_name: 'tue' , full_name: 'Tuesday'},
-             {short_name: 'wed' , full_name: 'Wednesday'},
-             {short_name: 'thu' , full_name: 'Thursday'},
-             {short_name: 'fri' , full_name: 'Friday'},
-             {short_name: 'sat' , full_name: 'Saturday'}]
-  end
-
   def get_work_days
     gmt_offset = params[:gmt].to_i
     email = params[:email]
@@ -55,20 +43,6 @@ class UsersController < ApplicationController
     render json: work_days.map{|d| {day: d.short_day_name, hours: [(d.start_at + (gmt_offset * 3600)), (d.end_at + (gmt_offset * 3600))]}} 
   end
 
-  def save_work_days
-    gmt_offset = params[:gmt].to_i
-
-    user = User.find(@current_user.id)
-    if(user.work_hours.empty?)
-      user.work_hours.build(work_hours_params(gmt_offset))
-      user.save
-    else
-      user.update_work_days(work_hours_params(gmt_offset))    
-    end
-
-    render json: true
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -78,13 +52,6 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:day, :start_at, :end_at, :short_day_name)
-    end
-
-    def work_hours_params(gmt_offset)
-      params.require(:work_days).map{|day| day[1]}.each{|d| 
-        d['start_at'] = d['start_at'].to_i - (gmt_offset * 3600)
-        d['end_at'] = d['end_at'].to_i - (gmt_offset * 3600)
-      }
     end
 
     def authenticate?#(email, plain_password)

@@ -1,0 +1,9 @@
+#options{
+	float: left;
+	width: 15%;
+}
+
+#option_data{
+	float: right;
+	width: 85%;
+}

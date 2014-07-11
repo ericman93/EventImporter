@@ -24,7 +24,7 @@ function get_gmt_offset() {
     return -current_date.getTimezoneOffset() / 60;
 }
 
-function get_partial_data(url, content_to, callback, http_method){
+function get_partial_data(url, content_to, http_method, callback){
     $.ajax({
         url: url,
         type: http_method,

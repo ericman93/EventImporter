@@ -2,21 +2,22 @@ var days = [
     'sun','mon','tue','wed','thu','fri','sat'
 ]
 
-function set_up(work_days){
-	// default initalize
-	$.each(days, function(index,day){
-		set_up_timepicker('timepicker-end-'+day);
-		set_up_timepicker('timepicker-start-'+day);
-
-		$('#vication_'+day).change(function(){
-			on_checkbox_chnage(day, $(this).prop("checked"))
-		});
+function setUpTimePickers(work_days){
+	$('.hour_picker').timepicker({
+		showMeridian: false,
+		defaultTime: '00:00'
 	});
 
-	// set user time
-	$.each(work_days, function(index, day){
-		$('#timepicker-start-'+day['day']).timepicker('setTime', from_seconds_to_view(day['hours'][0]));
-		$('#timepicker-end-'+day['day']).timepicker('setTime', from_seconds_to_view(day['hours'][1]));
+	$.each($('.hour_picker'), function(i, picker){
+		var seconds = $(picker).attr('utc-seconds')
+		if(seconds != undefined){
+			$(picker).timepicker('setTime', from_seconds_to_view(parseInt(seconds)))
+		}
+	})
+
+	$('.vication').change(function(){
+		day = $(this).attr('day')
+		on_checkbox_chnage(day, $(this).prop("checked"))
 	});
 }
 
@@ -30,13 +31,6 @@ function on_checkbox_chnage(day, is_checked){
 	$('#timepicker-end-'+day).prop('disabled', is_checked);
 }
 
-function set_up_timepicker(timepicker_id){
-	$('#'+timepicker_id).timepicker({
-		showMeridian: false,
-		defaultTime: '00:00'
-	});
-}
-
 function send_to_server(){
 	var data = {
 		work_days: get_data_as_json(),
@@ -45,7 +39,7 @@ function send_to_server(){
 
 	$.ajax({
         type: "POST",
-        url: "/user/work_days",
+        url: "/settings/work_hours",
         //contentType: "application/json",
         dataType: 'json',
         data: data,
@@ -88,7 +82,8 @@ function get_seconds_from_midnight(timepicker_id){
 }
 
 function from_seconds_to_view(seconds){
-	hour = seconds / 3600.0
-	min = (hour % 1) * 60
-	return Math.floor(hour)+":"+min
+	seconds += get_gmt_offset() * 3600;
+	hour = seconds / 3600.0;
+	min = (hour % 1) * 60;
+	return Math.floor(hour)+":"+min;
 }

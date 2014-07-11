@@ -1,0 +1,25 @@
+<% content_for :stylesheets do %>
+	<%= stylesheet_link_tag "settings" %>
+	<%= stylesheet_link_tag "bootstrap-timepicker.min" %>
+<% end %>
+<% content_for :javascripts do %>
+	<%= javascript_include_tag "settings" %>
+	<%= javascript_include_tag "bootstrap-timepicker" %>
+	<%= javascript_include_tag "work_hour" %>
+<% end %>
+
+<div id="options">
+    <ul class="nav nav-pills nav-stacked">
+        <li id="work_hours" class="setting_option">
+            <a href="#">
+            	<span class="glyphicon glyphicon-time"></span> Work Hours
+            </a>
+        </li>
+        <li id="web_mails" class="setting_option">
+            <a href="#">
+            	<span class="glyphicon glyphicon-envelope"></span> Web Mails
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="option_data" />

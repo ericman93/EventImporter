@@ -16,7 +16,7 @@ class WorkHour < ActiveRecord::Base
 	end
 
 	def short_day_name
-		day[0..2].downcase
+		@short_day ||= day[0..2].downcase
 	end
 
 	def to_am_show(time_name)
