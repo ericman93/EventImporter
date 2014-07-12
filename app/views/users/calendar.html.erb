@@ -3,6 +3,7 @@
 	<%= stylesheet_link_tag "calendar" %>
 <% end %>
 <% content_for :javascripts do %>
+	<%= javascript_include_tag "jquery-ui.custom.min" %>
 	<%= javascript_include_tag "fullcalendar.min" %>
 	<%= javascript_include_tag "calendar" %>
 	<%= javascript_include_tag "calendar_work_day" %>

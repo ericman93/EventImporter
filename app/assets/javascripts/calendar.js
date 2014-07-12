@@ -33,6 +33,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         defaultView: 'agendaWeek',
         selectable: !is_self_user,
         selectHelper: !is_self_user,
+        editable: !is_self_user,
         eventBorderColor: 'black',
         select: function(start, end, allDay) {
             var temp_id = "temp_" + options.length;
@@ -51,13 +52,8 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
 				);
         },
         eventRender: function(event, element) {
-              element.bind('dblclick', function() {
-                //if(event.requested){
-                //    $('#calendar').fullCalendar( 'removeEvents', event.id );
-                //}
-              });
-           },
-        editable: !is_self_user,
+            update_event(event);
+        }
     });
 
     selectWorkTime(time_day, slot_min, 0, 24, true)
@@ -162,27 +158,32 @@ function add_new_proposal(start, end, allday, temp_id){
     options.push(proposel)
 }
 
-/*function show_temp_events(){
-    if(options.length == 0){
-        alert('Please select proposals before sending')
-        return;
-    }
-
-    $("#proposal_table tbody").html('')
+function update_event(event){
+    // opdate options array
     $.each(options, function(i, option){
-        add_proposal_to_table(option, i)
+        if(option.temp_id == event.id){
+            option.start_time = event.start;
+            option.start_ticks = event.start.getTime();
+            option.end_time = event.end;
+            option.end_ticks = event.end.getTime();
+
+            return;
+        }
     })
+    //var to_update = options.filter( function(item){return (item.temp_id == event.id);} );
+    //to_update.start = event.start
+    //to_update.end = event.end
 
-    var div_html = $('#temp_events').html()
-    $('#popup_content').html(div_html)
-
-    loadPopup()
-}*/
+    // update table
+    var prop_tr = $('#prop_'+event.id+'>td')
+    $(prop_tr[1]).html(date_to_human(event.start))
+    $(prop_tr[2]).html(date_to_human(event.end))
+}
 
 function add_proposal_to_table(proposel){
-    $("#proposal_table tbody").append('<tr id="remove_prop_'+proposel.temp_id+'"><td>' + get_remove_button_td(proposel.temp_id) + 
-                                      '</td><td>' + date_to_human(proposel.start_time) + 
-                                      '</td><td>' + date_to_human(proposel.end_time) + '</tr>')
+    $("#proposal_table tbody").append('<tr id="prop_'+proposel.temp_id+'"><td>' + get_remove_button_td(proposel.temp_id) + 
+                                      '</td><td class="start_time">' + date_to_human(proposel.start_time) + 
+                                      '</td><td class="end_time">' + date_to_human(proposel.end_time) + '</tr>')
 }
 
 function get_remove_button_td(proposel_id) {
@@ -191,7 +192,7 @@ function get_remove_button_td(proposel_id) {
 
 function remove_date(proposel_id) {
     // remove from grid
-    $("#remove_prop_"+proposel_id).fadeOut(300, function () {
+    $("#prop_"+proposel_id).fadeOut(300, function () {
         $(this).remove();
     });
 
