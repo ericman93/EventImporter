@@ -1,3 +1,35 @@
+//= require mailcheck
+
+$(function(){
+    $('input[type=email]').on('blur', function() {
+      $(this).mailcheck({
+        domains: Kicksend.mailcheck.defaultDomains,                       // optional
+        topLevelDomains: Kicksend.mailcheck.topLevelDomains,       // optional
+        distanceFunction: Kicksend.mailcheck.superStringDistance,  // optional
+        suggested: function(element, suggestion) {
+            if(!element.next().hasClass("email_suggestion")){
+                element.after(create_emai_suggestion_link(element, suggestion))
+            }      
+        },
+        empty: function(element) {
+          // callback code
+        }
+      });
+    });
+})
+
+function create_emai_suggestion_link(element, suggestion){
+    return $("<a/>",{
+        html: "Did you mean <strong>"+suggestion.full+"</strong>",
+        style: "display: block",
+        class: "email_suggestion"
+    })
+    .click(function(){
+        $(element).val(suggestion.full)
+        this.remove();
+    })
+}
+
 $(function () {
     set_request_count()
 });
