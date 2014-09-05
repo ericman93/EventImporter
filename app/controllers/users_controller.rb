@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def calendar
     @user = params[:email]
+    render "calendar/calendar"
   end
 
   # GET /users/1

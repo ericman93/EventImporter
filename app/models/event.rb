@@ -31,6 +31,7 @@ class Event < ActiveRecord::Base
 	# return json representation of the events as the fullCalendar know to handle
 	def to_fullcalendar_json(should_remove_private_data)
 		{
+			'id' => self.id,
 			'start' => self.start_time.to_i,
 			'end' => self.end_time.to_i,
 			'title' => should_remove_private_data ? "Busy" : self.subject, 

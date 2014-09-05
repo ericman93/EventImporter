@@ -1,0 +1,39 @@
+<div id="temp_events" class="span3">
+	<form action="javascript:void(0);" onsubmit="send_to_server()">
+		<u><h1>New Event Proposal</h1></u>
+		<table>
+			<tr>
+				<td>Subject : </td>
+				<td><input id="event_subject_input" type="text" placeholder="enter subject here" required></td>
+				<td class="require_field">*</td>
+			</tr>
+			<tr>
+				<td>Location : </td>
+				<td><input id="event_location_input" type="text" placeholder="enter location here"></td>
+			</tr>
+			<tr>
+				<td>Your Email : </td>
+				<td><input id="request_mail_input" type="email" placeholder="enter mail here" required></td>
+				<td class="require_field">*</td>
+			</tr>
+			<tr>
+				<td>Your Name : </td>
+				<td><input id="request_name_input" type="text" placeholder="enter name here" required></td>
+				<td class="require_field">*</td>
+			</tr>
+		</table>
+
+		<div id="proposals">
+			<table id="proposal_table" class="table">
+				<tbody></tbody>
+			</table>
+		</div>
+
+		<button type="submit" class="btn btn-success" id="send_request_btn">	
+			 <span class="glyphicon glyphicon-send"></span> &nbsp Send
+		</button>
+
+		<br><br>
+		<div id="result_alert"></div>
+	</from>
+</div>

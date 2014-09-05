@@ -20,7 +20,7 @@ $(function(){
 
 function create_emai_suggestion_link(element, suggestion){
     return $("<a/>",{
-        html: "Did you mean <strong>"+suggestion.full+"</strong>",
+        html: "Did you mean: <strong>"+suggestion.full+"</strong>",
         style: "display: block",
         class: "email_suggestion"
     })
@@ -47,15 +47,6 @@ function set_request_count(){
     });
 }
 
-function date_to_human(date) {
-    return date.toLocaleTimeString() + ' ' + date.toLocaleDateString();
-}
-
-function get_gmt_offset() {
-    var current_date = new Date();
-    return -current_date.getTimezoneOffset() / 60;
-}
-
 function get_partial_data(url, content_to, http_method, callback){
     $.ajax({
         url: url,
@@ -76,9 +67,4 @@ function get_partial_data(url, content_to, http_method, callback){
             }
         }
     });
-}
-
-function get_gmt_offset() {
-    var current_date = new Date();
-    return -current_date.getTimezoneOffset() / 60;
 }

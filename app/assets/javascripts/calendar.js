@@ -51,12 +51,19 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
 					!is_self_user // make the event "stick"
 				);
         },
+        eventClick: function(event){
+            show_event(event.id)
+        },
         eventRender: function(event, element) {
             update_event(event);
         }
     });
 
     selectWorkTime(time_day, slot_min, 0, 24, true)
+}
+
+function show_event(event_id){
+    window.location = "../events/"+event_id;
 }
 
 function get_work_hours(user_mail){

@@ -19,6 +19,10 @@ class EventsController < ApplicationController
     render json: events.map{|e| e.to_fullcalendar_json(other_user) }
   end
 
+  def show
+    @event = Event.find(params[:id])
+  end
+
   #def user_requests_events
   #  start_time = params[:start]
   #  end_time = params[:end]

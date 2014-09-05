@@ -17,7 +17,8 @@ Calendar::Application.routes.draw do
   post '/settings/work_hours', to:'settings#save_work_hours'
   
   # Events
-  get '/events/:email', to: 'events#user_events', :constraints => { :email => /.*/ }
+  get '/events/:email', to: 'events#user_events', :constraints => { :email => /.+@.+/ }
+  get '/events/:id', to: 'events#show', :constraints => { :id => /\d+/ }
   #get '/requests/:request_id', to: 'events#user_requests_events'
   
   # API
