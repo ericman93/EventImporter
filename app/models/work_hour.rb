@@ -7,12 +7,16 @@ class WorkHour < ActiveRecord::Base
 	#start_at - seconds from 0am
 	#end_at - seconds from 0am
 	#day - the name of the day
-	def self.buildWorkDay(day_name)
+	def self.build_work_day(day_name)
 		day = WorkHour.new
 		day.day = day_name
 		day.start_at = 0
 		day.end_at = 0
 		day
+	end
+
+	def self.build_week
+		Constant::DAYS.map{|day_name| self.build_work_day(day_name)}
 	end
 
 	def short_day_name

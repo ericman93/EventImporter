@@ -1,21 +1,12 @@
 class SettingsController < ApplicationController
 	before_action :has_user_session?
-	@@days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+	before_action :set_user, only: [:save_work_hours, :work_hours]
 
 	def settings
 	end
 
  	def work_hours
- 		@user_work_hours = User.find(@current_user.id).work_hours.order(:day_index)
-	    #@days = [{short_name: 'sun' , full_name: 'Sunday'},
-	    #         {short_name: 'mon' , full_name: 'Monday'},
-	    #         {short_name: 'tue' , full_name: 'Tuesday'},
-	    #         {short_name: 'wed' , full_name: 'Wednesday'},
-	    #         {short_name: 'thu' , full_name: 'Thursday'},
-	    #         {short_name: 'fri' , full_name: 'Friday'},
-	    #         {short_name: 'sat' , full_name: 'Saturday'}]
-
-         render partial: 'work_hours'
+		render partial: 'work_hours'
 	end
 
 	def web_mails
@@ -25,22 +16,42 @@ class SettingsController < ApplicationController
   	def save_work_hours
 	    gmt_offset = params[:gmt].to_i
 
-	    user = User.find(@current_user.id)
-	    if(user.work_hours.empty?)
-	      user.work_hours.build(work_hours_params(gmt_offset))
-	      user.save
-	    else
-	      user.update_work_days(work_hours_params(gmt_offset))    
+    	respond_to do |format|
+	     	if @user.update(work_hours_params(gmt_offset))
+	        	format.html { redirect_to settings_path, notice: 'Your work hours was successfully updated.' }
+	        	format.json { render :settings, status: :ok }
+	      	else
+	        	format.html { render :work_hours }
+	        	format.json { render json: @user.errors, status: :unprocessable_entity }
+	      	end
     	end
-
-    	render json: true
   	end
 
   	private
-	    def work_hours_params(gmt_offset)
-      		params.require(:work_days).map{|day| day[1]}.each{|d| 
-		        d['start_at'] = d['start_at'].to_i - (gmt_offset * 3600)
-		        d['end_at'] = d['end_at'].to_i - (gmt_offset * 3600)
-	      	}
+	    # Use callbacks to share common setup or constraints between actions.
+	    def set_user
+	      @user = User.find(@current_user.id)
+	    end
+
+	    def work_hours_params(gmt)
+      		work_hours = params.require(:user).permit(:work_hours_attributes => [:id, :start_at, :end_at])
+
+      		# from HH:mm to seconds after midnight in UTC
+      		work_hours[:work_hours_attributes].each do |id, work_hour|
+				work_hour['start_at'] = get_seconds_from_display(work_hour['start_at'], gmt)
+				work_hour['end_at'] = get_seconds_from_display(work_hour['end_at'], gmt)
+      		end
+
+      		return work_hours
+    	end
+
+    	def get_seconds_from_display(display, gmt)
+    		if display.nil?
+    			# vication
+    			return -(gmt*3600)
+    		else
+    			splited = display.split(':')
+    			return (splited[0].to_i*3600) + (splited[1].to_i*60) - (gmt*3600)
+    		end
     	end
 end

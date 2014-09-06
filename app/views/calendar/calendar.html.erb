@@ -1,10 +1,11 @@
 <% content_for :stylesheets do %>
-	<%= stylesheet_link_tag "fullcalendar" %>
+	<%= stylesheet_link_tag "lib/fullcalendar" %>
 	<%= stylesheet_link_tag "calendar" %>
 <% end %>
 <% content_for :javascripts do %>
-	<%= javascript_include_tag "jquery-ui.custom.min" %>
-	<%= javascript_include_tag "fullcalendar.min" %>
+	<%= javascript_include_tag "lib/jquery-ui.custom.min" %>
+	<%= javascript_include_tag "lib/fullcalendar.min" %>
+	<%= javascript_include_tag "lib/mailcheck.min" %>
 	<%= javascript_include_tag "calendar" %>
 	<%= javascript_include_tag "calendar_work_day" %>
 <% end %>

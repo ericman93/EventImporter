@@ -4,47 +4,50 @@
 	}
 </style>
 
-<script>
-	//$(function () {
-	//	var time_day = []
-	//	$.get("/user/<%= @current_user.email %>/work_day?gmt="+get_gmt_offset(), function(data) {
-	//      time_day = data
-	//    })
-	//    .done(function(){
-	//        set_up(time_day)
-	//    })
-	//});
-</script>
+<div id="notice" class="alert">
+	<%= notice %>
+</p>
 
-<table>
-	<tr>
-		<th>Day</th>
-		<th>Start at</th>
-		<th>End at</th>
-		<th>Vication</th>
-	</tr>
-	<% @user_work_hours.each do |work_day, day_index| %>
-		<tr>
-			<td id="<%= work_day.short_day_name %>"><%= work_day.day %></td>
-			<td>
-				<div class="input-group bootstrap-timepicker">
-				    <input id="timepicker-start-<%= work_day.short_day_name %>" class="hour_picker" utc-seconds="<%= work_day.start_at %>" type="text">
-				    <span class="input-group-addon time-button">
-				    	<i class="glyphicon glyphicon-time"></i>
-				    </span>
-				</div>
-			</td>
-			<td>
-				<div class="input-group bootstrap-timepicker">
-				    <input id="timepicker-end-<%= work_day.short_day_name %>" class="hour_picker" utc-seconds="<%= work_day.end_at %>" type="text">
-				    <span class="input-group-addon time-button">
-				    	<i class="glyphicon glyphicon-time"></i>
-				    </span>
-				</div>
-			</td>
-			<td><input type="checkbox" value="" id="vication_<%= work_day.short_day_name %>" class="vication" day="<%= work_day.short_day_name %>"></td>
-		</tr>
-	<% end %>
-</table>
+<%= form_for(@user, url: {action: "save_work_hours"}) do |user_from| %>
 
-<button id="save_work_days" onclick="send_to_server()" class="btn btn-info">Update</button>
+	<input type="hidden" id="gmt_offset" name="gmt" value="0" />
+
+	<% @user.work_hours.each do |work_hour| %>
+		<table>
+			<tr>
+				<th>Day</th>
+				<th>Start at</th>
+				<th>End at</th>
+				<th>Vication</th>
+			</tr>
+			<%= user_from.fields_for :work_hours, work_hour do |work_hour_form| %>
+				<td><%= work_hour_form.object.day %></td>
+				<td>
+					<div class="input-group bootstrap-timepicker">
+						<%= work_hour_form.text_field :start_at, id: "timepicker-start-#{work_hour_form.object.short_day_name}" ,
+													  class: "hour_picker", 'data-seconds'=> work_hour_form.object.start_at %>
+					    
+					    <span class="input-group-addon time-button">
+					    	<i class="glyphicon glyphicon-time"></i>
+					    </span>
+					</div>
+				</td>
+				<td>
+					<div class="input-group bootstrap-timepicker">
+						<%= work_hour_form.text_field :end_at, id: "timepicker-end-#{work_hour_form.object.short_day_name}" ,
+													  class: "hour_picker", 'data-seconds'=> work_hour_form.object.end_at %>
+					    
+					    <span class="input-group-addon time-button">
+					    	<i class="glyphicon glyphicon-time"></i>
+					    </span>
+					</div>
+				</td>
+				<td><input type="checkbox" id="vication_<%= work_hour_form.object.short_day_name %>" class="vication" data-day="<%= work_hour_form.object.short_day_name %>"></td>	
+    		<% end %>
+    	</table>
+  	<% end %>
+
+  	<br>
+  	<%= user_from.submit "Update work hours", class: "btn btn-info" %>
+
+<% end %>

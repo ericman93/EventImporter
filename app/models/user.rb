@@ -6,19 +6,11 @@ class User < ActiveRecord::Base
 	has_many :requests
 	has_many :work_hours
 	validates :email, uniqueness: true
+
+	accepts_nested_attributes_for :work_hours
 	
 	def events
 		EventUser.where("email = ?", self.email).map{|eu| eu.event}
-	end
-
-	def update_work_days(update_to)
-		self.work_hours.each do |day|
-			new_hours = update_to.select{|d| d['day'] == day.day}.first
-			day.start_at = new_hours['start_at']
-			day.end_at = new_hours['end_at']
-			
-			day.save
-		end
 	end
 
 	def self.authenticate(user_id, password)

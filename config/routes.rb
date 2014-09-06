@@ -14,7 +14,7 @@ Calendar::Application.routes.draw do
   get '/settings', to:'settings#settings', :as => :settings
   get '/settings/work_hours', to:'settings#work_hours'
   get '/settings/web_mails', to:'settings#web_mails'
-  post '/settings/work_hours', to:'settings#save_work_hours'
+  patch '/settings/work_hours', to:'settings#save_work_hours'
   
   # Events
   get '/events/:email', to: 'events#user_events', :constraints => { :email => /.+@.+/ }

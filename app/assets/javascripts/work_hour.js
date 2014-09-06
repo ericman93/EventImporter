@@ -9,16 +9,17 @@ function setUpTimePickers(work_days){
 	});
 
 	$.each($('.hour_picker'), function(i, picker){
-		var seconds = $(picker).attr('utc-seconds')
-		if(seconds != undefined){
-			$(picker).timepicker('setTime', from_seconds_to_view(parseInt(seconds)))
-		}
+		var seconds = $(picker).data('seconds');
+
+		$(picker).timepicker('setTime', from_seconds_to_view(parseInt(seconds)))
 	})
 
 	$('.vication').change(function(){
-		day = $(this).attr('day')
+		day = $(this).data('day')
 		on_checkbox_chnage(day, $(this).prop("checked"))
 	});
+
+	$("#gmt_offset").val(get_gmt_offset())
 }
 
 function on_checkbox_chnage(day, is_checked){
@@ -29,56 +30,6 @@ function on_checkbox_chnage(day, is_checked){
 
 	$('#timepicker-start-'+day).prop('disabled', is_checked);
 	$('#timepicker-end-'+day).prop('disabled', is_checked);
-}
-
-function send_to_server(){
-	var data = {
-		work_days: get_data_as_json(),
-		gmt: get_gmt_offset()
-	}
-
-	$.ajax({
-        type: "POST",
-        url: "/settings/work_hours",
-        //contentType: "application/json",
-        dataType: 'json',
-        data: data,
-        beforeSend: function(xhr) {
-        	$('#save_work_days').prop('disabled', true);
-            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-        }
-    })
-    .success(function (d) {
-        alert('success')
-    })
-    .fail(function (data) {
-        alert('error');
-    })
-    .always(function()
-    {
-		$('#save_work_days').prop('disabled', false);
-    })
-}
-
-function get_data_as_json(){
-	var work_days = []
-	$.each(days, function(index, day){
-		var work_day = {
-			start_at : get_seconds_from_midnight('timepicker-start-'+day),
-			end_at : get_seconds_from_midnight('timepicker-end-'+day),
-			day_index: index,
-			day: $('#'+day).html()
-		}
-
-		work_days.push(work_day)
-	});
-
-	return work_days
-}
-
-function get_seconds_from_midnight(timepicker_id){
-	var time = $('#'+timepicker_id).data("timepicker")
-	return (time.hour * 3600) + (time.minute * 60)
 }
 
 function from_seconds_to_view(seconds){

@@ -1,11 +1,6 @@
-//= require mailcheck
-
 $(function(){
     $('input[type=email]').on('blur', function() {
       $(this).mailcheck({
-        domains: Kicksend.mailcheck.defaultDomains,                       // optional
-        topLevelDomains: Kicksend.mailcheck.topLevelDomains,       // optional
-        distanceFunction: Kicksend.mailcheck.superStringDistance,  // optional
         suggested: function(element, suggestion) {
             if(!element.next().hasClass("email_suggestion")){
                 element.after(create_emai_suggestion_link(element, suggestion))

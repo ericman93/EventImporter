@@ -1,6 +1,6 @@
 var callback = {
-'work_hours': setUpTimePickers,
-'web_mails' : undefined
+	'work_hours': setUpTimePickers,
+	'web_mails' : undefined
 }
 
 $(function () {

@@ -1,11 +1,11 @@
 <% content_for :stylesheets do %>
 	<%= stylesheet_link_tag "settings" %>
-	<%= stylesheet_link_tag "bootstrap-timepicker.min" %>
+	<%= stylesheet_link_tag "lib/bootstrap-timepicker.min" %>
 <% end %>
 <% content_for :javascripts do %>
 	<%= javascript_include_tag "work_hour" %>
 	<%= javascript_include_tag "settings" %>
-	<%= javascript_include_tag "bootstrap-timepicker" %>
+	<%= javascript_include_tag "lib/bootstrap-timepicker" %>
 <% end %>
 
 <div id="options">
@@ -22,4 +22,10 @@
         </li>
     </ul>
 </div>
-<div id="option_data" />
+
+<div id="setting_content">
+    <div id="option_data"></div>
+    <div id="update_result">
+        <% notice %>
+    </div>
+</div>
