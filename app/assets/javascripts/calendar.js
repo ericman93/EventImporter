@@ -45,14 +45,16 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
 					    end: end,
 					    allDay: allDay,
                         title: "Option",
-                        requested: true,
+                        is_temp: true,
                         className: 'proposel_event'
 					},
 					!is_self_user // make the event "stick"
 				);
         },
         eventClick: function(event){
-            show_event(event.id)
+            if(!event.is_temp){
+                show_event(event.id)
+            }
         },
         eventRender: function(event, element) {
             update_event(event);
