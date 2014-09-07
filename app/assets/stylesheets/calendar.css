@@ -1,11 +1,19 @@
 #temp_events{
-	/*display: none;*/
+	display: none;
     /*width: 25%;*/
     float: right;
 }
 
+#btnShowReuqstInfo{
+    float: right;
+}
+
 #calendar{
-	float:left;
+	/*float:left;*/
+    height: 100%;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
 	/*padding-top: 40px;*/
 }
 

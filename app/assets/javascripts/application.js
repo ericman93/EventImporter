@@ -1,4 +1,4 @@
-$(function(){
+function setEmailInputs(){
     $('input[type=email]').on('blur', function() {
       $(this).mailcheck({
         suggested: function(element, suggestion) {
@@ -11,7 +11,7 @@ $(function(){
         }
       });
     });
-})
+}
 
 function create_emai_suggestion_link(element, suggestion){
     return $("<a/>",{

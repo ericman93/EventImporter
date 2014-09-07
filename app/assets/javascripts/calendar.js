@@ -7,7 +7,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
     user_email = user_mail;
     var slot_min = 30;
 
-    var time_day = get_work_hours(user_mail)
+    var time_day = getWorkHours(user_mail)
 
     var cal = $('#calendar').fullCalendar({
         //theme: true,
@@ -18,7 +18,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         },
         //minTime: 5,
         firstHour: 9,
-        hiddenDays: get_holidays(time_day),
+        hiddenDays: getHolidays(time_day),
         slotMinutes: slot_min,
         events: should_load_events ? "/events/"+user_mail : [],
         loading: function (bool) {
@@ -26,7 +26,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
                 loadPopup();
                 //loading();
             } else {
-                disablePopup(); 
+                finishLoadingEvents();
                 //closeloading();
             }
         },
@@ -37,10 +37,10 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         eventBorderColor: 'black',
         select: function(start, end, allDay) {
             var temp_id = "temp_" + options.length;
-            add_new_proposal(start, end, allDay, temp_id); 
+            addNewProposal(start, end, allDay, temp_id); 
             cal.fullCalendar('renderEvent',
 					{
-                        id: temp_id, // I'm addind the poposel in the add_new_proposal function , so the array size increase by 1 
+                        id: temp_id, // I'm addind the poposel in the addNewProposal function , so the array size increase by 1 
 					    start: start,
 					    end: end,
 					    allDay: allDay,
@@ -53,22 +53,35 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         },
         eventClick: function(event){
             if(!event.is_temp){
-                show_event(event.id)
+                showEvent(event.id)
             }
         },
         eventRender: function(event, element) {
-            update_event(event);
+            updateEvent(event);
         }
     });
 
     selectWorkTime(time_day, slot_min, 0, 24, true)
 }
 
-function show_event(event_id){
+function finishLoadingEvents(){
+    disablePopup(function(){
+        $('#popup_content').html($("#temp_events").html());
+        setEmailInputs();
+    });
+}
+
+function showRequestUserInfo(){
+    // remove old alert
+    $('#result_alert').remove();
+    loadPopup();
+}
+
+function showEvent(event_id){
     window.location = "../events/"+event_id;
 }
 
-function get_work_hours(user_mail){
+function getWorkHours(user_mail){
     time_day = []
     $.ajax({url:"/user/"+user_mail+"/work_day?gmt="+get_gmt_offset(),
             async: false,
@@ -80,7 +93,7 @@ function get_work_hours(user_mail){
     return time_day
 }
 
-function get_holidays(work_days){
+function getHolidays(work_days){
     var holidays = $.map(work_days, function(day, key){
         if (day.hours[0] == 0 && day.hours[1] == 0){
             return key
@@ -90,13 +103,13 @@ function get_holidays(work_days){
     return holidays
 }
 
-function send_to_server(){
+function sendToServer(){
     if(options.length == 0){
         alert('Please select proposals before sending')
         return;
     }
 
-    change_request_input_disable(true)
+    changeRequestInputDisable(true)
     data = {
         proposals: options,
         request_info : { 'mail' : $('#request_mail_input').val(),
@@ -109,7 +122,7 @@ function send_to_server(){
 
     $.ajax({
         type: "POST",
-        url: "/requests/insert_proposels",
+        url: "/requests/proposels",
         //contentType: "application/json",
         dataType: 'json',
         data: data,
@@ -118,18 +131,16 @@ function send_to_server(){
         }
     })
     .success(function (d) {
-        //$('#dates tbody').remove();
         $.each(options, function(index,item){
             $('#calendar').fullCalendar('removeEvents', item.temp_id );
         });
         options = []
         $("#proposal_table tbody").empty();
         
-        $('#result_alert').removeClass()
-        $('#result_alert').addClass('alert alert-success')
-        $('#result_alert').html('Request was sent successfuly ;)')
+        addAlert('Request was sent successfuly ;)', 'alert-success')
+        clearRequestedForm();
 
-        change_request_input_disable(false)  
+        changeRequestInputDisable(false)  
     })
     .fail(function (data) {
         var error_text = ""
@@ -144,16 +155,14 @@ function send_to_server(){
                 error_text = 'An error as occurred :('
         }
 
-        $('#result_alert').removeClass()    
-        $('#result_alert').addClass('alert alert-danger')
-        $('#result_alert').html(error_text)
+        addAlert(error_text, 'alert-danger')
         console.log(data);
 
-        change_request_input_disable(false)  
+        changeRequestInputDisable(false)  
     })
 }
 
-function add_new_proposal(start, end, allday, temp_id){
+function addNewProposal(start, end, allday, temp_id){
     proposel = {
         'start_time': start,
         'start_ticks' :start.getTime(),
@@ -163,11 +172,11 @@ function add_new_proposal(start, end, allday, temp_id){
         'temp_id': temp_id
     }
 
-    add_proposal_to_table(proposel, options.length)
+    addProposalToPopup(proposel, options.length)
     options.push(proposel)
 }
 
-function update_event(event){
+function updateEvent(event){
     // opdate options array
     $.each(options, function(i, option){
         if(option.temp_id == event.id){
@@ -189,17 +198,17 @@ function update_event(event){
     $(prop_tr[2]).html(date_to_human(event.end))
 }
 
-function add_proposal_to_table(proposel){
-    $("#proposal_table tbody").append('<tr id="prop_'+proposel.temp_id+'"><td>' + get_remove_button_td(proposel.temp_id) + 
+function addProposalToPopup(proposel){
+    $("#popup_content #proposal_table tbody").append('<tr id="prop_'+proposel.temp_id+'"><td>' + getRemoveButtonTd(proposel.temp_id) + 
                                       '</td><td class="start_time">' + date_to_human(proposel.start_time) + 
                                       '</td><td class="end_time">' + date_to_human(proposel.end_time) + '</tr>')
 }
 
-function get_remove_button_td(proposel_id) {
-    return '<button type="button" class="btn btn-danger remove-prop-btn" onclick="remove_date('+"'"+proposel_id+"'"+')"> <span class="glyphicon glyphicon-remove"/></button>'
+function getRemoveButtonTd(proposel_id) {
+    return '<button type="button" class="btn btn-danger remove-prop-btn" onclick="removeDate('+"'"+proposel_id+"'"+')"> <span class="glyphicon glyphicon-remove"/></button>'
 }
 
-function remove_date(proposel_id) {
+function removeDate(proposel_id) {
     // remove from grid
     $("#prop_"+proposel_id).fadeOut(300, function () {
         $(this).remove();
@@ -214,11 +223,28 @@ function remove_date(proposel_id) {
     $('#calendar').fullCalendar('removeEvents', proposel_id );
 }
 
-function change_request_input_disable(disable){
+function changeRequestInputDisable(disable){
     $("#event_subject_input").prop('disabled', disable);
     $("#event_location_input").prop('disabled', disable);
     $("#request_mail_input").prop('disabled', disable);
     $("#request_name_input").prop('disabled', disable);
     $("#send_request_btn").prop('disabled', disable);
     $(".remove-prop-btn").prop('disabled', disable);
+}
+
+function addAlert(content, color){
+    var $alert = $("<div/>", {
+        id: "result_alert",
+        class: "alert "+color,
+        html: content
+    })
+
+    $("#popup_content form").append($alert)
+}
+
+function clearRequestedForm(){
+    $("#event_subject_input").val('');
+    $("#event_location_input").val('');
+    $("#request_mail_input").val('');
+    $("#request_name_input").val('');
 }

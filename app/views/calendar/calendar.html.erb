@@ -26,12 +26,9 @@
 	    });
 </script>
 
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div id='calendar' class="span<%= is_self_user ? '12' : '9' %>"></div>
+<input type="button" class="btn btn-success" value="Next" id="btnShowReuqstInfo" onclick="showRequestUserInfo()" />
+<div id='calendar'></div>
 
-		<% if !is_self_user %>
-			<%= render "calendar/request_info.html.erb" %> 
-		<% end %>
-	</div>
-</div>
+<% if !is_self_user %>
+	<%= render "calendar/request_info.html.erb" %> 
+<% end %>

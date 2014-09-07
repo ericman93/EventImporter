@@ -27,9 +27,13 @@ function loadPopup() {
     }
 }
 
-function disablePopup() {
+function disablePopup(callback) {
     if (popupStatus == 1) { // if value is 1, close popup
-        $("#toPopup").fadeOut("normal");
+        $("#toPopup").fadeOut("normal", function(){
+            if(callback != undefined){
+                callback();
+            }
+        });
         $("#backgroundPopup").fadeOut("normal");
         popupStatus = 0;  // and set value to 0
     }

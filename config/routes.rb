@@ -28,7 +28,7 @@ Calendar::Application.routes.draw do
   get '/requests', to:'requests#requests', :as => :requests
   get  '/requests/count', to:'requests#requests_count'
   get  '/requests/user', to:'requests#user_requests'
-  post '/requests/insert_proposels', to: 'requests#insert_proposels'
+  post '/requests/proposels', to: 'requests#insert_proposels'
   post '/requests/:proposal_id', to: 'requests#select_proposal'
   delete '/requests/:request_id', to: 'requests#remove_request'
   
