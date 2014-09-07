@@ -11,7 +11,8 @@ class WorkHour < ActiveRecord::Base
 		day = WorkHour.new
 		day.day = day_name
 		day.start_at = 0
-		day.end_at = 0
+		# the default workhours is full day
+		day.end_at = 24 * 3600;
 		day
 	end
 
