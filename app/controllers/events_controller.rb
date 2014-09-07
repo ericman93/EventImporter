@@ -3,14 +3,13 @@ class EventsController < ApplicationController
 
   def user_events
     email = params[:email]
-    start_time = params[:start]
-    end_time = params[:end]
+    start_time = params[:start].to_i
+    end_time = params[:end].to_i
 
-    # use the timstamps for better selection !!!!
-    user = User.where("email = ?",email).first
+    user = User.where({email: email}).first
 
     other_user = (@current_user.nil? or @current_user.email != email)
-    events = user.events.sort{|x,y| x.start_time <=> y.start_time}
+    events = user.events(start_time, end_time).sort{|x,y| x.start_time <=> y.start_time}
     
     if other_user
       events = CalendarApiHelper.combine_events(events, logger)
