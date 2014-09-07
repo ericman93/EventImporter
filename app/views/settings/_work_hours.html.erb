@@ -12,7 +12,7 @@
 
 	<input type="hidden" id="gmt_offset" name="gmt" value="0" />
 
-	<% @user.work_hours.each do |work_hour| %>
+	<% @user.work_hours.sort{|x,y| x.id <=> y.id}.each do |work_hour| %>
 		<table>
 			<tr>
 				<th>Day</th>
