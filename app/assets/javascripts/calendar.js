@@ -3,6 +3,7 @@ var user_email
 
 function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
     $('#calendar').html('');
+    //setEmailInputs();
 
     user_email = user_mail;
     var slot_min = 30;
@@ -18,18 +19,10 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         },
         //minTime: 5,
         firstHour: 9,
+        //theme: true,
         hiddenDays: getHolidays(time_day),
         slotMinutes: slot_min,
         events: should_load_events ? "/events/"+user_mail : [],
-        loading: function (bool) {
-            if (bool) {
-                loadPopup();
-                //loading();
-            } else {
-                finishLoadingEvents();
-                //closeloading();
-            }
-        },
         defaultView: 'agendaWeek',
         selectable: !is_self_user,
         selectHelper: !is_self_user,
@@ -51,6 +44,16 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
 					!is_self_user // make the event "stick"
 				);
         },
+        loading: function (bool) {
+            if (bool) {
+                popupLoading();
+                //loading();
+            } else {
+                disablePopup();
+                //$('#popup_content').html($("#temp_events").html());
+                //closeloading();
+            }
+        },
         eventClick: function(event){
             if(!event.is_temp){
                 showEvent(event.id)
@@ -62,13 +65,8 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
     });
 
     selectWorkTime(time_day, slot_min, 0, 24, true)
-}
 
-function finishLoadingEvents(){
-    disablePopup(function(){
-        $('#popup_content').html($("#temp_events").html());
-        setEmailInputs();
-    });
+    setEmailInputs();
 }
 
 function showRequestUserInfo(){

@@ -8,11 +8,13 @@
     });
 });
 
-function loading() {
-    $("div.loader").show();
+function popupLoading() {
+    popupStatus = 1;
+    $("#loadingPopup").fadeIn(0500);
+    showBackground();
 }
 function closeloading() {
-    $("div.loader").fadeOut('normal');
+    $("loadingPopup").fadeOut('normal');
 }
 
 var popupStatus = 0; // set value
@@ -21,19 +23,26 @@ function loadPopup() {
     if (popupStatus == 0) { // if value is 0, show popup
         closeloading(); // fadeout loading
         $("#toPopup").fadeIn(0500); // fadein popup div
-        $("#backgroundPopup").css("opacity", "0.7"); // css opacity, supports IE7, IE8
-        $("#backgroundPopup").fadeIn(0001);
+        showBackground();
         popupStatus = 1; // and set value to 1
     }
 }
 
+function showBackground(){
+    $("#backgroundPopup").css("opacity", "0.7"); // css opacity, supports IE7, IE8
+    $("#backgroundPopup").fadeIn(0001);
+}
+
 function disablePopup(callback) {
     if (popupStatus == 1) { // if value is 1, close popup
-        $("#toPopup").fadeOut("normal", function(){
-            if(callback != undefined){
-                callback();
-            }
-        });
+        //$("#toPopup").fadeOut("normal", function(){
+        //    if(callback != undefined){
+        //        callback();
+        //    }
+        //});
+        $("#toPopup").fadeOut("normal");
+        $("#loadingPopup").fadeOut("normal");
+
         $("#backgroundPopup").fadeOut("normal");
         popupStatus = 0;  // and set value to 0
     }

@@ -8,6 +8,8 @@
 	top:0px;  
 	left:0px;
 }
+
+#loadingPopup,
 #toPopup {
     background: none repeat scroll 0 0 #FFFFFF;
     border: 10px solid #ccc;
@@ -56,10 +58,13 @@ span.arrow {
     top: 3px;
     width: 1px;
 }
+
 div#popup_content {
     /*margin: 4px 30px;*/
     height:100%;
-    
+}
+
+.center_popup{
     /* Internet Explorer 10 */
     display:-ms-flexbox;
     -ms-flex-pack:center;
@@ -80,4 +85,3 @@ div#popup_content {
     box-pack:center;
     box-align:center;
 }
-

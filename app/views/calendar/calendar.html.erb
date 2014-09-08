@@ -1,4 +1,5 @@
 <% content_for :stylesheets do %>
+	<%= stylesheet_link_tag "lib/jquery-ui.min" %>
 	<%= stylesheet_link_tag "lib/fullcalendar" %>
 	<%= stylesheet_link_tag "calendar" %>
 <% end %>
@@ -26,9 +27,11 @@
 	    });
 </script>
 
-<input type="button" class="btn btn-success" value="Next" id="btnShowReuqstInfo" onclick="showRequestUserInfo()" />
-<div id='calendar'></div>
-
 <% if !is_self_user %>
-	<%= render "calendar/request_info.html.erb" %> 
+	<input type="button" class="btn btn-success" value="Next" id="btnShowReuqstInfo" onclick="showRequestUserInfo()" />
+	<% content_for :popup_content do %>
+		<%= render "calendar/request_info.html.erb" %>
+	<% end %>
 <% end %>
+
+<div id='calendar'></div>
