@@ -3,7 +3,6 @@ var user_email
 
 function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
     $('#calendar').html('');
-    //setEmailInputs();
 
     user_email = user_mail;
     var slot_min = 30;
@@ -39,7 +38,8 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
 					    allDay: allDay,
                         title: "Option",
                         is_temp: true,
-                        className: 'proposel_event'
+                        // There is no option to edit the html id , so i'm using the class
+                        className: 'proposel_event '+temp_id
 					},
 					!is_self_user // make the event "stick"
 				);
@@ -47,11 +47,8 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         loading: function (bool) {
             if (bool) {
                 popupLoading();
-                //loading();
             } else {
                 disablePopup();
-                //$('#popup_content').html($("#temp_events").html());
-                //closeloading();
             }
         },
         eventClick: function(event){
@@ -61,6 +58,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         },
         eventRender: function(event, element) {
             updateEvent(event);
+            addCloseButton(event.id)
         }
     });
 
@@ -73,6 +71,17 @@ function showRequestUserInfo(){
     // remove old alert
     $('#result_alert').remove();
     loadPopup();
+}
+
+function addCloseButton(event_id){
+    var close_btn = $("<div/>",{
+        class: 'close-event',
+    })
+    .click(function(){
+        removeProposel(event_id)
+    })
+
+    $('.fc-event.'+event_id).prepend(close_btn)
 }
 
 function showEvent(event_id){
@@ -203,10 +212,10 @@ function addProposalToPopup(proposel){
 }
 
 function getRemoveButtonTd(proposel_id) {
-    return '<button type="button" class="btn btn-danger remove-prop-btn" onclick="removeDate('+"'"+proposel_id+"'"+')"> <span class="glyphicon glyphicon-remove"/></button>'
+    return '<button type="button" class="btn btn-danger remove-prop-btn" onclick="removeProposel('+"'"+proposel_id+"'"+')"> <span class="glyphicon glyphicon-remove"/></button>'
 }
 
-function removeDate(proposel_id) {
+function removeProposel(proposel_id) {
     // remove from grid
     $("#prop_"+proposel_id).fadeOut(300, function () {
         $(this).remove();
