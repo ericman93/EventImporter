@@ -31,6 +31,9 @@ Calendar::Application.routes.draw do
   post '/requests/proposels', to: 'requests#insert_proposels'
   post '/requests/:proposal_id', to: 'requests#select_proposal'
   delete '/requests/:request_id', to: 'requests#remove_request'
+
+  # Omni Auth
+  get "/auth/:provider/callback" => "omni_auth#create"
   
   # About
   get '/about', to: 'about#about', :as => :about

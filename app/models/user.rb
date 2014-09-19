@@ -5,15 +5,17 @@ class User < ActiveRecord::Base
 
 	has_many :requests
 	has_many :work_hours
+	has_many :mail_importer, :dependent => :destroy 
 	validates :email, uniqueness: true
 
 	accepts_nested_attributes_for :work_hours
 	
 	def events(start_time, end_time)
-		EventUser.joins(:event)
-				 .where("event_users.email = ? and events.start_time >= ? and events.end_time <= ?", self.email, Time.at(start_time), Time.at(end_time))
-				 .map{|eu| eu.event}
+		#EventUser.joins(:event)
+		#		 .where("event_users.email = ? and events.start_time >= ? and events.end_time <= ?", self.email, Time.at(start_time), Time.at(end_time))
+		#		 .map{|eu| eu.event}
 
+		mail_importer.inject([]){|events, importer| events += importer.specific.events(start_time, end_time)}
 	end
 
 	def all_events

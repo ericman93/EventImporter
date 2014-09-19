@@ -41,4 +41,10 @@ Calendar::Application.configure do
 
   config.assets.debug = false
   config.assets.logger = false
+
+  config.google_api = {
+    :client_id => '793188286109-mkru8uan52gaen4curjj0m7r8emaj8on.apps.googleusercontent.com',
+    :client_secret => 'B9HTYcNr9onoGvgsjfhuxVKA',
+    :redirect_uri => 'http://localhost:3000/auth/google_oauth2/callback',
+  }
 end

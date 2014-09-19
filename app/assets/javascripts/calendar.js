@@ -25,7 +25,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         defaultView: 'agendaWeek',
         selectable: !is_self_user,
         selectHelper: !is_self_user,
-        editable: !is_self_user,
+        editable: false,
         eventBorderColor: 'black',
         select: function(start, end, allDay) {
             var temp_id = "temp_" + options.length;
@@ -38,6 +38,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
 					    allDay: allDay,
                         title: "Option",
                         is_temp: true,
+                        editable: true,
                         // There is no option to edit the html id , so i'm using the class
                         className: 'proposel_event '+temp_id
 					},

@@ -1,6 +1,6 @@
 class SettingsController < ApplicationController
 	before_action :has_user_session?
-	before_action :set_user, only: [:save_work_hours, :work_hours]
+	before_action :set_user, only: [:save_work_hours, :work_hours, :web_mails]
 
 	def settings
 	end
