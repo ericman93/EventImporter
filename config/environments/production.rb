@@ -92,9 +92,9 @@ Calendar::Application.configure do
   }
 
   config.google_api = {
-    :client_id => '793188286109-mkru8uan52gaen4curjj0m7r8emaj8on.apps.googleusercontent.com',
-    :client_secret => 'B9HTYcNr9onoGvgsjfhuxVKA',
-    :redirect_uri => 'http://localhost:3000/auth/google_oauth2/callback',
+    :client_id => '793188286109-a3vgspkc93ghmptca7pqucdchbstt950.apps.googleusercontent.com',
+    :client_secret => 'QIFC7mQVvrqhIPm0DCpO0r7Z',
+    :redirect_uri => 'http://polar-wave-8764.herokuapp.com/auth/google_oauth2/callback',
   }
-  
+
 end
