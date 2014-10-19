@@ -15,7 +15,12 @@ Calendar::Application.routes.draw do
   get '/settings/work_hours', to:'settings#work_hours'
   get '/settings/web_mails', to:'settings#web_mails'
   patch '/settings/work_hours', to:'settings#save_work_hours'
-  
+
+  post '/exchange', to:'exchange#create'
+  patch '/exchange', to:'exchange#edit'
+  delete '/exchange', to:'exchange#remove'
+  delete '/exchange/:id', to: 'exchange#remove', :as => :exchange_importer
+
   # Events
   get '/events/:email', to: 'events#user_events', :constraints => { :email => /.+@.+/ }
   get '/events/:id', to: 'events#show', :constraints => { :id => /\d+/ }

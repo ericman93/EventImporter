@@ -9,4 +9,6 @@ $(function () {
     })   
 
     get_partial_data("settings/work_hours", '#option_data', 'get', setUpTimePickers)
+
+    $(".alert").alert();
 });

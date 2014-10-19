@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914183140) do
+ActiveRecord::Schema.define(version: 20141010181045) do
 
   create_table "event_users", force: true do |t|
     t.integer  "event_id"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20140914183140) do
     t.text     "event_id"
   end
 
+  create_table "exchange_importers", force: true do |t|
+    t.string   "token"
+    t.string   "user_name"
+    t.string   "password"
+    t.string   "server"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "gmail_importers", force: true do |t|
     t.string   "token"
     t.datetime "created_at"
@@ -48,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140914183140) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "error_count"
   end
 
   create_table "outlook_importers", force: true do |t|
