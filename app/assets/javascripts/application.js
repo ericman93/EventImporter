@@ -27,6 +27,7 @@ function create_emai_suggestion_link(element, suggestion){
 
 $(function () {
     set_request_count()
+    $(".alert").alert();
 });
 
 function set_request_count(){
