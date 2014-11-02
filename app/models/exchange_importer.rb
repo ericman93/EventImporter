@@ -1,6 +1,3 @@
-require 'viewpoint'
-include Viewpoint::EWS
-
 class ExchangeImporter < ActiveRecord::Base
 	acts_as :mail_importer, :as => :importer
 
@@ -8,7 +5,7 @@ class ExchangeImporter < ActiveRecord::Base
 	@@possible_errors = 0;
 
 	def events(start_time, end_time)
-		client = Viewpoint::EWSClient.new "https://#{self.server}/ews/Exchange.asmx", self.user_name, self.password
+		client = ExchangeHelper.connect_to_server(self.server, self.user_name, self.password)
 		gmt = 0; # I want the events as UTC 
 		time_zone = {:bias => (gmt*60).to_s}
 
@@ -30,8 +27,6 @@ class ExchangeImporter < ActiveRecord::Base
 			email = make_call_to_server(@@possible_errors, nil) do
 				exchnge_client.search_contacts(user_name).first.email
 			end
-
-			logger.debug("mail mail mail #{email}")
 
 			busy_times = make_call_to_server(@@possible_errors, []) do 
 				user_free_busy = exchnge_client.get_user_availability([email],

@@ -11,7 +11,7 @@ class MailImporter < ActiveRecord::Base
 		end
 
 		if block_given?
-			begin
+			begin  
 	    		return yield
     		rescue
     			self.error_count = self.error_count || 0
@@ -28,6 +28,6 @@ class MailImporter < ActiveRecord::Base
 	end
 
 	def handle_max_error
-		# Send mail
+		UserMailer.import_fail(user.email, self.importer_type).deliver
 	end
 end

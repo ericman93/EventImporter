@@ -42,6 +42,14 @@ class ExchangeController < ApplicationController
 	    end
  	end
 
+ 	def test
+ 		info = params[:echange_info]
+
+ 		result = ExchangeHelper.test_connection(info['server'], info['user_name'], info['password'])
+
+ 		render json: result, status: (result ? 200 : 400)
+ 	end
+
 	def importer_params
       params.require(:exchange_importer).permit(:user_name, :password, :server)
     end

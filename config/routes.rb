@@ -15,7 +15,9 @@ Calendar::Application.routes.draw do
   get '/settings/work_hours', to:'settings#work_hours'
   get '/settings/web_mails', to:'settings#web_mails'
   patch '/settings/work_hours', to:'settings#save_work_hours'
+  get '/settings/logout', to:'settings#logout_gmail'
 
+  post '/exchange/test', to: 'exchange#test' 
   post '/exchange', to:'exchange#create'
   patch '/exchange', to:'exchange#edit'
   delete '/exchange', to:'exchange#remove'

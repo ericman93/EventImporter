@@ -1,7 +1,7 @@
 require 'icalendar'
 
 class RequestMailer < ActionMailer::Base
-  default from: "ericfeldman93@gmail.com"
+  #default from: "ericfeldman93@gmail.com"
 
   def welcome_email()
     mail(to: "ericfeldman93@gmail.com", subject: 'Welcome to My Awesome Site')

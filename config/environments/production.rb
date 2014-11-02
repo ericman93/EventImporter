@@ -91,6 +91,10 @@ Calendar::Application.configure do
     :enable_starttls_auto => false     
   }
 
+  config.action_mailer.default_options = {
+    :from                 => "ericfeldman93@gmail.com"
+  }
+
   config.google_api = {
     :client_id => '793188286109-a3vgspkc93ghmptca7pqucdchbstt950.apps.googleusercontent.com',
     :client_secret => 'QIFC7mQVvrqhIPm0DCpO0r7Z',

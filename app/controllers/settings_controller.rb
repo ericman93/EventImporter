@@ -1,6 +1,6 @@
 class SettingsController < ApplicationController
 	before_action :has_user_session?
-	before_action :set_user, only: [:save_work_hours, :work_hours, :web_mails]
+	before_action :set_user, only: [:save_work_hours, :work_hours, :web_mails, :logout_gmail]
 
 	def settings
 	end
@@ -25,6 +25,18 @@ class SettingsController < ApplicationController
 	        	format.json { render json: @user.errors, status: :unprocessable_entity }
 	      	end
     	end
+  	end
+
+  	def logout_gmail
+  		gmail = @user.mail_importer.select{|importer| importer.specific.is_a? GmailImporter}.first
+  		if(!gmail.nil?)
+  			gmail.destroy
+  		end
+
+  		respond_to do |format|
+	      format.html { redirect_to settings_path, notice: 'You have been successfully logout from gmail.' }
+	      format.json { head :no_content }
+	    end
   	end
 
   	private

@@ -15,8 +15,9 @@ class OmniAuthController < ApplicationController
       user.mail_importer.push(gmail_importer)
       render json: user.save
     else
-      g = user.mail_importer.select{|importer| importer.specific.is_a? GmailImporter}.first
-      render json: g.specific.events(1410037200, 1410642000)
+      render json: true
+    #  g = user.mail_importer.select{|importer| importer.specific.is_a? GmailImporter}.first
+    #  render json: g.specific.events(1410037200, 1410642000)
     end
   end
 end

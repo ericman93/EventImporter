@@ -1,6 +1,8 @@
 class GmailImporter < ActiveRecord::Base
 	acts_as :mail_importer, :as => :importer
 
+	@@possible_errors = 0;
+
 	# add refresh_token and exprestion date
 	# whenever try to get token , check if expired 
 	# if it is so get a new one and save in db

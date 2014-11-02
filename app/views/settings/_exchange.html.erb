@@ -16,17 +16,18 @@
 
   <div class="field">
     <%= f.label :user_name %><br>
-    <%= f.text_field :user_name %>
+    <%= f.text_field :user_name, id: 'user_name' %>
   </div>
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.text_field :password %>
+    <%= f.text_field :password, id: 'password' %>
   </div>
   <div class="field">
     <%= f.label :server %><br>
-    <%= f.text_field :server %>
+    <%= f.text_field :server, id: 'server' %>
   </div>
   <div class="actions">
     <%= f.submit %>
+    <input type="button" class="btn" value="Test Connection" onclick="testConnection(this)" />
   </div>
 <% end %>
