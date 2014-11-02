@@ -2,20 +2,20 @@ class RequestsController < ApplicationController
 	before_action :has_user_session?, only: [:select_proposal, :remove_request, :user_requests, :requests, :requests_count]
 
 	def insert_proposels
-		user_mail = params[:email]
+		user_name = params[:user_name]
 		requester_info = params[:request_info]
 		param_proposals = params[:proposals].to_a
 		event_metadata = params[:event_metadata]
 		gmt_offset = params[:gmt_offset]
 
-		user = User.where("email = ?",user_mail).first
+		user = User.where("user_name = ?",user_name).first
 		props = RequestProposal.from_json(param_proposals)
 
 		request, error = CalendarApiHelper.handle_proposle(props, user, requester_info, event_metadata)
 		if request.nil?
 			render text: error, status: 400
 		else
-			RequestMailer.requests_email(request, user_mail).deliver
+			RequestMailer.requests_email(request, user.email).deliver
 			render json: true
 		end
 	end

@@ -124,7 +124,7 @@ function sendToServer(){
                          'name' : $('#request_name_input').val() },
         event_metadata : {'subject' : $('#event_subject_input').val(),
                            'location' : $('#event_location_input').val()},
-        email: user_email,
+        user_name: user_email,
         gmt_offset: get_gmt_offset()
     }
 
