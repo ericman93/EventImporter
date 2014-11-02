@@ -9,7 +9,7 @@ class ExchangeImporter < ActiveRecord::Base
 
 	def events(start_time, end_time)
 		client = Viewpoint::EWSClient.new "https://#{self.server}/ews/Exchange.asmx", self.user_name, self.password
-		gmt = 1; # I want the events as UTC 
+		gmt = 0; # I want the events as UTC 
 		time_zone = {:bias => (gmt*60).to_s}
 
 		events = get_events_from_server(client, Time.at(start_time).iso8601 , Time.at(end_time).iso8601 , time_zone).compact
