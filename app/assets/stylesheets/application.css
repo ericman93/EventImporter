@@ -114,3 +114,13 @@ font-size:0;
 #content{
 	padding-top: 30px;
 }
+
+.require_field{
+    color:red;
+    font-weight:bold;
+    font-size:150%;
+}
+
+.alert{
+	text-align: center;
+}

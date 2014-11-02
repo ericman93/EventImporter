@@ -1,29 +1,30 @@
+<div class="container">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div class="alert alert-danger" role="alert">
+      <%= @user.errors.full_messages.first %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.text_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
+  <table class="table">
+    <tr>
+      <td><%= f.label :name %></td>
+      <td><%= f.text_field :name, :class => "form-control" %></td>
+      <td class="require_field">*</td>
+    </tr>
+    <tr>
+      <td><%= f.label :password %></td>
+      <td><%= f.text_field :password, :class => "form-control" %></td>
+      <td class="require_field">*</td>
+    </tr>
+    <tr>
+      <td><%= f.label :email %></td>
+      <td><%= f.email_field :email, :class => "form-control" %></td>
+      <td class="require_field">*</td>
+    </tr>
+  </table>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-info btn-block" %>
   </div>
 <% end %>
+</div>

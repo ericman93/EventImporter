@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     render "calendar/calendar"
   end
 
+  def new
+    @user = User.new
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -23,7 +27,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to action: :login, controller: :permissions, status: 302 }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -53,19 +57,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:day, :start_at, :end_at, :short_day_name)
+      params.require(:user).permit(:email, :name, :password)
     end
-
-    def authenticate?#(email, plain_password)
-      if(!User.authenticate_by_mail(email, plain_password))
-        redirect_to action: :login, status: 302
-      end
-    end
-
-    def has_user_session?
-      if session[:current_user].nil?
-        redirect_to action: :login, status: 302
-      end
-    end
-
 end
