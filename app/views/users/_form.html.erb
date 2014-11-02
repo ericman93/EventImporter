@@ -9,17 +9,22 @@
   <table class="table">
     <tr>
       <td><%= f.label :name %></td>
-      <td><%= f.text_field :name, :class => "form-control" %></td>
+      <td><%= f.text_field :name, :class => "form-control", :required => true %></td>
       <td class="require_field">*</td>
     </tr>
     <tr>
       <td><%= f.label :password %></td>
-      <td><%= f.text_field :password, :class => "form-control" %></td>
+      <td><%= f.password_field :password, :class => "form-control", :required => true %></td>
       <td class="require_field">*</td>
     </tr>
     <tr>
       <td><%= f.label :email %></td>
-      <td><%= f.email_field :email, :class => "form-control" %></td>
+      <td><%= f.email_field :email, :class => "form-control", :required => true %></td>
+      <td class="require_field">*</td>
+    </tr>
+    <tr>
+      <td><%= f.label :user_name %></td>
+      <td><%= f.text_field :user_name, :class => "form-control", :required => true %></td>
       <td class="require_field">*</td>
     </tr>
   </table>

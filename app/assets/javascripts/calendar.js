@@ -1,13 +1,13 @@
 var options = []
 var user_email
 
-function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
+function load_event_to_calendar(user_name, should_load_events, is_self_user) {
     $('#calendar').html('');
 
-    user_email = user_mail;
+    user_email = user_name;
     var slot_min = 30;
 
-    var time_day = getWorkHours(user_mail)
+    var time_day = getWorkHours(user_name)
 
     var cal = $('#calendar').fullCalendar({
         //theme: true,
@@ -21,7 +21,7 @@ function load_event_to_calendar(user_mail, should_load_events, is_self_user) {
         //theme: true,
         hiddenDays: getHolidays(time_day),
         slotMinutes: slot_min,
-        events: should_load_events ? "/events/"+user_mail : [],
+        events: should_load_events ? "/events/"+user_name : [],
         defaultView: 'agendaWeek',
         selectable: !is_self_user,
         selectHelper: !is_self_user,
@@ -89,9 +89,9 @@ function showEvent(event_id){
     window.location = "../events/"+event_id;
 }
 
-function getWorkHours(user_mail){
+function getWorkHours(user_name){
     time_day = []
-    $.ajax({url:"/user/"+user_mail+"/work_day?gmt="+get_gmt_offset(),
+    $.ajax({url:"/user/"+user_name+"/work_day?gmt="+get_gmt_offset(),
             async: false,
             success: function(data){
                 time_day = data

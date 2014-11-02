@@ -2,11 +2,13 @@ class User < ActiveRecord::Base
 	validates_format_of :email, :with => /@/ ,:message => "Invalid email address" 
 	validates :name, :presence => { :message => "Name is required" }
 	validates :password, :presence => { :message => "Password is required" }
+	validates :user_name, :presence => { :message => "User name is required" }
+	validates :email, uniqueness: true
+	validates :user_name, uniqueness: true
 
 	has_many :requests
 	has_many :work_hours
 	has_many :mail_importer, :dependent => :destroy 
-	validates :email, uniqueness: true
 
 	accepts_nested_attributes_for :work_hours
 	
@@ -27,9 +29,9 @@ class User < ActiveRecord::Base
 		true
 	end
 
-	def self.authenticate_by_mail(email, plain_password)
+	def self.authenticate_by_mail(user_name, plain_password)
 		#hashed_password = Digest::MD5.hexdigest(plain_password)
 		hashed_password = plain_password
-		User.where("upper(email) = ? and password = ?", email.upcase, hashed_password).any?
+		User.where("upper(user_name) = ? and password = ?", user_name.upcase, hashed_password).any?
 	end
 end

@@ -2,13 +2,13 @@ class EventsController < ApplicationController
   before_action :has_user_session?, only: [:user_requests_events]
 
   def user_events
-    email = params[:email]
+    user_name = params[:username]
     start_time = params[:start].to_i
     end_time = params[:end].to_i
 
-    user = User.where({email: email}).first
+    user = User.where({user_name: user_name}).first
 
-    other_user = (@current_user.nil? or @current_user.email != email)
+    other_user = (@current_user.nil? or @current_user.user_name != user_name)
     events = user.events(start_time, end_time).sort{|x,y| x.start_time <=> y.start_time}
     
     if other_user

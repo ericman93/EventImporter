@@ -7,8 +7,8 @@ Calendar::Application.routes.draw do
   # User
   get '/users/:id', to: 'users#show', :constraints => { :id => /\d+/ }, :as => :user
   get '/users/:id', to: 'users#edit', :constraints => { :id => /\d+/ }, :as => :edit_user
-  get '/calendar/:email', to: 'users#calendar', :constraints => { :email => /.*/ }, :as => :calendar
-  get '/user/:email/work_day', to:'users#get_work_days', :constraints => { :email => /.*/ }
+  get '/calendar/:username', to: 'users#calendar', :as => :calendar
+  get '/user/:username/work_day', to:'users#get_work_days'
   get '/users/new', to: 'users#new', :as => :users
   post '/users/new', to: 'users#create'
 
@@ -26,7 +26,7 @@ Calendar::Application.routes.draw do
   delete '/exchange/:id', to: 'exchange#remove', :as => :exchange_importer
 
   # Events
-  get '/events/:email', to: 'events#user_events', :constraints => { :email => /.+@.+/ }
+  get '/events/:username', to: 'events#user_events'
   get '/events/:id', to: 'events#show', :constraints => { :id => /\d+/ }
   #get '/requests/:request_id', to: 'events#user_requests_events'
   

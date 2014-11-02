@@ -11,10 +11,10 @@
 	<%= javascript_include_tag "calendar_work_day" %>
 <% end %>
 
-<% is_self_user = !(@current_user.nil?) and @user == @current_user.email %>
+<% is_self_user = !(@current_user.nil?) and @user_name == @current_user.user_name %>
 <script>
 	$(document).ready(function () {
-	        var user_mail = '<%= @user %>';
+	        var user_mail = '<%= @user_name %>';
 	        //var is_user_specifed = check_if_user_null(user_mail)
 
 	        load_event_to_calendar(user_mail, true, <%= is_self_user %>);

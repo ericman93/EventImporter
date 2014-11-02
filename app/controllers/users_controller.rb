@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # user before_filter for functions that need autorization
 
   def calendar
-    @user = params[:email]
+    @user_name = params[:username]
     render "calendar/calendar"
   end
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @user.work_hours = WorkHour.build_week
 
     respond_to do |format|
-      if @user.save
+      if @user.save;
         format.html { redirect_to action: :login, controller: :permissions, status: 302 }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -38,10 +38,10 @@ class UsersController < ApplicationController
 
   def get_work_days
     gmt_offset = params[:gmt].to_i
-    email = params[:email]
+    user_name = params[:username]
 
     work_days = []
-    user = User.where("email = ?",email).first
+    user = User.where("user_name = ?",user_name).first
     if !user.nil?
       work_days = user.work_hours.order(:day_index)
     end
@@ -57,6 +57,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :name, :password)
+      params.require(:user).permit(:email, :name, :password, :user_name)
     end
 end
