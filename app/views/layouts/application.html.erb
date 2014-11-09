@@ -49,7 +49,7 @@
       <% else %>
         <li class="single-link right-link"><%= link_to "Logout", logout_path %></li>
         <li class="single-link right-link"><%= link_to "Profile", user_path(@current_user) %></li>
-        <li class="single-link right-link" style="color: #CCCCCC">Hello <%= @current_user.name %></li>
+        <li class="single-link right-link" style="color: #CCCCCC">Hello <%= @current_user.first_name.capitalize %></li>
       <% end %>
     </ul>
   </div>
