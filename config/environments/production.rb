@@ -80,6 +80,7 @@ Calendar::Application.configure do
   # mail
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { :host => "scheddy.me:89" }
 
   config.action_mailer.smtp_settings = {
     :address              => "vhummuscom.ipage.com", 
