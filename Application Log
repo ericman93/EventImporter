@@ -1,0 +1,1288 @@
+# Logfile created on 2014-11-08 23:33:30 +0200 by logger.rb/41954
+I, [2014-11-08T23:33:30.502187 #31016]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-08 23:33:30 +0200
+I, [2014-11-08T23:33:30.803801 #31016]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-08 23:33:30 +0200
+I, [2014-11-08T23:33:30.976418 #31016]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-08 23:33:30 +0200
+I, [2014-11-08T23:33:31.131050 #31016]  INFO -- : Started GET "/events/gadi?start=1414879200&end=1415311200&_=1415482384767" for 192.168.10.201 at 2014-11-08 23:33:31 +0200
+I, [2014-11-08T23:33:31.229501 #31025]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-08 23:33:31 +0200
+I, [2014-11-08T23:33:46.363891 #31016]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-08 23:33:46 +0200
+F, [2014-11-08T23:33:46.365927 #31016] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-08T23:33:47.690996 #31016]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-08 23:33:47 +0200
+F, [2014-11-08T23:33:47.692871 #31016] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-08T23:34:01.572908 #31016]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-08 23:34:01 +0200
+I, [2014-11-08T23:41:22.081173 #31016]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-08 23:41:22 +0200
+I, [2014-11-08T23:41:22.264674 #31016]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-08 23:41:22 +0200
+I, [2014-11-08T23:41:22.269416 #31016]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-08 23:41:22 +0200
+I, [2014-11-08T23:41:22.282588 #31016]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-08 23:41:22 +0200
+I, [2014-11-08T23:41:22.440606 #31016]  INFO -- : Started GET "/events/gadi?start=1414879200&end=1415311200&_=1415482856182" for 192.168.10.201 at 2014-11-08 23:41:22 +0200
+I, [2014-11-08T23:41:28.067157 #31016]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-08 23:41:28 +0200
+F, [2014-11-08T23:41:28.070307 #31016] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-08T23:41:29.641546 #31016]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-08 23:41:29 +0200
+F, [2014-11-08T23:41:29.643743 #31016] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-08T23:41:45.575192 #31016]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-08 23:41:45 +0200
+I, [2014-11-08T23:44:46.929928 #31588]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-08 23:44:46 +0200
+I, [2014-11-08T23:44:47.199063 #31588]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-08 23:44:47 +0200
+I, [2014-11-08T23:44:47.396492 #31588]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-08 23:44:47 +0200
+I, [2014-11-08T23:44:47.561530 #31588]  INFO -- : Started GET "/events/gadi?start=1414879200&end=1415311200&_=1415483061087" for 192.168.10.201 at 2014-11-08 23:44:47 +0200
+I, [2014-11-08T23:44:47.656079 #31597]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-08 23:44:47 +0200
+I, [2014-11-08T23:44:53.666560 #31588]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-08 23:44:53 +0200
+F, [2014-11-08T23:44:53.668751 #31588] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-08T23:44:55.693904 #31588]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-08 23:44:55 +0200
+F, [2014-11-08T23:44:55.696906 #31588] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-08T23:45:08.532988 #31588]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-08 23:45:08 +0200
+I, [2014-11-08T23:52:29.472579 #31588]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-08 23:52:29 +0200
+I, [2014-11-08T23:52:29.733462 #31588]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-08 23:52:29 +0200
+I, [2014-11-08T23:52:29.744571 #31588]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-08 23:52:29 +0200
+I, [2014-11-08T23:52:29.880582 #31588]  INFO -- : Started GET "/events/gadi?start=1414879200&end=1415311200&_=1415483523581" for 192.168.10.201 at 2014-11-08 23:52:29 +0200
+I, [2014-11-08T23:52:33.322808 #31588]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-08 23:52:33 +0200
+I, [2014-11-08T23:52:34.448435 #31588]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-08 23:52:34 +0200
+F, [2014-11-08T23:52:34.450667 #31588] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-08T23:52:35.348482 #31588]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-08 23:52:35 +0200
+F, [2014-11-08T23:52:35.350253 #31588] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-08T23:52:46.542822 #31588]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-08 23:52:46 +0200
+I, [2014-11-08T23:58:49.275348 #32306]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-08 23:58:49 +0200
+I, [2014-11-08T23:58:49.556341 #32306]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-08 23:58:49 +0200
+I, [2014-11-08T23:58:49.737554 #32306]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-08 23:58:49 +0200
+I, [2014-11-08T23:58:49.906177 #32306]  INFO -- : Started GET "/events/gadi?start=1414879200&end=1415311200&_=1415483903365" for 192.168.10.201 at 2014-11-08 23:58:49 +0200
+I, [2014-11-08T23:58:49.995693 #32314]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-08 23:58:49 +0200
+I, [2014-11-08T23:58:55.483723 #32306]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-08 23:58:55 +0200
+F, [2014-11-08T23:58:55.485618 #32306] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-08T23:58:57.031278 #32306]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-08 23:58:57 +0200
+F, [2014-11-08T23:58:57.042046 #32306] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-08T23:59:10.711938 #32306]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-08 23:59:10 +0200
+I, [2014-11-09T00:19:44.630883 #32306]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:19:44 +0200
+I, [2014-11-09T00:19:44.904713 #32306]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:19:44 +0200
+I, [2014-11-09T00:19:44.925505 #32306]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:19:44 +0200
+I, [2014-11-09T00:19:44.989498 #32306]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:19:44 +0200
+I, [2014-11-09T00:19:45.130485 #32306]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415485158598" for 192.168.10.201 at 2014-11-09 00:19:45 +0200
+I, [2014-11-09T00:19:53.593677 #32306]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:19:53 +0200
+F, [2014-11-09T00:19:53.595405 #32306] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:19:55.607879 #32306]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:19:55 +0200
+F, [2014-11-09T00:19:55.610195 #32306] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:20:12.705768 #32306]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:20:12 +0200
+I, [2014-11-09T00:23:59.896698 #33219]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:23:59 +0200
+I, [2014-11-09T00:24:00.196710 #33219]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:24:00 +0200
+I, [2014-11-09T00:24:00.207910 #33219]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:24:00 +0200
+I, [2014-11-09T00:24:00.479380 #33219]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:24:00 +0200
+I, [2014-11-09T00:24:00.651338 #33219]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415485413847" for 192.168.10.201 at 2014-11-09 00:24:00 +0200
+I, [2014-11-09T00:24:11.221568 #33219]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:24:11 +0200
+F, [2014-11-09T00:24:11.232057 #33219] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:24:13.426738 #33219]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:24:13 +0200
+F, [2014-11-09T00:24:13.428937 #33219] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:24:28.478640 #33219]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:24:28 +0200
+F, [2014-11-09T00:24:28.733088 #33219] FATAL -- : 
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+     9:       You got a request fot a meeting from <%= @request.return_name %>.<br>
+    10:     </p>
+    11:     <p>
+    12:       To review the options, please login to your personal page: scheddy.me/ <%= @user.name %>
+    13:     </p>
+    14:     <p>Thanks!</p>
+    15:   </body>
+  app/views/request_mailer/requests_email.html.erb:12:in `_app_views_request_mailer_requests_email_html_erb___4103947999999485305_45196400'
+  app/mailers/request_mailer.rb:13:in `requests_email'
+  app/controllers/requests_controller.rb:18:in `insert_proposels'
+
+
+I, [2014-11-09T00:25:11.645653 #33219]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:25:11 +0200
+I, [2014-11-09T00:25:11.851082 #33219]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:25:11 +0200
+I, [2014-11-09T00:25:11.875531 #33228]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:25:11 +0200
+I, [2014-11-09T00:25:11.883608 #33219]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:25:11 +0200
+I, [2014-11-09T00:25:12.264179 #33228]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415485485510" for 192.168.10.201 at 2014-11-09 00:25:12 +0200
+I, [2014-11-09T00:25:17.479523 #33228]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:25:17 +0200
+F, [2014-11-09T00:25:17.481957 #33228] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:25:18.327806 #33228]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:25:18 +0200
+F, [2014-11-09T00:25:18.329643 #33228] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:25:20.709158 #33228]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:25:20 +0200
+I, [2014-11-09T00:29:26.271928 #33561]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:29:26 +0200
+I, [2014-11-09T00:29:26.507409 #33561]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:29:26 +0200
+I, [2014-11-09T00:29:26.526626 #33561]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:29:26 +0200
+I, [2014-11-09T00:29:26.656417 #33561]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:29:26 +0200
+I, [2014-11-09T00:29:26.809699 #33561]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415485740163" for 192.168.10.201 at 2014-11-09 00:29:26 +0200
+I, [2014-11-09T00:29:31.357051 #33561]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:29:31 +0200
+F, [2014-11-09T00:29:31.358560 #33561] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:29:33.196229 #33561]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:29:33 +0200
+F, [2014-11-09T00:29:33.197823 #33561] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:29:49.958700 #33561]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:29:49 +0200
+F, [2014-11-09T00:29:50.087116 #33561] FATAL -- : 
+ArgumentError (wrong number of arguments (2 for 3)):
+  app/mailers/request_mailer.rb:10:in `requests_email'
+  app/controllers/requests_controller.rb:18:in `insert_proposels'
+
+
+I, [2014-11-09T00:31:29.847762 #33561]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:31:29 +0200
+I, [2014-11-09T00:31:30.108115 #33561]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:31:30 +0200
+I, [2014-11-09T00:31:30.115300 #33569]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:31:30 +0200
+I, [2014-11-09T00:31:30.140191 #33561]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:31:30 +0200
+I, [2014-11-09T00:31:30.371298 #33569]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415485863721" for 192.168.10.201 at 2014-11-09 00:31:30 +0200
+I, [2014-11-09T00:31:35.228985 #33569]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:31:35 +0200
+F, [2014-11-09T00:31:35.231603 #33569] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:31:35.924890 #33569]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:31:35 +0200
+F, [2014-11-09T00:31:35.926536 #33569] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:31:37.796534 #33569]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:31:37 +0200
+F, [2014-11-09T00:31:38.013383 #33569] FATAL -- : 
+ArgumentError (wrong number of arguments (2 for 3)):
+  app/mailers/request_mailer.rb:10:in `requests_email'
+  app/controllers/requests_controller.rb:18:in `insert_proposels'
+
+
+I, [2014-11-09T00:31:40.775401 #33569]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:31:40 +0200
+I, [2014-11-09T00:31:41.023015 #33569]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:31:41 +0200
+I, [2014-11-09T00:31:41.032590 #33561]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:31:41 +0200
+I, [2014-11-09T00:31:41.043439 #33569]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:31:41 +0200
+I, [2014-11-09T00:31:41.188018 #33569]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415485874635" for 192.168.10.201 at 2014-11-09 00:31:41 +0200
+I, [2014-11-09T00:31:58.373753 #33848]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:31:58 +0200
+I, [2014-11-09T00:31:58.663998 #33848]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:31:58 +0200
+I, [2014-11-09T00:31:58.676168 #33848]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:31:58 +0200
+I, [2014-11-09T00:31:58.807707 #33848]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:31:58 +0200
+I, [2014-11-09T00:31:58.993178 #33848]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415485892291" for 192.168.10.201 at 2014-11-09 00:31:58 +0200
+I, [2014-11-09T00:32:32.162402 #33848]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:32:32 +0200
+F, [2014-11-09T00:32:32.164218 #33848] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:32:32.906072 #33848]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:32:32 +0200
+F, [2014-11-09T00:32:32.909850 #33848] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:32:34.414526 #33848]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:32:34 +0200
+F, [2014-11-09T00:32:34.788864 #33848] FATAL -- : 
+ArgumentError (wrong number of arguments (2 for 3)):
+  app/mailers/request_mailer.rb:10:in `requests_email'
+  app/controllers/requests_controller.rb:18:in `insert_proposels'
+
+
+I, [2014-11-09T00:33:04.225570 #33848]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:33:04 +0200
+F, [2014-11-09T00:33:04.357358 #33848] FATAL -- : 
+ArgumentError (wrong number of arguments (2 for 3)):
+  app/mailers/request_mailer.rb:10:in `requests_email'
+  app/controllers/requests_controller.rb:18:in `insert_proposels'
+
+
+I, [2014-11-09T00:33:34.140853 #33848]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:33:34 +0200
+F, [2014-11-09T00:33:34.319627 #33848] FATAL -- : 
+ArgumentError (wrong number of arguments (2 for 3)):
+  app/mailers/request_mailer.rb:10:in `requests_email'
+  app/controllers/requests_controller.rb:18:in `insert_proposels'
+
+
+I, [2014-11-09T00:33:37.579332 #33848]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:33:37 +0200
+I, [2014-11-09T00:33:37.791573 #33848]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:33:37 +0200
+I, [2014-11-09T00:33:37.801876 #33848]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:33:37 +0200
+I, [2014-11-09T00:33:37.937556 #33848]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415485991392" for 192.168.10.201 at 2014-11-09 00:33:37 +0200
+I, [2014-11-09T00:33:38.032284 #33859]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:33:38 +0200
+I, [2014-11-09T00:33:41.840187 #33848]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:33:41 +0200
+F, [2014-11-09T00:33:41.841769 #33848] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:33:42.776740 #33848]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:33:42 +0200
+F, [2014-11-09T00:33:42.778890 #33848] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:33:44.136563 #33848]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:33:44 +0200
+F, [2014-11-09T00:33:44.225549 #33848] FATAL -- : 
+ArgumentError (wrong number of arguments (2 for 3)):
+  app/mailers/request_mailer.rb:10:in `requests_email'
+  app/controllers/requests_controller.rb:18:in `insert_proposels'
+
+
+I, [2014-11-09T00:34:20.769641 #33848]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:34:20 +0200
+I, [2014-11-09T00:34:21.332443 #33848]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:34:21 +0200
+I, [2014-11-09T00:34:21.341223 #33848]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:34:21 +0200
+I, [2014-11-09T00:34:21.458598 #33848]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415486034936" for 192.168.10.201 at 2014-11-09 00:34:21 +0200
+I, [2014-11-09T00:34:21.500768 #33859]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:34:21 +0200
+I, [2014-11-09T00:34:25.416187 #33848]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:34:25 +0200
+F, [2014-11-09T00:34:25.418315 #33848] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:34:26.473304 #33848]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 00:34:26 +0200
+F, [2014-11-09T00:34:26.480643 #33848] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T00:34:49.319267 #33848]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:34:49 +0200
+F, [2014-11-09T00:34:49.524455 #33848] FATAL -- : 
+ArgumentError (wrong number of arguments (2 for 3)):
+  app/mailers/request_mailer.rb:10:in `requests_email'
+  app/controllers/requests_controller.rb:18:in `insert_proposels'
+
+
+I, [2014-11-09T00:35:27.787523 #33848]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:35:27 +0200
+I, [2014-11-09T00:35:28.228289 #33848]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:35:28 +0200
+I, [2014-11-09T00:35:28.236643 #33859]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:35:28 +0200
+I, [2014-11-09T00:35:28.391122 #33859]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415486101846" for 192.168.10.201 at 2014-11-09 00:35:28 +0200
+I, [2014-11-09T00:35:28.429146 #33848]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:35:28 +0200
+I, [2014-11-09T00:35:54.055240 #33859]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:35:54 +0200
+F, [2014-11-09T00:35:54.350688 #33859] FATAL -- : 
+ArgumentError (wrong number of arguments (2 for 3)):
+  app/mailers/request_mailer.rb:10:in `requests_email'
+  app/controllers/requests_controller.rb:18:in `insert_proposels'
+
+
+I, [2014-11-09T00:36:05.123271 #33859]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:36:05 +0200
+I, [2014-11-09T00:36:05.556472 #33859]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:36:05 +0200
+I, [2014-11-09T00:36:05.568561 #33848]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:36:05 +0200
+I, [2014-11-09T00:36:05.663101 #33859]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415486139180" for 192.168.10.201 at 2014-11-09 00:36:05 +0200
+I, [2014-11-09T00:36:05.690767 #33848]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:36:05 +0200
+I, [2014-11-09T00:36:27.868793 #33859]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:36:27 +0200
+F, [2014-11-09T00:36:28.646601 #33859] FATAL -- : 
+ArgumentError (wrong number of arguments (2 for 3)):
+  app/mailers/request_mailer.rb:10:in `requests_email'
+  app/controllers/requests_controller.rb:18:in `insert_proposels'
+
+
+I, [2014-11-09T00:36:34.639590 #33859]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:36:34 +0200
+I, [2014-11-09T00:36:34.954664 #33859]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:36:34 +0200
+I, [2014-11-09T00:36:34.964495 #33859]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:36:34 +0200
+I, [2014-11-09T00:36:35.153106 #33859]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415486168578" for 192.168.10.201 at 2014-11-09 00:36:35 +0200
+I, [2014-11-09T00:36:35.174994 #33848]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:36:35 +0200
+I, [2014-11-09T00:36:51.893701 #34247]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:36:51 +0200
+I, [2014-11-09T00:36:52.266235 #34247]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:36:52 +0200
+I, [2014-11-09T00:36:52.284998 #34247]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:36:52 +0200
+I, [2014-11-09T00:36:52.516138 #34247]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415486185897" for 192.168.10.201 at 2014-11-09 00:36:52 +0200
+I, [2014-11-09T00:36:52.575178 #34256]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:36:52 +0200
+I, [2014-11-09T00:37:17.230217 #34247]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:37:17 +0200
+I, [2014-11-09T00:38:15.563579 #34247]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 00:38:15 +0200
+I, [2014-11-09T00:38:15.762900 #34247]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 00:38:15 +0200
+I, [2014-11-09T00:38:15.776653 #34256]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 00:38:15 +0200
+I, [2014-11-09T00:38:16.018070 #34256]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415486269388" for 192.168.10.201 at 2014-11-09 00:38:16 +0200
+I, [2014-11-09T00:38:16.034522 #34247]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 00:38:16 +0200
+I, [2014-11-09T00:38:34.997435 #34256]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 00:38:34 +0200
+I, [2014-11-09T09:48:11.356321 #39861]  INFO -- : Started GET "/gadi" for 192.168.10.201 at 2014-11-09 09:48:11 +0200
+I, [2014-11-09T09:48:12.122279 #39861]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 09:48:12 +0200
+I, [2014-11-09T09:48:12.199616 #39861]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for 192.168.10.201 at 2014-11-09 09:48:12 +0200
+I, [2014-11-09T09:48:12.421776 #39861]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 09:48:12 +0200
+I, [2014-11-09T09:48:13.146156 #39861]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1415916000&_=1415519263384" for 192.168.10.201 at 2014-11-09 09:48:13 +0200
+I, [2014-11-09T09:48:21.192785 #39861]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 09:48:21 +0200
+F, [2014-11-09T09:48:21.197521 #39861] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T09:48:22.387085 #39861]  INFO -- : Started GET "/assets/closebox.png" for 192.168.10.201 at 2014-11-09 09:48:22 +0200
+F, [2014-11-09T09:48:22.393382 #39861] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/closebox.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+I, [2014-11-09T09:48:23.681482 #39861]  INFO -- : Started POST "/requests/proposels" for 192.168.10.201 at 2014-11-09 09:48:23 +0200
+I, [2014-11-09T10:17:46.288842 #40823]  INFO -- : Started GET "/users/new" for 192.168.10.201 at 2014-11-09 10:17:46 +0200
+I, [2014-11-09T10:17:47.246332 #40823]  INFO -- : Started GET "/requests/count" for 192.168.10.201 at 2014-11-09 10:17:47 +0200
+I, [2014-11-09T10:17:47.457186 #40823]  INFO -- : Started GET "/login" for 192.168.10.201 at 2014-11-09 10:17:47 +0200
+D, [2014-11-09T11:29:44.607778 #42765] DEBUG -- : 
+D, [2014-11-09T11:29:44.607969 #42765] DEBUG -- : 
+I, [2014-11-09T11:29:44.608368 #42765]  INFO -- : Started GET "/calendar/gadi.feldman@citrix.com" for unknown at 2014-11-09 11:29:44 +0200
+F, [2014-11-09T11:29:44.630013 #42765] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/calendar/gadi.feldman@citrix.com"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+D, [2014-11-09T11:29:52.493321 #42765] DEBUG -- : 
+D, [2014-11-09T11:29:52.493953 #42765] DEBUG -- : 
+I, [2014-11-09T11:29:52.494816 #42765]  INFO -- : Started GET "/gadi" for unknown at 2014-11-09 11:29:52 +0200
+D, [2014-11-09T11:29:52.930118 #42765] DEBUG -- : 
+D, [2014-11-09T11:29:52.930234 #42765] DEBUG -- : 
+I, [2014-11-09T11:29:52.930418 #42765]  INFO -- : Started GET "/assets/lib/bootstrap.min.css" for unknown at 2014-11-09 11:29:52 +0200
+D, [2014-11-09T11:29:53.071295 #42765] DEBUG -- : 
+D, [2014-11-09T11:29:53.071376 #42765] DEBUG -- : 
+I, [2014-11-09T11:29:53.071548 #42765]  INFO -- : Started GET "/assets/application.css" for unknown at 2014-11-09 11:29:53 +0200
+D, [2014-11-09T11:29:53.101047 #42765] DEBUG -- : 
+D, [2014-11-09T11:29:53.101144 #42765] DEBUG -- : 
+I, [2014-11-09T11:29:53.101238 #42765]  INFO -- : Started GET "/assets/pop_up.css" for unknown at 2014-11-09 11:29:53 +0200
+D, [2014-11-09T11:29:53.106965 #42765] DEBUG -- : 
+D, [2014-11-09T11:29:53.107029 #42765] DEBUG -- : 
+I, [2014-11-09T11:29:53.107116 #42765]  INFO -- : Started GET "/assets/lib/jquery-ui.min.css" for unknown at 2014-11-09 11:29:53 +0200
+D, [2014-11-09T11:29:53.133761 #42765] DEBUG -- : 
+D, [2014-11-09T11:29:53.133832 #42765] DEBUG -- : 
+I, [2014-11-09T11:29:53.133961 #42765]  INFO -- : Started GET "/assets/lib/fullcalendar.css" for unknown at 2014-11-09 11:29:53 +0200
+D, [2014-11-09T11:29:53.226767 #42775] DEBUG -- : 
+D, [2014-11-09T11:29:53.226926 #42775] DEBUG -- : 
+I, [2014-11-09T11:29:53.227284 #42775]  INFO -- : Started GET "/assets/lib/bootstrap-responsive.min.css" for unknown at 2014-11-09 11:29:53 +0200
+D, [2014-11-09T11:29:53.408767 #42775] DEBUG -- : 
+D, [2014-11-09T11:29:53.408884 #42775] DEBUG -- : 
+I, [2014-11-09T11:29:53.409016 #42775]  INFO -- : Started GET "/assets/lib/jquery-ui.custom.min.js" for unknown at 2014-11-09 11:29:53 +0200
+D, [2014-11-09T11:29:53.457057 #42775] DEBUG -- : 
+D, [2014-11-09T11:29:53.457170 #42775] DEBUG -- : 
+I, [2014-11-09T11:29:53.457284 #42775]  INFO -- : Started GET "/assets/lib/fullcalendar.min.js" for unknown at 2014-11-09 11:29:53 +0200
+D, [2014-11-09T11:29:53.519041 #42775] DEBUG -- : 
+D, [2014-11-09T11:29:53.519174 #42775] DEBUG -- : 
+I, [2014-11-09T11:29:53.519280 #42775]  INFO -- : Started GET "/assets/calendar.js" for unknown at 2014-11-09 11:29:53 +0200
+D, [2014-11-09T11:29:53.525414 #42765] DEBUG -- : 
+D, [2014-11-09T11:29:53.525493 #42765] DEBUG -- : 
+I, [2014-11-09T11:29:53.525584 #42765]  INFO -- : Started GET "/assets/calendar_work_day.js" for unknown at 2014-11-09 11:29:53 +0200
+D, [2014-11-09T11:29:53.566217 #42782] DEBUG -- : 
+D, [2014-11-09T11:29:53.566393 #42782] DEBUG -- : 
+I, [2014-11-09T11:29:53.566766 #42782]  INFO -- : Started GET "/assets/lib/mailcheck.min.js" for unknown at 2014-11-09 11:29:53 +0200
+D, [2014-11-09T11:29:53.889090 #42782] DEBUG -- : 
+D, [2014-11-09T11:29:53.889214 #42782] DEBUG -- : 
+I, [2014-11-09T11:29:53.889374 #42782]  INFO -- : Started GET "/assets/calendar.css" for unknown at 2014-11-09 11:29:53 +0200
+D, [2014-11-09T11:29:54.901802 #42782] DEBUG -- : 
+D, [2014-11-09T11:29:54.901910 #42782] DEBUG -- : 
+I, [2014-11-09T11:29:54.902042 #42782]  INFO -- : Started GET "/assets/lib/jquery-2.1.1.min.js" for unknown at 2014-11-09 11:29:54 +0200
+D, [2014-11-09T11:29:54.912996 #42782] DEBUG -- : 
+D, [2014-11-09T11:29:54.913088 #42782] DEBUG -- : 
+I, [2014-11-09T11:29:54.913238 #42782]  INFO -- : Started GET "/assets/lib/bootstrap.min.js" for unknown at 2014-11-09 11:29:54 +0200
+D, [2014-11-09T11:29:55.913439 #42782] DEBUG -- : 
+D, [2014-11-09T11:29:55.913634 #42782] DEBUG -- : 
+I, [2014-11-09T11:29:55.914292 #42782]  INFO -- : Started GET "/assets/lib/jquery_ujs.js" for unknown at 2014-11-09 11:29:55 +0200
+D, [2014-11-09T11:29:55.928037 #42775] DEBUG -- : 
+D, [2014-11-09T11:29:55.928217 #42775] DEBUG -- : 
+I, [2014-11-09T11:29:55.928539 #42775]  INFO -- : Started GET "/assets/date_helper.js" for unknown at 2014-11-09 11:29:55 +0200
+D, [2014-11-09T11:29:55.943255 #42765] DEBUG -- : 
+D, [2014-11-09T11:29:55.943469 #42765] DEBUG -- : 
+I, [2014-11-09T11:29:55.943822 #42765]  INFO -- : Started GET "/assets/application.js" for unknown at 2014-11-09 11:29:55 +0200
+D, [2014-11-09T11:29:56.000134 #42782] DEBUG -- : 
+D, [2014-11-09T11:29:56.000235 #42782] DEBUG -- : 
+I, [2014-11-09T11:29:56.000428 #42782]  INFO -- : Started GET "/assets/pop_up.js" for unknown at 2014-11-09 11:29:56 +0200
+D, [2014-11-09T11:29:56.108368 #42782] DEBUG -- : 
+D, [2014-11-09T11:29:56.108461 #42782] DEBUG -- : 
+I, [2014-11-09T11:29:56.108793 #42782]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for unknown at 2014-11-09 11:29:56 +0200
+D, [2014-11-09T11:29:56.201536 #42782] DEBUG -- : 
+D, [2014-11-09T11:29:56.201643 #42782] DEBUG -- : 
+I, [2014-11-09T11:29:56.201792 #42782]  INFO -- : Started GET "/requests/count" for unknown at 2014-11-09 11:29:56 +0200
+F, [2014-11-09T11:29:56.268236 #42782] FATAL -- : 
+ActiveRecord::RecordNotFound (Couldn't find User with id=1):
+  app/controllers/requests_controller.rb:48:in `requests_count'
+
+
+D, [2014-11-09T11:29:56.341418 #42782] DEBUG -- : 
+D, [2014-11-09T11:29:56.341540 #42782] DEBUG -- : 
+I, [2014-11-09T11:29:56.341787 #42782]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1416088800&_=1415525334550" for unknown at 2014-11-09 11:29:56 +0200
+F, [2014-11-09T11:29:56.354742 #42782] FATAL -- : 
+NoMethodError (undefined method `events' for nil:NilClass):
+  app/controllers/events_controller.rb:12:in `user_events'
+
+
+D, [2014-11-09T11:30:01.472973 #42782] DEBUG -- : 
+D, [2014-11-09T11:30:01.473103 #42782] DEBUG -- : 
+I, [2014-11-09T11:30:01.473252 #42782]  INFO -- : Started GET "/logout" for unknown at 2014-11-09 11:30:01 +0200
+D, [2014-11-09T11:30:01.496730 #42782] DEBUG -- : 
+D, [2014-11-09T11:30:01.496870 #42782] DEBUG -- : 
+I, [2014-11-09T11:30:01.497056 #42782]  INFO -- : Started GET "/login" for unknown at 2014-11-09 11:30:01 +0200
+D, [2014-11-09T11:30:01.660174 #42782] DEBUG -- : 
+D, [2014-11-09T11:30:01.660323 #42782] DEBUG -- : 
+I, [2014-11-09T11:30:01.660464 #42782]  INFO -- : Started GET "/assets/lib/bootstrap.min.css" for unknown at 2014-11-09 11:30:01 +0200
+D, [2014-11-09T11:30:01.668678 #42782] DEBUG -- : 
+D, [2014-11-09T11:30:01.668755 #42782] DEBUG -- : 
+I, [2014-11-09T11:30:01.668885 #42782]  INFO -- : Started GET "/assets/lib/bootstrap-responsive.min.css" for unknown at 2014-11-09 11:30:01 +0200
+D, [2014-11-09T11:30:01.677430 #42775] DEBUG -- : 
+D, [2014-11-09T11:30:01.677519 #42775] DEBUG -- : 
+I, [2014-11-09T11:30:01.677633 #42775]  INFO -- : Started GET "/assets/lib/jquery-2.1.1.min.js" for unknown at 2014-11-09 11:30:01 +0200
+D, [2014-11-09T11:30:01.695311 #42765] DEBUG -- : 
+D, [2014-11-09T11:30:01.695421 #42765] DEBUG -- : 
+I, [2014-11-09T11:30:01.695540 #42765]  INFO -- : Started GET "/assets/pop_up.js" for unknown at 2014-11-09 11:30:01 +0200
+D, [2014-11-09T11:30:01.810575 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:01.810763 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:01.811191 #42799]  INFO -- : Started GET "/assets/date_helper.js" for unknown at 2014-11-09 11:30:01 +0200
+D, [2014-11-09T11:30:02.190126 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:02.190388 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:02.190768 #42799]  INFO -- : Started GET "/requests/count" for unknown at 2014-11-09 11:30:02 +0200
+D, [2014-11-09T11:30:02.318541 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:02.318656 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:02.319043 #42799]  INFO -- : Started GET "/login" for unknown at 2014-11-09 11:30:02 +0200
+D, [2014-11-09T11:30:07.106303 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:07.106474 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:07.106647 #42799]  INFO -- : Started GET "/gadi" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.315768 #42765] DEBUG -- : 
+D, [2014-11-09T11:30:07.315866 #42765] DEBUG -- : 
+I, [2014-11-09T11:30:07.315985 #42765]  INFO -- : Started GET "/assets/lib/bootstrap-responsive.min.css" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.322117 #42775] DEBUG -- : 
+D, [2014-11-09T11:30:07.322207 #42775] DEBUG -- : 
+I, [2014-11-09T11:30:07.322334 #42775]  INFO -- : Started GET "/assets/lib/jquery-ui.min.css" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.328577 #42782] DEBUG -- : 
+D, [2014-11-09T11:30:07.328699 #42782] DEBUG -- : 
+I, [2014-11-09T11:30:07.328824 #42782]  INFO -- : Started GET "/assets/lib/fullcalendar.css" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.337170 #42782] DEBUG -- : 
+D, [2014-11-09T11:30:07.337294 #42782] DEBUG -- : 
+I, [2014-11-09T11:30:07.337424 #42782]  INFO -- : Started GET "/assets/lib/jquery-2.1.1.min.js" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.341675 #42765] DEBUG -- : 
+D, [2014-11-09T11:30:07.341806 #42765] DEBUG -- : 
+I, [2014-11-09T11:30:07.341925 #42765]  INFO -- : Started GET "/assets/pop_up.js" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.345731 #42775] DEBUG -- : 
+D, [2014-11-09T11:30:07.345812 #42775] DEBUG -- : 
+I, [2014-11-09T11:30:07.345931 #42775]  INFO -- : Started GET "/assets/date_helper.js" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.350070 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:07.350172 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:07.350309 #42799]  INFO -- : Started GET "/assets/lib/bootstrap.min.css" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.358022 #42782] DEBUG -- : 
+D, [2014-11-09T11:30:07.358105 #42782] DEBUG -- : 
+I, [2014-11-09T11:30:07.358216 #42782]  INFO -- : Started GET "/assets/lib/jquery-ui.custom.min.js" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.378077 #42765] DEBUG -- : 
+D, [2014-11-09T11:30:07.378177 #42765] DEBUG -- : 
+I, [2014-11-09T11:30:07.378295 #42765]  INFO -- : Started GET "/assets/calendar_work_day.js" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.382149 #42782] DEBUG -- : 
+D, [2014-11-09T11:30:07.382233 #42782] DEBUG -- : 
+I, [2014-11-09T11:30:07.382363 #42782]  INFO -- : Started GET "/assets/lib/fullcalendar.min.js" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.388970 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:07.389079 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:07.389197 #42799]  INFO -- : Started GET "/assets/lib/mailcheck.min.js" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.568522 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:07.568610 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:07.568700 #42799]  INFO -- : Started GET "/requests/count" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.580051 #42765] DEBUG -- : 
+D, [2014-11-09T11:30:07.580137 #42765] DEBUG -- : 
+I, [2014-11-09T11:30:07.580333 #42765]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:07.741177 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:07.741262 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:07.741518 #42799]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1416088800&_=1415525347044" for unknown at 2014-11-09 11:30:07 +0200
+F, [2014-11-09T11:30:07.767556 #42799] FATAL -- : 
+NoMethodError (undefined method `events' for nil:NilClass):
+  app/controllers/events_controller.rb:12:in `user_events'
+
+
+D, [2014-11-09T11:30:07.879787 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:07.879892 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:07.880007 #42799]  INFO -- : Started GET "/login" for unknown at 2014-11-09 11:30:07 +0200
+D, [2014-11-09T11:30:19.695320 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:19.695587 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:19.695866 #42799]  INFO -- : Started GET "/users/new" for unknown at 2014-11-09 11:30:19 +0200
+D, [2014-11-09T11:30:19.934472 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:19.934590 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:19.934746 #42799]  INFO -- : Started GET "/assets/lib/bootstrap.min.css" for unknown at 2014-11-09 11:30:19 +0200
+D, [2014-11-09T11:30:19.940827 #42765] DEBUG -- : 
+D, [2014-11-09T11:30:19.940937 #42765] DEBUG -- : 
+I, [2014-11-09T11:30:19.941111 #42765]  INFO -- : Started GET "/assets/lib/bootstrap-responsive.min.css" for unknown at 2014-11-09 11:30:19 +0200
+D, [2014-11-09T11:30:19.945287 #42782] DEBUG -- : 
+D, [2014-11-09T11:30:19.945423 #42782] DEBUG -- : 
+I, [2014-11-09T11:30:19.945545 #42782]  INFO -- : Started GET "/assets/lib/jquery-2.1.1.min.js" for unknown at 2014-11-09 11:30:19 +0200
+D, [2014-11-09T11:30:19.951173 #42775] DEBUG -- : 
+D, [2014-11-09T11:30:19.951297 #42775] DEBUG -- : 
+I, [2014-11-09T11:30:19.951432 #42775]  INFO -- : Started GET "/assets/pop_up.js" for unknown at 2014-11-09 11:30:19 +0200
+D, [2014-11-09T11:30:19.958595 #42782] DEBUG -- : 
+D, [2014-11-09T11:30:19.958699 #42782] DEBUG -- : 
+I, [2014-11-09T11:30:19.958815 #42782]  INFO -- : Started GET "/assets/users.js" for unknown at 2014-11-09 11:30:19 +0200
+D, [2014-11-09T11:30:19.967024 #42765] DEBUG -- : 
+D, [2014-11-09T11:30:19.967115 #42765] DEBUG -- : 
+I, [2014-11-09T11:30:19.967232 #42765]  INFO -- : Started GET "/assets/lib/mailcheck.min.js" for unknown at 2014-11-09 11:30:19 +0200
+D, [2014-11-09T11:30:19.973887 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:19.973975 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:19.974086 #42799]  INFO -- : Started GET "/assets/date_helper.js" for unknown at 2014-11-09 11:30:19 +0200
+D, [2014-11-09T11:30:20.233218 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:20.233312 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:20.233437 #42799]  INFO -- : Started GET "/requests/count" for unknown at 2014-11-09 11:30:20 +0200
+D, [2014-11-09T11:30:20.343113 #42799] DEBUG -- : 
+D, [2014-11-09T11:30:20.343307 #42799] DEBUG -- : 
+I, [2014-11-09T11:30:20.343467 #42799]  INFO -- : Started GET "/login" for unknown at 2014-11-09 11:30:20 +0200
+D, [2014-11-09T11:34:37.081873 #42799] DEBUG -- : 
+D, [2014-11-09T11:34:37.081973 #42799] DEBUG -- : 
+I, [2014-11-09T11:34:37.082082 #42799]  INFO -- : Started GET "/gadi" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.187154 #42799] DEBUG -- : 
+D, [2014-11-09T11:34:37.187271 #42799] DEBUG -- : 
+I, [2014-11-09T11:34:37.187366 #42799]  INFO -- : Started GET "/assets/lib/bootstrap.min.css" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.193044 #42765] DEBUG -- : 
+D, [2014-11-09T11:34:37.193128 #42765] DEBUG -- : 
+I, [2014-11-09T11:34:37.193220 #42765]  INFO -- : Started GET "/assets/lib/bootstrap-responsive.min.css" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.195698 #42782] DEBUG -- : 
+D, [2014-11-09T11:34:37.195764 #42782] DEBUG -- : 
+I, [2014-11-09T11:34:37.195846 #42782]  INFO -- : Started GET "/assets/application.css" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.201258 #42775] DEBUG -- : 
+D, [2014-11-09T11:34:37.201334 #42775] DEBUG -- : 
+I, [2014-11-09T11:34:37.201440 #42775]  INFO -- : Started GET "/assets/pop_up.css" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.218930 #42782] DEBUG -- : 
+D, [2014-11-09T11:34:37.219034 #42782] DEBUG -- : 
+I, [2014-11-09T11:34:37.219124 #42782]  INFO -- : Started GET "/assets/lib/jquery-2.1.1.min.js" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.222909 #42775] DEBUG -- : 
+D, [2014-11-09T11:34:37.223113 #42775] DEBUG -- : 
+I, [2014-11-09T11:34:37.223222 #42775]  INFO -- : Started GET "/assets/calendar.css" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.228884 #42799] DEBUG -- : 
+D, [2014-11-09T11:34:37.228960 #42799] DEBUG -- : 
+I, [2014-11-09T11:34:37.229061 #42799]  INFO -- : Started GET "/assets/lib/jquery-ui.min.css" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.244518 #42765] DEBUG -- : 
+D, [2014-11-09T11:34:37.244631 #42765] DEBUG -- : 
+I, [2014-11-09T11:34:37.244786 #42765]  INFO -- : Started GET "/assets/lib/fullcalendar.min.js" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.251100 #42782] DEBUG -- : 
+D, [2014-11-09T11:34:37.251317 #42782] DEBUG -- : 
+I, [2014-11-09T11:34:37.251418 #42782]  INFO -- : Started GET "/assets/lib/jquery_ujs.js" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.255421 #42765] DEBUG -- : 
+D, [2014-11-09T11:34:37.255501 #42765] DEBUG -- : 
+I, [2014-11-09T11:34:37.255626 #42765]  INFO -- : Started GET "/assets/lib/mailcheck.min.js" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.269205 #42775] DEBUG -- : 
+D, [2014-11-09T11:34:37.269336 #42775] DEBUG -- : 
+I, [2014-11-09T11:34:37.269425 #42775]  INFO -- : Started GET "/assets/lib/bootstrap.min.js" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.275185 #42765] DEBUG -- : 
+D, [2014-11-09T11:34:37.275255 #42765] DEBUG -- : 
+I, [2014-11-09T11:34:37.275434 #42765]  INFO -- : Started GET "/assets/calendar_work_day.js" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.279571 #42782] DEBUG -- : 
+D, [2014-11-09T11:34:37.279668 #42782] DEBUG -- : 
+I, [2014-11-09T11:34:37.279759 #42782]  INFO -- : Started GET "/assets/calendar.js" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.300164 #42765] DEBUG -- : 
+D, [2014-11-09T11:34:37.300307 #42765] DEBUG -- : 
+I, [2014-11-09T11:34:37.300407 #42765]  INFO -- : Started GET "/assets/application.js" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.304192 #42775] DEBUG -- : 
+D, [2014-11-09T11:34:37.304272 #42775] DEBUG -- : 
+I, [2014-11-09T11:34:37.304416 #42775]  INFO -- : Started GET "/assets/date_helper.js" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.463863 #42819] DEBUG -- : 
+D, [2014-11-09T11:34:37.464041 #42819] DEBUG -- : 
+I, [2014-11-09T11:34:37.464433 #42819]  INFO -- : Started GET "/assets/lib/fullcalendar.css" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:37.675511 #42819] DEBUG -- : 
+D, [2014-11-09T11:34:37.675636 #42819] DEBUG -- : 
+I, [2014-11-09T11:34:37.675753 #42819]  INFO -- : Started GET "/assets/pop_up.js" for unknown at 2014-11-09 11:34:37 +0200
+D, [2014-11-09T11:34:38.680238 #42819] DEBUG -- : 
+D, [2014-11-09T11:34:38.680355 #42819] DEBUG -- : 
+I, [2014-11-09T11:34:38.680476 #42819]  INFO -- : Started GET "/assets/lib/jquery-ui.custom.min.js" for unknown at 2014-11-09 11:34:38 +0200
+D, [2014-11-09T11:34:38.927215 #42819] DEBUG -- : 
+D, [2014-11-09T11:34:38.927297 #42819] DEBUG -- : 
+I, [2014-11-09T11:34:38.927564 #42819]  INFO -- : Started GET "/user/gadi/work_day?gmt=2" for unknown at 2014-11-09 11:34:38 +0200
+D, [2014-11-09T11:34:39.107251 #42819] DEBUG -- : 
+D, [2014-11-09T11:34:39.107379 #42819] DEBUG -- : 
+I, [2014-11-09T11:34:39.107492 #42819]  INFO -- : Started GET "/requests/count" for unknown at 2014-11-09 11:34:39 +0200
+D, [2014-11-09T11:34:39.228233 #42819] DEBUG -- : 
+D, [2014-11-09T11:34:39.228335 #42819] DEBUG -- : 
+I, [2014-11-09T11:34:39.228990 #42819]  INFO -- : Started GET "/events/gadi?start=1415484000&end=1416088800&_=1415525617141" for unknown at 2014-11-09 11:34:39 +0200
+F, [2014-11-09T11:34:39.244295 #42819] FATAL -- : 
+NoMethodError (undefined method `events' for nil:NilClass):
+  app/controllers/events_controller.rb:12:in `user_events'
+
+
+D, [2014-11-09T11:34:39.423348 #42819] DEBUG -- : 
+D, [2014-11-09T11:34:39.423456 #42819] DEBUG -- : 
+I, [2014-11-09T11:34:39.423589 #42819]  INFO -- : Started GET "/login" for unknown at 2014-11-09 11:34:39 +0200
+D, [2014-11-09T11:34:41.029165 #42819] DEBUG -- : 
+D, [2014-11-09T11:34:41.029302 #42819] DEBUG -- : 
+I, [2014-11-09T11:34:41.029447 #42819]  INFO -- : Started GET "/users/new" for unknown at 2014-11-09 11:34:41 +0200
+D, [2014-11-09T11:34:41.145763 #42799] DEBUG -- : 
+D, [2014-11-09T11:34:41.145957 #42799] DEBUG -- : 
+I, [2014-11-09T11:34:41.146093 #42799]  INFO -- : Started GET "/assets/lib/bootstrap.min.css" for unknown at 2014-11-09 11:34:41 +0200
+D, [2014-11-09T11:34:41.161226 #42819] DEBUG -- : 
+D, [2014-11-09T11:34:41.161336 #42819] DEBUG -- : 
+I, [2014-11-09T11:34:41.161463 #42819]  INFO -- : Started GET "/assets/lib/bootstrap-responsive.min.css" for unknown at 2014-11-09 11:34:41 +0200
+D, [2014-11-09T11:34:41.172858 #42799] DEBUG -- : 
+D, [2014-11-09T11:34:41.172985 #42799] DEBUG -- : 
+I, [2014-11-09T11:34:41.173090 #42799]  INFO -- : Started GET "/assets/date_helper.js" for unknown at 2014-11-09 11:34:41 +0200
+D, [2014-11-09T11:34:41.176958 #42782] DEBUG -- : 
+D, [2014-11-09T11:34:41.177044 #42782] DEBUG -- : 
+I, [2014-11-09T11:34:41.177168 #42782]  INFO -- : Started GET "/assets/pop_up.js" for unknown at 2014-11-09 11:34:41 +0200
+D, [2014-11-09T11:34:41.180413 #42775] DEBUG -- : 
+D, [2014-11-09T11:34:41.180488 #42775] DEBUG -- : 
+I, [2014-11-09T11:34:41.180583 #42775]  INFO -- : Started GET "/assets/lib/mailcheck.min.js" for unknown at 2014-11-09 11:34:41 +0200
+D, [2014-11-09T11:34:41.293863 #42992] DEBUG -- : 
+D, [2014-11-09T11:34:41.294024 #42992] DEBUG -- : 
+I, [2014-11-09T11:34:41.294372 #42992]  INFO -- : Started GET "/assets/lib/jquery-2.1.1.min.js" for unknown at 2014-11-09 11:34:41 +0200
+D, [2014-11-09T11:34:41.455975 #42992] DEBUG -- : 
+D, [2014-11-09T11:34:41.456076 #42992] DEBUG -- : 
+I, [2014-11-09T11:34:41.456288 #42992]  INFO -- : Started GET "/requests/count" for unknown at 2014-11-09 11:34:41 +0200
+D, [2014-11-09T11:34:41.507638 #42992] DEBUG -- : 
+D, [2014-11-09T11:34:41.507779 #42992] DEBUG -- : 
+I, [2014-11-09T11:34:41.507915 #42992]  INFO -- : Started GET "/login" for unknown at 2014-11-09 11:34:41 +0200
+D, [2014-11-09T11:35:05.592412 #42992] DEBUG -- : 
+D, [2014-11-09T11:35:05.592652 #42992] DEBUG -- : 
+I, [2014-11-09T11:35:05.592978 #42992]  INFO -- : Started GET "/users/new" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.825542 #42799] DEBUG -- : 
+D, [2014-11-09T11:35:05.825641 #42799] DEBUG -- : 
+I, [2014-11-09T11:35:05.825777 #42799]  INFO -- : Started GET "/assets/lib/bootstrap-responsive.min.css" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.831135 #42782] DEBUG -- : 
+D, [2014-11-09T11:35:05.831216 #42782] DEBUG -- : 
+I, [2014-11-09T11:35:05.831312 #42782]  INFO -- : Started GET "/assets/application.css" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.834649 #42765] DEBUG -- : 
+D, [2014-11-09T11:35:05.834736 #42765] DEBUG -- : 
+I, [2014-11-09T11:35:05.834833 #42765]  INFO -- : Started GET "/assets/pop_up.css" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.837879 #42775] DEBUG -- : 
+D, [2014-11-09T11:35:05.837950 #42775] DEBUG -- : 
+I, [2014-11-09T11:35:05.838045 #42775]  INFO -- : Started GET "/assets/lib/jquery-2.1.1.min.js" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.842173 #42992] DEBUG -- : 
+D, [2014-11-09T11:35:05.842263 #42992] DEBUG -- : 
+I, [2014-11-09T11:35:05.842438 #42992]  INFO -- : Started GET "/assets/lib/bootstrap.min.css" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.851845 #42799] DEBUG -- : 
+D, [2014-11-09T11:35:05.851930 #42799] DEBUG -- : 
+I, [2014-11-09T11:35:05.852034 #42799]  INFO -- : Started GET "/assets/lib/bootstrap.min.js" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.857682 #42782] DEBUG -- : 
+D, [2014-11-09T11:35:05.857758 #42782] DEBUG -- : 
+I, [2014-11-09T11:35:05.857887 #42782]  INFO -- : Started GET "/assets/lib/jquery_ujs.js" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.860924 #42765] DEBUG -- : 
+D, [2014-11-09T11:35:05.860995 #42765] DEBUG -- : 
+I, [2014-11-09T11:35:05.861089 #42765]  INFO -- : Started GET "/assets/date_helper.js" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.866840 #42819] DEBUG -- : 
+D, [2014-11-09T11:35:05.866924 #42819] DEBUG -- : 
+I, [2014-11-09T11:35:05.867024 #42819]  INFO -- : Started GET "/assets/pop_up.js" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.870062 #42775] DEBUG -- : 
+D, [2014-11-09T11:35:05.870133 #42775] DEBUG -- : 
+I, [2014-11-09T11:35:05.870226 #42775]  INFO -- : Started GET "/assets/lib/mailcheck.min.js" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.873998 #42775] DEBUG -- : 
+D, [2014-11-09T11:35:05.874085 #42775] DEBUG -- : 
+I, [2014-11-09T11:35:05.874200 #42775]  INFO -- : Started GET "/assets/users.js" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.879450 #42992] DEBUG -- : 
+D, [2014-11-09T11:35:05.879524 #42992] DEBUG -- : 
+I, [2014-11-09T11:35:05.879663 #42992]  INFO -- : Started GET "/assets/application.js" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.934583 #42992] DEBUG -- : 
+D, [2014-11-09T11:35:05.934670 #42992] DEBUG -- : 
+I, [2014-11-09T11:35:05.934759 #42992]  INFO -- : Started GET "/requests/count" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:35:05.950216 #42992] DEBUG -- : 
+D, [2014-11-09T11:35:05.950300 #42992] DEBUG -- : 
+I, [2014-11-09T11:35:05.950425 #42992]  INFO -- : Started GET "/login" for unknown at 2014-11-09 11:35:05 +0200
+D, [2014-11-09T11:40:41.414906 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:41.415114 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:41.415386 #42992]  INFO -- : Started GET "/users/new" for unknown at 2014-11-09 11:40:41 +0200
+F, [2014-11-09T11:40:41.551251 #42992] FATAL -- : 
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'bin/rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.2) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.2) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__3046728858353748921__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:22:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  passenger (4.0.53) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.53) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.53) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `call'
+  logging (1.8.2) lib/logging/diagnostic_context.rb:323:in `block in create_with_logging_context'
+
+
+D, [2014-11-09T11:40:54.858890 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:54.861052 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:54.861553 #42992]  INFO -- : Started GET "/users/new" for unknown at 2014-11-09 11:40:54 +0200
+D, [2014-11-09T11:40:55.211426 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.211567 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.211851 #42992]  INFO -- : Started GET "/assets/lib/bootstrap.min.css" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.219734 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.219860 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.219981 #42992]  INFO -- : Started GET "/assets/lib/bootstrap-responsive.min.css" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.228760 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.228867 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.228987 #42992]  INFO -- : Started GET "/assets/application.css" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.237418 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.237536 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.237667 #42992]  INFO -- : Started GET "/assets/pop_up.css" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.244694 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.244779 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.244887 #42992]  INFO -- : Started GET "/assets/lib/jquery-2.1.1.min.js" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.256504 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.256608 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.256744 #42992]  INFO -- : Started GET "/assets/lib/bootstrap.min.js" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.263202 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.263287 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.263398 #42992]  INFO -- : Started GET "/assets/lib/jquery_ujs.js" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.270041 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.270118 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.270249 #42992]  INFO -- : Started GET "/assets/date_helper.js" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.276433 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.276538 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.276707 #42992]  INFO -- : Started GET "/assets/application.js" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.280436 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.280504 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.280627 #42992]  INFO -- : Started GET "/assets/pop_up.js" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.289346 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.289431 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.289544 #42992]  INFO -- : Started GET "/assets/lib/mailcheck.min.js" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.295710 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.295779 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.295873 #42992]  INFO -- : Started GET "/assets/users.js" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.446832 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.446915 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.447006 #42992]  INFO -- : Started GET "/requests/count" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:40:55.459824 #42992] DEBUG -- : 
+D, [2014-11-09T11:40:55.459952 #42992] DEBUG -- : 
+I, [2014-11-09T11:40:55.460056 #42992]  INFO -- : Started GET "/login" for unknown at 2014-11-09 11:40:55 +0200
+D, [2014-11-09T11:41:08.325095 #42992] DEBUG -- : 
+D, [2014-11-09T11:41:08.325345 #42992] DEBUG -- : 
+I, [2014-11-09T11:41:08.325697 #42992]  INFO -- : Started GET "/users/new" for 192.168.10.201 at 2014-11-09 11:41:08 +0200
+D, [2014-11-09T11:41:08.587176 #42992] DEBUG -- : 
+D, [2014-11-09T11:41:08.587390 #42992] DEBUG -- : 
+I, [2014-11-09T11:41:08.587689 #42992]  INFO -- : Started GET "/assets/lib/bootstrap.min.css" for 192.168.10.201 at 2014-11-09 11:41:08 +0200
+D, [2014-11-09T11:41:08.664105 #42992] DEBUG -- : 
+D, [2014-11-09T11:41:08.665208 #42992] DEBUG -- : 
+I, [2014-11-09T11:41:08.665643 #42992]  INFO -- : Started GET "/assets/application.css" for 192.168.10.201 at 2014-11-09 11:41:08 +0200
+D, [2014-11-09T11:41:11.433975 #42992] DEBUG -- : 
+D, [2014-11-09T11:41:11.434183 #42992] DEBUG -- : 
+I, [2014-11-09T11:41:11.434577 #42992]  INFO -- : Started GET "/assets/application.js" for 192.168.10.201 at 2014-11-09 11:41:11 +0200
+D, [2014-11-09T11:41:11.487853 #42992] DEBUG -- : 
+D, [2014-11-09T11:41:11.488117 #42992] DEBUG -- : 
+I, [2014-11-09T11:41:11.488378 #42992]  INFO -- : Started GET "/assets/pop_up.js" for 192.168.10.201 at 2014-11-09 11:41:11 +0200
