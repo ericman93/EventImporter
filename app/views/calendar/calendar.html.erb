@@ -1,6 +1,7 @@
 <% content_for :stylesheets do %>
 	<%= stylesheet_link_tag "lib/jquery-ui.min" %>
 	<%= stylesheet_link_tag "lib/fullcalendar" %>
+	<%= stylesheet_link_tag "calendar-common" %>	
 	<%= stylesheet_link_tag "calendar" %>
 <% end %>
 <% content_for :javascripts do %>
@@ -9,15 +10,15 @@
 	<%= javascript_include_tag "lib/mailcheck.min" %>
 	<%= javascript_include_tag "calendar" %>
 	<%= javascript_include_tag "calendar_work_day" %>
+	<%= javascript_include_tag "calendar-common" %>
 <% end %>
 
-<% is_self_user = !(@current_user.nil?) and @user_name == @current_user.user_name %>
 <script>
 	$(document).ready(function () {
 	        var user_mail = '<%= @user_name %>';
 	        //var is_user_specifed = check_if_user_null(user_mail)
 
-	        load_event_to_calendar(user_mail, true, <%= is_self_user %>);
+	        load_event_to_calendar(user_mail, true, <%= (@current_user != nil) and (@user_name == @current_user.user_name) %>);
 
 	        $('.importer').change(function () {
 
@@ -27,7 +28,7 @@
 	    });
 </script>
 
-<% if !is_self_user %>
+<% if !((@current_user != nil) and (@user_name == @current_user.user_name)) %>
 	<input type="button" class="btn btn-success" value="Next" id="btnShowReuqstInfo" onclick="showRequestUserInfo()" />
 	<% content_for :popup_content do %>
 		<%= render "calendar/request_info.html.erb" %>
