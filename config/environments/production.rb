@@ -93,7 +93,7 @@ Calendar::Application.configure do
   }
 
   config.action_mailer.default_options = {
-    :from                 => "ericfeldman93@gmail.com"
+    :from                 => "mailer@scheddy.me"
   }
 
   config.google_api = {
