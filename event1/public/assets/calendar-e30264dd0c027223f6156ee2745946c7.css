@@ -1,0 +1,143 @@
+/* line 1, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+#btnShowReuqstInfo {
+  float: right;
+}
+
+/* line 5, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+#calendar {
+  /*float:left;*/
+  height: 100%;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  /*padding-top: 40px;*/
+}
+
+/* line 14, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+#side {
+  float: right;
+}
+
+/* line 18, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+.close-event {
+  float: right;
+  background: url("/assets/closebox.png") no-repeat scroll 0 0 transparent;
+  bottom: 15px;
+  left: 15px;
+  cursor: pointer;
+  float: right;
+  position: relative;
+  height: 30px;
+  width: 30px;
+  opacity: .6;
+}
+
+/* line 31, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+.close-event:hover {
+  opacity: 2;
+}
+
+/* line 35, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+.fc-agenda-slots td div {
+  height: 30px;
+}
+
+/* line 37, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+.fc-work-time-day {
+  background-color: yellow;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  /* for IE */
+}
+
+/* line 43, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+.proposel_event .fc-event-inner {
+  bottom: 25px;
+  left: 5px;
+}
+
+/* line 48, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+.fc-work-time {
+  position: absolute;
+  background-color: yellow;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  z-index: 0;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  /* for IE */
+}
+
+/* line 60, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+.require_field {
+  color: red;
+  font-weight: bold;
+  font-size: 150%;
+}
+
+/* line 66, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+.fc-agenda-slots td {
+  border-width: 0px 0 0 0px;
+}
+
+/* line 70, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+.proposel_event {
+  background: #87e0fd;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #87e0fd), color-stop(40%, #53cbf1), color-stop(100%, #05abe0));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#87e0fd', endColorstr='#05abe0',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 81, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+.busy_event {
+  background: #ff4d3d;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #ff4d3d 1%, #bc0303 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #ff4d3d), color-stop(100%, #bc0303));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ff4d3d 1%, #bc0303 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ff4d3d 1%, #bc0303 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ff4d3d 1%, #bc0303 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #ff4d3d 1%, #bc0303 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4d3d', endColorstr='#bc0303',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 92, /var/www/html/event1/app/assets/stylesheets/calendar.css.scss */
+.user_event {
+  background: #87e0fd;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #87e0fd), color-stop(40%, #53cbf1), color-stop(100%, #05abe0));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#87e0fd', endColorstr='#05abe0',GradientType=0 );
+  /* IE6-9 */
+}

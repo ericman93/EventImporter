@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calendar</title>
+  <%= stylesheet_link_tag    "lib/bootstrap.min" %>
+  <%= stylesheet_link_tag    "lib/bootstrap-responsive.min" %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "pop_up" %>
+  <%= yield :stylesheets %>
+
+  <%= javascript_include_tag "lib/jquery-2.1.1.min" %>
+  <%= javascript_include_tag 'lib/jquery_ujs' %>
+  <%= javascript_include_tag "date_helper" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "pop_up" %>
+  <%= yield :javascripts %>
+  
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="pop_up_stuff">
+    <div id="toPopup">    	
+        <div class="close"></div>
+        <div id="popup_content" class="center_popup"> 
+          <%= yield :popup_content %>
+        </div>
+    </div>
+    <div id="loadingPopup" class="center_popup">
+      <h1>Loading</h1>
+    </div>
+    <div id="backgroundPopup"></div>
+</div>
+
+<nav>
+  <div class="menu">
+    <ul>
+      <!-- use 'current' if current_page?(:controller => "users", :action => "show") -->
+      <li class="single-link <%= current_page?(about_path) ? 'current' : '' %>"><%= link_to "About", about_path %></li>
+      <% if !@current_user.nil? %>
+        <li class="single-link <%= current_page?(settings_path) ? 'current' : '' %>"><%= link_to "Settings", settings_path %></li> 
+        <li class="single-link <%= current_page?(requests_path) ? 'current' : '' %>"><%= link_to "Requests  (...)", requests_path, {:id => "request_count"} %></li>  
+      <% end %>
+
+      <% if @current_user.nil? %>
+        <li class="single-link right-link <%= current_page?(login_path) ? 'current' : '' %>"><%= link_to "Login", login_path %></li>
+      <% else %>
+        <li class="single-link right-link"><%= link_to "Logout", logout_path %></li>
+        <li class="single-link right-link"><%= link_to "Profile", user_path(@current_user) %></li>
+        <li class="single-link right-link" style="color: #CCCCCC">Hello <%= @current_user.name %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+<div id="content">
+  <%= yield %>
+</div>
+
+</body>
+</html>

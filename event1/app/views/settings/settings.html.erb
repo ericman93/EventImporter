@@ -1,0 +1,38 @@
+<% content_for :stylesheets do %>
+	<%= stylesheet_link_tag "settings" %>
+	<%= stylesheet_link_tag "lib/bootstrap-timepicker.min" %>
+<% end %>
+<% content_for :javascripts do %>
+	<%= javascript_include_tag "work_hour" %>
+	<%= javascript_include_tag "settings" %>
+	<%= javascript_include_tag "lib/bootstrap-timepicker" %>
+<% end %>
+
+<% if !notice.nil? %>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <%= notice %>
+    </div>
+<% end %>
+
+<div id="options">
+    <ul class="nav nav-pills nav-stacked">
+        <li id="work_hours" class="setting_option">
+            <a href="#">
+            	<span class="glyphicon glyphicon-time"></span> Work Hours
+            </a>
+        </li>
+        <li id="web_mails" class="setting_option">
+            <a href="#">
+            	<span class="glyphicon glyphicon-envelope"></span> Web Mails
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div id="setting_content">
+    <div id="option_data"></div>
+    <div id="update_result">
+        <% notice %>
+    </div>
+</div>

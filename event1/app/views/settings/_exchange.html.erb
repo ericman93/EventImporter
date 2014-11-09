@@ -1,0 +1,32 @@
+<% @importer = importer %>
+<%= form_for @importer, :url => url_for(controller: "exchange", action: "create") do |f| %>
+  <% if @importer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@importer.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @importer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :id %>
+
+  <div class="field">
+    <%= f.label :user_name %><br>
+    <%= f.text_field :user_name %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :server %><br>
+    <%= f.text_field :server %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

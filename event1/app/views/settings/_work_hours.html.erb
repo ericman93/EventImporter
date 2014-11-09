@@ -1,0 +1,53 @@
+<style>
+	.time-button{
+		display: inline;
+	}
+</style>
+
+<div id="notice" class="alert">
+	<%= notice %>
+</p>
+
+<%= form_for(@user, url: {action: "save_work_hours"}) do |user_from| %>
+
+	<input type="hidden" id="gmt_offset" name="gmt" value="0" />
+
+	<% @user.work_hours.sort{|x,y| x.id <=> y.id}.each do |work_hour| %>
+		<table>
+			<tr>
+				<th>Day</th>
+				<th>Start at</th>
+				<th>End at</th>
+				<th>Vication</th>
+			</tr>
+			<%= user_from.fields_for :work_hours, work_hour do |work_hour_form| %>
+				<td><%= work_hour_form.object.day %></td>
+				<td>
+					<div class="input-group bootstrap-timepicker">
+						<%= work_hour_form.text_field :start_at, id: "timepicker-start-#{work_hour_form.object.short_day_name}" ,
+													  class: "hour_picker", 'data-seconds'=> work_hour_form.object.start_at %>
+					    
+					    <span class="input-group-addon time-button">
+					    	<i class="glyphicon glyphicon-time"></i>
+					    </span>
+					</div>
+				</td>
+				<td>
+					<div class="input-group bootstrap-timepicker">
+						<%= work_hour_form.text_field :end_at, id: "timepicker-end-#{work_hour_form.object.short_day_name}" ,
+													  class: "hour_picker", 'data-seconds'=> work_hour_form.object.end_at %>
+					    
+					    <span class="input-group-addon time-button">
+					    	<i class="glyphicon glyphicon-time"></i>
+					    </span>
+					</div>
+				</td>
+				<td><input type="checkbox" id="vication_<%= work_hour_form.object.short_day_name %>" class="vication" data-day="<%= work_hour_form.object.short_day_name %>"></td>	
+    		<% end %>
+    	</table>
+  	<% end %>
+
+  	<br>
+  	<%= user_from.submit "Update work hours", class: "btn btn-info" %>
+
+<% end %>
