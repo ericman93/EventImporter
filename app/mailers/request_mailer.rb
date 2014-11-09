@@ -7,9 +7,11 @@ class RequestMailer < ActionMailer::Base
     mail(to: "ericfeldman93@gmail.com", subject: 'Welcome to My Awesome Site')
   end
 
-  def requests_email(request, user_mail)
+  def requests_email(request, user)
   	@request = request
-  	mail(to: user_mail, subject: "You got a meeting request from #{request.return_name}")
+    @user = user  
+      
+  	mail(to: user.email, subject: "You got a meeting request from #{request.return_name}")
   end
 
   def proposle_accept_email(proposal, user)

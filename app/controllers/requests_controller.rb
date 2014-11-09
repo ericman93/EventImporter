@@ -15,7 +15,7 @@ class RequestsController < ApplicationController
 		if request.nil?
 			render text: error, status: 400
 		else
-			RequestMailer.requests_email(request, user.email).deliver
+			RequestMailer.requests_email(request, user).deliver
 			render json: true
 		end
 	end
