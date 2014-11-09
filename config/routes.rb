@@ -7,7 +7,7 @@ Calendar::Application.routes.draw do
   # User
   get '/users/:id', to: 'users#show', :constraints => { :id => /\d+/ }, :as => :user
   get '/users/:id', to: 'users#edit', :constraints => { :id => /\d+/ }, :as => :edit_user
-  get '/calendar/:username', to: 'users#calendar', :as => :calendar
+  get '/:username', to: 'users#calendar', :as => :calendar
   get '/user/:username/work_day', to:'users#get_work_days'
   get '/users/new', to: 'users#new', :as => :users
   post '/users/new', to: 'users#create'

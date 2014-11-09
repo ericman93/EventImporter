@@ -8,8 +8,13 @@
 
   <table class="table">
     <tr>
-      <td><%= f.label :name %></td>
-      <td><%= f.text_field :name, :class => "form-control", :required => true %></td>
+      <td><%= f.label :first_name %></td>
+      <td><%= f.text_field :first_name, :class => "form-control", :required => true %></td>
+      <td class="require_field">*</td>
+    </tr>
+    <tr>
+      <td><%= f.label :last_name %></td>
+      <td><%= f.text_field :last_name, :class => "form-control", :required => true %></td>
       <td class="require_field">*</td>
     </tr>
     <tr>

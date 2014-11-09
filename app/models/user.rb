@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	validates_format_of :email, :with => /@/ ,:message => "Invalid email address" 
-	validates :name, :presence => { :message => "Name is required" }
+	validates :first_name, :presence => { :message => "First name is required" }
+	validates :last_name, :presence => { :message => "Last name is required" }
 	validates :password, :presence => { :message => "Password is required" }
 	validates :user_name, :presence => { :message => "User name is required" }
 	validates :email, uniqueness: true
