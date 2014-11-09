@@ -4,14 +4,6 @@ Calendar::Application.routes.draw do
   get '/login', to: 'permissions#login', :as => :login
   get '/logout', to: 'permissions#logout', :as => :logout
 
-  # User
-  get '/users/:id', to: 'users#show', :constraints => { :id => /\d+/ }, :as => :user
-  get '/users/:id', to: 'users#edit', :constraints => { :id => /\d+/ }, :as => :edit_user
-  get '/:username', to: 'users#calendar', :as => :calendar
-  get '/user/:username/work_day', to:'users#get_work_days'
-  get '/users/new', to: 'users#new', :as => :users
-  post '/users/new', to: 'users#create'
-
   # Settings
   get '/settings', to:'settings#settings', :as => :settings
   get '/settings/work_hours', to:'settings#work_hours'
@@ -34,9 +26,11 @@ Calendar::Application.routes.draw do
   post '/calendarapi/insert', to: 'calendar_api#insert'
   
   # Request
-  get '/requests', to:'requests#requests', :as => :requests
+  get  '/requests', to:'requests#requests', :as => :requests
   get  '/requests/count', to:'requests#requests_count'
   get  '/requests/user', to:'requests#user_requests'
+  get  '/requests/user/:request_id', to:'requests#request_data'
+  get  '/requests/:request_id', to: 'requests#single_request'
   post '/requests/proposels', to: 'requests#insert_proposels'
   post '/requests/:proposal_id', to: 'requests#select_proposal'
   delete '/requests/:request_id', to: 'requests#remove_request'
@@ -46,4 +40,12 @@ Calendar::Application.routes.draw do
   
   # About
   get '/about', to: 'about#about', :as => :about
+
+  # User
+  get '/users/:id', to: 'users#show', :constraints => { :id => /\d+/ }, :as => :user
+  get '/users/:id', to: 'users#edit', :constraints => { :id => /\d+/ }, :as => :edit_user
+  get '/:username', to: 'users#calendar', :as => :calendar
+  get '/user/:username/work_day', to:'users#get_work_days'
+  get '/users/new', to: 'users#new', :as => :users
+  post '/users/new', to: 'users#create'
 end

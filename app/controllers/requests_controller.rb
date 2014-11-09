@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-	before_action :has_user_session?, only: [:select_proposal, :remove_request, :user_requests, :requests, :requests_count]
+	before_action :has_user_session?, only: [:select_proposal, :remove_request, :user_requests, :requests, :single_request, :request, :requests_count]
 
 	def insert_proposels
 		user_name = params[:user_name]
@@ -42,6 +42,13 @@ class RequestsController < ApplicationController
     	render partial: 'requests'
 	end
 
+	def request_data
+		request_id = params[:request_id]
+		@request = Request.find(request_id)
+
+		render partial: 'single_request'
+	end
+
   	def requests_count
     	requests_count = 0
 		if !session[:current_user].nil?
@@ -49,6 +56,11 @@ class RequestsController < ApplicationController
     	end
 
     	render json: requests_count
+  	end
+
+  	def single_request
+  		# will render the single_request.html.erb view
+  		@request_id = params[:request_id]
   	end
 
 	def requests

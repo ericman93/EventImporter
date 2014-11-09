@@ -13,7 +13,7 @@ function show_calendar(){
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
-        events:  "/events/"+user_mail,
+        events:  "/events/"+user_name,
         eventBorderColor: 'black',
         loading: function (bool) {
             if (bool) {

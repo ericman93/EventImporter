@@ -1,5 +1,5 @@
 <script>
-	var user_mail = "<%= @current_user.email %>"
+	var user_name = "<%= @current_user.user_name %>"
 	var requests = <%= @requests.to_json({:include => :request_proposals}).html_safe %>;
 </script>
 

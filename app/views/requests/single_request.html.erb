@@ -1,0 +1,17 @@
+<% content_for :stylesheets do %>
+	<%= stylesheet_link_tag "lib/fullcalendar" %>
+	<%= stylesheet_link_tag "requests" %>
+<% end %>
+<% content_for :javascripts do %>
+	<%= javascript_include_tag "lib/fullcalendar.min" %>
+	<%= javascript_include_tag "single_request" %>
+<% end %>
+
+<script>
+	var request_id = <%= @request_id %>;
+	var user_name = "<%= @current_user.user_name %>";
+</script>
+
+<div id="request_data">
+	Loading ... Pleace wait :)
+</div>

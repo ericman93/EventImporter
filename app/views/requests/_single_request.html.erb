@@ -1,0 +1,17 @@
+<script>
+	var proposels = <%= @request.request_proposals.to_json().html_safe %>
+</script>
+
+<div id="proposels">
+	<ul class="nav nav-pills nav-stacked" id="request_proposels_list">
+		<% @request.request_proposals.each do |proposal| %>
+			<li id="proposel_<%= proposal.id %>">
+				<a href="#" style="margin-left:10px" onClick="proposal_selected(<%= proposal.id %>)">
+       				<%= proposal.start_time.strftime("%d/%m/%Y - %H:%M") %>
+                </a>
+			</li>
+		<% end %>
+	</ul>
+</div>
+
+<div id='calendar' style="width: 85%"></div>
