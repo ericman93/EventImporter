@@ -14,7 +14,8 @@ function popupLoading() {
     showBackground();
 }
 function closeloading() {
-    $("loadingPopup").fadeOut('normal');
+    $("#loadingPopup").fadeOut('normal');
+    $("#backgroundPopup").fadeOut("normal");
 }
 
 var popupStatus = 0; // set value

@@ -16,44 +16,55 @@ function show_calendar(){
         eventBorderColor: 'black',
         loading: function (bool) {
             if (bool) {
-                loadPopup();
+                popupLoading();
             } else {
-                disablePopup(); 
+                closeloading(); 
             }
         },
         eventRender: function(event, element) {
-              element.bind('dblclick', function() {
-                // if evevnt.id start with "prop_"
-                send_option_selection(event.id)
-              });
+              add_button(event.id, 'approve', approve_option)
            },
         defaultView: 'agendaWeek',
     });
+
+    show_all_proposals();
+}
+
+function show_all_proposals(){
+    $.each(proposels, function(key, proposal){
+        var new_event = {
+          title:"Proposel",
+          start: new Date(proposal.start_time),
+          allDay: false,
+          id: 'prop-'+proposal.id,
+          end: new Date(proposal.end_time),
+          className: event_colors[key % event_colors.length] + '-event prop-'+proposal.id
+        };
+
+        $('#calendar').fullCalendar( 'renderEvent', new_event );
+    })
+}
+
+function approve_option(proposal_id){
+    remove_other_options(proposal_id)
+    send_option_selection(proposal_id)
+}
+
+function remove_other_options(option_name){
+    proposal_id = Number(option_name.substring(5))
+
+    var to_remove = proposels.filter( function(item){return (item.id!=proposal_id);} );
+    $.each(to_remove, function(key, prop){
+        $('#calendar').fullCalendar( 'removeEvents', 'prop-'+prop.id );
+    })
 }
 
 function proposal_selected(proposal_id){
     var proposal = proposels.filter( function(item){return (item.id==proposal_id);} );
     proposal = proposal[0]
+
     var start_time = new Date(proposal.start_time)
-
     $('#calendar').fullCalendar('gotoDate',start_time)
-    
-    var new_event = {
-      title:"Proposel",
-      start: start_time,
-      allDay: false,
-      id: "prop_"+proposal_id,
-      end: new Date(proposal.end_time),
-      className: 'option_event'
-    };
 
-    set_propoal_active(proposal_id);
-    $('#calendar').fullCalendar( 'removeEvents', "prop_"+current_proposel );
-    current_proposel = proposal_id;
-    $('#calendar').fullCalendar( 'renderEvent', new_event );
-}
-
-function set_propoal_active(proposel_id){
-    $('#proposel_'+current_proposel).removeClass('active');
-    $('#proposel_'+proposel_id).addClass('active');
+    //set_propoal_active(proposal_id);
 }

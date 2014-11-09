@@ -17,9 +17,9 @@ function show_calendar(){
         eventBorderColor: 'black',
         loading: function (bool) {
             if (bool) {
-                loadPopup();
+                popupLoading();
             } else {
-                disablePopup(); 
+                closeloading(); 
             }
         },
         eventRender: function(event, element) {
@@ -100,25 +100,6 @@ function delete_request(id){
     })
     .fail(function (data) {
         alert('error')
-    });
-}
-
-function send_option_selection(option_name){
-    option_id = option_name.substring(5) // remove the 'prop_' in the begging of the name
-    $.ajax({
-        type: "POST",
-        url: "/requests/"+option_id,
-        dataType: 'json',
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-        }
-    })
-    .success(function (d) {
-        remove_request()
-    })
-    .fail(function (data) {
-        alert('error')
-        console.log(data)
     });
 }
 

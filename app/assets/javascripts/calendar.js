@@ -59,7 +59,7 @@ function load_event_to_calendar(user_name, should_load_events, is_self_user) {
         },
         eventRender: function(event, element) {
             updateEvent(event);
-            addCloseButton(event.id)
+            add_button(event.id, 'close', removeProposel)
         }
     });
 
@@ -72,17 +72,6 @@ function showRequestUserInfo(){
     // remove old alert
     $('#result_alert').remove();
     loadPopup();
-}
-
-function addCloseButton(event_id){
-    var close_btn = $("<div/>",{
-        class: 'close-event',
-    })
-    .click(function(){
-        removeProposel(event_id)
-    })
-
-    $('.fc-event.'+event_id).prepend(close_btn)
 }
 
 function showEvent(event_id){
