@@ -396,7 +396,9 @@
                         <table border="0" cellpadding="0" cellspacing="0" style="background-color:#6C7A89; border:1px solid #353535; border-radius:5px;">
                             <tr>
                                 <td align="center" valign="middle" style="color:#FFFFFF; font-family:Helvetica, Arial, sans-serif; font-size:16px; font-weight:bold; letter-spacing:-.5px; line-height:150%; padding-top:15px; padding-right:30px; padding-bottom:15px; padding-left:30px;">
-                                <a href="http://www.mailchimp.com/blog/" target="_blank" style="color:#FFFFFF; text-decoration:none;">Review Proposals</a>
+                                <a href="<%=url_for(:controller => 'requests', :action => 'single_request', :request_id => @request.id, :only_path => false)%>" target="_blank" style="color:#FFFFFF; text-decoration:none;">
+                                  Review Proposals
+                                </a>
                                 </td>
                             </tr>
                         </table>
