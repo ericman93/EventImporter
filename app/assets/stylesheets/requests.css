@@ -22,3 +22,10 @@
 .delete{
     padding:10px 10px;
 }
+
+#info{
+    text-align: center;
+}
+#info > h1{
+    display: inline;
+}

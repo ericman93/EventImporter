@@ -18,7 +18,8 @@ function show_calendar(){
             if (bool) {
                 popupLoading();
             } else {
-                closeloading(); 
+                closeloading();
+                show_all_proposals() 
             }
         },
         eventRender: function(event, element) {
@@ -26,8 +27,6 @@ function show_calendar(){
            },
         defaultView: 'agendaWeek',
     });
-
-    show_all_proposals();
 }
 
 function show_all_proposals(){
@@ -41,7 +40,7 @@ function show_all_proposals(){
           className: event_colors[key % event_colors.length] + '-event prop-'+proposal.id
         };
 
-        $('#calendar').fullCalendar( 'renderEvent', new_event );
+        $('#calendar').fullCalendar('renderEvent', new_event );
     })
 }
 

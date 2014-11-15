@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
 	before_action :has_user_session?, only: [:select_proposal, :remove_request, :user_requests, :requests, :single_request, :request, :requests_count]
+	before_action :check_if_currnet_user, only: [:request_data, :single_request]
 
 	def insert_proposels
 		user_name = params[:user_name]
@@ -64,6 +65,16 @@ class RequestsController < ApplicationController
   	end
 
 	def requests
-	  	# will render the request.html.erb view
+		# will render the request.html.erb view
 	end
+
+	private 
+		def check_if_currnet_user
+			request_id = params[:request_id]
+			request = Request.find(request_id)
+
+			if(request.user.id != @current_user.id)
+				redirect_to action: :login, controller: :permissions, status: 302
+			end
+		end
 end

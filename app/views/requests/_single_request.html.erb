@@ -2,6 +2,10 @@
 	var proposels = <%= @request.request_proposals.to_json().html_safe %>
 </script>
 
+<div id="info">
+	<h1><%= @request.subject %></h1> from <%= @request.return_name %> at <%= @request.location %>
+</div>
+
 <div id="proposels">
 	<ul class="nav nav-pills nav-stacked" id="request_proposels_list">
 		<% @request.request_proposals.each do |proposal| %>
