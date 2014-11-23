@@ -16,6 +16,7 @@ class EventsController < ApplicationController
     end
 
     render json: events.map{|e| e.to_fullcalendar_json(other_user) }
+    #render json: user.mail_importer.first.specific.events(start_time, end_time)
   end
 
   def show

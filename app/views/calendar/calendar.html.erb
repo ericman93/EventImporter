@@ -18,7 +18,7 @@
 	        var user_mail = '<%= @user_name %>';
 	        //var is_user_specifed = check_if_user_null(user_mail)
 
-	        load_event_to_calendar(user_mail, true, <%= (@current_user != nil) and (@user_name == @current_user.user_name) %>);
+	        load_event_to_calendar(user_mail, true, <%= (@current_user.nil? or @user_name != @current_user.user_name) or @is_local_events %>, <%= @is_local_events %>);
 
 	        $('.importer').change(function () {
 
@@ -29,10 +29,12 @@
 </script>
 
 <% if !((@current_user != nil) and (@user_name == @current_user.user_name)) %>
-	<input type="button" class="btn btn-success" value="Next" id="btnShowReuqstInfo" onclick="showRequestUserInfo()" />
+	<input type="button" class="btn btn-success calendar-action" value="Next" id="btnShowReuqstInfo" onclick="showRequestUserInfo()" />
 	<% content_for :popup_content do %>
 		<%= render "calendar/request_info.html.erb" %>
 	<% end %>
+<% elsif @current_user != nil and @user_name == @current_user.user_name and @is_local_events %>
+	<input type="button" class="btn btn-info calendar-action" value="Save" id="btnSaveLocal" onclick="saveLocalEvents()" />
 <% end %>
 
 <div id='calendar'></div>

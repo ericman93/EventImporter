@@ -1,7 +1,7 @@
 var options = []
 var user_email
 
-function load_event_to_calendar(user_name, should_load_events, is_self_user) {
+function load_event_to_calendar(user_name, should_load_events, selectable, namebale) {
     $('#calendar').html('');
 
     user_email = user_name;
@@ -23,26 +23,36 @@ function load_event_to_calendar(user_name, should_load_events, is_self_user) {
         slotMinutes: slot_min,
         events: should_load_events ? "/events/"+user_name : [],
         defaultView: 'agendaWeek',
-        selectable: !is_self_user,
-        selectHelper: !is_self_user,
+        selectable: selectable,
+        selectHelper: selectable,
         editable: false,
         eventBorderColor: 'black',
-        select: function(start, end, allDay) {
+        select: function(start, end, allDay, title) {
             var temp_id = "temp_" + options.length;
-            addNewProposal(start, end, allDay, temp_id); 
+
+            var title;
+            if(namebale){
+                title = prompt('Event Title:');
+            }
+            else{
+                title = "Option";
+            }
+
+            addNewProposal(start, end, allDay, temp_id, title); 
+
             cal.fullCalendar('renderEvent',
 					{
                         id: temp_id, // I'm addind the poposel in the addNewProposal function , so the array size increase by 1 
 					    start: start,
 					    end: end,
 					    allDay: allDay,
-                        title: "Option",
+                        title: title,
                         is_temp: true,
                         editable: true,
                         // There is no option to edit the html id , so i'm using the class
-                        className: 'proposel_event '+temp_id
+                        className: (namebale ? 'orange-event ' : 'proposel_event ') + temp_id
 					},
-					!is_self_user // make the event "stick"
+					selectable // make the event "stick"
 				);
         },
         loading: function (bool) {
@@ -159,14 +169,15 @@ function sendToServer(){
     })
 }
 
-function addNewProposal(start, end, allday, temp_id){
+function addNewProposal(start, end, allday, temp_id, title){
     proposel = {
         'start_time': start,
         'start_ticks' :start.getTime(),
         'end_time': end,
         'end_ticks': end.getTime(),
         'is_all_day': allday,
-        'temp_id': temp_id
+        'temp_id': temp_id,
+        'title': title
     }
 
     addProposalToPopup(proposel, options.length)
@@ -244,4 +255,25 @@ function clearRequestedForm(){
     $("#event_location_input").val('');
     $("#request_mail_input").val('');
     $("#request_name_input").val('');
+}
+
+function saveLocalEvents(){
+    $.ajax({
+        type: "PUT",
+        url: "/local",
+        //contentType: "application/json",
+        data: {
+            events: options
+        },
+        beforeSend: function(xhr) {
+            popupLoading();
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+        }
+    })
+   .success(function (d) {
+        disablePopup();
+   })
+   .fail(function (data) {
+        disablePopup();
+   })
 }

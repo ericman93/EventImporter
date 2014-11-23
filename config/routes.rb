@@ -17,6 +17,10 @@ Calendar::Application.routes.draw do
   delete '/exchange', to:'exchange#remove'
   delete '/exchange/:id', to: 'exchange#remove', :as => :exchange_importer
 
+  post '/local', to:'local_events#create'
+  delete '/local/:id', to: 'local_events#remove', :as => :local_events_importer
+  put '/local', to:'local_events#add_event'
+
   # Events
   get '/events/:username', to: 'events#user_events'
   get '/events/:id', to: 'events#show', :constraints => { :id => /\d+/ }

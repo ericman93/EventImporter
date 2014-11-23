@@ -6,6 +6,13 @@ class UsersController < ApplicationController
 
   def calendar
     @user_name = params[:username]
+
+    @is_local_events = false
+    if !@current_user.nil? && @user_name == @current_user.user_name
+      user = User.where("user_name = ?",@user_name).first
+      @is_local_events = user.mail_importer.any?{|importer| (importer.specific.is_a? LocalImporter)}
+    end
+
     render "calendar/calendar"
   end
 

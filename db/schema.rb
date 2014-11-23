@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109074942) do
+ActiveRecord::Schema.define(version: 20141123191512) do
 
   create_table "event_users", force: true do |t|
     t.integer  "event_id"
@@ -51,6 +51,11 @@ ActiveRecord::Schema.define(version: 20141109074942) do
     t.datetime "expiration_date"
   end
 
+  create_table "local_importers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "mail_importers", force: true do |t|
     t.integer  "importer_id"
     t.string   "importer_type"
@@ -58,11 +63,6 @@ ActiveRecord::Schema.define(version: 20141109074942) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "error_count"
-  end
-
-  create_table "outlook_importers", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "request_proposals", force: true do |t|
