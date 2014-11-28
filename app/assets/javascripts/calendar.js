@@ -200,10 +200,12 @@ function updateEvent(event){
     //to_update.start = event.start
     //to_update.end = event.end
 
-    // update table
+    // update propsal table
     var prop_tr = $('#prop_'+event.id+'>td')
-    $(prop_tr[1]).html(date_to_human(event.start))
-    $(prop_tr[2]).html(date_to_human(event.end))
+    if(prop_tr.length > 0){
+        $(prop_tr[1]).html(date_to_human(event.start))
+        $(prop_tr[2]).html(date_to_human(event.end))
+    }
 }
 
 function addProposalToPopup(proposel){

@@ -12,6 +12,8 @@ function add_button(event_id, image_name, callback){
 }
 
 function send_option_selection(option_name){
+    popupLoading();
+
     option_id = option_name.substring(5) // remove the 'prop-' in the begging of the name
     $.ajax({
         type: "POST",
@@ -22,10 +24,12 @@ function send_option_selection(option_name){
         }
     })
     .success(function (d) {
+        closeloading();
         remove_proposels()
         $('.fc-event.'+option_name+' .approve-event').remove()
     })
     .fail(function (data) {
+        closeloading();
         alert('error')
         console.log(data)
     });

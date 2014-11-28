@@ -32,7 +32,11 @@ class RequestsController < ApplicationController
 		proposal_id = params[:proposal_id]
 
 		proposal = RequestProposal.find(proposal_id)
-		RequestMailer.proposle_accept_email(proposal, @current_user).deliver
+		user = User.find(@current_user.id)
+		#RequestMailer.proposle_accept_email(proposal, @current_user).deliver
+		user.mail_importer.each do |importer| 
+			importer.specific.send_proposal(proposal)
+		end
 		Request.destroy(proposal.request.id)
 
 		render json: true
