@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	validates_format_of :email, :with => /@/ ,:message => "Invalid email address" 
-	validates_format_of :user_name, :with => /[^-\s]*/ ,:message => "Invalid email address" 
+	validates_format_of :user_name, :with => /\A[a-zA-Z0-9_]{2,30}\Z/ ,:message => "Invalid username" 
 	validates :first_name, :presence => { :message => "First name is required" }
 	validates :last_name, :presence => { :message => "Last name is required" }
 	validates :password, :presence => { :message => "Password is required" }
