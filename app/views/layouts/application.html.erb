@@ -48,7 +48,6 @@
         <li class="single-link right-link <%= current_page?(users_path) ? 'current' : '' %>"><%= link_to "Sign in", users_path %></li>
       <% else %>
         <li class="single-link right-link"><%= link_to "Logout", logout_path %></li>
-        <li class="single-link right-link"><%= link_to "Profile", user_path(@current_user) %></li>
         <li class="single-link right-link" style="color: #CCCCCC">Hello <%= @current_user.first_name.capitalize %></li>
       <% end %>
     </ul>

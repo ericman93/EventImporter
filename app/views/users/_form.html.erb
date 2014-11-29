@@ -2,30 +2,28 @@
     <%= stylesheet_link_tag "register" %>
 <% end %>
 
-<div id="wrapper">
+<% if @user.errors.any? %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <%= @user.errors.full_messages.first %>
+    </div>
+  <% end %>
+<div id="wrapper" class="container">
 
     <%= form_for(@user, html: {:class => 'login-form'}) do |f| %>
-    
-        <div class="header">
-        <h1>Scheddy.me</h1>
-<!--        <span>Fill out the form below to login to my super awesome imaginary control panel.</span> -->
-        </div>
-    
-        <div class="content">
-            <%= f.text_field :user_name, :class => "input username", :placeholder => "Username" %>  
-            <div class="pass-icon"></div>      
 
-            <%= f.text_field :password, :class => "input password", :placeholder => "Password" %>  
-            <div class="pass-icon"></div>       
-            
-            <%= f.text_field :first_name, :class => "input first_name", :placeholder => "First name" %>  
-            <div class="pass-icon"></div>
-        </div>
+        <%= f.text_field :first_name, :class => "input form-control first_name", :placeholder => "First name", :required => true %>       
 
-        <div class="footer">
-            <input type="submit" name="submit" value="Login" class="button" />
-            <%= link_to "Register", users_path, :class => "register", id: "register" %></div>
-        </div>
+        <%= f.text_field :last_name, :class => "input form-control last_name", :placeholder => "Last name", :required => true %>       
+
+        <%= f.text_field :user_name, :class => "input form-control username", :placeholder => "Username" ,:required => true, 
+                         :pattern => '[^-\s]*', :title => 'Spaces are not allowed' %>       
+
+        <%= f.email_field :email, :class => "input form-control email_name", :placeholder => "Email", :required => true %>  
+
+        <%= f.password_field :password, :class => "input form-control password", :placeholder => "Password", :required => true %>  
+
+        <input type="submit" name="submit" value="Register" class="btn btn-success btn-block" />
     
     <% end %>
 

@@ -20,14 +20,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # GET /users/1
-  # GET /users/1.json
-  def show
-    @user = User.find(params[:id])
-  end
-
-  # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
     @user.work_hours = WorkHour.build_week
