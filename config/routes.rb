@@ -5,10 +5,11 @@ Calendar::Application.routes.draw do
   get '/logout', to: 'permissions#logout', :as => :logout
 
   # Settings
-  get '/settings', to:'settings#settings', :as => :settings
-  get '/settings/work_hours', to:'settings#work_hours'
-  get '/settings/web_mails', to:'settings#web_mails'
+  get '/settings/work_hours', to:'settings#work_hours', :as => :settings_hours
+  get '/settings/web_mails', to:'settings#web_mails', :as => :settings_mails
+  get '/settings/services', to: 'settings#services', :as => :settings_services
   patch '/settings/work_hours', to:'settings#save_work_hours'
+  patch '/settings/services', to:'settings#save_services'
   get '/settings/logout', to:'settings#logout_gmail'
 
   post '/exchange/test', to: 'exchange#test' 

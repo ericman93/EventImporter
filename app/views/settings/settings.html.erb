@@ -1,12 +1,5 @@
 <% content_for :stylesheets do %>
 	<%= stylesheet_link_tag "settings" %>
-	<%= stylesheet_link_tag "lib/bootstrap-timepicker.min" %>
-<% end %>
-<% content_for :javascripts do %>
-	<%= javascript_include_tag "work_hour" %>
-    <%= javascript_include_tag "web_mails" %>
-	<%= javascript_include_tag "settings" %>
-	<%= javascript_include_tag "lib/bootstrap-timepicker" %>
 <% end %>
 
 <% if !notice.nil? %>
@@ -16,23 +9,38 @@
     </div>
 <% end %>
 
+<% if !@user.nil? && !@user.errors.empty? %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <%= @user.errors.full_messages.first %>
+    </div>
+<% end %>
+
 <div id="options">
     <ul class="nav nav-pills nav-stacked">
         <li id="work_hours" class="setting_option">
-            <a href="#">
-            	<span class="glyphicon glyphicon-time"></span> Work Hours
-            </a>
+            <%= link_to :settings_hours do %>
+                <span class="glyphicon glyphicon-time"></span> Work Hours
+            <% end %>
         </li>
         <li id="web_mails" class="setting_option">
-            <a href="#">
-            	<span class="glyphicon glyphicon-envelope"></span> Web Mails
-            </a>
+            <%= link_to :settings_mails do %>
+                <span class="glyphicon glyphicon-envelope"></span> Web Mail
+            <% end %>
+        </li>
+        <li id="services" class="setting_option">
+            <%= link_to :settings_services do %>
+                <span class="glyphicon glyphicon-shopping-cart"></span> Services
+            <% end %>
         </li>
     </ul>
 </div>
 
 <div id="setting_content">
-    <div id="option_data"></div>
+    <div id="option_data">
+        <%= yield :setting_data %>
+    </div>
+
     <div id="update_result">
         <% notice %>
     </div>

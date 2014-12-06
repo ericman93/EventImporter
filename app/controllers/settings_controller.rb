@@ -1,16 +1,17 @@
 class SettingsController < ApplicationController
 	before_action :has_user_session?
-	before_action :set_user, only: [:save_work_hours, :work_hours, :web_mails, :logout_gmail]
+	before_action :set_user, only: [:save_work_hours,:save_services, :work_hours, :web_mails, :logout_gmail, :services]
 
 	def settings
 	end
 
+	def services
+	end
+
  	def work_hours
-		render partial: 'work_hours'
 	end
 
 	def web_mails
-		render partial: 'web_mails'
 	end
 
   	def save_work_hours
@@ -18,13 +19,34 @@ class SettingsController < ApplicationController
 
     	respond_to do |format|
 	     	if @user.update(work_hours_params(gmt_offset))
-	        	format.html { redirect_to settings_path, notice: 'Your work hours was successfully updated.' }
-	        	format.json { render :settings, status: :ok }
+	        	format.html { redirect_to :settings_hours, notice: 'Your work hours was successfully updated.' }
+	        	format.json { render :work_hours, status: :ok }
 	      	else
 	        	format.html { render :work_hours }
 	        	format.json { render json: @user.errors, status: :unprocessable_entity }
 	      	end
     	end
+  	end
+
+  	def save_services
+  		result = true
+
+  		Service.transaction do
+  			result &= @user.services.destroy_all
+  			result &= @user.update(services_params)
+
+  			raise ActiveRecord::Rollback unless result
+  		end
+
+  		respond_to do |format|
+	     	if result
+	        	format.html { redirect_to :settings_services, notice: 'Your services was successfully updated.' }
+	        	format.json { render :services, status: :ok }
+	      	else
+	        	format.html { render :services }
+	        	format.json { render json: @user.errors, status: :unprocessable_entity }
+	      	end
+      	end
   	end
 
   	def logout_gmail
@@ -34,7 +56,7 @@ class SettingsController < ApplicationController
   		end
 
   		respond_to do |format|
-	      format.html { redirect_to settings_path, notice: 'You have been successfully logout from gmail.' }
+	      format.html { redirect_to :settings , notice: 'You have been successfully logout from gmail.' }
 	      format.json { head :no_content }
 	    end
   	end
@@ -55,6 +77,10 @@ class SettingsController < ApplicationController
       		end
 
       		return work_hours
+    	end
+
+    	def services_params
+      		params.require(:user).permit(:services_attributes => [:name, :time_in_minutes])
     	end
 
     	def get_seconds_from_display(display, gmt)

@@ -1,0 +1,33 @@
+<% content_for :javascripts do %>
+    <%= javascript_include_tag "services" %>
+<% end %>
+
+<% content_for :setting_data do %>
+	<%= form_for(@user, url: {action: "save_services"}) do |user_form| %>
+		<table id="services">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Name</th>
+					<th>Time in minutes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @user.services.each do |service| %>
+					<%= user_form.fields_for :services, service do |service_form| %>
+						<tr>
+							<td><button class='btn btn-danger remove-btn' type="button" onClick="removeService(event)">X</button></td>
+							<td><%= service_form.text_field :name, :required => true %></td>
+							<td><%= service_form.number_field :time_in_minutes, :required => true %></td>
+						</tr>
+					<% end %>
+				<% end %>
+			</tbody>
+		</table>
+
+		<button type="button" class="btn btn-success" onclick="addService()">Add</button>
+		<%= user_form.submit "Submit", class: "btn btn-info" %>	
+	<% end %>
+<% end %>
+
+<%= render template: "settings/settings" %>

@@ -41,3 +41,7 @@ span.buttonText {
   /* Use the Roboto font that is loaded in the <head> */
   font-family: 'Roboto',arial,sans-serif;
 }
+
+.remove-btn{
+  border-radius: 50%;
+}

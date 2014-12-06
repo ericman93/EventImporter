@@ -10,9 +10,11 @@ class User < ActiveRecord::Base
 
 	has_many :requests
 	has_many :work_hours
+	has_many :services
 	has_many :mail_importer, :dependent => :destroy 
 
 	accepts_nested_attributes_for :work_hours
+	accepts_nested_attributes_for :services
 	
 	def events(start_time, end_time)
 		#EventUser.joins(:event)

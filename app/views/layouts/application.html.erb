@@ -39,7 +39,7 @@
       <!-- use 'current' if current_page?(:controller => "users", :action => "show") -->
       <li class="single-link <%= current_page?(about_path) ? 'current' : '' %>"><%= link_to "About", about_path %></li>
       <% if !@current_user.nil? %>
-        <li class="single-link <%= current_page?(settings_path) ? 'current' : '' %>"><%= link_to "Settings", settings_path %></li> 
+        <li class="single-link <%= current_page?(settings_mails_path) ? 'current' : '' %>"><%= link_to "Settings", settings_mails_path %></li> 
         <li class="single-link <%= current_page?(requests_path) ? 'current' : '' %>"><%= link_to "Requests  (...)", requests_path, {:id => "request_count"} %></li>  
       <% end %>
 

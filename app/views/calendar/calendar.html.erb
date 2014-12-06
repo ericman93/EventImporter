@@ -18,7 +18,9 @@
 	        var user_mail = '<%= @user_name %>';
 	        //var is_user_specifed = check_if_user_null(user_mail)
 
-	        load_event_to_calendar(user_mail, true, <%= (@current_user.nil? or @user_name != @current_user.user_name) or @is_local_events %>, <%= @is_local_events %>);
+			// ths client user can easly change thos. 
+			// maybe needed to send to the server the service id, and take from there the duration
+	        load_event_to_calendar(user_mail, true, <%= (@current_user.nil? or @user_name != @current_user.user_name) or @is_local_events %>, <%= @is_local_events %>, <%= !@services.empty? %>);
 
 	        $('.importer').change(function () {
 
@@ -28,13 +30,18 @@
 	    });
 </script>
 
-<% if !((@current_user != nil) and (@user_name == @current_user.user_name)) %>
-	<input type="button" class="btn btn-success calendar-action" value="Next" id="btnShowReuqstInfo" onclick="showRequestUserInfo()" />
-	<% content_for :popup_content do %>
+<div id="request-info">
+	<select class="btn btn-default dropdown-toggle select-space btn-block" id="services">
+		<% @services.each do |service| %>
+			<option value="<%= service.time_in_minutes %>"><%= service.name %></option>
+		<% end %>
+	</select>
+
+	<% if !((@current_user != nil) and (@user_name == @current_user.user_name)) %>
 		<%= render "calendar/request_info.html.erb" %>
+	<% elsif @current_user != nil and @user_name == @current_user.user_name and @is_local_events %>
+		<input type="button" class="btn btn-info calendar-action" value="Save" id="btnSaveLocal" onclick="saveLocalEvents()" />
 	<% end %>
-<% elsif @current_user != nil and @user_name == @current_user.user_name and @is_local_events %>
-	<input type="button" class="btn btn-info calendar-action" value="Save" id="btnSaveLocal" onclick="saveLocalEvents()" />
-<% end %>
+</div>
 
 <div id='calendar'></div>

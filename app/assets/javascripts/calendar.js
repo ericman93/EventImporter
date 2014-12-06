@@ -1,7 +1,7 @@
 var options = []
 var user_email
 
-function load_event_to_calendar(user_name, should_load_events, selectable, namebale) {
+function load_event_to_calendar(user_name, should_load_events, selectable, namebale, has_services) {
     $('#calendar').html('');
 
     user_email = user_name;
@@ -25,7 +25,7 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
         defaultView: 'agendaWeek',
         selectable: selectable,
         selectHelper: selectable,
-        editable: false,
+        disableResizing: has_services,
         eventBorderColor: 'black',
         select: function(start, end, allDay, title) {
             var temp_id = "temp_" + options.length;
@@ -35,10 +35,15 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
                 title = prompt('Event Title:');
             }
             else{
-                title = "Option";
+                title = has_services ? $( "#services option:selected" ).text() : 'Option';
             }
 
             addNewProposal(start, end, allDay, temp_id, title); 
+
+            if(has_services){
+                end = new Date(start);
+                end.setMinutes(end.getMinutes() + Number($('#services').val()))
+            }
 
             cal.fullCalendar('renderEvent',
 					{
@@ -54,6 +59,8 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
 					},
 					selectable // make the event "stick"
 				);
+
+            cal.fullCalendar('unselect');
         },
         loading: function (bool) {
             if (bool) {
@@ -70,7 +77,7 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
         eventRender: function(event, element) {
             updateEvent(event);
             add_button(event.id, 'close', removeProposel)
-        }
+        },
     });
 
     selectWorkTime(time_day, slot_min, 0, 24, true)
@@ -209,7 +216,7 @@ function updateEvent(event){
 }
 
 function addProposalToPopup(proposel){
-    $("#popup_content #proposal_table tbody").append('<tr id="prop_'+proposel.temp_id+'"><td>' + getRemoveButtonTd(proposel.temp_id) + 
+    $("#proposal_table tbody").append('<tr id="prop_'+proposel.temp_id+'"><td>' + getRemoveButtonTd(proposel.temp_id) + 
                                       '</td><td class="start_time">' + date_to_human(proposel.start_time) + 
                                       '</td><td class="end_time">' + date_to_human(proposel.end_time) + '</tr>')
 }
@@ -239,6 +246,7 @@ function changeRequestInputDisable(disable){
     $("#request_mail_input").prop('disabled', disable);
     $("#request_name_input").prop('disabled', disable);
     $("#send_request_btn").prop('disabled', disable);
+    $("#services").prop('disabled', disable);
     $(".remove-prop-btn").prop('disabled', disable);
 }
 
