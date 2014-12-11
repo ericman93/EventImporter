@@ -31,11 +31,13 @@
 </script>
 
 <div id="request-info">
-	<select class="btn btn-default dropdown-toggle select-space btn-block" id="services">
-		<% @services.each do |service| %>
-			<option value="<%= service.time_in_minutes %>"><%= service.name %></option>
-		<% end %>
-	</select>
+	<% if !@services.empty? %>
+		<select class="btn btn-default dropdown-toggle select-space btn-block" id="services">
+			<% @services.each do |service| %>
+				<option value="<%= service.time_in_minutes %>"><%= service.name %></option>
+			<% end %>
+		</select>
+	<% end %>
 
 	<% if !((@current_user != nil) and (@user_name == @current_user.user_name)) %>
 		<%= render "calendar/request_info.html.erb" %>
