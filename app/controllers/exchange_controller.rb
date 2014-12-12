@@ -2,7 +2,7 @@ class ExchangeController < ApplicationController
   	def create
   		user = User.find(@current_user.id)
 		if (user.mail_importer.any?{|importer| importer.specific.is_a? ExchangeImporter})
-			format.html { redirect_to settings_path, notice: 'You already have an excahnge importer' }
+			format.html { redirect_to settings_mails_path, notice: 'You already have an excahnge importer' }
         	format.json { render :settings, status: :bad_request }
 		end
 
@@ -11,7 +11,7 @@ class ExchangeController < ApplicationController
 
 	    respond_to do |format|
 	     	if importer.save
-	        	format.html { redirect_to settings_path, notice: 'Exchange importer was successfully created.' }
+	        	format.html { redirect_to settings_mails_path, notice: 'Exchange importer was successfully created.' }
 	        	format.json { render :settings, status: :ok }
 	      	else
 	        	format.html { render :web_mails }
@@ -24,7 +24,7 @@ class ExchangeController < ApplicationController
  		importer = ExchangeImporter.find(params[:exchange_importer][:id])
  		respond_to do |format|
 	 		if importer.update(importer_params)
-				format.html { redirect_to settings_path, notice: 'Exchange importer was successfully updatetd' }
+				format.html { redirect_to settings_mails_path, notice: 'Exchange importer was successfully updatetd' }
 		        format.json { render :settings, status: :ok }
 		    else
 		      	format.html { render :web_mails }
@@ -37,7 +37,7 @@ class ExchangeController < ApplicationController
  		importer = ExchangeImporter.find(params[:id])
  		importer.destroy
 	    respond_to do |format|
-	      format.html { redirect_to settings_path, notice: 'ExchangeImporter was successfully destroyed.' }
+	      format.html { redirect_to settings_mails_path, notice: 'ExchangeImporter was successfully destroyed.' }
 	      format.json { head :no_content }
 	    end
  	end
