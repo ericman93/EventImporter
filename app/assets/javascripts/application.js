@@ -35,7 +35,7 @@ function set_request_count(){
         url: "/requests/count",
         type: "get",
         success: function(data){
-            $('#request_count').html("Requests ("+data+")")
+            $('#request_count').html(data)
         },
         error:function(data){
             console.log(data)

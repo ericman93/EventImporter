@@ -112,7 +112,8 @@ font-size:0;
 }
 
 #content{
-	padding-top: 30px;
+	/*padding-top: 30px;*/
+	margin-top: 90px;
 }
 
 .require_field{
@@ -124,3 +125,33 @@ font-size:0;
 .alert{
 	text-align: center;
 }
+
+.fa-heart{
+    color: #F74933;
+}   
+.space-100{
+    height: 100px;
+    display: block;
+}
+pre.prettyprint{
+    background-color: #ffffff;
+    border: 1px solid #999;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: left;
+}
+.atv, .str{
+    color: #05AE0E;
+}
+.tag, .pln, .kwd{
+     color: #3472F7;
+}
+.atn{
+  color: #2C93FF;
+}
+.pln{
+   color: #333;
+}
+.com{
+    color: #999;
+} 
