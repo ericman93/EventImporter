@@ -13,7 +13,11 @@ class UsersController < ApplicationController
       @is_local_events = user.mail_importer.any?{|importer| (importer.specific.is_a? LocalImporter)}
     end
 
-    @services = user.services
+    if !user.nil?
+      @services = user.services
+    else
+      @services = []
+    end
 
     render "calendar/calendar"
   end
@@ -28,7 +32,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save;
-        format.html { redirect_to action: :login, controller: :permissions, status: 302 }
+        format.html { redirect_to :root, status: 302 }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }

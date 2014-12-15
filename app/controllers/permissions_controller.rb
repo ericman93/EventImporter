@@ -8,8 +8,10 @@ class PermissionsController < ApplicationController
  	end
 
   	def logout
+  		@user = User.new
 	    session[:current_user] = nil
-	    redirect_to action: :login, status: 302
+	    
+	    redirect_to :root, status: 302
   	end
 
   	def authenticate
@@ -22,5 +24,17 @@ class PermissionsController < ApplicationController
 	        session[:current_user] = User.find_by user_name: user_name
 	        redirect_to controller: :users, action: :calendar, status: 302, username: user_name
 	    end
+  	end
+
+  	def authorize
+  		plaintext_password = params[:password]
+	    user_name = params[:username]
+
+	    authorize = User.authenticate_by_mail(user_name, plaintext_password)
+	    if(authorize)
+	    	session[:current_user] = User.find_by user_name: user_name
+	    end
+
+	    render json: authorize
   	end
 end

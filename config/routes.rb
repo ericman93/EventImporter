@@ -1,7 +1,10 @@
 Calendar::Application.routes.draw do
+  root :to => 'users#calendar', :username => ''
+
   # Auth
   post '/authenticate', to: 'permissions#authenticate'
-  get '/login', to: 'permissions#login', :as => :login
+  post '/authorize', to: 'permissions#authorize'
+  #get '/login', to: 'permissions#login', :as => :login
   get '/logout', to: 'permissions#logout', :as => :logout
 
   # Settings
