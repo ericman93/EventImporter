@@ -1,0 +1,46 @@
+  <div class="modal fade login" id="loginModal">
+            <div class="modal-dialog login animated">
+                <div class="modal-content">
+                      <div class="modal-body">  
+                          <div class="box">
+                               <div class="content">
+                                  <div class="error"></div>
+                                  <div class="form loginBox">
+                                      <%= form_tag({action: "authorize", controller: "permissions"}) do %>
+                                        <input id="username" class="form-control" type="text" placeholder="Email" name="username">
+                                        <input id="password" class="form-control" type="password" placeholder="Password" name="password">
+                                        <input class="btn btn-default btn-login" type="button" value="Login" onclick="loginAjax()">
+                                      <% end %>
+                                  </div>
+                               </div>
+                          </div>
+                          <div class="box">
+                              <div class="content registerBox" style="display:none;">
+                               <div class="form">
+                                  <%= form_for(@user) do |f| %>
+                                    <%= f.text_field :first_name, :class => "input form-control", :placeholder => "First name", :required => true %>       
+                                    <%= f.text_field :last_name, :class => "input form-control", :placeholder => "Last name", :required => true %>       
+                                    <%= f.text_field :user_name, :class => "input form-control", :placeholder => "Username" ,:required => true, :pattern => '[^-\s]*', :title => 'Spaces are not allowed' %>       
+                                    <%= f.email_field :email, :class => "input form-control", :placeholder => "Email", :required => true %>
+                                    <%= f.password_field :password, :class => "input form-control", :placeholder => "Password", :required => true %>  
+
+                                    <%= f.submit 'Register', :class => 'btn btn-default btn-register' %>
+                                <% end %>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <div class="forgot login-footer">
+                              <span>Looking to 
+                                   <a href="javascript: showRegisterForm();">create an account</a>
+                              ?</span>
+                          </div>
+                          <div class="forgot register-footer" style="display:none">
+                               <span>Already have an account?</span>
+                               <a href="javascript: showLoginForm();">Login</a>
+                          </div>
+                      </div>        
+                </div>
+            </div>
+  </div>
