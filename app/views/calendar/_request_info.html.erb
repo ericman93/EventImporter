@@ -1,33 +1,28 @@
-<div id="temp_events">
-	<form action="javascript:void(0);" onsubmit="sendToServer()">
-		<table>
-			<tr>
-				<td><input id="event_subject_input" type="text" class="form-control" placeholder="Subjcet" required></td>
-				<td class="require_field">*</td>
-			</tr>
-			<tr>
-				<td><input id="event_location_input" type="text" class="form-control" placeholder="Location"></td>
-			</tr>
-			<tr>
-				<td><input id="request_mail_input" type="email" class="form-control" placeholder="Mail" required></td>
-				<td class="require_field">*</td>
-			</tr>
-			<tr>
-				<td><input id="request_name_input" type="text" class="form-control" placeholder="Name" required></td>
-				<td class="require_field">*</td>
-			</tr>
-		</table>
+  <div class="modal fade login" id="requestInfoModal">
+            <div class="modal-dialog requestInfo animated">
+                <div class="modal-content">
+                  	<div class="modal-body">  
+                      	<div class="box">
+							<div id="temp_events" class='requestInfoBox form'>
+								<form action="javascript:void(0);" onsubmit="saveRequestInfoData()">
+									<input id="event_subject_input" type="text" class="input form-control" placeholder="Subjcet" required>
+									<input id="event_location_input" type="text" class="input form-control" placeholder="Location">
+									<input id="request_mail_input" type="email" class="input form-control" placeholder="Mail" required>
+									<input id="request_name_input" type="text" class="input form-control" placeholder="Name" required>
 
-		<div id="proposals">
-			<table id="proposal_table" class="table">
-				<tbody></tbody>
-			</table>
+								<div id="proposals">
+									<table id="proposal_table" class="table">
+									<tbody></tbody>
+									</table>
+								</div>
+
+								<button type="submit" class="btn btn-default btn-login" >	 
+									Continue
+								</button>
+							</from>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-
-		<button type="submit" class="btn btn-success btn-block" id="send_request_btn">	
-			 <span class="glyphicon glyphicon-send"></span> &nbsp Send
-		</button>
-
-		<br><br>
-	</from>
 </div>

@@ -40,7 +40,10 @@
 	<% end %>
 
 	<% if !((@current_user != nil) and (@user_name == @current_user.user_name)) %>
-		<%= render "calendar/request_info.html.erb" %>
+		<%= render "calendar/request_info" %>
+		<button id="sendRequest" onclick="sendToServer()" class="btn btn-success"> 
+			Send
+		</button>
 	<% elsif @current_user != nil and @user_name == @current_user.user_name and @is_local_events %>
 		<input type="button" class="btn btn-info calendar-action" value="Save" id="btnSaveLocal" onclick="saveLocalEvents()" />
 	<% end %>

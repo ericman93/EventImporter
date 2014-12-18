@@ -1,5 +1,6 @@
 var options = []
 var user_email
+var request_info_data = {};
 
 function load_event_to_calendar(user_name, should_load_events, selectable, namebale, has_services) {
     $('#calendar').html('');
@@ -83,6 +84,8 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
     selectWorkTime(time_day, slot_min, 0, 24, true)
 
     setEmailInputs();
+
+    showRequestInfoWindow();
 }
 
 function showRequestUserInfo(){
@@ -123,13 +126,14 @@ function sendToServer(){
         return;
     }
 
-    changeRequestInputDisable(true)
+    popupLoading();
+    //changeRequestInputDisable(true)
     data = {
         proposals: options,
-        request_info : { 'mail' : $('#request_mail_input').val(),
-                         'name' : $('#request_name_input').val() },
-        event_metadata : {'subject' : $('#event_subject_input').val(),
-                           'location' : $('#event_location_input').val()},
+        request_info : { 'mail' : request_info_data.mail,
+                         'name' : request_info_data.name },
+        event_metadata : {'subject' : request_info_data.subject,
+                           'location' : request_info_data.location},
         user_name: user_email,
         gmt_offset: get_gmt_offset()
     }
@@ -152,9 +156,10 @@ function sendToServer(){
         $("#proposal_table tbody").empty();
         
         addAlert('Request was sent successfuly ;)', 'alert-success')
-        clearRequestedForm();
-
-        changeRequestInputDisable(false)  
+        
+        closeloading();
+        //clearRequestedForm();
+        //changeRequestInputDisable(false)  
     })
     .fail(function (data) {
         var error_text = ""
@@ -172,7 +177,8 @@ function sendToServer(){
         addAlert(error_text, 'alert-danger')
         console.log(data);
 
-        changeRequestInputDisable(false)  
+        closeloading();
+        //changeRequestInputDisable(false)  
     })
 }
 
@@ -286,4 +292,19 @@ function saveLocalEvents(){
    .fail(function (data) {
         disablePopup();
    })
+}
+
+function showRequestInfoWindow(){
+    $('#requestInfoModal').modal('show'); 
+}
+
+function saveRequestInfoData(){
+    request_info_data = {
+        mail : $('#request_mail_input').val(),
+        name: $('#request_name_input').val(),
+        subject: $('#event_subject_input').val(),
+        location: $('#event_location_input').val()
+    }
+
+    $('#requestInfoModal').modal('hide');
 }
