@@ -64,3 +64,11 @@ function get_partial_data(url, content_to, http_method, callback){
         }
     });
 }
+
+function popupLoading() {
+    $('#loadingModal').modal('show'); 
+}
+
+function closeloading() {
+    $('#loadingModal').modal('hide'); 
+}

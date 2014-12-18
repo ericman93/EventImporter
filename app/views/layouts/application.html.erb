@@ -33,12 +33,10 @@
           <%= yield :popup_content %>
         </div>
     </div>
-    <div id="loadingPopup" class="center_popup">
-      <h1>Loading</h1>
-    </div>
     <div id="backgroundPopup"></div>
 </div>
 
+<%= render "layouts/loading" %>
 <%= render "layouts/navbar" %>
 
 <% if @current_user.nil? %>

@@ -67,7 +67,8 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
             if (bool) {
                 popupLoading();
             } else {
-                disablePopup();
+                closeloading();
+                showRequestInfoWindow();
             }
         },
         eventClick: function(event){
@@ -84,8 +85,6 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
     selectWorkTime(time_day, slot_min, 0, 24, true)
 
     setEmailInputs();
-
-    showRequestInfoWindow();
 }
 
 function showRequestUserInfo(){

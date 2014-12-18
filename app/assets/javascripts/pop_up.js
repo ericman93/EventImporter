@@ -8,16 +8,6 @@
     });
 });
 
-function popupLoading() {
-    popupStatus = 1;
-    $("#loadingPopup").fadeIn(0500);
-    showBackground();
-}
-function closeloading() {
-    $("#loadingPopup").fadeOut('normal');
-    $("#backgroundPopup").fadeOut("normal");
-}
-
 var popupStatus = 0; // set value
 
 function loadPopup() {
