@@ -1,5 +1,5 @@
 Calendar::Application.routes.draw do
-  root :to => 'users#calendar', :username => ''
+  root :to => 'about#home'
 
   # Auth
   post '/authenticate', to: 'permissions#authenticate'

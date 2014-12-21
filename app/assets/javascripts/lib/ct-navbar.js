@@ -31,22 +31,22 @@ $(document).ready(function(){
     }
 });
 
-//$(document).scroll(function() {
-//   if(hasTransparent){
-//        if( $(this).scrollTop() > pageScrollFrom) {
-//            if(transparent) {
-//                transparent = false;
-//                $('nav[role="navigation"]').removeClass('navbar-transparent');
-//            }
-//        } 
-//        else {
-//            if( !transparent ) {
-//                transparent = true;
-//                $('nav[role="navigation"]').addClass('navbar-transparent');
-//            }
-//        }
-//    }
-//});
+$(document).scroll(function() {
+   if(hasTransparent && pageScrollFrom != 0){
+        if( $(this).scrollTop() > pageScrollFrom) {
+            if(transparent) {
+                transparent = false;
+                $('nav[role="navigation"]').removeClass('navbar-transparent');
+            }
+        } 
+        else {
+            if( !transparent ) {
+                transparent = true;
+                $('nav[role="navigation"]').addClass('navbar-transparent');
+            }
+        }
+    }
+});
 
 function showScroll(){
     $('nav[role="navigation"]').removeClass('navbar-transparent');

@@ -7,7 +7,7 @@
                                   <div class="error"></div>
                                   <div class="form loginBox">
                                       <%= form_tag({action: "authorize", controller: "permissions"}) do %>
-                                        <input id="username" class="form-control" type="text" placeholder="Email" name="username">
+                                        <input id="username" class="form-control" type="text" placeholder="Username" name="username">
                                         <input id="password" class="form-control" type="password" placeholder="Password" name="password">
                                         <input class="btn btn-default btn-login" type="button" value="Login" onclick="loginAjax()">
                                       <% end %>

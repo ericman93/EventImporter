@@ -16,4 +16,7 @@ class AboutController < ApplicationController
 
   	@staff = [eric, gadi]
   end
+
+  def home
+  end
 end
