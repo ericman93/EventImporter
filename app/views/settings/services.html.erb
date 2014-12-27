@@ -17,8 +17,8 @@
 					<%= user_form.fields_for :services, service do |service_form| %>
 						<tr>
 							<td><button class='btn btn-danger remove-btn' type="button" onClick="removeService(event)">X</button></td>
-							<td><%= service_form.text_field :name, :required => true %></td>
-							<td><%= service_form.number_field :time_in_minutes, :required => true %></td>
+							<td><%= service_form.text_field :name, :required => true, :class => 'form-control' %></td>
+							<td><%= service_form.number_field :time_in_minutes, :required => true, :class => 'form-control' %></td>
 						</tr>
 					<% end %>
 				<% end %>

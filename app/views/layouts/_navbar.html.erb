@@ -16,6 +16,12 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
+              <li>
+                    <a href="<%= url_for(about_path) %>">
+                        <i class="pe-7s-id"></i>
+                        <p>About</p>
+                    </a>
+                  </li>
                     <% if !@current_user.nil? %>
                       <li>
                         <a href="\<%= @current_user.user_name %>" >

@@ -45,3 +45,9 @@ span.buttonText {
 .remove-btn{
   border-radius: 50%;
 }
+
+#desc-input{
+  resize: none;
+  height: 75px;
+  width: 50%;
+}

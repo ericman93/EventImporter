@@ -2,6 +2,13 @@ var options = []
 var user_email
 var request_info_data = {};
 
+$(document).ready(function() {
+    $(window).resize(function() {
+        $('#calendar').fullCalendar('option', 'height', getCalendarHeight());
+    });
+});
+
+
 function load_event_to_calendar(user_name, should_load_events, selectable, namebale, has_services) {
     $('#calendar').html('');
 
@@ -18,11 +25,12 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
             right: 'month,agendaWeek,agendaDay'
         },
         //minTime: 5,
+        height: getCalendarHeight(),
         firstHour: 9,
         //theme: true,
         allDaySlot: false,
         handleWindowResize: true,
-        aspectRatio: 2,
+        //aspectRatio: 2,
         hiddenDays: getHolidays(time_day),
         slotMinutes: slot_min,
         events: should_load_events ? "/events/"+user_name : [],
@@ -312,4 +320,8 @@ function saveRequestInfoData(){
     }
 
     $('#requestInfoModal').modal('hide');
+}
+
+function getCalendarHeight(){
+    return ($(window).height() * 0.85);
 }

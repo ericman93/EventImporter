@@ -12,13 +12,15 @@ function addService(){
 	var $serviceName = $('<input/>',{
 		id: 'user_services_attributes_'+servicesCount+'_name',
 		name: 'user[services_attributes]['+servicesCount+'][name]',
-		required: 'required'
+		required: 'required',
+		class: 'form-control',
 	})
 	var $serviceDuration = $('<input/>',{
 		id: 'user_services_attributes_'+servicesCount+'_time_in_minutes',
 		name: 'user[services_attributes]['+servicesCount+'][time_in_minutes]',
 		type: 'number',
-		required: 'required'
+		required: 'required',
+		class: 'form-control',
 	})
 
 	var $service = $('<tr/>')

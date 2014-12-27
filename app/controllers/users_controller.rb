@@ -4,19 +4,12 @@ class UsersController < ApplicationController
   #protect_from_forgery with: :null_session
   # user before_filter for functions that need autorization
 
-  def calendar
-    @user_name = params[:username]
-    user = User.where("user_name = ?",@user_name).first
+  def calendar    
+    @user = User.where("user_name = ?",params[:username]).first
     
     @is_local_events = false
-    if !@current_user.nil? && @user_name == @current_user.user_name
-      @is_local_events = user.mail_importer.any?{|importer| (importer.specific.is_a? LocalImporter)}
-    end
-
-    if !user.nil?
-      @services = user.services
-    else
-      @services = []
+    if !@current_user.nil? && params[:username] == @current_user.user_name
+      @is_local_events = @user.mail_importer.any?{|importer| (importer.specific.is_a? LocalImporter)}
     end
 
     render "calendar/calendar"

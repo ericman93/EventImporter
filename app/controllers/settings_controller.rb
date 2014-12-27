@@ -1,6 +1,7 @@
 class SettingsController < ApplicationController
 	before_action :has_user_session?
-	before_action :set_user, only: [:save_work_hours,:save_services, :work_hours, :web_mails, :logout_gmail, :services]
+	#before_action :set_user, only: [:save_work_hours,:save_services, :work_hours, :web_mails, :logout_gmail, :services, :user_settings]
+  before_action :set_user, except: [:settings]
 
 	def settings
 	end
@@ -14,82 +15,109 @@ class SettingsController < ApplicationController
 	def web_mails
 	end
 
-  	def save_work_hours
-	    gmt_offset = params[:gmt].to_i
+	def save_work_hours
+    gmt_offset = params[:gmt].to_i
 
-    	respond_to do |format|
-	     	if @user.update(work_hours_params(gmt_offset))
-	        	format.html { redirect_to :settings_hours, notice: 'Your work hours was successfully updated.' }
-	        	format.json { render :work_hours, status: :ok }
-	      	else
-	        	format.html { render :work_hours }
-	        	format.json { render json: @user.errors, status: :unprocessable_entity }
-	      	end
-    	end
-  	end
-
-  	def save_services
-  		result = true
-
-  		Service.transaction do
-  			result &= @user.services.destroy_all
-  			result &= @user.update(services_params)
-
-  			raise ActiveRecord::Rollback unless result
-  		end
-
-  		respond_to do |format|
-	     	if result
-	        	format.html { redirect_to :settings_services, notice: 'Your services was successfully updated.' }
-	        	format.json { render :services, status: :ok }
-	      	else
-	        	format.html { render :services }
-	        	format.json { render json: @user.errors, status: :unprocessable_entity }
-	      	end
+  	respond_to do |format|
+     	if @user.update(work_hours_params(gmt_offset))
+        	format.html { redirect_to :settings_hours, notice: 'Your work hours was successfully updated.' }
+        	format.json { render :work_hours, status: :ok }
+      	else
+        	format.html { render :work_hours }
+        	format.json { render json: @user.errors, status: :unprocessable_entity }
       	end
   	end
+	end
 
-  	def logout_gmail
-  		gmail = @user.mail_importer.select{|importer| importer.specific.is_a? GmailImporter}.first
-  		if(!gmail.nil?)
-  			gmail.destroy
-  		end
+	def save_services
+		result = true
 
-  		respond_to do |format|
-	      format.html { redirect_to :settings , notice: 'You have been successfully logout from gmail.' }
-	      format.json { head :no_content }
-	    end
+		Service.transaction do
+			result &= @user.services.destroy_all
+			result &= @user.update(services_params)
+
+			raise ActiveRecord::Rollback unless result
+		end
+
+		respond_to do |format|
+     	if result
+        	format.html { redirect_to :settings_services, notice: 'Your services was successfully updated.' }
+        	format.json { render :services, status: :ok }
+      	else
+        	format.html { render :services }
+        	format.json { render json: @user.errors, status: :unprocessable_entity }
+      	end
+    	end
+	end
+
+	def logout_gmail
+		gmail = @user.mail_importer.select{|importer| importer.specific.is_a? GmailImporter}.first
+		if(!gmail.nil?)
+			gmail.destroy
+		end
+
+		respond_to do |format|
+      format.html { redirect_to :settings , notice: 'You have been successfully logout from gmail.' }
+      format.json { head :no_content }
+    end
+	end
+
+  def user_settings
+  end
+
+  def upload_pictute
+    uploaded_io = params[:user][:picture]
+    if(!uploaded_io.nil?)
+      picture_path = Rails.root.join('public', 'user_photos', "#{@user.user_name}.jpg") #uploaded_io.original_filename
+      File.open(picture_path, 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+
+      @user.picture_path = picture_path.to_s
+    end
+
+    @user.desc = params[:user][:desc]
+
+    respond_to do |format|
+      if(@user.save)
+        format.html { redirect_to :settings_user, notice: 'Your picture was successfully updated.' }
+        format.json { render :services, status: :ok }
+      else
+        format.html { render :user_settings }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+	private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(@current_user.id)
+    end
+
+    def work_hours_params(gmt)
+    		work_hours = params.require(:user).permit(:work_hours_attributes => [:id, :start_at, :end_at])
+
+    		# from HH:mm to seconds after midnight in UTC
+    		work_hours[:work_hours_attributes].each do |id, work_hour|
+			  work_hour['start_at'] = get_seconds_from_display(work_hour['start_at'], gmt)
+			  work_hour['end_at'] = get_seconds_from_display(work_hour['end_at'], gmt)
+    		end
+
+    		return work_hours
   	end
 
-  	private
-	    # Use callbacks to share common setup or constraints between actions.
-	    def set_user
-	      @user = User.find(@current_user.id)
-	    end
+  	def services_params
+    		params.require(:user).permit(:services_attributes => [:name, :time_in_minutes])
+  	end
 
-	    def work_hours_params(gmt)
-      		work_hours = params.require(:user).permit(:work_hours_attributes => [:id, :start_at, :end_at])
-
-      		# from HH:mm to seconds after midnight in UTC
-      		work_hours[:work_hours_attributes].each do |id, work_hour|
-				work_hour['start_at'] = get_seconds_from_display(work_hour['start_at'], gmt)
-				work_hour['end_at'] = get_seconds_from_display(work_hour['end_at'], gmt)
-      		end
-
-      		return work_hours
-    	end
-
-    	def services_params
-      		params.require(:user).permit(:services_attributes => [:name, :time_in_minutes])
-    	end
-
-    	def get_seconds_from_display(display, gmt)
-    		if display.nil?
-    			# vication
-    			return -(gmt*3600)
-    		else
-    			splited = display.split(':')
-    			return (splited[0].to_i*3600) + (splited[1].to_i*60) - (gmt*3600)
-    		end
-    	end
+  	def get_seconds_from_display(display, gmt)
+  		if display.nil?
+  			# vication
+  			return -(gmt*3600)
+  		else
+  			splited = display.split(':')
+  			return (splited[0].to_i*3600) + (splited[1].to_i*60) - (gmt*3600)
+  		end
+  	end
 end
