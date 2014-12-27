@@ -23,6 +23,15 @@
   <%= yield :javascripts %>
   
   <%= csrf_meta_tags %>
+
+  <script>
+    $(function () {
+      var show_login = <%= params[:show_login] || false  %>;
+      if(show_login == true){
+        openLoginModal();
+      }
+    });
+  </script>
 </head>
 <body>
 

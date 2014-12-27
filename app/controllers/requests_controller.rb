@@ -78,7 +78,8 @@ class RequestsController < ApplicationController
 			request = Request.find(request_id)
 
 			if(request.user.id != @current_user.id)
-				redirect_to action: :login, controller: :permissions, status: 302
+				redirect_to controller: :users, action: :calendar, status: 302, username: @current_user.user_name
+				#redirect_to action: :login, controller: :permissions, status: 302
 			end
 		end
 end

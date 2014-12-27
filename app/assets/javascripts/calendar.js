@@ -20,6 +20,9 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
         //minTime: 5,
         firstHour: 9,
         //theme: true,
+        allDaySlot: false,
+        handleWindowResize: true,
+        aspectRatio: 2,
         hiddenDays: getHolidays(time_day),
         slotMinutes: slot_min,
         events: should_load_events ? "/events/"+user_name : [],
@@ -28,6 +31,9 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
         selectHelper: selectable,
         disableResizing: has_services,
         eventBorderColor: 'black',
+        dayRender: function (date, cell) {
+          console.log('test')
+        },
         select: function(start, end, allDay, title) {
             var temp_id = "temp_" + options.length;
 
@@ -79,7 +85,7 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
         eventRender: function(event, element) {
             updateEvent(event);
             add_button(event.id, 'close', removeProposel)
-        },
+        }
     });
 
     selectWorkTime(time_day, slot_min, 0, 24, true)

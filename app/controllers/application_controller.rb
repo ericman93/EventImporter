@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
 	def has_user_session?
 		if session[:current_user].nil?
-			redirect_to action: :login, controller: :permissions, status: 302
+			redirect_to :controller => 'about', :action => 'home', show_login: true
 		end
 	end
 
