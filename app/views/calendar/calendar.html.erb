@@ -15,12 +15,12 @@
 
 <script>
 	$(document).ready(function () {
-	        var user_mail = '<%= @user.user_name %>';
+	        var user_mail = '<%= @calendar_user.user_name %>';
 	        //var is_user_specifed = check_if_user_null(user_mail)
 
 			// ths client user can easly change thos. 
 			// maybe needed to send to the server the service id, and take from there the duration
-	        load_event_to_calendar(user_mail, true, <%= (@current_user.nil? or @user.user_name != @current_user.user_name) or @is_local_events %>, <%= @is_local_events %>, <%= !@user.services.empty? %>);
+	        load_event_to_calendar(user_mail, true, <%= (@current_user.nil? or @calendar_user.user_name != @current_user.user_name) or @is_local_events %>, <%= @is_local_events %>, <%= !@calendar_user.services.empty? %>);
 
 	        $('.importer').change(function () {
 
@@ -31,20 +31,20 @@
 </script>
 
 <div id="request-info">
-	<% if !@user.services.empty? %>
+	<% if !@calendar_user.services.empty? %>
 		<select class="btn btn-default dropdown-toggle select-space btn-block" id="services">
-			<% @user.services.each do |service| %>
+			<% @calendar_user.services.each do |service| %>
 				<option value="<%= service.time_in_minutes %>"><%= service.name %></option>
 			<% end %>
 		</select>
 	<% end %>
 
-	<% if !((@current_user != nil) and (@user.user_name == @current_user.user_name)) %>
+	<% if !((@current_user != nil) and (@calendar_user.user_name == @current_user.user_name)) %>
 		<%= render "calendar/request_info" %>
 		<div id="sendRequest" onclick="sendToServer()" class=" ui-widget-content"s>
         	<img src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/bt_speed_dial_2x.png">
     	</div>
-	<% elsif @current_user != nil and @user.user_name == @current_user.user_name and @is_local_events %>
+	<% elsif @current_user != nil and @calendar_user.user_name == @current_user.user_name and @is_local_events %>
 		<input type="button" class="btn btn-info calendar-action" value="Save" id="btnSaveLocal" onclick="saveLocalEvents()" />
 	<% end %>
 </div>
@@ -53,10 +53,10 @@
 <div id='side'>
 	<div id="user-info">
 		<center>
-			<h6><%= "#{@user.first_name} #{@user.last_name}" %></h6>
-			<img id="user-picture" src="user_photos/<%= @user.user_name %>.jpg"></img>
+			<h6><%= "#{@calendar_user.first_name} #{@calendar_user.last_name}" %></h6>
+			<img id="user-picture" src="user_photos/<%= @calendar_user.user_name %>.jpg"></img>
 			<p>
-				<%= @user.desc %>
+				<%= @calendar_user.desc %>
 			</p>
 		</center>
 	</div>
