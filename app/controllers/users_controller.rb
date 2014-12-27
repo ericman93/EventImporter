@@ -5,11 +5,11 @@ class UsersController < ApplicationController
   # user before_filter for functions that need autorization
 
   def calendar    
-    @user = User.where("user_name = ?",params[:username]).first
+    @calendar_user = User.where("user_name = ?",params[:username]).first
     
     @is_local_events = false
     if !@current_user.nil? && params[:username] == @current_user.user_name
-      @is_local_events = @user.mail_importer.any?{|importer| (importer.specific.is_a? LocalImporter)}
+      @is_local_events = @calendar_user.mail_importer.any?{|importer| (importer.specific.is_a? LocalImporter)}
     end
 
     render "calendar/calendar"
