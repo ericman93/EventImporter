@@ -1,10 +1,94 @@
+<% content_for :stylesheets do %>
+	<%= stylesheet_link_tag "homepage/skel-noscript" %>
+	<%= stylesheet_link_tag "homepage/style" %>
+	<%= stylesheet_link_tag "homepage/style-desktop" %>
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet" />
+<% end %>
 <script>
-	pageScrollFrom = 260;
+	//pageScrollFrom = 260;
 </script>
 
-<div class="main">
-	<% (0..100).to_a.each do |i| %>
-		Hello
-		<br>
-	<% end %>
-</div>
+<div id="header-wrapper" class="main">
+		
+        	<div id="header" class="container">
+            
+            	<div id="logo">
+            		<h1>
+            			<a href="#">
+            				<%= image_tag 'logo_white.png', style: "vertical-align:right", height: "70", width: "90" %>
+        				</a>
+    				</h1>
+            	</div>
+                <nav id="nav">
+                    <ul>
+
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <% if @current_user.nil? %>
+                  			<li><a href="javascript:void(0)" onclick="openLoginModal();">Login</a></li>
+                  			<li><a href="javascript:void(0)" onclick="openRegisterModal();">Sign up</a></li>
+              			<% else %>
+              				<li><a href="\<%= @current_user.user_name %>">Calendar</a></li>
+                  		<% end %>
+                    </ul>
+                </nav>
+                
+            </div>
+			
+			<div id="banner">
+				<div class="container">
+					<div class="row">
+						<section class="12u">
+							<header>
+								<h2>It's Time for Simple Scheduling</h2>
+								<span class="byline">Stop wasting time on endless chain of mails and calls to schedule a meeting. Free your time to customer and friends, let them schedule with you wihtout the hassle.</span>
+							<!--</header> -->
+                            <!-- <a href="#" class="button button-alt">Read More</a> -->
+                            <span class="search"> Scheddy with someone now: </span>
+                            <input type=search results=0 placeholder=" Search..." name=s style="cursor:pointer;border-radius:5px">
+                        </header>
+						</section>
+					</div>
+				</div>
+			</div>			
+
+
+
+		</div>
+		<!-- Header Ends Here -->
+
+		<!-- Featured Area -->
+			<div id="featured-wrapper">
+			
+				<div class="container">
+					<div class="row double">
+					
+                        <section class="4u">
+                           <header>
+	                           <h2>Multi optional proposals</h2>
+                           </header>
+                            <span class="pennant"><span class="fa fa-group"></span></span>
+                            <p>Let your friends, collegeus and customers to suggest few options for a meeting, choose just the one that works for you. </p>
+                            <a href="#" class="button button-style1">Read More</a>
+                        </section>
+                        <section class="4u">
+                            <header>
+	                            <h2>Free your time</h2>
+                            </header>
+                            <span class="pennant"><span class="fa fa-clock-o"></span></span>
+                            <p>Free your time for customers and projects. Let your customers setup a meeting or appoitment whenever they want.</p>
+                            <a href="#" class="button button-style1">Read More</a>
+                        </section>
+                        <section class="4u">
+                            <header>
+	                            <h2>Connect all your claendars</h2>
+                            </header>
+                            <span class="pennant"><span class="fa fa-calendar"></span></span>
+                            <p>All your calendars synced into one place and show your overall availability. No need to check all your calendars before accepting a meeting.</p>
+                            <a href="#" class="button button-style1">Read More</a>
+                        </section>
+					
+					</div>
+				</div>
+				
+			</div>

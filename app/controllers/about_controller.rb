@@ -18,5 +18,7 @@ class AboutController < ApplicationController
   end
 
   def home
+    #@show_login = params[:show_login]
+    #params[:show_login] = nil
   end
 end

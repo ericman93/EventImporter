@@ -47,11 +47,8 @@
 
 <%= render "layouts/loading" %>
 
-<%= render "layouts/navbar" %>
-<% if current_page?(root_path) %>
-  <div class="blurred-container">
-      <div class="img-src" style="background-image: url(<%= image_path('bg.jpg') %>)"></div>
-  </div>
+<% unless current_page?(root_path) %>
+  <%= render "layouts/navbar" %>
 <% end %>
 
 <% if @current_user.nil? %>
