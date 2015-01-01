@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 
     user = User.where({user_name: user_name}).first
 
-    other_user = (@current_user.nil? or @current_user.user_name != user_name)
+    other_user = @current_username != user_name
     events = user.events(start_time, end_time).sort{|x,y| x.start_time <=> y.start_time}
     
     if other_user

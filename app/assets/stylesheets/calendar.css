@@ -92,3 +92,12 @@
     height: 50px;
     position: fixed;
 }
+
+#user-not-found{
+    text-align: center;
+    font-size: 150%;
+}
+
+#user-not-found-name{
+    font-weight: bold;
+}

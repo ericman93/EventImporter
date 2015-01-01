@@ -1,15 +1,15 @@
 class PermissionsController < ApplicationController
-  	def login
-	    if !@current_user.nil?
-	       redirect_to @current_user
-	    else
-	      render :login
-	    end
- 	end
+  	#def login
+	#    if !@current_userid.nil?
+	#       redirect_to @current_userid
+	#    else
+	#      render :login
+	#    end
+ 	#end
 
   	def logout
   		@user = User.new
-	    session[:current_user] = nil
+	    session[:current_username] = nil
 	    
 	    redirect_to :root, status: 302
   	end
@@ -21,7 +21,9 @@ class PermissionsController < ApplicationController
 	    if(!User.authenticate_by_mail(user_name, plaintext_password))
 	        redirect_to action: :login, status: 302
 	    else
-	        session[:current_user] = User.find_by user_name: user_name
+	        user = User.find_by user_name: user_name
+	        session[:current_username] = user.user_name
+	        session[:current_userid] = user.id 
 	        redirect_to controller: :users, action: :calendar, status: 302, username: user_name
 	    end
   	end
@@ -32,7 +34,9 @@ class PermissionsController < ApplicationController
 
 	    authorize = User.authenticate_by_mail(user_name, plaintext_password)
 	    if(authorize)
-	    	session[:current_user] = User.find_by user_name: user_name
+	    	user = User.find_by user_name: user_name
+	    	session[:current_username] = user.user_name
+	        session[:current_userid] = user.id 
 	    end
 
 	    render json: authorize

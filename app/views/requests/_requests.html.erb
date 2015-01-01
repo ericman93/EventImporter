@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 <script>
-	var user_name = "<%= @current_user.user_name %>"
+	var user_name = "<%= @current_username %>"
 	var requests = <%= @requests.to_json({:include => :request_proposals}).html_safe %>;
 </script>
 

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @calendar_user = User.where("user_name = ?",params[:username]).first
     
     @is_local_events = false
-    if !@current_user.nil? && params[:username] == @current_user.user_name
+    if params[:username] == @current_username
       @is_local_events = @calendar_user.mail_importer.any?{|importer| (importer.specific.is_a? LocalImporter)}
     end
 

@@ -22,9 +22,9 @@
                         <p>About</p>
                     </a>
                   </li>
-                    <% if !@current_user.nil? %>
+                    <% if !@current_username.nil? %>
                       <li>
-                        <a href="\<%= @current_user.user_name %>" >
+                        <a href="\<%= @current_username %>" >
                             <i class="pe-7s-date"></i>
                             <p>Calendar</p>
                         </a>
@@ -51,7 +51,7 @@
                         <p>Account</p>
               </a>
               <ul class="dropdown-menu">
-                <% if !@current_user.nil? %>
+                <% if !@current_username.nil? %>
                   <li><a href="<%= url_for(logout_path) %>">Logout</a></li>
                 <% else %>
                   <li><a href="javascript:void(0)" onclick="openLoginModal();">Login</a></li>

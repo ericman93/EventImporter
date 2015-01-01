@@ -4,7 +4,7 @@
 
 <% content_for :setting_data do %>
 	<h1>Gmail</h1>
-	<% if(@user.mail_importer.all?{|importer| !(importer.specific.is_a? GmailImporter)}) %>
+	<% if(@current_full_user.mail_importer.all?{|importer| !(importer.specific.is_a? GmailImporter)}) %>
 		<%= link_to "Add Gmail Account", "/auth/google_oauth2", :target => "_blank" %>
 	<% else %>
 		<%#= link_to "Signout from Gmail", "/settings/logout" %>
@@ -12,7 +12,7 @@
 	<% end %>
 
 	<h1>Local</h1>
-	<% if(@user.mail_importer.all?{|importer| !(importer.specific.is_a? LocalImporter)}) %>
+	<% if(@current_full_user.mail_importer.all?{|importer| !(importer.specific.is_a? LocalImporter)}) %>
 		<%= link_to "Create local account", {:controller => :local_events, :action => :create}, {:method => :post} %>
 	<% else %>
 		<%#= link_to "Signout from Gmail", "/settings/logout" %>
@@ -20,10 +20,10 @@
 	<% end %>
 
 	<h1>Exchange</h1>
-	<% if(@user.mail_importer.all?{|importer| !(importer.specific.is_a? ExchangeImporter)}) %>
+	<% if(@current_full_user.mail_importer.all?{|importer| !(importer.specific.is_a? ExchangeImporter)}) %>
 		<%= render partial:'exchange', locals: { importer: ExchangeImporter.new } %> 
 	<% else %>
-		<% importer = @user.mail_importer.select{|importer| (importer.specific.is_a? ExchangeImporter)}.first.specific %>
+		<% importer = @current_full_user.mail_importer.select{|importer| (importer.specific.is_a? ExchangeImporter)}.first.specific %>
 		<%= render partial:'exchange', locals: { importer: importer } %> 
 		<%= link_to 'Destroy', importer, method: :delete, data: { confirm: 'Are you sure?' }, id: importer.id %>
 	<% end %>

@@ -17,11 +17,11 @@
 		<%= notice %>
 	</p>
 
-	<%= form_for(@user, url: {action: "save_work_hours"}) do |user_from| %>
+	<%= form_for(@current_full_user, url: {action: "save_work_hours"}) do |user_from| %>
 
 		<input type="hidden" id="gmt_offset" name="gmt" value="0" />
 
-		<% @user.work_hours.sort{|x,y| x.id <=> y.id}.each do |work_hour| %>
+		<% @current_full_user.work_hours.sort{|x,y| x.id <=> y.id}.each do |work_hour| %>
 			<table>
 				<tr>
 					<th>Day</th>

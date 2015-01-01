@@ -1,7 +1,7 @@
 class SettingsController < ApplicationController
 	before_action :has_user_session?
 	#before_action :set_user, only: [:save_work_hours,:save_services, :work_hours, :web_mails, :logout_gmail, :services, :user_settings]
-  before_action :set_user, except: [:settings]
+  before_action :set_full_user, except: [:settings]
 
 	def settings
 	end
@@ -19,12 +19,12 @@ class SettingsController < ApplicationController
     gmt_offset = params[:gmt].to_i
 
   	respond_to do |format|
-     	if @user.update(work_hours_params(gmt_offset))
+     	if @current_full_user.update(work_hours_params(gmt_offset))
         	format.html { redirect_to :settings_hours, notice: 'Your work hours was successfully updated.' }
         	format.json { render :work_hours, status: :ok }
       	else
         	format.html { render :work_hours }
-        	format.json { render json: @user.errors, status: :unprocessable_entity }
+        	format.json { render json: @current_full_user.errors, status: :unprocessable_entity }
       	end
   	end
 	end
@@ -33,8 +33,8 @@ class SettingsController < ApplicationController
 		result = true
 
 		Service.transaction do
-			result &= @user.services.destroy_all
-			result &= @user.update(services_params)
+			result &= @current_full_user.services.destroy_all
+			result &= @current_full_user.update(services_params)
 
 			raise ActiveRecord::Rollback unless result
 		end
@@ -45,13 +45,13 @@ class SettingsController < ApplicationController
         	format.json { render :services, status: :ok }
       	else
         	format.html { render :services }
-        	format.json { render json: @user.errors, status: :unprocessable_entity }
+        	format.json { render json: @current_full_user.errors, status: :unprocessable_entity }
       	end
     	end
 	end
 
 	def logout_gmail
-		gmail = @user.mail_importer.select{|importer| importer.specific.is_a? GmailImporter}.first
+		gmail = @current_full_user.mail_importer.select{|importer| importer.specific.is_a? GmailImporter}.first
 		if(!gmail.nil?)
 			gmail.destroy
 		end
@@ -68,33 +68,28 @@ class SettingsController < ApplicationController
   def upload_pictute
     uploaded_io = params[:user][:picture]
     if(!uploaded_io.nil?)
-      picture_path = Rails.root.join('public', 'user_photos', "#{@user.user_name}.jpg") #uploaded_io.original_filename
+      picture_path = Rails.root.join('public', 'user_photos', "#{@current_full_user.user_name}.jpg") #uploaded_io.original_filename
       File.open(picture_path, 'wb') do |file|
         file.write(uploaded_io.read)
       end
 
-      @user.picture_path = picture_path.to_s
+      @current_full_user.picture_path = picture_path.to_s
     end
 
-    @user.desc = params[:user][:desc]
+    @current_full_user.desc = params[:user][:desc]
 
     respond_to do |format|
-      if(@user.save)
+      if(@current_full_user.save)
         format.html { redirect_to :settings_user, notice: 'Your picture was successfully updated.' }
         format.json { render :services, status: :ok }
       else
         format.html { render :user_settings }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @current_full_user.errors, status: :unprocessable_entity }
       end
     end
   end
 
 	private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(@current_user.id)
-    end
-
     def work_hours_params(gmt)
     		work_hours = params.require(:user).permit(:work_hours_attributes => [:id, :start_at, :end_at])
 

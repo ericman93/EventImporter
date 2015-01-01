@@ -13,6 +13,12 @@
 	<%= javascript_include_tag "calendar-common" %>
 <% end %>
 
+<% if @calendar_user.nil? %>
+	<div id="user-not-found">
+		User <span id="user-not-found-name"><%= "'#{params[:username]}'" %></span> could not be found :( !
+	</div>
+<% else %>
+
 <script>
 	$(document).ready(function () {
 	        var user_mail = '<%= @calendar_user.user_name %>';
@@ -20,7 +26,7 @@
 
 			// ths client user can easly change thos. 
 			// maybe needed to send to the server the service id, and take from there the duration
-	        load_event_to_calendar(user_mail, true, <%= (@current_user.nil? or @calendar_user.user_name != @current_user.user_name) or @is_local_events %>, <%= @is_local_events %>, <%= !@calendar_user.services.empty? %>);
+	        load_event_to_calendar(user_mail, true, <%= (@calendar_user.user_name != @current_username) or @is_local_events %>, <%= @is_local_events %>, <%= !@calendar_user.services.empty? %>);
 
 	        $('.importer').change(function () {
 
@@ -39,12 +45,12 @@
 		</select>
 	<% end %>
 
-	<% if !((@current_user != nil) and (@calendar_user.user_name == @current_user.user_name)) %>
+	<% if @calendar_user.user_name != @current_username %>
 		<%= render "calendar/request_info" %>
 		<div id="sendRequest" onclick="sendToServer()" class=" ui-widget-content"s>
         	<img src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/bt_speed_dial_2x.png">
     	</div>
-	<% elsif @current_user != nil and @calendar_user.user_name == @current_user.user_name and @is_local_events %>
+	<% elsif @calendar_user.user_name == @current_username and @is_local_events %>
 		<input type="button" class="btn btn-info calendar-action" value="Save" id="btnSaveLocal" onclick="saveLocalEvents()" />
 	<% end %>
 </div>
@@ -61,3 +67,5 @@
 		</center>
 	</div>
 </div>	
+
+<% end %>

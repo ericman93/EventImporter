@@ -1,6 +1,6 @@
 <% content_for :setting_data do %>
-	<%= @user.picture_path %>
-	<%= form_for(@user, url: {action: :upload_pictute}) do |f|%>
+	<%= @current_full_user.picture_path %>
+	<%= form_for(@current_full_user, url: {action: :upload_pictute}) do |f|%>
 	  <%= f.file_field :picture %>
 	  <%= f.text_area :desc, :class => 'form-control', :id => 'desc-input' %>
 	  <%= f.submit 'Submit' %>

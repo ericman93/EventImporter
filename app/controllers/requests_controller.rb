@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
 	before_action :has_user_session?, only: [:select_proposal, :remove_request, :user_requests, :requests, :single_request, :request, :requests_count]
 	before_action :check_if_currnet_user, only: [:request_data, :single_request]
+	before_action :set_full_user, only: [:select_proposal, :requests_count, :user_requests]
 
 	def insert_proposels
 		user_name = params[:user_name]
@@ -32,9 +33,8 @@ class RequestsController < ApplicationController
 		proposal_id = params[:proposal_id]
 
 		proposal = RequestProposal.find(proposal_id)
-		user = User.find(@current_user.id)
-		#RequestMailer.proposle_accept_email(proposal, @current_user).deliver
-		user.mail_importer.each do |importer| 
+		#RequestMailer.proposle_accept_email(proposal, @current_full_user).deliver
+		@current_full_user.mail_importer.each do |importer| 
 			importer.specific.send_proposal(proposal)
 		end
 		Request.destroy(proposal.request.id)
@@ -43,7 +43,7 @@ class RequestsController < ApplicationController
 	end
 
 	def user_requests
-		@requests = User.find(@current_user.id).requests
+		@requests = @current_full_user.requests
     	render partial: 'requests'
 	end
 
@@ -56,8 +56,8 @@ class RequestsController < ApplicationController
 
   	def requests_count
     	requests_count = 0
-		if !session[:current_user].nil?
-    		requests_count = User.find(session[:current_user].id).requests.size
+		if !@current_full_user.nil?
+    		requests_count = @current_full_user.requests.size
     	end
 
     	render json: requests_count
@@ -77,8 +77,8 @@ class RequestsController < ApplicationController
 			request_id = params[:request_id]
 			request = Request.find(request_id)
 
-			if(request.user.id != @current_user.id)
-				redirect_to controller: :users, action: :calendar, status: 302, username: @current_user.user_name
+			if(request.user.id != @current_userid)
+				redirect_to controller: :users, action: :calendar, status: 302, username: @current_username
 				#redirect_to action: :login, controller: :permissions, status: 302
 			end
 		end

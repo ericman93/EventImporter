@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :setting_data do %>
-	<%= form_for(@user, url: {action: "save_services"}) do |user_form| %>
+	<%= form_for(@current_full_user, url: {action: "save_services"}) do |user_form| %>
 		<table id="services">
 			<thead>
 				<tr>
@@ -13,7 +13,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% @user.services.each do |service| %>
+				<% @current_full_user.services.each do |service| %>
 					<%= user_form.fields_for :services, service do |service_form| %>
 						<tr>
 							<td><button class='btn btn-danger remove-btn' type="button" onClick="removeService(event)">X</button></td>

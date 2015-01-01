@@ -1,13 +1,14 @@
 class ExchangeController < ApplicationController
+	before_action :set_full_user, only: [:create]
+
   	def create
-  		user = User.find(@current_user.id)
-		if (user.mail_importer.any?{|importer| importer.specific.is_a? ExchangeImporter})
+		if (@current_full_user.mail_importer.any?{|importer| importer.specific.is_a? ExchangeImporter})
 			format.html { redirect_to settings_mails_path, notice: 'You already have an excahnge importer' }
         	format.json { render :settings, status: :bad_request }
 		end
 
 	    importer = ExchangeImporter.new(importer_params)
-	    importer.user = @current_user
+	    importer.user = @current_full_user
 
 	    respond_to do |format|
 	     	if importer.save
