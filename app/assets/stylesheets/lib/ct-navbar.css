@@ -331,11 +331,11 @@ h1 .subtitle{
     padding: 0;
 }
 .navbar-brand-logo .logo{
-    border: 1px solid #333333;
+    /*border: 1px solid #333333;
     border-radius: 50%;
+    width: 60px;*/
     float: left;
     overflow: hidden;
-    width: 60px;
 }
 .navbar .navbar-brand-logo .brand{
     color: #FFFFFF;
