@@ -23,6 +23,7 @@ Calendar::Application.routes.draw do
   patch '/exchange', to:'exchange#edit'
   delete '/exchange', to:'exchange#remove'
   delete '/exchange/:id', to: 'exchange#remove', :as => :exchange_importer
+  put '/exchange/:id', to:'exchange#reset_errors'
 
   post '/local', to:'local_events#create'
   delete '/local/:id', to: 'local_events#remove', :as => :local_events_importer

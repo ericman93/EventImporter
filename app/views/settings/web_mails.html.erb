@@ -25,7 +25,8 @@
 	<% else %>
 		<% importer = @current_full_user.mail_importer.select{|importer| (importer.specific.is_a? ExchangeImporter)}.first.specific %>
 		<%= render partial:'exchange', locals: { importer: importer } %> 
-		<%= link_to 'Destroy', importer, method: :delete, data: { confirm: 'Are you sure?' }, id: importer.id %>
+		<%= link_to 'Destroy', importer, method: :delete, data: { confirm: 'Are you sure?' }, id: importer.id, :class => 'btn btn-danger' %>
+		<%= link_to "Reset Errors (#{importer.error_count})" , importer, method: :put, data: { confirm: 'Are you sure?' }, id: importer.id, :class => 'btn btn-warning' %>
 	<% end %>
 <% end %>
 

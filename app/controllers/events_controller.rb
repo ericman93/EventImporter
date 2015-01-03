@@ -1,22 +1,19 @@
 class EventsController < ApplicationController
-  before_action :has_user_session?, only: [:user_requests_events]
+  before_action :set_full_user, only: [:user_events]
 
   def user_events
     user_name = params[:username]
     start_time = params[:start].to_i
     end_time = params[:end].to_i
 
-    user = User.where({user_name: user_name}).first
-
-    other_user = @current_username != user_name
-    events = user.events(start_time, end_time).sort{|x,y| x.start_time <=> y.start_time}
+    is_other_user = @current_username != user_name
+    events = @current_full_user.events(start_time, end_time).sort{|x,y| x.start_time <=> y.start_time}
     
-    if other_user
+    if is_other_user
       events = CalendarApiHelper.combine_events(events, logger)
     end
 
-    render json: events.map{|e| e.to_fullcalendar_json(other_user) }
-    #render json: user.mail_importer.first.specific.events(start_time, end_time)
+    render json: events.map{|e| e.to_fullcalendar_json(is_other_user) }
   end
 
   def show

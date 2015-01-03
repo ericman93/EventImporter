@@ -27,7 +27,9 @@
     <%= f.text_field :server, id: 'server' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
-    <input type="button" class="btn" value="Test Connection" onclick="testConnection(this)" />
+    <%= f.submit :class => 'btn btn-success' %>
+    <button class="btn" value="Test Connection" onclick="testConnection(this)" >
+      Test Connection <i class="pe-7s-pen"></i>
+    </button>
   </div>
 <% end %>

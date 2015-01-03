@@ -51,6 +51,21 @@ class ExchangeController < ApplicationController
  		render json: result, status: (result ? 200 : 400)
  	end
 
+ 	def reset_errors
+ 		importer = ExchangeImporter.find(params[:id])
+ 		importer.error_count = 0;
+ 		
+ 		respond_to do |format|
+			if importer.save
+	      		format.html { redirect_to settings_mails_path, notice: 'Successfully reset errors.' }	
+	      		format.json { head :no_content }
+	      	else
+	      		format.html { render :web_mails }
+	        	format.json { render json: importer.errors, status: :unprocessable_entity }
+	      	end
+	    end
+ 	end
+
 	def importer_params
       params.require(:exchange_importer).permit(:user_name, :password, :server)
     end
