@@ -7,7 +7,9 @@ class EventsController < ApplicationController
     end_time = params[:end].to_i
 
     is_other_user = @current_username != user_name
-    events = @current_full_user.events(start_time, end_time).sort{|x,y| x.start_time <=> y.start_time}
+
+    user = User.where({user_name: user_name}).first
+    events = user.events(start_time, end_time).sort{|x,y| x.start_time <=> y.start_time}
     
     if is_other_user
       events = CalendarApiHelper.combine_events(events, logger)
