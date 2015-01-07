@@ -69,6 +69,6 @@ function popupLoading() {
     $('#loadingModal').modal('show'); 
 }
 
-function closeloading() {
+function closeLoading() {
     $('#loadingModal').modal('hide'); 
 }

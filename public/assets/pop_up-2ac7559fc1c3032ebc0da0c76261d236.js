@@ -13,7 +13,7 @@ function popupLoading() {
     $("#loadingPopup").fadeIn(0500);
     showBackground();
 }
-function closeloading() {
+function closeLoading() {
     $("loadingPopup").fadeOut('normal');
 }
 
@@ -21,7 +21,7 @@ var popupStatus = 0; // set value
 
 function loadPopup() {
     if (popupStatus == 0) { // if value is 0, show popup
-        closeloading(); // fadeout loading
+        closeLoading(); // fadeout loading
         $("#toPopup").fadeIn(0500); // fadein popup div
         showBackground();
         popupStatus = 1; // and set value to 1

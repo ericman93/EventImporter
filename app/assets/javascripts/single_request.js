@@ -18,7 +18,7 @@ function show_calendar(){
             if (bool) {
                 popupLoading();
             } else {
-                closeloading();
+                closeLoading();
                 show_all_proposals() 
             }
         },

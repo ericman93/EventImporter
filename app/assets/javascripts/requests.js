@@ -19,15 +19,20 @@ function show_calendar(){
             if (bool) {
                 popupLoading();
             } else {
-                closeloading(); 
+                closeLoading(); 
             }
         },
         eventRender: function(event, element) {
-              element.bind('dblclick', function() {
-                // if evevnt.id start with "prop_"
-                send_option_selection(event.id)
-              });
-           },
+            if(event.id.indexOf('prop') >= 0){
+                add_button(event.id, 'approve', send_option)
+            }
+        },
+        //eventRender: function(event, element) {
+        //      element.bind('dblclick', function() {
+        //        // if evevnt.id start with "prop_"
+        //        send_option_selection(event.id)
+        //      });
+        //   },
         defaultView: 'agendaWeek',
     });
 }
@@ -58,13 +63,14 @@ function proposal_selected(proposal_id, request_id){
     start_time = new Date(proposal.start_time)
 
     $('#calendar').fullCalendar('gotoDate',start_time)
+    var prop_id = "prop_"+proposal_id
     var new_event = {
       title:"Proposel",
       start: start_time,
       allDay: false,
-      id: "prop_"+proposal_id,
+      id: prop_id,
       end: new Date(proposal.end_time),
-      className: 'option_event'
+      className: 'option_event ' + prop_id
     };
 
     set_propoal_active(proposal_id);
@@ -72,6 +78,7 @@ function proposal_selected(proposal_id, request_id){
     current_proposel = proposal_id;
     $('#calendar').fullCalendar( 'renderEvent', new_event );
 
+    //add_button(prop_id, 'approve', send_option);
 }
 
 function set_request_active(request_id){
@@ -79,6 +86,14 @@ function set_request_active(request_id){
     $('#request_'+request_id).addClass('active');
 
     current_request = request_id;
+}
+
+function send_option(proposel_id){
+    send_option_selection(proposel_id).then(function(){
+        remove_request(current_request);
+    }, function(message){
+        alert(message)
+    });
 }
 
 function set_propoal_active(proposel_id){
@@ -118,4 +133,8 @@ function remove_request(request_id){
     }
 
     set_request_count()
+}
+
+function clear_propsolas(){
+    $('.fc-event.option_event').remove()
 }

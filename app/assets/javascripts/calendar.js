@@ -81,7 +81,7 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
             if (bool) {
                 popupLoading();
             } else {
-                closeloading();
+                closeLoading();
                 showRequestInfoWindow();
             }
         },
@@ -170,7 +170,7 @@ function sendToServer(){
         
         addAlert('Request was sent successfuly ;)', 'alert-success')
         
-        closeloading();
+        closeLoading();
         //clearRequestedForm();
         //changeRequestInputDisable(false)  
     })
@@ -190,7 +190,7 @@ function sendToServer(){
         addAlert(error_text, 'alert-danger')
         console.log(data);
 
-        closeloading();
+        closeLoading();
         //changeRequestInputDisable(false)  
     })
 }
