@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_full_user, only: [:user_events]
+  before_action :set_current_username, only: [:user_events]
 
   def user_events
     user_name = params[:username]
