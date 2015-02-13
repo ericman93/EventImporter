@@ -42,34 +42,26 @@ class Event < ActiveRecord::Base
 	end
 
 	def self.from_json(events)
-		events = JSON.parse events
+		#events = JSON.parse events
 
 		events.map do |hash_event|
 			event = Event.new
 
 			hash_event.each do |prop_name, prop_value|
 				#TODO: if prop_value is hash , create new instance of prop_name and user the from_json on the prop_value ( and not change the name of the prop)
-				if prop_name == 'EventUsers'
-					prop_value = prop_value.map{|v| EventUser.new(:email => v["Email"], 
-																  :is_approved => v["Approved"])
-											}
-				elsif prop_name.end_with?('Time')
-					unix = prop_value.match /\d+/
+				#if prop_name == 'EventUsers'
+				#	prop_value = prop_value.map{|v| EventUser.new(:email => v["Email"], 
+				#												  :is_approved => v["Approved"])
+				#							}
+				if prop_name.end_with?('time')
+					unix = prop_value.to_s.match /\d+/
 					prop_value = DateTime.strptime(unix[0],'%Q').utc # in the case that i resive milisconds from 1970
 				end
 
-				event.send("#{to_underscore(prop_name)}=", prop_value)
+				event.send("#{prop_name.downcase}=", prop_value)
 			end
-			logger.debug "event time #{event.start_time}"
 
 			event
 		end
 	end
-
-	private
-		def self.to_underscore(str)
-			str_dup = str.dup
-			str_dup.gsub!(/(.)([A-Z])/,'\1_\2')
-	   	 	str_dup.downcase!
-		end
 end

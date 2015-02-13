@@ -3,7 +3,7 @@ class CalendarApiController < ApplicationController
 	
 	def insert
 		user_id = params[:userId]
-		hashed_password = params[:hashedPassword]
+		hashed_password = params[:password]
 
 		if !User.authenticate(user_id, hashed_password)
 			render :text => "Faild to authenticate", :status => 302, :content_type => 'text/html'
@@ -13,7 +13,7 @@ class CalendarApiController < ApplicationController
 			CalendarApiHelper.handle_request(events, logger)
 
 			#render :nothing => true, :status => 200, :content_type => 'text/html' -> jquery parse this is an error because it cannot prarse none as json
-			render json: true
+			render json: events
 		end
 	end
 end
