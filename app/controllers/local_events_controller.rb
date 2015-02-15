@@ -12,7 +12,7 @@ class LocalEventsController < ApplicationController
 
 	    respond_to do |format|
 	     	if importer.save
-	        	format.html { redirect_to settings_path, notice: 'Local importer was successfully created.' }
+	        	format.html { redirect_to settings_mails, notice: 'Local importer was successfully created.' }
 	        	format.json { render :settings, status: :ok }
 	      	else
 	        	format.html { render :web_mails }
@@ -25,7 +25,7 @@ class LocalEventsController < ApplicationController
  		importer = LocalImporter.find(params[:id])
  		importer.destroy
 	    respond_to do |format|
-	      format.html { redirect_to settings_path, notice: 'LocalImporter was successfully destroyed.' }
+	      format.html { redirect_to settings_mails, notice: 'LocalImporter was successfully destroyed.' }
 	      format.json { head :no_content }
 	    end
  	end
