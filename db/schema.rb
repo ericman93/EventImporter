@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141227112109) do
+ActiveRecord::Schema.define(version: 20150215172406) do
 
   create_table "event_users", force: true do |t|
     t.integer  "event_id"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20141227112109) do
     t.string   "last_name"
     t.text     "desc"
     t.string   "picture_path"
+    t.boolean  "is_auto_approval"
   end
 
   create_table "work_hours", force: true do |t|

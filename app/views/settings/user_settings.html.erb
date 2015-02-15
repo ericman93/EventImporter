@@ -3,6 +3,8 @@
 	<%= form_for(@current_full_user, url: {action: :upload_pictute}) do |f|%>
 	  <%= f.file_field :picture %>
 	  <%= f.text_area :desc, :class => 'form-control', :id => 'desc-input' %>
+	  <%= f.label 'Is Auto Approval : ' %> <%= f.check_box :is_auto_approval %>
+	  <br>
 	  <%= f.submit 'Submit' %>
 	<% end %>
 <% end %>

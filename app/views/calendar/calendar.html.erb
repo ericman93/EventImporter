@@ -22,11 +22,12 @@
 <script>
 	$(document).ready(function () {
 	        var user_mail = '<%= @calendar_user.user_name %>';
+	        var is_auto_approval = <%= @calendar_user.is_auto_approval == true %>;
 	        //var is_user_specifed = check_if_user_null(user_mail)
 
 			// ths client user can easly change thos. 
 			// maybe needed to send to the server the service id, and take from there the duration
-	        load_event_to_calendar(user_mail, true, <%= (@calendar_user.user_name != @current_username) or @is_local_events %>, <%= @is_local_events %>, <%= !@calendar_user.services.empty? %>);
+	        load_event_to_calendar(user_mail, is_auto_approval, true, <%= (@calendar_user.user_name != @current_username) or @is_local_events %>, <%= @is_local_events %>, <%= !@calendar_user.services.empty? %>);
 
 	        $('.importer').change(function () {
 

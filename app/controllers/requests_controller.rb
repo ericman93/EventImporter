@@ -10,15 +10,25 @@ class RequestsController < ApplicationController
 		event_metadata = params[:event_metadata]
 		gmt_offset = params[:gmt_offset]
 
-		user = User.where("user_name = ?",user_name).first
+		user = User.where("user_name = ?",user_name).first	
 		props = RequestProposal.from_json(param_proposals)
 
-		request, error = CalendarApiHelper.handle_proposle(props, user, requester_info, event_metadata)
-		if request.nil?
-			render text: error, status: 400
+		if(user.is_auto_approval)
+			if(props.size != 1)
+				render text: "You can select only one proposel", status: 400
+			else
+				RequestHelper.auto_approve(props.first, user, requester_info, event_metadata)
+
+				render json: true
+			end
 		else
-			RequestMailer.requests_email(request, user).deliver
-			render json: true
+			request, error = RequestHelper.save_request(props, user, requester_info, event_metadata)
+			if request.nil?
+				render text: error, status: 400
+			else
+				RequestMailer.requests_email(request, user).deliver
+				render json: true
+			end
 		end
 	end
 
@@ -81,5 +91,8 @@ class RequestsController < ApplicationController
 				redirect_to controller: :users, action: :calendar, status: 302, username: @current_username
 				#redirect_to action: :login, controller: :permissions, status: 302
 			end
+		end
+
+		def auto_approve
 		end
 end

@@ -9,7 +9,7 @@ $(document).ready(function() {
 });
 
 
-function load_event_to_calendar(user_name, should_load_events, selectable, namebale, has_services) {
+function load_event_to_calendar(user_name, is_auto_approval, should_load_events, selectable, namebale, has_services) {
     $('#calendar').html('');
 
     user_email = user_name;
@@ -43,6 +43,12 @@ function load_event_to_calendar(user_name, should_load_events, selectable, nameb
           console.log('test')
         },
         select: function(start, end, allDay, title) {
+            if(is_auto_approval && options.length > 0){
+                alert('You can select only one proposel')
+                cal.fullCalendar('unselect');
+                return;
+            }
+
             var temp_id = "temp_" + options.length;
 
             var title;
