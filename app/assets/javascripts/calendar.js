@@ -43,7 +43,7 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
           console.log('test')
         },
         select: function(start, end, allDay, title) {
-            if(is_auto_approval && options.length > 0){
+            if(!namebale && is_auto_approval && options.length > 0){
                 alert('You can select only one proposel')
                 cal.fullCalendar('unselect');
                 return;
@@ -141,7 +141,7 @@ function getHolidays(work_days){
 
 function sendToServer(){
     if(options.length == 0){
-        alert('Please select proposals before sending')
+        showError('Please select proposals before sending')
         return;
     }
 
@@ -187,13 +187,13 @@ function sendToServer(){
                 error_text = data.responseText
                 break;
             case 500:
-                error_text = "Something went wrong :("
+                error_text = "Something went wrong"
                 break;
             default:
-                error_text = 'An error as occurred :('
+                error_text = 'An error as occurred'
         }
 
-        addAlert(error_text, 'alert-danger')
+        showError(error_text)
         console.log(data);
 
         closeLoading();

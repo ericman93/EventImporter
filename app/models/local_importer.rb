@@ -7,6 +7,12 @@ class LocalImporter < ActiveRecord::Base
 		 		 .map{|eu| eu.event}
 	end
 
+	def event_collision(start_time, end_time)
+		EventUser.joins(:event)
+		 		 .where("event_users.email = ? and ((? BETWEEN events.start_time and events.end_time) or (events.start_time BETWEEN ? and ?)) ", self.user.email, Time.at(start_time), Time.at(start_time), Time.at(end_time))
+		 		 .map{|eu| eu.event}
+	end
+
 	def send_proposal(proposal)
 		super(proposal)
 

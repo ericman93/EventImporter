@@ -10,17 +10,17 @@ class RequestsController < ApplicationController
 		event_metadata = params[:event_metadata]
 		gmt_offset = params[:gmt_offset]
 
+		is_valid, message = validate_request_info?(requester_info, event_metadata);
+		if(!is_valid)
+			render text: message, status: 400
+			return;
+		end
+
 		user = User.where("user_name = ?",user_name).first	
 		props = RequestProposal.from_json(param_proposals)
 
 		if(user.is_auto_approval)
-			if(props.size != 1)
-				render text: "You can select only one proposel", status: 400
-			else
-				RequestHelper.auto_approve(props.first, user, requester_info, event_metadata)
-
-				render json: true
-			end
+			auto_approve(props, user, requester_info, event_metadata)
 		else
 			request, error = RequestHelper.save_request(props, user, requester_info, event_metadata)
 			if request.nil?
@@ -93,6 +93,43 @@ class RequestsController < ApplicationController
 			end
 		end
 
-		def auto_approve
+		def auto_approve(props, user, requester_info, event_metadata)
+			if(props.size != 1)
+				render text: "You can select only one proposel", status: 400
+			else
+				propsal = props.first
+				event_collision = user.mail_importer.inject([]){|events, importer| events += importer.specific.event_collision(propsal.start_time, propsal.end_time)}
+				if(event_collision.any?)
+					render text: "#{user.first_name} #{user.last_name} is occupied at this time", status: 400
+				else
+					RequestHelper.auto_approve(propsal, user, requester_info, event_metadata)
+
+					render json: event_collision.size
+				end
+			end
+		end
+
+		def validate_request_info?(requester_info, event_metadata)
+			if requester_info.nil?
+				return false, "Request info cannot be empty";
+			end
+			if event_metadata.nil?
+				return false, "Your info cannot be empty";
+			end
+
+			if(event_metadata['subject'].nil?)
+				return false, "Meeting subject field is required";
+			end
+			if(event_metadata['location'].nil?)
+				return false, "Meeting location field is required";
+			end
+			if(requester_info['mail'].nil?)
+				return false, "Your mail is required";
+			end
+			if(requester_info['name'].nil?)
+				return false, "Your name is required";
+			end
+
+			return true
 		end
 end

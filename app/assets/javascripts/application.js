@@ -72,3 +72,8 @@ function popupLoading() {
 function closeLoading() {
     $('#loadingModal').modal('hide'); 
 }
+
+function showError(errorMessage){
+    $('#error-content').html(errorMessage)
+    $('#error-modal').modal('show'); 
+}
