@@ -44,7 +44,7 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
         },
         select: function(start, end, allDay, title) {
             if(!namebale && is_auto_approval && options.length > 0){
-                alert('You can select only one proposel')
+                showError('You can select only one proposel')
                 cal.fullCalendar('unselect');
                 return;
             }
