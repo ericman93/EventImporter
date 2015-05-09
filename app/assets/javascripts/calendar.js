@@ -91,11 +91,11 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
                 showRequestInfoWindow();
             }
         },
-        eventClick: function(event){
-            if(!event.is_temp){
-                showEvent(event.id)
-            }
-        },
+        //eventClick: function(event){
+        //    if(!event.is_temp){
+        //        showEvent(event.id)
+        //    }
+        //},
         eventRender: function(event, element) {
             updateEvent(event);
             add_button(event.id, 'close', removeProposel)

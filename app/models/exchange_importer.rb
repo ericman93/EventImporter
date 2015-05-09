@@ -9,7 +9,7 @@ class ExchangeImporter < ActiveRecord::Base
 		gmt = 0; # I want the events as UTC 
 		time_zone = {:bias => (gmt*60).to_s}
 
-		events = get_events_from_availvailty(client, Time.at(start_time).iso8601 , Time.at(end_time).iso8601 , time_zone).compact
+		events = get_events_from_folder(client, Time.at(start_time).iso8601 , Time.at(end_time).iso8601 , time_zone).compact
 
 		return events
 	end
@@ -54,12 +54,21 @@ class ExchangeImporter < ActiveRecord::Base
 			end
 			
 			items = make_call_to_server(@@possible_errors, []) do 
-				items = oCalendar.items_between start_time, end_time
+				#exchnge_client.items_between start_time, end_time
+				calendar_folder = exchnge_client.get_folder_by_name 'Calendar'
+				calendar_folder.items_between start_time, end_time
 			end
 
-			return items.map do |event|
+			return items.map do |item|
+					event = Event.new
+					event.id = -1
+					event.subject = item.subject
+					event.start_time = item.start
+					event.end_time = item.end
+					event.location = item.location
 
-			end
+					event
+				end
 		end
 
 		def to_event_object(start_string, end_string)
