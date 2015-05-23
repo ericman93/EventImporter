@@ -61,7 +61,7 @@ class SettingsController < ApplicationController
     revoked = revoke_google_token(gmail)
     if(revoked)
       gmail.destroy
-    end
+    end 
 
 		respond_to do |format|
       if revoked
