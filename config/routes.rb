@@ -11,7 +11,7 @@ Calendar::Application.routes.draw do
   get '/settings/work_hours', to:'settings#work_hours', :as => :settings_hours
   get '/settings/web_mails', to:'settings#web_mails', :as => :settings_mails
   get '/settings/services', to: 'settings#services', :as => :settings_services
-  get '/settings/user', to:'settings#user_settings', :ass => :settings_user
+  get '/settings/user', to:'settings#user_settings', :as => :settings_user
   patch '/settings/work_hours', to:'settings#save_work_hours'
   patch '/settings/services', to:'settings#save_services'
   patch '/settings/upload_pictute', to:'settings#upload_pictute'

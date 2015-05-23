@@ -20,6 +20,14 @@ class GmailImporter < ActiveRecord::Base
 		return DateTime.now.utc >= self.expiration_date
 	end
 
+	def get_token
+		if self.expired?
+			GmailHelper.refresh_token(self, logger)
+		end
+		
+		self.token
+	end
+
 	private
 		def get_gmail_events(start_time, end_time)
 			client = Google::APIClient.new

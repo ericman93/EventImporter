@@ -7,8 +7,7 @@
 	<% if(@current_full_user.mail_importer.all?{|importer| !(importer.specific.is_a? GmailImporter)}) %>
 		<%= link_to "Add Gmail Account", "/auth/google_oauth2", :target => "_blank" %>
 	<% else %>
-		<%#= link_to "Signout from Gmail", "/settings/logout" %>
-		You are already signin 
+		<%= link_to "Signout from Gmail", "/settings/logout" %>
 	<% end %>
 
 	<h1>Local</h1>

@@ -1,3 +1,5 @@
+require 'net/http'
+
 class SettingsController < ApplicationController
 	before_action :has_user_session?
 	#before_action :set_user, only: [:save_work_hours,:save_services, :work_hours, :web_mails, :logout_gmail, :services, :user_settings]
@@ -50,15 +52,25 @@ class SettingsController < ApplicationController
     	end
 	end
 
-	def logout_gmail
+	def logout_gmail    
 		gmail = @current_full_user.mail_importer.select{|importer| importer.specific.is_a? GmailImporter}.first
-		if(!gmail.nil?)
-			gmail.destroy
+		if(gmail.nil?)
+			render :nothing => true, :status => 400
 		end
 
+    revoked = revoke_google_token(gmail)
+    if(revoked)
+      gmail.destroy
+    end
+
 		respond_to do |format|
-      format.html { redirect_to :settings , notice: 'You have been successfully logout from gmail.' }
-      format.json { head :no_content }
+      if revoked
+        format.html { redirect_to :settings_mails , notice: 'You have been successfully logout from gmail.' }
+        format.json { head :ok }
+      else
+        format.html { redirect_to :settings_mails , notice: 'Error while logout, Please try again' }
+        format.json { render :nothing => true, :status => 400 }
+      end
     end
 	end
 
@@ -77,19 +89,30 @@ class SettingsController < ApplicationController
       @current_full_user.picture_path = picture_path.to_s
     end
 
-    respond_to do |format|
-      #if(@current_full_user.save)
-      if(@current_full_user.update(user))
-        format.html { redirect_to :settings_user, notice: 'Your picture was successfully updated.' }
-        format.json { render :services, status: :ok }
-      else
-        format.html { render :user_settings }
-        format.json { render json: @current_full_user.errors, status: :unprocessable_entity }
-      end
-    end
+    render json: uploaded_io
+    #respond_to do |format|
+    #  #if(@current_full_user.save)
+    #  if(@current_full_user.update(user))
+    #    format.html { redirect_to :settings_user, notice: 'Your picture was successfully updated.' }
+    #    format.json { render :services, status: :ok }
+    #  else
+    #    format.html { render :user_settings }
+    #    format.json { render json: @current_full_user.errors, status: :unprocessable_entity }
+    #  end
+    #end
   end
 
 	private
+    def revoke_google_token(gmail)
+      url = URI.parse("https://accounts.google.com/o/oauth2/revoke?token=#{gmail.get_token}")
+      req = Net::HTTP::Get.new(url.to_s)
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      res = http.request(req)
+
+      res.kind_of? Net::HTTPSuccess
+    end
+
     def work_hours_params(gmt)
     		work_hours = params.require(:user).permit(:work_hours_attributes => [:id, :start_at, :end_at])
 

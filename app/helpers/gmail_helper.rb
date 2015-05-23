@@ -12,7 +12,6 @@ module GmailHelper
 
 	private
 		def self.get_token_with_experation(refresh_token, logger)
-			logger.debug("blu blu #{refresh_token}")
 			data = "grant_type=refresh_token&refresh_token=#{refresh_token}&client_id=#{Rails.configuration.google_api[:client_id]}&client_secret=#{Rails.configuration.google_api[:client_secret]}"
 			url = URI.parse('https://accounts.google.com/o/oauth2/token')
 			http = Net::HTTP.new(url.host, url.port)
