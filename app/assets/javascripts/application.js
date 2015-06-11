@@ -1,3 +1,8 @@
+$(function () {
+    set_request_count()
+    $(".alert").alert();
+});
+
 function setEmailInputs(){
     $('input[type=email]').on('blur', function() {
       $(this).mailcheck({
@@ -24,11 +29,6 @@ function create_emai_suggestion_link(element, suggestion){
         this.remove();
     })
 }
-
-$(function () {
-    set_request_count()
-    $(".alert").alert();
-});
 
 function set_request_count(){
     $.ajax({
@@ -76,4 +76,38 @@ function closeLoading() {
 function showError(errorMessage){
     $('#error-content').html(errorMessage)
     $('#error-modal').modal('show'); 
+}
+
+function showPopup(title, content, titleClass){
+    clearPopup();
+
+    if(titleClass != undefined){
+        $('#popup-header').addClass(titleClass)
+    }
+
+    $('#popup-title').html(title);
+    $('#popup-content').html(content);
+    $('#popup-modal').modal('show'); 
+}
+
+function clearPopup(){
+    $('#popup-title').html('');
+    $('#popup-content').html('');
+    $('#popup-header').attr('class', 'modal-header')
+}
+
+function getErrorFromData(data){
+    var error_text = ""
+    switch(data.status){
+        case 400:
+            error_text = data.responseText
+            break;
+        case 500:
+            error_text = "Something went wrong"
+            break;
+        default:
+            error_text = 'An error as occurred'
+    }
+
+    return error_text;
 }

@@ -30,11 +30,15 @@ function send_option_selection(option_name){
         removeProposels()
         //$('.fc-event.'+option_name+' .approve-event').remove()
         defferd.resolve();
+
+        showPopup("Woo Hoo!", "The option has selected :)", "btn-success");
     })
     .fail(function (data) {
         closeLoading();
         console.log(data)
         defferd.reject('error');
+
+        showError(getErrorFromData(data))
     });
 
     return defferd.promise();

@@ -174,26 +174,11 @@ function sendToServer(){
         options = []
         $("#proposal_table tbody").empty();
         
-        addAlert('Request was sent successfuly ;)', 'alert-success')
-        
-        closeLoading();
-        //clearRequestedForm();
-        //changeRequestInputDisable(false)  
+        closeLoading(); 
+        showPopup("Woo Hoo!", "The request has sent succesfully!", "btn-success");
     })
     .fail(function (data) {
-        var error_text = ""
-        switch(data.status){
-            case 400:
-                error_text = data.responseText
-                break;
-            case 500:
-                error_text = "Something went wrong"
-                break;
-            default:
-                error_text = 'An error as occurred'
-        }
-
-        showError(error_text)
+        showError(getErrorFromData(data))
         console.log(data);
 
         closeLoading();
@@ -273,16 +258,6 @@ function changeRequestInputDisable(disable){
     $("#send_request_btn").prop('disabled', disable);
     $("#services").prop('disabled', disable);
     $(".remove-prop-btn").prop('disabled', disable);
-}
-
-function addAlert(content, color){
-    var $alert = $("<div/>", {
-        id: "result_alert",
-        class: "alert "+color,
-        html: content
-    })
-
-    $("#popup_content form").append($alert)
 }
 
 function clearRequestedForm(){

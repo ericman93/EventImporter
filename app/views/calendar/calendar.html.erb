@@ -62,12 +62,18 @@
 	<div id="user-info">
 		<center>
 			<h6><%= "#{@calendar_user.first_name} #{@calendar_user.last_name}" %></h6>
-			<img id="user-picture" src="user_photos/<%= @calendar_user.user_name %>.jpg"></img>
+			<% if @calendar_user.picture_path.nil? and @calendar_user.user_name == @current_username %>
+				Dont have an image? 
+				<br>
+
+				<%= link_to "Upload now!", :settings_user %>
+			<% elsif !@calendar_user.picture_path.nil? %>
+				<img id="user-picture" src="user_photos/<%= @calendar_user.user_name %>.jpg"></img>
+			<% end %>
 			<p>
 				<%= @calendar_user.desc %>
 			</p>
 		</center>
-	</div>
-</div>	
+	</div></div>	
 
 <% end %>

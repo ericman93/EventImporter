@@ -54,11 +54,11 @@ class ExchangeImporter < ActiveRecord::Base
 			end
 			
 			items = make_call_to_server(@@possible_errors, []) do 
-				#exchnge_client.items_between start_time, end_time
 				calendar_folder = exchnge_client.get_folder_by_name 'Calendar'
 				calendar_folder.items_between start_time, end_time
 			end
 
+			#return [items[0].methods]
 			return items.map do |item|
 					event = Event.new
 					event.id = -1
@@ -66,8 +66,8 @@ class ExchangeImporter < ActiveRecord::Base
 					event.start_time = item.start
 					event.end_time = item.end
 					event.location = item.location
-
-					event
+#
+#					event
 				end
 		end
 
