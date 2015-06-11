@@ -1,0 +1,10 @@
+<% @groups.each do |group| %>
+	<%= group.name %> - <%= 'Admin' if @current_full_user.in_group?(group, as: 'manager') %>
+	<br>
+	<% group.users.each do |user| %>
+		<%= user.user_name %>
+		<br>
+	<% end %>
+	<br>
+	<br>
+<% end %>

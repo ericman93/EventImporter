@@ -53,6 +53,9 @@ Calendar::Application.routes.draw do
   # About
   get '/about', to: 'about#about', :as => :about
 
+  # Groups
+  get '/groups', to: 'groups#index'
+
   # User
   #get '/users/:id', to: 'users#show', :constraints => { :id => /\d+/ }, :as => :user
   #get '/users/:id', to: 'users#edit', :constraints => { :id => /\d+/ }, :as => :edit_user

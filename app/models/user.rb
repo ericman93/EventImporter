@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
 	validates :email, uniqueness: true
 	validates :user_name, uniqueness: true
 
+	groupify :group_member
+  	groupify :named_group_member
+
 	has_many :requests
 	has_many :work_hours
 	has_many :services

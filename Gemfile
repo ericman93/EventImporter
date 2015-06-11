@@ -42,6 +42,7 @@ end
 
 gem 'acts_as_relation'
 
+gem 'groupify'
 gem 'nifty-generators'
 gem 'google-api-client', :require => 'google/api_client'
 gem 'omniauth'#, '1.1.0'
