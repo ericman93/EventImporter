@@ -4,8 +4,11 @@ class UsersController < ApplicationController
   #protect_from_forgery with: :null_session
   # user before_filter for functions that need autorization
 
-  def calendar    
-    @calendar_user = User.where("user_name = ?",params[:username]).first
+  def calendar   
+    @calendar_user = Group.where({name: params[:username]}).first
+    if(@calendar_user.nil?)
+      @calendar_user = User.where({user_name: params[:username]}).first
+    end 
     
     @is_local_events = false
     if params[:username] == @current_username

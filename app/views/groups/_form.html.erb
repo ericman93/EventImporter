@@ -1,0 +1,17 @@
+<div class="container">
+  <%= form_for(@group) do |f| %>
+    
+    <% if @group.errors.any? %>
+    	<div class="alert alert-danger alert-dismissible" role="alert">
+  	  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  	  	<%= @group.errors.full_messages.first %>
+  	</div>
+    <% end %>
+
+    <div class="actions">
+    	<%= f.text_field :name, :class => "form-control", :placeholder => "First name", :required => true %>
+
+      <%= f.submit class: 'btn btn-success btn-block' %>
+    </div>
+  <% end %>
+</div>

@@ -20,11 +20,11 @@ class User < ActiveRecord::Base
 	accepts_nested_attributes_for :services
 	
 	def events(start_time, end_time)
-		#EventUser.joins(:event)
-		#		 .where("event_users.email = ? and events.start_time >= ? and events.end_time <= ?", self.email, Time.at(start_time), Time.at(end_time))
-		#		 .map{|eu| eu.event}
+		mail_importer.inject([]) do |events, importer| 
+			events += importer.specific.events(start_time, end_time)
+		end
 
-		mail_importer.inject([]){|events, importer| events += importer.specific.events(start_time, end_time)}
+		#return user_events.each{|event| event.user = self}
 	end
 
 	def all_events

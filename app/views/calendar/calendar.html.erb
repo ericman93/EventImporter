@@ -74,6 +74,16 @@
 				<%= @calendar_user.desc %>
 			</p>
 		</center>
-	</div></div>	
+	</div>
+	<div>
+		<% if @calendar_user.is_a? Group %>
+			<% @calendar_user.users.each do |user| %>
+				<div class="group_user">
+					<input type="checkbox" value="<%= user.user_name %>" class="group_user_input" checked><%= user.user_name %></input>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>	
 
 <% end %>

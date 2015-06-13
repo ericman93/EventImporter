@@ -54,7 +54,11 @@ Calendar::Application.routes.draw do
   get '/about', to: 'about#about', :as => :about
 
   # Groups
-  get '/groups', to: 'groups#index'
+  get '/groups', to: 'groups#index', :as => :groups
+  get '/groups/new', to: 'groups#add_group', :as => :new_group
+  get '/groups/:id', to: 'groups#show', :as => :group
+  post '/groups/:id', to:'groups#add_user' ,:constraints => { :id => /\d+/ }
+  post '/groups', to: 'groups#create'
 
   # User
   #get '/users/:id', to: 'users#show', :constraints => { :id => /\d+/ }, :as => :user

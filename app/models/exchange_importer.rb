@@ -4,7 +4,7 @@ class ExchangeImporter < ActiveRecord::Base
 	@@exepteable_types = ['Busy', 'OOF']
 	@@possible_errors = 0;
 
-	def events(start_time, end_time)
+	def get_events(start_time, end_time)
 		client = ExchangeHelper.connect_to_server(self.server, self.user_name, self.password)
 		gmt = 0; # I want the events as UTC 
 		time_zone = {:bias => (gmt*60).to_s}

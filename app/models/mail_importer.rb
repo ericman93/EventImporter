@@ -3,6 +3,9 @@ class MailImporter < ActiveRecord::Base
 	belongs_to :user
 
 	def events(start_time, end_time)
+		get_events(start_time, end_time).each do |event|
+			event.user = user
+		end
 	end
 
 	def make_call_to_server(possible_errors, default_result)

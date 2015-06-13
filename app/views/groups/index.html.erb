@@ -1,10 +1,18 @@
-<% @groups.each do |group| %>
-	<%= group.name %> - <%= 'Admin' if @current_full_user.in_group?(group, as: 'manager') %>
-	<br>
-	<% group.users.each do |user| %>
-		<%= user.user_name %>
-		<br>
-	<% end %>
-	<br>
-	<br>
+<% content_for :stylesheets do %>
+	<%= stylesheet_link_tag "groups" %>
 <% end %>
+
+<div id="groups">
+	<% @groups.each do |group| %>
+		<div class="group">
+		  	<% if group.admin? @current_full_user %>
+		  		<span class="glyphicon glyphicon-king" aria-hidden="true"></span>
+		  	<% end %>
+		  	<%= link_to group.name, group %>
+	  	</div>
+	<% end %>
+</div>
+
+<a href="<%= url_for(new_group_path) %>" class="btn btn-success">
+	Create new group
+</a>

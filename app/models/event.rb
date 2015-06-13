@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
 	validates :start_time, :presence => { :message => "Event start time name is required" }
 	validates :end_time, :presence => { :message => "Event end time name is required" }
 
-	has_many :event_users
+	attr_accessor :user
 
 	def exists?
 		Event.exists?(:event_id => self.event_id)
@@ -37,7 +37,7 @@ class Event < ActiveRecord::Base
 			'title' => should_remove_private_data ? "Busy" : self.subject, 
 			'location' => should_remove_private_data ? "" : self.location,
 			'allDay' => false,
-			'className' => should_remove_private_data ? "busy_event" : "user_event",
+			'className' => "#{user.user_name} #{should_remove_private_data ? 'busy_event' : 'user_event'}",
 		}
 	end
 

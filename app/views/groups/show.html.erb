@@ -1,0 +1,28 @@
+<% if @group.errors.any? %>
+	<div class="alert alert-danger alert-dismissible" role="alert">
+	  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  	<%= @group.errors.full_messages.first %>
+	</div>
+<% end %>
+
+<h2>
+	<%= @group.name%> 
+</h2>
+
+<div id="users">
+	<% @group.users.each do |user| %>
+		<div class="user">
+			<% if @group.admin? user %>
+		  		<span class="glyphicon glyphicon-king" aria-hidden="true"></span>
+		  	<% end %>
+			<%= user.user_name %>
+		</div>
+	<% end %>
+</div>
+
+<% if @group.admin? @current_full_user %>
+	<%= form_tag do %>
+		<input class="form-control" name="username" placeholder="username" />
+		<input type="submit" class="btn btn-info" value="Add user" />
+	<% end %>
+<% end %>

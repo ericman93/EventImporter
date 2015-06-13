@@ -6,6 +6,10 @@ $(document).ready(function() {
     $(window).resize(function() {
         $('#calendar').fullCalendar('option', 'height', getCalendarHeight());
     });
+
+    $('.group_user_input').change(function(){
+        $('.'+this.value).toggle();
+    });
 });
 
 

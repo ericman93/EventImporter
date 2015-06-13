@@ -7,7 +7,7 @@ class GmailImporter < ActiveRecord::Base
 	# whenever try to get token , check if expired 
 	# if it is so get a new one and save in db
 
-	def events(start_time, end_time)
+	def get_events(start_time, end_time)
 		if self.expired?
 			logger.debug('expired !@#$')
 			GmailHelper.refresh_token(self, logger)
