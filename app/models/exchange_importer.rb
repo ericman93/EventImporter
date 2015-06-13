@@ -67,7 +67,7 @@ class ExchangeImporter < ActiveRecord::Base
 					event.end_time = item.end
 					event.location = item.location
 #
-#					event
+					event
 				end
 		end
 
