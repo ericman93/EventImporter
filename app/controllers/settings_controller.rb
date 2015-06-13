@@ -79,7 +79,7 @@ class SettingsController < ApplicationController
 
   def upload_pictute
     user = params[:user].permit(:desc, :is_auto_approval)
-    uploaded_io = user[:picture]
+    uploaded_io = params[:user][:picture]
     if(!uploaded_io.nil?)
       picture_path = Rails.root.join('public', 'user_photos', "#{@current_full_user.user_name}.jpg") #uploaded_io.original_filename
       File.open(picture_path, 'wb') do |file|
@@ -89,17 +89,16 @@ class SettingsController < ApplicationController
       @current_full_user.picture_path = picture_path.to_s
     end
 
-    render json: uploaded_io
-    #respond_to do |format|
-    #  #if(@current_full_user.save)
-    #  if(@current_full_user.update(user))
-    #    format.html { redirect_to :settings_user, notice: 'Your picture was successfully updated.' }
-    #    format.json { render :services, status: :ok }
-    #  else
-    #    format.html { render :user_settings }
-    #    format.json { render json: @current_full_user.errors, status: :unprocessable_entity }
-    #  end
-    #end
+    respond_to do |format|
+      #if(@current_full_user.save)
+      if(@current_full_user.update(user))
+        format.html { redirect_to :settings_user, notice: 'Your picture was successfully updated.' }
+        format.json { render :services, status: :ok }
+      else
+        format.html { render :user_settings }
+        format.json { render json: @current_full_user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
 	private
