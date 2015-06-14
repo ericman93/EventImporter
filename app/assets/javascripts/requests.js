@@ -1,3 +1,4 @@
+
 var current_request = 0;
 var current_proposel = 0;
 
@@ -22,8 +23,8 @@ function show_calendar(){
                 closeLoading(); 
             }
         },
-        eventRender: function(event, element) {
-            if(event.id.indexOf('prop') >= 0){
+        eventAfterRender: function(event, element) {
+            if(event.id > 0 && event.id.indexOf('prop') >= 0){
                 add_button(event.id, 'approve', send_option)
             }
         },
@@ -44,7 +45,7 @@ function show_request_proposels(request_id){
 }
 
 function build_proposel_list(proposals){
-    $('#calendar').fullCalendar( 'removeEvents', "prop_"+current_proposel );
+    $('#calendar').fullCalendar('removeEvents', "prop_"+current_proposel );
     $("#request_proposels_list").empty();
     $.each(proposals, function(index, proposal){
         start = new Date(proposal.start_time)

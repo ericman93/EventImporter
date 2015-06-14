@@ -8,7 +8,8 @@
 <div id="delete">
     <br>
     <% @requests.each do |request| %>
-        <button type="button" class="btn delete btn-danger" onclick="delete_request(<%= request.id %>)" id="delete_request_<%= request.id %>">
+        <button type="button" class="btn delete btn-danger" onclick="delete_request(<%= request.id %>)" 
+                id="delete_request_<%= request.id %>">
             <span class="glyphicon glyphicon-remove"/>
         </button>
         <br>
@@ -32,7 +33,6 @@
 <div id="proposels">
 	<b>Proposels</b>
 	<ul class="nav nav-pills nav-stacked" id="request_proposels_list">
-		
 	</ul>
 </div>
 

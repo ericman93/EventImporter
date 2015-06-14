@@ -32,8 +32,8 @@ class Event < ActiveRecord::Base
 	def to_fullcalendar_json(should_remove_private_data)
 		{
 			'id' => self.id,
-			'start' => self.start_time.to_i,
-			'end' => self.end_time.to_i,
+			'start' => self.start_time,
+			'end' => self.end_time,
 			'title' => should_remove_private_data ? "Busy" : self.subject, 
 			'location' => should_remove_private_data ? "" : self.location,
 			'allDay' => false,

@@ -46,7 +46,7 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
         dayRender: function (date, cell) {
           console.log('test')
         },
-        select: function(start, end, allDay, title) {
+        select: function(start, end) {
             if(!namebale && is_auto_approval && options.length > 0){
                 showError('You can select only one proposel')
                 cal.fullCalendar('unselect');
@@ -54,7 +54,6 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
             }
 
             var temp_id = "temp_" + options.length;
-
             var title;
             if(namebale){
                 title = prompt('Event Title:');
@@ -63,28 +62,25 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
                 title = has_services ? $( "#services option:selected" ).text() : 'Option';
             }
 
-            addNewProposal(start, end, allDay, temp_id, title); 
+            addNewProposal(start, end, temp_id, title); 
 
-            if(has_services){
-                end = new Date(start);
-                end.setMinutes(end.getMinutes() + Number($('#services').val()))
+            //if(has_services){
+            //    end = new Date(start);
+            //    end.setMinutes(end.getMinutes() + Number($('#services').val()))
+            //}
+
+            var eventData = {
+                id: temp_id, // I'm addind the poposel in the addNewProposal function , so the array size increase by 1 
+                start: start,
+                end: end,
+                title: title,
+                is_temp: true,
+                editable: true,
+                // There is no option to edit the html id , so i'm using the class
+                className: (namebale ? 'orange-event ' : 'proposel_event ') + temp_id
             }
 
-            cal.fullCalendar('renderEvent',
-					{
-                        id: temp_id, // I'm addind the poposel in the addNewProposal function , so the array size increase by 1 
-					    start: start,
-					    end: end,
-					    allDay: allDay,
-                        title: title,
-                        is_temp: true,
-                        editable: true,
-                        // There is no option to edit the html id , so i'm using the class
-                        className: (namebale ? 'orange-event ' : 'proposel_event ') + temp_id
-					},
-					selectable // make the event "stick"
-				);
-
+            cal.fullCalendar('renderEvent',eventData, selectable);
             cal.fullCalendar('unselect');
         },
         loading: function (bool) {
@@ -100,7 +96,7 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
         //        showEvent(event.id)
         //    }
         //},
-        eventRender: function(event, element) {
+        eventAfterRender: function(event, element) {
             updateEvent(event);
             add_button(event.id, 'close', removeProposel)
         }
@@ -190,18 +186,17 @@ function sendToServer(){
     })
 }
 
-function addNewProposal(start, end, allday, temp_id, title){
+function addNewProposal(start, end, temp_id, title){
     proposel = {
-        'start_time': start,
-        'start_ticks' :start.getTime(),
-        'end_time': end,
-        'end_ticks': end.getTime(),
-        'is_all_day': allday,
+        //'start_time': start,
+        'start_ticks' :start.unix(),
+        //'end_time': end,
+        'end_ticks': end.unix(),
         'temp_id': temp_id,
         'title': title
     }
 
-    addProposalToPopup(proposel, options.length)
+    //addProposalToPopup(proposel, options.length)
     options.push(proposel)
 }
 
@@ -209,10 +204,10 @@ function updateEvent(event){
     // opdate options array
     $.each(options, function(i, option){
         if(option.temp_id == event.id){
-            option.start_time = event.start;
-            option.start_ticks = event.start.getTime();
-            option.end_time = event.end;
-            option.end_ticks = event.end.getTime();
+            //option.start_time = event.start;
+            option.start_ticks = event.start.unix();
+            //option.end_time = event.end;
+            option.end_ticks = event.end.unix();
 
             return;
         }

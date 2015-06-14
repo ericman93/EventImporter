@@ -3,8 +3,8 @@ class EventsController < ApplicationController
 
   def user_events
     user_name = params[:username]
-    start_time = params[:start].to_i
-    end_time = params[:end].to_i
+    start_time = DateTime.iso8601 params[:start]
+    end_time = DateTime.iso8601 params[:end]
 
     is_other_user = @current_username != user_name
 
@@ -19,6 +19,7 @@ class EventsController < ApplicationController
       events = CalendarApiHelper.combine_events(events, logger)
     end
 
+    #render json: events
     render json: events.map{|e| e.to_fullcalendar_json(is_other_user) }
   end
 

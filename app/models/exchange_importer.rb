@@ -9,7 +9,7 @@ class ExchangeImporter < ActiveRecord::Base
 		gmt = 0; # I want the events as UTC 
 		time_zone = {:bias => (gmt*60).to_s}
 
-		events = get_events_from_folder(client, Time.at(start_time).iso8601 , Time.at(end_time).iso8601 , time_zone).compact
+		events = get_events_from_folder(client, start_time, end_time , time_zone).compact
 
 		return events
 	end

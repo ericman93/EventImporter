@@ -4,5 +4,5 @@ function get_gmt_offset() {
 }
 
 function date_to_human(date) {
-    return date.toLocaleTimeString() + ' ' + date.toLocaleDateString();
+    return date.format('L') + ' ' + date.format('L');
 }

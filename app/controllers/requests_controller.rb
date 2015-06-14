@@ -8,7 +8,6 @@ class RequestsController < ApplicationController
 		requester_info = params[:request_info]
 		param_proposals = params[:proposals].to_a
 		event_metadata = params[:event_metadata]
-		gmt_offset = params[:gmt_offset]
 
 		is_valid, message = validate_request_info?(requester_info, event_metadata);
 		if(!is_valid)

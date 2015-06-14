@@ -37,8 +37,8 @@ class GmailImporter < ActiveRecord::Base
 			events = client.execute(
 		      :api_method => service.events.list,
 		      :parameters => {'calendarId' => 'primary',
-		      				  'timeMin' => Time.at(start_time).as_json(),
-		      				   'timeMax' => Time.at(end_time).as_json() },
+		      				  'timeMin' => start_time.as_json(),
+		      				   'timeMax' => end_time.as_json() },
 		      :headers => {'Content-Type' => 'application/json'})
 
 			return events.data
