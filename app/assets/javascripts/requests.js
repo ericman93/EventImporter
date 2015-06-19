@@ -16,6 +16,7 @@ function show_calendar(){
         },
         events:  "/events/"+user_name,
         eventBorderColor: 'black',
+        allDaySlot: false,
         loading: function (bool) {
             if (bool) {
                 popupLoading();
@@ -28,12 +29,6 @@ function show_calendar(){
                 add_button(event.id, 'approve', send_option)
             }
         },
-        //eventRender: function(event, element) {
-        //      element.bind('dblclick', function() {
-        //        // if evevnt.id start with "prop_"
-        //        send_option_selection(event.id)
-        //      });
-        //   },
         defaultView: 'agendaWeek',
     });
 }
@@ -75,11 +70,12 @@ function proposal_selected(proposal_id, request_id){
     };
 
     set_propoal_active(proposal_id);
+
     $('#calendar').fullCalendar( 'removeEvents', "prop_"+current_proposel );
     current_proposel = proposal_id;
     $('#calendar').fullCalendar( 'renderEvent', new_event );
 
-    //add_button(prop_id, 'approve', send_option);
+    add_button(prop_id, 'approve', send_option);
 }
 
 function set_request_active(request_id){

@@ -34,6 +34,7 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
         //theme: true,
         allDaySlot: false,
         handleWindowResize: true,
+        timezone: "local",
         //aspectRatio: 2,
         hiddenDays: getHolidays(time_day),
         slotMinutes: slot_min,
@@ -101,6 +102,7 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
             add_button(event.id, 'close', removeProposel)
         }
     });
+    fixView()
 
     selectWorkTime(time_day, slot_min, 0, 24, true)
 

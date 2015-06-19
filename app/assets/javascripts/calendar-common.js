@@ -1,5 +1,9 @@
 var event_colors = ['green', 'purple', 'orange', 'turquoise']
 
+function fixView(){
+    //$('.fc-day').append($('<div class="bla">'))
+}
+
 function add_button(event_id, image_name, callback){
     var close_btn = $("<div/>",{
         class: image_name+'-event',
