@@ -32,7 +32,20 @@
 .fc-event{
     border-radius: 7%;
     padding: 2%;
-    background: #1D92DB;
+    background: #4042DD;
+}
+
+.busy_event,
+.user_event{
+    background-color: #1D92DB;
+}
+
+.event-pass{
+    background-color: #0A3A59
+}
+
+.proposel_event{
+    background-color: #4042DD
 }
 
 .fc-head table,

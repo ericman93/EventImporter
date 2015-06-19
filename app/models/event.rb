@@ -37,7 +37,7 @@ class Event < ActiveRecord::Base
 			'title' => should_remove_private_data ? "Busy" : self.subject, 
 			'location' => should_remove_private_data ? "" : self.location,
 			'allDay' => false,
-			'className' => "#{user.user_name} #{should_remove_private_data ? 'busy_event' : 'user_event'}",
+			'className' => "#{user.user_name} #{'event-pass' if DateTime.now > self.end_time} #{should_remove_private_data ? 'busy_event' : 'user_event'}",
 		}
 	end
 
