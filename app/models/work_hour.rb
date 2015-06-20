@@ -1,7 +1,9 @@
 class WorkHour < ActiveRecord::Base
-	validates :start_at, :presence => { :message => "Work day start time is required" }
-	validates :end_at, :presence => { :message => "Work day end time is required" }
+	#validates :start_at, :presence => { :message => "Work day start time is required" }
+	#validates :end_at, :presence => { :message => "Work day end time is required" }
 	validates :day, :presence => { :message => "Work day name is required" }
+ 	serialize :start_at, Tod::TimeOfDay
+ 	serialize :end_at, Tod::TimeOfDay
 
 	belongs_to :user
 	#start_at - seconds from 0am
@@ -10,9 +12,9 @@ class WorkHour < ActiveRecord::Base
 	def self.build_work_day(day_name)
 		day = WorkHour.new
 		day.day = day_name
-		day.start_at = 0
+		day.start_at = Tod::TimeOfDay.new 0
 		# the default workhours is full day
-		day.end_at = 24 * 3600;
+		day.end_at = Tod::TimeOfDay.new 0
 		day
 	end
 

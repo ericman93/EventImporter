@@ -12,6 +12,8 @@
 
     <%= form_for(@user, html: {:class => 'login-form'}) do |f| %>
 
+        <%= f.hidden_field :gmt %>
+
         <%= f.text_field :first_name, :class => "input form-control first_name", :placeholder => "First name", :required => true %>       
 
         <%= f.text_field :last_name, :class => "input form-control last_name", :placeholder => "Last name", :required => true %>       

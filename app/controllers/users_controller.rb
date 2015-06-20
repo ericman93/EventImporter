@@ -38,7 +38,8 @@ class UsersController < ApplicationController
   end
 
   def get_work_days
-    gmt_offset = params[:gmt].to_i
+    #gmt_offset = params[:gmt].to_i
+    gmt_offset = 0
     user_name = params[:username]
 
     work_days = []

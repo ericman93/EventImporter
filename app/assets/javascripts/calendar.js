@@ -100,7 +100,15 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
         eventAfterRender: function(event, element) {
             updateEvent(event);
             add_button(event.id, 'close', removeProposel)
-        }
+        },
+        //'viewRender' : function(view, element) {
+        //    var currdisplay = view.name;
+        //    if(currdisplay=='agendaWeek'){
+        //        $('.fc-bg .fc-day.fc-widget-content.fc-sat').html("<div class='saturday'>some text</div>");
+        //        $('.fc-bg .fc-day.fc-widget-content.fc-mon').html("<div class='monday'>some text</div>");
+        //        $('.fc-bg .fc-day.fc-widget-content.fc-wed').html("<div class='wednesday'>some text</div>");
+        //    }
+        //},
     });
     fixView()
 

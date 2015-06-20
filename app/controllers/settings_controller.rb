@@ -116,10 +116,10 @@ class SettingsController < ApplicationController
     		work_hours = params.require(:user).permit(:work_hours_attributes => [:id, :start_at, :end_at])
 
     		# from HH:mm to seconds after midnight in UTC
-    		work_hours[:work_hours_attributes].each do |id, work_hour|
-			  work_hour['start_at'] = get_seconds_from_display(work_hour['start_at'], gmt)
-			  work_hour['end_at'] = get_seconds_from_display(work_hour['end_at'], gmt)
-    		end
+    		#work_hours[:work_hours_attributes].each do |id, work_hour|
+			  # work_hour['start_at'] = get_seconds_from_display(work_hour['start_at'], gmt)
+			  # work_hour['end_at'] = get_seconds_from_display(work_hour['end_at'], gmt)
+    		#end
 
     		return work_hours
   	end
