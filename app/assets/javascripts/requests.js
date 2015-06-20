@@ -51,28 +51,25 @@ function build_proposel_list(proposals){
     });
 }
 
-function proposal_selected(proposal_id, request_id){
-    var request = requests.filter( function(item){return (item.id==request_id);} );
-    var proposal = request[0].request_proposals.filter( function(item){return (item.id==proposal_id);} );
-    proposal = proposal[0]
+function proposal_selected(proposalId, startTime, endTime){
+    start = new Date(startTime)
+    end = new Date(endTime)
 
-    start_time = new Date(proposal.start_time)
-
-    $('#calendar').fullCalendar('gotoDate',start_time)
-    var prop_id = "prop_"+proposal_id
+    $('#calendar').fullCalendar('gotoDate',start)
+    var prop_id = "prop_"+proposalId
     var new_event = {
       title:"Proposel",
-      start: start_time,
       allDay: false,
       id: prop_id,
-      end: new Date(proposal.end_time),
+      start: start,
+      end: end,
       className: 'option_event ' + prop_id
     };
 
-    set_propoal_active(proposal_id);
+    setPropoalActive(proposalId);
 
     $('#calendar').fullCalendar( 'removeEvents', "prop_"+current_proposel );
-    current_proposel = proposal_id;
+    current_proposel = proposalId;
     $('#calendar').fullCalendar( 'renderEvent', new_event );
 
     add_button(prop_id, 'approve', send_option);
@@ -87,41 +84,40 @@ function set_request_active(request_id){
 
 function send_option(proposel_id){
     send_option_selection(proposel_id).then(function(){
-        remove_request(current_request);
+        removeRequest(current_request);
     }, function(message){
-        alert(message)
+        showError(message)
     });
 }
 
-function set_propoal_active(proposel_id){
-    $('#proposel_'+current_proposel).removeClass('active');
-    $('#proposel_'+proposel_id).addClass('active');
+function setPropoalActive(proposelId){
+    $('#prop_'+current_proposel).removeClass('active');
+    $('#prop_'+proposelId).addClass('active');
 }
 
-function delete_request(id){
+function deleteRequest(requestId){
     $.ajax({
         type: "DELETE",
-        url: "/requests/"+id,
+        url: "/requests/"+requestId,
         dataType: 'json',
         beforeSend: function(xhr) {
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
         }
     })
     .success(function (d) {
-        remove_request(id)
+        removeRequest(requestId)
     })
     .fail(function (data) {
-        alert('error')
+        showError('error')
     });
 }
 
-function remove_request(request_id){
+function removeRequest(request_id){
     if(request_id == undefined){
         request_id = current_request
     }
 
-    $('#request_'+request_id).remove();
-    $('#delete_request_'+request_id).remove();
+    $('#request-panel-'+request_id).remove();
 
     if(request_id == current_request){
         $('#proposel_'+current_proposel).remove();

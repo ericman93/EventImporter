@@ -1,16 +1,11 @@
 #requests{
 	float: left;
-	width: calc(15%-5px);
+	width: 27%;
 }
 
 #delete{
     float: left;
     width: 15px;
-}
-
-#proposels{
-	float: left;
-	width: 15%;
 }
 
 #calendar{
@@ -28,4 +23,22 @@
 }
 #info > h1{
     display: inline;
+}
+
+.proposal-date{
+	font-weight: bold;
+}
+
+.proposal{
+	padding: 5px;
+}
+
+.active{
+	background-color: rgb(158, 206, 215);
+}
+
+.proposal-approval,
+.remove-request{
+	float: right;
+	cursor: pointer;
 }
