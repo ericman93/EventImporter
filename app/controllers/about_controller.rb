@@ -3,14 +3,14 @@ class AboutController < ApplicationController
   	eric = StaffMember.new()
   	eric.name = "Eric Feldman"
   	eric.desc = "CTO"
-  	eric.tags = ["Ruby", ".Net", "Rails"]
+  	eric.tags = ["Code Monkey"]
   	eric.pic_name = "eric.jpg"
   	eric.location = "Israel"
 
   	gadi = StaffMember.new()
   	gadi.name = "Gadi Feldman"
   	gadi.desc = "CEO"
-  	gadi.tags = ["Citrix", "Father", "Virtualizton"]
+  	gadi.tags = ["Chief of Design"]
   	gadi.pic_name = "gadi.jpg"
   	gadi.location = "Israel"
 
