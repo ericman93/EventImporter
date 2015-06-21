@@ -92,11 +92,11 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
                 showRequestInfoWindow();
             }
         },
-        eventRender: function(event, element, view){
-            console.log($(element))
-            //element.css('top', top+10);
-            //console.log($(element[0]).css('top'))
-        },
+        //eventRender: function(event, element, view){
+        //    console.log($(element))
+        //    //element.css('top', top+10);
+        //    //console.log($(element[0]).css('top'))
+        //},
         eventAfterRender: function(event, element) {
             updateEvent(event);
             add_button(event.id, 'close', removeProposel)
