@@ -92,20 +92,26 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
                 showRequestInfoWindow();
             }
         },
-        //eventClick: function(event){
-        //    if(!event.is_temp){
-        //        showEvent(event.id)
-        //    }
-        //},
+        eventRender: function(event, element, view){
+            console.log($(element))
+            //element.css('top', top+10);
+            //console.log($(element[0]).css('top'))
+        },
         eventAfterRender: function(event, element) {
             updateEvent(event);
             add_button(event.id, 'close', removeProposel)
+
+            $.each($('.fc-event'), function(index){
+                e = $('.fc-event')[index]
+                $(e).css('top', $(e).css('top'))
+            });
+
+            fixEventsPosition(element);
         },
         'viewRender' : function(view, element) {
             selectWorkTime(time_day, slot_min, 0, 24, true)
         },
     });
-    fixView()
 
     setEmailInputs();
 }

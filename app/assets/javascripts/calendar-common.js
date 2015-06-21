@@ -1,8 +1,10 @@
 var event_colors = ['green', 'purple', 'orange', 'turquoise']
+var BORDER_SPACE = 10
 
-function fixView(){
-    //$('.fc-day').append($('<div class="bla">'))
-}
+function fixEventsPosition(element){
+    element.css('top', parseInt(element.css('top'))-BORDER_SPACE);
+    element.css('bottom', parseInt(element.css('bottom'))+BORDER_SPACE);
+}   
 
 function add_button(event_id, image_name, callback){
     var close_btn = $("<div/>",{

@@ -28,6 +28,8 @@ function show_calendar(){
             if(event.id > 0 && event.id.indexOf('prop') >= 0){
                 add_button(event.id, 'approve', send_option)
             }
+
+            fixEventsPosition(element);
         },
         defaultView: 'agendaWeek',
     });
