@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
 	has_many :requests
 	has_many :work_hours
 	has_many :services
-	has_many :mail_importer, :dependent => :destroy 
+	has_many :mail_importer, :dependent => :destroy
+	has_one  :registration_key 
 
 	accepts_nested_attributes_for :work_hours
 	accepts_nested_attributes_for :services

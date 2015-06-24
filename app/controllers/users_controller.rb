@@ -23,11 +23,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    @user.work_hours = WorkHour.build_week
+    request_params = user_params()
+    key = RegistrationKey.where(:key => request_params['registration_key']['key']).first
+    request_params[:registration_key] = nil
+
+    @user = User.new(request_params)
+    if(key.nil? or !key.user.nil?)
+      @user.errors[:base] << "Bad key"
+    else 
+      @user.work_hours = WorkHour.build_week
+      @user.registration_key = key
+    end
 
     respond_to do |format|
-      if @user.save;
+      if @user.errors[:base].empty? and @user.save;
         format.html { redirect_to :root, status: 302 }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -59,6 +68,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :password, :user_name)
+      params.require(:user).permit(:email, :first_name, :last_name, :password, :user_name, registration_key: [:key])
     end
 end
