@@ -4,42 +4,8 @@
 }
 
 #option_data{
-	float: right;
-	width: 85%;
-}
-
-#customBtn {
-  display: inline-block;
-  background: #dd4b39;
-  color: white;
-  width: 165px;
-  border-radius: 5px;
-  white-space: nowrap;
-}
-#customBtn:hover {
-  background: #e74b37;
-  cursor: hand;
-}
-span.label {
-  font-weight: bold;
-}
-span.icon {
-  background: url('/+/images/branding/btn_red_32.png') transparent 5px 50% no-repeat;
-  display: inline-block;
-  vertical-align: middle;
-  width: 35px;
-  height: 35px;
-  border-right: #bb3f30 1px solid;
-}
-span.buttonText {
-  display: inline-block;
-  vertical-align: middle;
-  padding-left: 35px;
-  padding-right: 35px;
-  font-size: 14px;
-  font-weight: bold;
-  /* Use the Roboto font that is loaded in the <head> */
-  font-family: 'Roboto',arial,sans-serif;
+	float: left;
+	width: 50%;
 }
 
 .remove-btn{
@@ -50,4 +16,55 @@ span.buttonText {
   resize: none;
   height: 75px;
   width: 50%;
+}
+
+#customBtn {
+  display: inline-block;
+  background: #4285f4;
+  color: white;
+  width: 150px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+#customBtn:hover {
+  cursor: pointer;
+}
+span.google-label {
+  font-weight: bold;
+  color: black;
+}
+span.icon {
+  background: url('https://google-developers.appspot.com/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  width: 42px;
+  height: 42px;
+  border-right: #2265d4 1px solid;
+}
+span.buttonText {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  /* Use the Roboto font that is loaded in the <head> */
+   font-family: 'Roboto', sans-serif;
+}
+
+label{
+  font-weight: normal;
+}
+
+.nav-pills > li > a.current {
+    border-left: thick solid rgb(78, 87, 100);
+    border-radius: 0px;
+}
+
+.field{
+  display: flex;
+}
+
+.field label{
+  width: 17%;
 }

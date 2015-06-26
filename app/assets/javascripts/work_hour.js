@@ -12,11 +12,10 @@ function setUpTimePickers(){
 		defaultTime: '00:00'
 	});
 
-	$.each($('.hour_picker'), function(i, picker){
-		var seconds = $(picker).data('seconds');
-
-		$(picker).timepicker('setTime', from_seconds_to_view(parseInt(seconds)))
-	})
+	//$.each($('.hour_picker'), function(i, picker){
+	//	var seconds = $(picker).data('seconds');
+	//	$(picker).timepicker('setTime', from_seconds_to_view(parseInt(seconds)))
+	//})
 
 	$('.vication').change(function(){
 		day = $(this).data('day')

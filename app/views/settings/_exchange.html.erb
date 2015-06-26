@@ -16,20 +16,25 @@
 
   <div class="field">
     <%= f.label :user_name %><br>
-    <%= f.text_field :user_name, id: 'user_name' %>
+    <%= f.text_field :user_name,:class => "input input-s form-control", id: 'user_name' %>
   </div>
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.text_field :password, id: 'password' %>
+    <%= f.text_field :password, :class => "input form-control", id: 'password' %>
   </div>
   <div class="field">
     <%= f.label :server %><br>
-    <%= f.text_field :server, id: 'server' %>
+    <%= f.text_field :server, :class => "input form-control", id: 'server' %>
   </div>
+  <br>
   <div class="actions">
     <%= f.submit :class => 'btn btn-success' %>
     <button class="btn" value="Test Connection" onclick="testConnection(this)" >
       Test Connection <i class="pe-7s-pen"></i>
     </button>
+    <% unless @importer.new_record? %>
+      <%= link_to 'Destroy', @importer, method: :delete, data: { confirm: 'Are you sure?' }, id: @importer.id, :class => 'btn btn-danger' %>
+      <%= link_to "Reset Errors (#{@importer.error_count})" , @importer, method: :put, data: { confirm: 'Are you sure?' }, id: @importer.id, :class => 'btn btn-warning' %>
+    <% end %>
   </div>
 <% end %>

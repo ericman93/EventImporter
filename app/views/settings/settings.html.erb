@@ -2,6 +2,8 @@
 	<%= stylesheet_link_tag "settings" %>
 <% end %>
 
+<div class="">
+
 <% if !notice.nil? %>
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -19,22 +21,22 @@
 <div id="options">
     <ul class="nav nav-pills nav-stacked">
         <li id="work_hours" class="setting_option">
-            <%= link_to :settings_hours do %>
+            <%= link_to settings_hours_path, class: current_page(settings_hours_path) do %>
                 <span class="glyphicon glyphicon-time"></span> Work Hours
             <% end %>
         </li>
         <li id="web_mails" class="setting_option">
-            <%= link_to :settings_mails do %>
+            <%= link_to settings_mails_path, class: current_page(settings_mails_path) do %>
                 <span class="glyphicon glyphicon-envelope"></span> Web Mail
             <% end %>
         </li>
         <li id="services" class="setting_option">
-            <%= link_to :settings_services do %>
+            <%= link_to settings_services_path, class: current_page(settings_services_path) do %>
                 <span class="glyphicon glyphicon-shopping-cart"></span> Services
             <% end %>
         </li>
         <li id="user" class="setting_option">
-            <%= link_to :settings_user do %>
+            <%= link_to settings_user_path, class: current_page(settings_user_path) do %>
                 <span class="glyphicon glyphicon-user"></span> User Settings
             <% end %>
         </li>
@@ -49,4 +51,5 @@
     <div id="update_result">
         <% notice %>
     </div>
+</div>
 </div>
