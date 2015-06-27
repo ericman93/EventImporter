@@ -77,18 +77,17 @@ function proposal_selected(proposalId, startTime, endTime){
     add_button(prop_id, 'approve', send_option);
 }
 
-function set_request_active(request_id){
-    $('#request_'+current_request).removeClass('active');
-    $('#request_'+request_id).addClass('active');
-
-    current_request = request_id;
+function getSelectedRequestId(){
+    return $('.panel .in').parent('div').data('request-id');
 }
 
 function send_option(proposel_id){
-    send_option_selection(proposel_id).then(function(){
-        removeRequest(current_request);
-    }, function(message){
-        showError(message)
+    showYesOrNo('really ?', function(){
+        send_option_selection(proposel_id).then(function(){
+            removeRequest(getSelectedRequestId());
+        }, function(message){
+            showError(message)
+        });
     });
 }
 

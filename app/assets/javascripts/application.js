@@ -78,6 +78,15 @@ function showError(errorMessage){
     $('#error-modal').modal('show'); 
 }
 
+function showYesOrNo(content, yesCallback){
+    $('#yesOrNoModal #btn-yes').click(function(){
+        $('#yesOrNoModal').modal('hide');
+        yesCallback();
+    })
+    $('#yesOrNoModal .modal-body').html(content);
+    $('#yesOrNoModal').modal('show');
+}
+
 function showPopup(title, content, titleClass){
     clearPopup();
 

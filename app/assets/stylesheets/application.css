@@ -155,3 +155,7 @@ pre.prettyprint{
 .com{
     color: #999;
 } 
+
+.modal .modal-footer{
+    text-align: left;
+}

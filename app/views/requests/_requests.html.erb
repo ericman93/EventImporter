@@ -4,7 +4,7 @@
 
 <div id="requests" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <% @requests.each do |request| %>
-        <div class="panel panel-default" id="request-panel-<%=request.id%>">
+        <div class="panel panel-default" id="request-panel-<%=request.id%>" data-request-id="<%=request.id%>">
             <div class="panel-heading" role="tab" id="request_<%=request.id%>">
               <div class="remove-request" onclick="deleteRequest(<%=request.id%>)">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -19,7 +19,7 @@
               <div class="panel-body">
                 <% request.request_proposals.each do |proposal| %>
                     <div class="proposal" id="prop_<%= proposal.id %>">
-                      <div class="proposal-approval">
+                      <div class="proposal-approval" onclick="send_option('prop_<%= proposal.id %>')">
                           <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                       </div>
                       <div onclick="proposal_selected(<%= proposal.id %>, <%= proposal.start_time.to_json %>, <%= proposal.end_time.to_json %>)">
