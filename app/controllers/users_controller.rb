@@ -57,7 +57,12 @@ class UsersController < ApplicationController
       work_days = user.work_hours.order(:day_index)
     end
 
-    render json: work_days.map{|d| {day: d.short_day_name, hours: [(d.start_at + (gmt_offset * 3600)), (d.end_at + (gmt_offset * 3600))]}} 
+    #render json: work_days.map{|d| {day: d.short_day_name, hours: [(d.start_at + (gmt_offset * 3600)), (d.end_at + (gmt_offset * 3600))]}} 
+    render json: work_days.each_with_object({}) { |value,hash| hash[value.short_day_name] = {
+        "start" => value.start_at + (gmt_offset * 3600),
+        "end" => value.end_at + (gmt_offset * 3600)
+      }
+    }
   end
 
   private

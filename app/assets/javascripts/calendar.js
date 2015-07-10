@@ -35,8 +35,9 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
         allDaySlot: false,
         handleWindowResize: true,
         timezone: "local",
+
         //aspectRatio: 2,
-        hiddenDays: getHolidays(time_day),
+        hiddenDays: getVicationDays(time_day),
         slotMinutes: slot_min,
         events: should_load_events ? "/events/"+user_name : [],
         defaultView: 'agendaWeek',
@@ -136,16 +137,6 @@ function getWorkHours(user_name){
         })
 
     return time_day
-}
-
-function getHolidays(work_days){
-    var holidays = $.map(work_days, function(day, key){
-        if (day.hours[0] == 0 && day.hours[1] == 0){
-            return key
-        }
-    })
-
-    return holidays
 }
 
 function sendToServer(){

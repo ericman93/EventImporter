@@ -52,7 +52,11 @@
 						    </span>
 						</div>
 					</td>
-					<td><input type="checkbox" id="vication_<%= work_hour_form.object.short_day_name %>" class="vication" data-day="<%= work_hour_form.object.short_day_name %>"></td>	
+					<td>
+						<input type="checkbox" id="vication_<%= work_hour_form.object.short_day_name %>" 
+							   <%= "checked" if work_hour_form.object.start_at.second_of_day == 0 && work_hour_form.object.end_at.second_of_day==0%>
+							   class="vication" data-day="<%= work_hour_form.object.short_day_name %>">
+					</td>	
 	    		<% end %>
     		</tr>
 	  	<% end %>
