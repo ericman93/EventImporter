@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 class User < ActiveRecord::Base
 	validates_format_of :email, :with => /@/ ,:message => "Invalid email address" 
 	validates_format_of :user_name, :with => /\A[a-zA-Z0-9_]{2,30}\Z/ ,:message => "Invalid username" 
@@ -39,7 +41,7 @@ class User < ActiveRecord::Base
 
 	def self.authenticate_by_mail(user_name, plain_password)
 		#hashed_password = Digest::MD5.hexdigest(plain_password)
-		hashed_password = plain_password
+		hashed_password = Digest::MD5.hexdigest(plain_password)
 		User.where("upper(user_name) = ? and password = ?", user_name.upcase, hashed_password).any?
 	end
 end
