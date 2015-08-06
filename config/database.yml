@@ -21,9 +21,9 @@ test:
 
 production:
   adapter: mysql2
-  database: mysql_prod
-  host: localhost
-  username: root
+  database: scheddy_prod
+  host: 173.194.247.68
+  username: mysql_user
   password: Aueujo12!
   port: 3306
   pool: 5
