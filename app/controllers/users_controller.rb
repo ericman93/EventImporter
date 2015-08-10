@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    request_params = user_params()
+    request_params = user_params
     key = RegistrationKey.where(:key => request_params['registration_key']['key']).first
     request_params[:registration_key] = nil
 
@@ -34,6 +34,8 @@ class UsersController < ApplicationController
       @user.work_hours = WorkHour.build_week
       @user.registration_key = key
     end
+
+    @user.password = Digest::MD5.hexdigest(@user.password)
 
     respond_to do |format|
       if @user.errors[:base].empty? and @user.save;

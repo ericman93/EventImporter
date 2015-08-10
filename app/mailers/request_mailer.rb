@@ -36,7 +36,8 @@ ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=TENTATIVE;CN=#{request.return_name}:MAILT
 END:VEVENT
 END:VCALENDAR"
 
-  	mail(:from => request.return_mail, :reply_to => request.return_mail,
+  	#mail(:from => request.return_mail, :reply_to => request.return_mail,
+    mail(:from => user.email, :reply_to => user.email,
   		 :to => [request.return_mail, user.email], 
 		 :subject => "Calendar #{Time.now.to_i}", :content_type => "text/calendar") do |format|
   			format.ics{

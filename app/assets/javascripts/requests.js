@@ -82,13 +82,15 @@ function getSelectedRequestId(){
 }
 
 function send_option(proposel_id){
-    showYesOrNo('really ?', function(){
-        send_option_selection(proposel_id).then(function(){
-            removeRequest(getSelectedRequestId());
-        }, function(message){
-            showError(message)
-        });
-    });
+    $.when(showYesOrNo('really ?')).then(
+        function(){
+            send_option_selection(proposel_id).then(function(){
+                removeRequest(getSelectedRequestId());
+            }, function(message){
+                showError(message)
+            });       
+        }
+    );
 }
 
 function setPropoalActive(proposelId){

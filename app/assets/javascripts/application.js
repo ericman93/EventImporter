@@ -78,13 +78,18 @@ function showError(errorMessage){
     $('#error-modal').modal('show'); 
 }
 
-function showYesOrNo(content, yesCallback){
+function showYesOrNo(content){
+    var dfd = jQuery.Deferred();
+
     $('#yesOrNoModal #btn-yes').click(function(){
         $('#yesOrNoModal').modal('hide');
-        yesCallback();
+        dfd.resolve();
     })
+
     $('#yesOrNoModal .modal-body').html(content);
     $('#yesOrNoModal').modal('show');
+
+    return dfd.promise();
 }
 
 function showPopup(title, content, titleClass){

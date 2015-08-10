@@ -28,17 +28,74 @@ class GmailImporter < ActiveRecord::Base
 		self.token
 	end
 
+	def send_proposal(proposal)
+		client = get_gmail_client
+		service = client.discovered_api('calendar', 'v3')
+
+		gmail_event = {
+			'summary' => proposal.request.subject,
+			'location' => proposal.request.location,
+			'description' => 'Created by Scheddy.me',
+			'start' => {
+				'dateTime' => proposal.start_time.strftime("%FT%T%:z"), 
+			},
+			'end' => {
+				'dateTime' => proposal.end_time.strftime("%FT%T%:z"), 
+			},
+			'attendees' => [
+			    {
+			    	'email' => proposal.request.return_mail,
+			    	'responseStatus' => "accepted"
+		    	},
+			    {
+			    	'email' => user.email,
+			    	'responseStatus' => "accepted"
+		    	}
+			]
+		};
+
+		puts '------------'
+		puts self.token
+		puts '------------'
+
+		result = client.execute(
+	    	:api_method => service.events.insert,
+	      	:parameters => {
+      			:calendarId => 'primary',
+      			:sendNotifications => true
+			},
+			:body_object => gmail_event,
+	      	:headers => {'Content-Type' => 'application/json'}
+      	)
+
+
+		puts '-------------'
+      	puts "Start : #{gmail_event['start']['dateTime']}"
+      	puts "End : #{gmail_event['end']['dateTime']}"
+      	puts '-------------'
+      	puts "Status : #{result.status}"
+      	puts '-------------'
+      	puts result.body
+      	puts '-------------'
+	end
+
 	private
-		def get_gmail_events(start_time, end_time)
+		def get_gmail_client()
 			client = Google::APIClient.new
     		client.authorization.access_token = self.token
+
+			return client
+		end
+
+		def get_gmail_events(start_time, end_time)
+			client = get_gmail_client;
 			service = client.discovered_api('calendar', 'v3')
 
 			events = client.execute(
 		      :api_method => service.events.list,
 		      :parameters => {'calendarId' => 'primary',
 		      				  'timeMin' => start_time.as_json(),
-		      				   'timeMax' => end_time.as_json() },
+		      				  'timeMax' => end_time.as_json() },
 		      :headers => {'Content-Type' => 'application/json'})
 
 			return events.data
