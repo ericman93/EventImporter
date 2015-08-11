@@ -231,3 +231,8 @@
     border-color: #00A4E4;
     color:  #00A4E4;
 }
+
+.login .box .form .form-control::-webkit-input-placeholder { color: #9C9C9C; }
+.login .box .form .form-control:-moz-placeholder { color: #9C9C9C; }
+.login .box .form .form-control::-moz-placeholder { color: #9C9C9C; }
+.login .box .form .form-control:-ms-input-placeholder { color: #9C9C9C; }
