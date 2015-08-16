@@ -18,15 +18,15 @@
           <ul class="nav navbar-nav navbar-right">  
                     <% if !@current_username.nil? %>
                       <li>
-                        <a href="\<%= @current_username %>" >
+                        <%= link_to :action => 'calendar', :controller => 'users', :username => @current_username do %>
                             <i class="pe-7s-date"></i>
                             <p>Calendar</p>
-                        </a>
+                        <% end %>
                       </li>
                       <li>
                           <a href="<%= url_for(requests_path) %>">
                               <i class="pe-7s-mail">
-                                  <span class="label" id="request_count"> </span>  
+                                  <span class="label" id="request_count">...</span>  
                               </i>
                               <p>Requests</p>
                           </a>
