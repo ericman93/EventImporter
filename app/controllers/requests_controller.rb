@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
 	before_action :has_user_session?, only: [:select_proposal, :remove_request, :user_requests, :requests, :single_request, :request, :requests_count]
-	before_action :check_if_currnet_user, only: [:request_data, :single_request]
+	before_action :check_if_currnet_user, only: [:request_data, :single_request, :remove_request]
 	before_action :set_full_user, only: [:select_proposal, :requests_count, :user_requests]
 
 	def insert_proposels

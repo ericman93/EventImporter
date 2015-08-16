@@ -9,6 +9,7 @@ function selectWorkTime(timeArray, slotMinutes, minTime, maxTime, showAtHolidays
         var startBefore = minTime; // each day start at slot 0 
         var endBefore = day.start.second_of_day
         var height = markDisableTimes(dayName, 0, endBefore, slotMinutes)
+        console.log(height)
 
         var startBefore = day.end.second_of_day; 
         var endBefore = 3600 * maxTime;
@@ -21,7 +22,7 @@ function markDisableTimes(dayName, from, to, slotMinutes, previus){
         previus = 0
     }
 
-    var slotHeight = $('.fc-slats').find('.fc-widget-content').height();
+    var slotHeight = $('.fc-slats').find('.fc-widget-content').height() + 1;
 
     height = getDivHeight(to-from, slotHeight, slotMinutes);
     $busy = $('<div>').addClass('busy-time').height(height).css('margin-top', getDivHeight(from, slotHeight, slotMinutes) - previus)
