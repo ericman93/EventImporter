@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :setting_data do %>
-	<h3>Gmail</h3>
+	<h3>Google Calendar</h3>
 	<% if(@current_full_user.mail_importer.all?{|importer| !(importer.specific.is_a? GmailImporter)}) %>
 		<div id="gSignInWrapper">
 		    <label>Sign in :</label>

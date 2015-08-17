@@ -35,6 +35,7 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
         allDaySlot: false,
         handleWindowResize: true,
         timezone: "local",
+        columnFormat: "ddd D/M",
 
         //aspectRatio: 2,
         hiddenDays: getVicationDays(time_day),
