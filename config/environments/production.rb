@@ -11,7 +11,7 @@ Calendar::Application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
@@ -99,7 +99,7 @@ Calendar::Application.configure do
   config.google_api = {
     :client_id => '402663997705-eismo50mfjdcv183bsa3el2cfggvjv1d.apps.googleusercontent.com',
     :client_secret => '7pmfLVy9xEoRSGvj85CNrDSb',
-    :redirect_uri => 'http://scheddy.me/auth/google_oauth2/callback',
+    :redirect_uri => 'https://scheddy.me/auth/google_oauth2/callback',
   }
 
 end
