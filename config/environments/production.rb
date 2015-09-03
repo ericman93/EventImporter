@@ -96,6 +96,10 @@ Calendar::Application.configure do
     :from                 => "mailer@scheddy.me"
   }
 
+  config.google_analytics = {
+    set_account: 'UA-48128194-2'
+  }
+
   config.google_api = {
     :client_id => '402663997705-eismo50mfjdcv183bsa3el2cfggvjv1d.apps.googleusercontent.com',
     :client_secret => '7pmfLVy9xEoRSGvj85CNrDSb',

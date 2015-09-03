@@ -48,8 +48,12 @@ Calendar::Application.configure do
   config.assets.logger = false
 
   config.google_api = {
-    :client_id => '793188286109-mkru8uan52gaen4curjj0m7r8emaj8on.apps.googleusercontent.com',
-    :client_secret => 'B9HTYcNr9onoGvgsjfhuxVKA',
+    :client_id => '402663997705-egg8g41mk28uo7jtri21gust6jl36coq.apps.googleusercontent.com',
+    :client_secret => 'PTO4UgQnP5_V2I4LlthqQFlp',
     :redirect_uri => 'http://localhost:3000/auth/google_oauth2/callback',
+  }
+
+  config.google_analytics = {
+    set_account: 'UA-48128194-2'
   }
 end
