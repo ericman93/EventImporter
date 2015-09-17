@@ -34,6 +34,8 @@ function show_calendar(){
         },
         defaultView: 'agendaWeek',
     });
+
+    formatTime();
 }
 
 function show_request_proposels(request_id){

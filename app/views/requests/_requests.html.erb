@@ -25,9 +25,9 @@
                       <div onclick="proposal_selected(<%= proposal.id %>, <%= proposal.start_time.to_json %>, <%= proposal.end_time.to_json %>)">
                           <span class="proposal-date"><%= proposal.start_time.localtime.strftime('%d/%m') %></span>
                           :
-                          <%= proposal.start_time.localtime.strftime('%H:%M') %>
+                          <%= DateHelper.format_date(proposal.start_time, '%H:%M') %>
                           -
-                          <%= proposal.end_time.localtime.strftime('%H:%M') %>
+                          <%= DateHelper.format_date(proposal.end_time, '%H:%M') %>
                       </div>
                     </div>
                 <% end %>
