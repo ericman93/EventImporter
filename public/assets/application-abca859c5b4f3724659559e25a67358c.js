@@ -43,7 +43,7 @@ function set_request_count(){
     });
 }
 
-function get_partial_data(url, content_to, http_method, callback){
+function getPartialData(url, content_to, http_method, callback){
     $.ajax({
         url: url,
         type: http_method,

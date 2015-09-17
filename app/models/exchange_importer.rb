@@ -53,12 +53,31 @@ class ExchangeImporter < ActiveRecord::Base
 				exchnge_client.search_contacts(user_name).first.email
 			end
 			
+			calendar_view_args = {
+			  max_entries_returned: 500,
+			  start_date: start_time.to_time.iso8601,
+			  end_date: end_time.to_time.iso8601
+			}
+
 			items = make_call_to_server(@@possible_errors, []) do 
 				calendar_folder = exchnge_client.get_folder_by_name 'Calendar'
-				calendar_folder.items_between start_time, end_time
+				shallow_items = calendar_folder.items(item_shape: { base_shape: 'IdOnly' }, calendar_view: calendar_view_args)
+				item_ids = shallow_items.map(&:id)
+
+				items = if item_ids.any?
+				  # Must do a second GetItems call as FindItems is incapable of returning
+				  # item:Body. Some details here: http://msdn.microsoft.com/en-us/library/office/gg236897(v=exchg.140).aspx
+				  item_shape_args = {
+				    base_shape: 'AllProperties',
+				    body_type: 'Text',
+				  }
+
+				  calendar_folder.get_items(item_ids, item_shape: item_shape_args)
+				else
+				  []
+				end
 			end
 
-			#return [items[0].methods]
 			return items.map do |item|
 					event = Event.new
 					event.id = -1

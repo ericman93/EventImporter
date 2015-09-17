@@ -3,7 +3,7 @@ var current_request = 0;
 var current_proposel = 0;
 
 $(function () {
-    get_partial_data('requests/user', '#request_data', 'get', show_calendar)   
+    getPartialData('requests/user', '#request_data', 'get', show_calendar)   
 });
 
 function show_calendar(){

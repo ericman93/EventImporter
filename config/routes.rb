@@ -53,6 +53,9 @@ Calendar::Application.routes.draw do
   # About
   get '/about', to: 'about#about', :as => :about
 
+  # Manage
+  get '/manage', to: 'manage#index', :as => :manage
+
   # Groups
   get '/groups', to: 'groups#index', :as => :groups
   get '/groups/new', to: 'groups#add_group', :as => :new_group
