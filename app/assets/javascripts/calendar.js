@@ -46,9 +46,6 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
         selectHelper: selectable,
         disableResizing: has_services,
         eventBorderColor: 'black',
-        dayRender: function (date, cell) {
-          console.log('test')
-        },
         select: function(start, end) {
             if(!namebale && is_auto_approval && options.length > 0){
                 showError('You can select only one proposel')

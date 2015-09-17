@@ -14,6 +14,7 @@ function show_calendar(){
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
+        timezone: "local",
         events:  "/events/"+user_name,
         eventBorderColor: 'black',
         allDaySlot: false,
