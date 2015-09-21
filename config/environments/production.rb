@@ -83,10 +83,10 @@ Calendar::Application.configure do
   config.action_mailer.default_url_options = { :host => "scheddy.me:89" }
 
   config.action_mailer.smtp_settings = {
-    :address              => "vhummuscom.ipage.com", 
-    :port                 => "587",
-    :domain               => '127.0.0.1',
-    :user_name            => 'gadi@vhummus.com',
+    :address              => "smtp.sendgrid.net", 
+    :port                 => "2525",
+    :domain               => 'smtp.sendgrid.net',
+    :user_name            => 'scheddy',
     :password             => 'Aueujo12!',
     :authentication       => 'plain',
     :enable_starttls_auto => false     
