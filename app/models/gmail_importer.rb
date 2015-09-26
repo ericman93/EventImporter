@@ -54,10 +54,6 @@ class GmailImporter < ActiveRecord::Base
 			]
 		};
 
-		puts '------------'
-		puts self.token
-		puts '------------'
-
 		result = client.execute(
 	    	:api_method => service.events.insert,
 	      	:parameters => {
@@ -68,15 +64,7 @@ class GmailImporter < ActiveRecord::Base
 	      	:headers => {'Content-Type' => 'application/json'}
       	)
 
-
-		puts '-------------'
-      	puts "Start : #{gmail_event['start']['dateTime']}"
-      	puts "End : #{gmail_event['end']['dateTime']}"
-      	puts '-------------'
-      	puts "Status : #{result.status}"
-      	puts '-------------'
-      	puts result.body
-      	puts '-------------'
+      	RequestMailer.proposle_selected_email(proposal, user).deliver
 	end
 
 	private

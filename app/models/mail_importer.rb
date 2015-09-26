@@ -31,7 +31,7 @@ class MailImporter < ActiveRecord::Base
 	end
 
 	def send_proposal(proposal)
-		RequestMailer.proposle_accept_email(proposal, user).deliver
+		RequestMailer.ics_email(proposal, user).deliver
 	end
 
 	def handle_max_error

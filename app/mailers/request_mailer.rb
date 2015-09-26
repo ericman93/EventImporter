@@ -14,7 +14,7 @@ class RequestMailer < ActionMailer::Base
   	mail(to: user.email, subject: "You got a meeting request from #{request.return_name}")
   end
 
-  def proposle_accept_email(proposal, user)
+  def ics_email(proposal, user)
   	request = proposal.request
 
   	ics_body = "BEGIN:VCALENDAR
@@ -44,5 +44,12 @@ END:VCALENDAR"
   				render :text => ics_body, :layout => false
   			}
   	end	
+  end
+
+  def proposle_selected_email(proposal, user)
+    @user = user  
+    mail(:to => [user.email], 
+         :subject => "Meeting has been added")
+    end 
   end
 end
