@@ -20,7 +20,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql2
+  adapter: mysql
   database: scheddy_prod
   host: 173.194.247.68
   username: mysql_user

@@ -7,7 +7,7 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-gem 'mysql2'
+gem 'mysql'
 group :production do
   gem 'rails_12factor'
 end
