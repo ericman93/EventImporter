@@ -4,7 +4,8 @@
 
 <% content_for :setting_data do %>
 	<h3>Google Calendar</h3>
-	<% if(@current_full_user.mail_importer.all?{|importer| !(importer.specific.is_a? GmailImporter)}) %>
+	<% gmail = @current_full_user.mail_importer.all.select{|importer| importer.specific.is_a? GmailImporter}.first %>
+	<% if gmail.nil? %>
 		<div id="gSignInWrapper">
 		    <label>Sign in :</label>
 		    <%= link_to('/auth/google_oauth2', :target => "_blank") do %>
@@ -22,6 +23,9 @@
 		    	  	<span class="buttonText">Google</span>
 		    	</div>
 		    <% end %>
+	    <div>
+	    	<%= gmail.specific.get_user_email %>
+	    </div>
 	<% end %>
 
 	<hr>

@@ -1,3 +1,4 @@
+
 class GmailImporter < ActiveRecord::Base
 	acts_as :mail_importer, :as => :importer
 
@@ -65,6 +66,18 @@ class GmailImporter < ActiveRecord::Base
       	)
 
       	RequestMailer.proposle_selected_email(proposal, user).deliver
+	end
+
+	def get_user_email
+		client = get_gmail_client;
+		service = client.discovered_api('plus', 'v1')
+
+		user = client.execute(
+			service.people.get,
+			{'userId' => 'me'}
+		);
+
+		return user.data.emails.map{|email| email.value}.join(', ')
 	end
 
 	private

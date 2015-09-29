@@ -48,8 +48,6 @@ END:VCALENDAR"
 
   def proposle_selected_email(proposal, user)
     @user = user  
-    mail(:to => [user.email], 
-         :subject => "Meeting has been added")
-    end 
+    mail(:to => [user.email], :subject => "Meeting has been added")
   end
 end
