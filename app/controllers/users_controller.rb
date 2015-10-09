@@ -39,7 +39,10 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.errors[:base].empty? and @user.save;
-        format.html { redirect_to :root, status: 302 }
+        session[:current_username] = @user.user_name
+        session[:current_userid] = @user.id 
+
+        format.html { redirect_to :settings_mails, status: 302 }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
