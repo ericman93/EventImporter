@@ -10,6 +10,8 @@ $(document).ready(function() {
     $('.group_user_input').change(function(){
         $('.'+this.value).toggle();
     });
+
+    showRequestInfoWindow();
 });
 
 
@@ -88,7 +90,6 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
                 popupLoading();
             } else {
                 closeLoading();
-                showRequestInfoWindow();
             }
         },
         //eventRender: function(event, element, view){
