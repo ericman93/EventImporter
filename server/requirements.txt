@@ -1,3 +1,5 @@
 flask
 blueprint
 google-api-python-client
+sqlalchemy
+mysql-python

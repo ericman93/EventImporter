@@ -1,23 +1,25 @@
 from flask import Flask, jsonify
 from flask import jsonify
+from flask.ext.cors import CORS
 
-from importers.CalendarImporter import CalendarImporter
-from importers.GoogleCalendarImporter import GoogleCalendarImporter
+from database import db_session
+from database import init_db
+init_db()
+
+app = Flask("scheddy")
+CORS(app)
+app.secret_key = 'super secret key'
+
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://root:Password1@localhost/aquaman'
+#db = SQLAlchemy(app)
 
 from controllers.userController import users_api
 from controllers.oauth2callbacksController import oauth_api
-
-app = Flask("scheddy")
-app.secret_key = 'super secret key'
-
 app.register_blueprint(users_api)
 app.register_blueprint(oauth_api)
 
-@app.route('/test')
-def test():
-	importer = GoogleCalendarImporter()
-	res = importer.getEvents({})
-	
-	return jsonify(res)
+@app.teardown_request
+def shutdown_session(exception=None):
+    db_session.remove()
 
 app.run(debug=True)	
