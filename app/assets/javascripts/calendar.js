@@ -3,6 +3,8 @@ var user_email
 var request_info_data = {};
 
 $(document).ready(function() {
+    user = gon.calendar_user;
+
     $(window).resize(function() {
         $('#calendar').fullCalendar('option', 'height', getCalendarHeight());
     });
@@ -11,7 +13,13 @@ $(document).ready(function() {
         $('.'+this.value).toggle();
     });
 
+    $('.importer').change(function () {
+        $(this).closest("form").submit();
+    });
+
     showRequestInfoWindow();
+
+    load_event_to_calendar(user.username, user.auto_approval, true, (user.username != gon.current_user.username) || user.local_events, user.local_events, user.has_services);
 });
 
 

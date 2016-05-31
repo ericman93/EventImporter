@@ -7,7 +7,7 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-gem 'mysql'
+#gem 'mysql'
 group :production do
   gem 'rails_12factor'
 end
@@ -22,7 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+#gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -49,6 +49,7 @@ gem 'omniauth'#, '1.1.0'
 gem 'omniauth-google-oauth2', :git => 'https://github.com/zquestz/omniauth-google-oauth2.git'
 gem 'viewpoint'
 gem 'tod'
+gem 'gon'
 #gem 'therubyracer'
 
 # Use ActiveModel has_secure_password

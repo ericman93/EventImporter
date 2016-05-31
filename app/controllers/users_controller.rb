@@ -15,6 +15,13 @@ class UsersController < ApplicationController
       @is_local_events = @calendar_user.mail_importer.any?{|importer| (importer.specific.is_a? LocalImporter)}
     end
 
+    gon.calendar_user = {
+      username: @calendar_user.user_name,
+      auto_approval: @calendar_user.is_auto_approval == true,
+      local_events: @is_local_events,
+      has_services: @calendar_user.services.empty?
+    }
+
     render "calendar/calendar"
   end
 
@@ -24,6 +31,7 @@ class UsersController < ApplicationController
 
   def create
     request_params = user_params
+
     key = RegistrationKey.where(:key => request_params['registration_key']['key']).first
     request_params[:registration_key] = nil
 

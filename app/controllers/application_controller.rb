@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
 	def set_current_username
 		@current_username = session[:current_username]
 		@current_userid = session[:current_userid]
+		
+		gon.current_user = {
+			username: @current_username,
+			id: @current_userid
+		} 
 	end
 
 	def set_full_user

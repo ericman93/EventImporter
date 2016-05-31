@@ -7,7 +7,7 @@
       <%= f.email_field :email, :class => "input form-control", :placeholder => "Email", :required => true %>
       <%= f.password_field :password, :class => "input form-control", :placeholder => "Password", :required => true %>  
       
-      <%= f.fields_for :registration_key do |r| %>
+      <%= f.fields_for user.registration_key do |r| %>
             <%= r.text_field :key, :class => "input form-control", :placeholder => "Key", :required => true %>  
       <% end %> 
 

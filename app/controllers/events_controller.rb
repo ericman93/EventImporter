@@ -13,9 +13,10 @@ class EventsController < ApplicationController
       user = User.where({user_name: user_name}).first
     end
 
-    events = Rails.cache.fetch("#{user_name}/events/start=#{start_time}&end=#{end_time}", expires_in: 5.minutes) do
-        user.events(start_time, end_time).sort{|x,y| x.start_time <=> y.start_time}
-    end
+    #events = Rails.cache.fetch("#{user_name}/events/start=#{start_time}&end=#{end_time}", expires_in: 5.minutes) do
+    #    user.events(start_time, end_time).sort{|x,y| x.start_time <=> y.start_time}
+    #end
+    events = user.events(start_time, end_time).sort{|x,y| x.start_time <=> y.start_time}
     
     if is_other_user
       events = CalendarApiHelper.combine_events(events, logger)
