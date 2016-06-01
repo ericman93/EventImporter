@@ -2,6 +2,11 @@ var options = []
 var user_email
 var request_info_data = {};
 
+var domProposalManager = PoposalDomUpdater();
+var calendarHelper = CalendarHelper();
+var calendarCommon = CalendarCommon();
+var calendarWorkDay = CalendarWorkDay();
+
 $(document).ready(function() {
     user = gon.calendar_user;
 
@@ -48,7 +53,7 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
         columnFormat: "ddd D/M",
 
         //aspectRatio: 2,
-        hiddenDays: getVicationDays(time_day),
+        hiddenDays: calendarWorkDay.getVicationDays(time_day),
         slotMinutes: slot_min,
         events: should_load_events ? "/events/"+user_name : [],
         defaultView: 'agendaWeek',
@@ -72,7 +77,7 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
                 title = has_services ? $( "#services option:selected" ).text() : 'Option';
             }
 
-            addNewProposal(start, end, temp_id, title); 
+            calendarHelper.addNewProposal(start, end, temp_id, title); 
 
             //if(has_services){
             //    end = new Date(start);
@@ -114,10 +119,10 @@ function load_event_to_calendar(user_name, is_auto_approval, should_load_events,
                 $(e).css('top', $(e).css('top'))
             });
 
-            fixEventsPosition(element);
+            calendarCommon.fixEventsPosition(element);
         },
         'viewRender' : function(view, element) {
-            selectWorkTime(time_day, slot_min, 0, 24, true)
+            calendarWorkDay.selectWorkTime(time_day, slot_min, 0, 24, true)
         },
     });
 
@@ -193,20 +198,6 @@ function sendToServer(){
     })
 }
 
-function addNewProposal(start, end, temp_id, title){
-    proposel = {
-        //'start_time': start,
-        'start_ticks' :start.unix(),
-        //'end_time': end,
-        'end_ticks': end.unix(),
-        'temp_id': temp_id,
-        'title': title
-    }
-
-    //addProposalToPopup(proposel, options.length)
-    options.push(proposel)
-}
-
 function updateEvent(event){
     // opdate options array
     $.each(options, function(i, option){
@@ -229,48 +220,6 @@ function updateEvent(event){
         $(prop_tr[1]).html(date_to_human(event.start))
         $(prop_tr[2]).html(date_to_human(event.end))
     }
-}
-
-function addProposalToPopup(proposel){
-    $("#proposal_table tbody").append('<tr id="prop_'+proposel.temp_id+'"><td>' + getRemoveButtonTd(proposel.temp_id) + 
-                                      '</td><td class="start_time">' + date_to_human(proposel.start_time) + 
-                                      '</td><td class="end_time">' + date_to_human(proposel.end_time) + '</tr>')
-}
-
-function getRemoveButtonTd(proposel_id) {
-    return '<button type="button" class="btn btn-danger remove-prop-btn" onclick="removeProposel('+"'"+proposel_id+"'"+')"> <span class="glyphicon glyphicon-remove"/></button>'
-}
-
-function removeProposel(proposel_id) {
-    // remove from grid
-    $("#prop_"+proposel_id).fadeOut(300, function () {
-        $(this).remove();
-    });
-
-    // remove from options array
-    var to_delete = options.filter( function(item){return (item.temp_id == proposel_id);} );
-    index = $(options).index(to_delete[0])
-    options.splice(index,1);
-
-    // remove from calendar
-    $('#calendar').fullCalendar('removeEvents', proposel_id );
-}
-
-function changeRequestInputDisable(disable){
-    $("#event_subject_input").prop('disabled', disable);
-    $("#event_location_input").prop('disabled', disable);
-    $("#request_mail_input").prop('disabled', disable);
-    $("#request_name_input").prop('disabled', disable);
-    $("#send_request_btn").prop('disabled', disable);
-    $("#services").prop('disabled', disable);
-    $(".remove-prop-btn").prop('disabled', disable);
-}
-
-function clearRequestedForm(){
-    $("#event_subject_input").val('');
-    $("#event_location_input").val('');
-    $("#request_mail_input").val('');
-    $("#request_name_input").val('');
 }
 
 function saveLocalEvents(){
@@ -311,4 +260,79 @@ function saveRequestInfoData(){
 
 function getCalendarHeight(){
     return ($(window).height() * 0.85);
+}
+
+
+function CalendarHelper(){
+    function addNewProposal(start, end, temp_id, title){
+        proposel = {
+            'start_ticks' :start.unix(),
+            'end_ticks': end.unix(),
+            'temp_id': temp_id,
+            'title': title
+        }
+
+        //domProposalManager.add(proposel)
+        options.push(proposel)
+    }
+
+    return {
+        addNewProposal: addNewProposal
+    }
+}
+
+function PoposalDomUpdater(){
+    function addProposalToPopup(proposel){
+        $("#proposal_table tbody").append('<tr id="prop_'+proposel.temp_id+'"><td>' + getRemoveButtonTd(proposel.temp_id) + 
+                                          '</td><td class="start_time">' + date_to_human(proposel.start_time) + 
+                                          '</td><td class="end_time">' + date_to_human(proposel.end_time) + '</tr>')
+    }
+
+    function getRemoveButtonTd(proposel_id) {
+        return '<button type="button" class="btn btn-danger remove-prop-btn" onclick="removeProposel('+"'"+proposel_id+"'"+')"> <span class="glyphicon glyphicon-remove"/></button>'
+    }
+
+    function removeProposel(proposel_id) {
+        // remove from grid
+        $("#prop_"+proposel_id).fadeOut(300, function () {
+            $(this).remove();
+        });
+
+        // remove from options array
+        var to_delete = options.filter( function(item){return (item.temp_id == proposel_id);} );
+        index = $(options).index(to_delete[0])
+        options.splice(index,1);
+
+        // remove from calendar
+        $('#calendar').fullCalendar('removeEvents', proposel_id );
+    }
+
+    return {
+        add: addProposalToPopup,
+        remove: removeProposel
+    }
+}
+
+function RequestManager(){
+    function changeRequestInputDisable(disable){
+        $("#event_subject_input").prop('disabled', disable);
+        $("#event_location_input").prop('disabled', disable);
+        $("#request_mail_input").prop('disabled', disable);
+        $("#request_name_input").prop('disabled', disable);
+        $("#send_request_btn").prop('disabled', disable);
+        $("#services").prop('disabled', disable);
+        $(".remove-prop-btn").prop('disabled', disable);
+    }
+
+    function clearRequestedForm(){
+        $("#event_subject_input").val('');
+        $("#event_location_input").val('');
+        $("#request_mail_input").val('');
+        $("#request_name_input").val('');
+    }
+
+    return {
+        clear: clearRequestedForm,
+        make_disable: changeRequestInputDisable
+    }
 }

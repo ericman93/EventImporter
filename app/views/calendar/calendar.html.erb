@@ -9,9 +9,9 @@
 	<%= javascript_include_tag "lib/jquery-ui.custom.min" %>
 	<%= javascript_include_tag "lib/fullcalendar.min" %>
 	<%= javascript_include_tag "lib/mailcheck.min" %>
-	<%= javascript_include_tag "calendar" %>
 	<%= javascript_include_tag "calendar_work_day" %>
 	<%= javascript_include_tag "calendar-common" %>
+	<%= javascript_include_tag "calendar" %>
 <% end %>
 
 <% if @calendar_user.nil? %>
@@ -19,53 +19,50 @@
 		User <span id="user-not-found-name"><%= "'#{params[:username]}'" %></span> could not be found :( !
 	</div>
 <% else %>
+	<div id="request-info">
+		<% if !@calendar_user.services.empty? %>
+			<select class="btn btn-default dropdown-toggle select-space btn-block" id="services">
+				<% @calendar_user.services.each do |service| %>
+					<option value="<%= service.time_in_minutes %>"><%= service.name %></option>
+				<% end %>
+			</select>
+		<% end %>
 
-<div id="request-info">
-	<% if !@calendar_user.services.empty? %>
-		<select class="btn btn-default dropdown-toggle select-space btn-block" id="services">
-			<% @calendar_user.services.each do |service| %>
-				<option value="<%= service.time_in_minutes %>"><%= service.name %></option>
-			<% end %>
-		</select>
-	<% end %>
-
-	<% if @calendar_user.user_name != @current_username %>
-		<%= render "calendar/request_info" %>
-		<div id="sendRequest" onclick="sendToServer()" class=" ui-widget-content"s>
-        	<img src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/bt_speed_dial_2x.png">
-    	</div>
-	<% elsif @calendar_user.user_name == @current_username and @is_local_events %>
-		<input type="button" class="btn btn-info calendar-action" value="Save" id="btnSaveLocal" onclick="saveLocalEvents()" />
-	<% end %>
-</div>
-
-<div id='calendar'></div>
-<div id='side'>
-	<div id="user-info">
-		<center>
-			<h6><%= "#{@calendar_user.first_name} #{@calendar_user.last_name}" %></h6>
-			<% if @calendar_user.picture_path.nil? and @calendar_user.user_name == @current_username %>
-				Dont have an image? 
-				<br>
-
-				<%= link_to "Upload now!", :settings_user %>
-			<% elsif !@calendar_user.picture_path.nil? %>
-				<img id="user-picture" src="user_photos/<%= @calendar_user.user_name %>.jpg"></img>
-			<% end %>
-			<p>
-				<%= @calendar_user.desc %>
-			</p>
-		</center>
-	</div>
-	<div>
-		<% if @calendar_user.is_a? Group %>
-			<% @calendar_user.users.each do |user| %>
-				<div class="group_user">
-					<input type="checkbox" value="<%= user.user_name %>" class="group_user_input" checked><%= user.user_name %></input>
-				</div>
-			<% end %>
+		<% if @calendar_user.user_name != @current_username %>
+			<%= render "calendar/request_info" %>
+			<div id="sendRequest" onclick="sendToServer()" class=" ui-widget-content"s>
+	        	<img src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/bt_speed_dial_2x.png">
+	    	</div>
+		<% elsif @calendar_user.user_name == @current_username and @is_local_events %>
+			<input type="button" class="btn btn-info calendar-action" value="Save" id="btnSaveLocal" onclick="saveLocalEvents()" />
 		<% end %>
 	</div>
-</div>	
 
+	<div id='calendar'></div>
+	<div id='side'>
+		<div id="user-info">
+			<center>
+				<h6><%= "#{@calendar_user.first_name} #{@calendar_user.last_name}" %></h6>
+				<% if @calendar_user.picture_path.nil? and @calendar_user.user_name == @current_username %>
+					Dont have an image? 
+					<br>
+
+					<%= link_to "Upload now!", :settings_user %>
+				<% elsif !@calendar_user.picture_path.nil? %>
+					<img id="user-picture" src="user_photos/<%= @calendar_user.user_name %>.jpg"></img>
+				<% end %>
+				<p>
+					<%= @calendar_user.desc %>
+				</p>
+			</center>
+		</div>
+		<div>
+			<% if @calendar_user.is_a? Group %>
+				<% @calendar_user.users.each do |user| %>
+					<div class="group_user">
+						<input type="checkbox" value="<%= user.user_name %>" class="group_user_input" checked><%= user.user_name %></input>
+					</div>
+				<% end %>
+			<% end %>
+		</div></div>	
 <% end %>
