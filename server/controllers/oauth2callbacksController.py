@@ -18,26 +18,8 @@ def getGoogleCalendarRequest(action):
     if credentials.access_token_expired:
         return redirect(url_for('oauth_controller.google'+action.title()+'Callback'))
     else:
-        return session['credentials'] #jsonify(events)
+        return "@" #session['credentials'] #jsonify(events)
 
-@oauth_api.route('/googleCallback')
-def googleLoginCallback():
-    flow = client.flow_from_clientsecrets(
-        APP_ROOT+'\client_id.json',
-        scope='https://www.googleapis.com/auth/plus.login',
-        redirect_uri=url_for('oauth_controller.googleCalendarCallback', _external=True))
-
-    if 'code' not in request.args:
-        auth_uri = flow.step1_get_authorize_url()
-        return redirect(auth_uri)
-    else:
-        auth_code = request.args.get('code')
-        credentials = flow.step2_exchange(auth_code)
-        
-        http_auth = credentials.authorize(httplib2.Http())
-        calendar_service = discovery.build('plus', 'v1', http_auth)
-        user = calendar_service.people().list(userId='me', collection='visible').execute()
-        return jsonify(user)
 
 @oauth_api.route('/googleCallback')
 def googleCalendarCallback():
@@ -46,6 +28,7 @@ def googleCalendarCallback():
         scope='https://www.googleapis.com/auth/calendar.readonly',
         redirect_uri=url_for('oauth_controller.googleCalendarCallback', _external=True))
 
+    return jsonify({'res': request.args})
     if 'code' not in request.args:
         auth_uri = flow.step1_get_authorize_url()
         return redirect(auth_uri)

@@ -1,6 +1,6 @@
 angular.module('Scheddy.Core')
-	.directive('loginPanel', ['$state',
-		function ($state){
+	.directive('loginPanel', ['$state', '$http', 'Auth',
+		function ($state, $http, Auth){
 			return {
 				template: '<google-plus-signin clientid="1058234090303-derenhna8oi3h32bf47j77rqtrfalrcd.apps.googleusercontent.com"></google-plus-signin>',
 				restrict: 'EA',
@@ -10,9 +10,10 @@ angular.module('Scheddy.Core')
 			  		});
 
 			  		function userHasSignId(providerName, providerId){
-		  				console.log('login with ' + providerId)
+		  				Auth.getUserId(providerName, providerId);
 	  					$state.go('user', {userId: 6})
 			  		}
+
         		}
 			}
 		}

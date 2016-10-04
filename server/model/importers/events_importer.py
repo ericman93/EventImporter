@@ -15,4 +15,14 @@ class EventsImporter(Base):
         'polymorphic_on': type
     }
 
+	def getEvents(self, user):
+		serverEvents = self.getEventsFromServer(user)
+		return self.parseEventsToModel(serverEvents)
+
+	def getEventsFromServer(self, user):
+		return NotImplemented
+
+	def parseEventsToModel(self, events):
+		return NotImplemented
+
 from model.importers.google_calendar_events_importer import GoogleCalendarEventsImporter	

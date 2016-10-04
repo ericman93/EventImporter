@@ -2,15 +2,19 @@
   "name": "scheddy",
   "version": "0.0.1",
   "scripts": {
+    "start": "concurrently \"npm run lite\" \"npm run scss\"",
     "lite": "lite-server",
-    "start": "npm run lite"
+    "scss": "node-sass -w styles/ app/**/*.scss -o styles/css/"
   },
   "license": "ISC",
   "dependencies": {
     "angular": "*",
-    "angular-ui-router": "*"
+    "angular-ui-router": "*",
+    "angular-material": "*"
   },
   "devDependencies": {
-    "lite-server": "^2.1.0"
+    "lite-server": "^2.1.0",
+    "concurrently": "3.1.0",
+    "node-sass": "*"
   }
 }

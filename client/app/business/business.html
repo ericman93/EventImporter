@@ -1,0 +1,23 @@
+<div id="business">
+    <div id="head">
+        <span id="name">{{business.name}}</span>
+    </div>
+    <div id="services">
+        <div ng-repeat="service in business.services" class="service" ng-click="serviceSelected(service.id)">
+            {{service.name}} - {{service.price}}$
+        </div>
+    </div>
+    <div id="time" ng-if="freeSlots">
+        <span>זמינות</span>
+        <md-nav-bar md-selected-nav-item="currentDay" nav-bar-aria-label="navigation links">
+            <md-nav-item ng-repeat="(day, slots) in freeSlots" md-nav-click="goto(day)" name="{{day}}">
+                {{day | weekDayName}}
+            </md-nav-item>
+        </md-nav-bar>
+        <div class="ext-content">
+            <div ng-repeat="slot in freeSlots[currentDay]">
+                מ{{slot.from}} עד {{slot.to}}
+            </div>
+        </div>
+    </div>
+</div>

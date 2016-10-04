@@ -1,26 +1,46 @@
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.css">
+		<link rel="stylesheet" type="text/css" href="styles/css/main.css">
+
 		<script src="https://apis.google.com/js/platform.js" async defer></script>
 		<meta name="google-signin-client_id" content="1058234090303-derenhna8oi3h32bf47j77rqtrfalrcd.apps.googleusercontent.com">
 
 		<script src="node_modules/angular/angular.js"></script>
 		<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="node_modules/angular-material/angular-material.js"></script>
+		<script src="node_modules/angular-animate/angular-animate.js"></script>
+		<script src="node_modules/angular-aria/angular-aria.js"></script>
 		
 		<script src="app/scheddyApp.js"></script>
+		<script src="app/scheddyConfig.js"></script>
 
 		<!-- External Libs -->
 		<script src="lib/google-plus-signin/google-plus-signin.js"></script>
 
 		<!-- Core -->
+		<script src="app/core/directives/navbar/navbarDirective.js"></script>
+
 		<script src="app/core/directives/loginDirective.js"></script>
+		<script src="app/core/services/authService.js"></script>
+		<script src="app/core/filters/weekDayNameFilter.js"></script>
+
 
 		<!-- Lading Page -->
 		<script src="app/langingPage/langingPageController.js"></script>
 
+		<!-- Single Business -->
+		<script src="app/business/businessController.js"></script>
+
+		<!-- Businesses -->
+		<script src="app/businesses/businessesController.js"></script>
+
 		<!-- User -->
 		<script src="app/user/userController.js"></script>
+		<script src="app/user/importers/userImportersController.js"></script>
 	</head>
 	<body ng-app="Scheddy">
+		<navbar></navbar>
 		<div ui-view></div>
 	</body>
 </html>
