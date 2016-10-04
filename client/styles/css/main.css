@@ -1,6 +1,18 @@
-#head #name {
-  font-size: 300%; }
+#business #head #name {
+  font-size: 300%;
+  display: block; }
+
+#business #head #location {
+  display: block; }
+
+#business #selected {
+  padding: 20px; }
+  #business #selected span {
+    display: block; }
+  #business #selected #name {
+    font-size: 200%; }
 
 html {
-  padding: 20px;
+  padding-left: 8%;
+  padding-right: 8%;
   direction: rtl; }

@@ -1,23 +1,35 @@
 <div id="business">
     <div id="head">
         <span id="name">{{business.name}}</span>
+        <span id="location">{{business.location}}</span>
+        <hr>
     </div>
-    <div id="services">
-        <div ng-repeat="service in business.services" class="service" ng-click="serviceSelected(service.id)">
-            {{service.name}} - {{service.price}}$
-        </div>
+
+    <div id="selected">
+        <span id="name">{{selected.service.name}}<span>
+        <duration ng-show="selected.time" from="selected.time.from" to="selected.time.to"></duration>
     </div>
-    <div id="time" ng-if="freeSlots">
-        <span>זמינות</span>
-        <md-nav-bar md-selected-nav-item="currentDay" nav-bar-aria-label="navigation links">
-            <md-nav-item ng-repeat="(day, slots) in freeSlots" md-nav-click="goto(day)" name="{{day}}">
-                {{day | weekDayName}}
-            </md-nav-item>
-        </md-nav-bar>
-        <div class="ext-content">
-            <div ng-repeat="slot in freeSlots[currentDay]">
-                מ{{slot.from}} עד {{slot.to}}
-            </div>
-        </div>
-    </div>
+
+    <md-tabs dir="rtl" md-dynamic-height md-border-bottom md-selected="selectedStep">
+        <md-tab label="מה?">
+            <md-list dir="rtl" flex>
+                <md-list-item class="md-3-line" ng-repeat="service in business.services" ng-click="serviceSelected(service.id)">
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{ service.name }}</h3>
+                        <h4>{{ service.duration / 60.0 }} שעות</h4>
+                        <p>{{ service.price }}₪</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-tab>
+        <md-tab label="מתי?">
+            <md-tabs dir="rtl" md-dynamic-height md-border-bottom>
+            <md-tab ng-repeat="(day, slots) in freeSlots" label="{{day | weekDayName}}">
+                 <md-content class="md-padding">
+                    <duration ng-repeat="slot in slots" ng-click="seleteSlot(slot)" from="slot.from" to="slot.to"></duration>
+                 </md-content>
+            </md-tab>
+        </md-tabs>
+        </md-tab>
+    </md-tabs>
 </div>

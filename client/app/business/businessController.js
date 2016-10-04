@@ -2,12 +2,15 @@ angular.module('Scheddy.Business')
     .controller('BusinessController',
         ['$scope', '$stateParams',
             function($scope, $stateParams){
-                $scope.selectedService = undefined;
+                $scope.selected = {
+                    service: undefined
+                };
+                $scope.selectedStep = 0;
 
                 function getBusiness(){
                     return {
                         name: 'YaYa',
-                        location: 'Binyamina',
+                        location: 'בנימינה הדקל 7',
                         coordinates: [],
                         desc: 'מספרה',
                         services: [
@@ -48,12 +51,17 @@ angular.module('Scheddy.Business')
                     }
                 }
 
+                $scope.seleteSlot = function(timing) {
+                    $scope.selected.time = timing;
+                }
+
                 $scope.serviceSelected = function(serviceId) {
-                    $scope.selectedService =  $scope.business.services.filter(function(serivce) {
+                    $scope.selected.service =  $scope.business.services.filter(function(serivce) {
                        return serivce.id == serviceId
                     })[0]
 
-                    $scope.freeSlots = getFreeTime($scope.selectedService['duration'])
+                    $scope.freeSlots = getFreeTime($scope.selected.service['duration'])
+                    $scope.selectedStep += 1;
                 }
 
                 init();

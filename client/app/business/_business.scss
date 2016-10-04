@@ -1,5 +1,24 @@
-#head{
-    #name{
-        font-size: 300%;
+#business{
+    #head{
+        #name{
+            font-size: 300%;
+            display: block;
+        }
+
+        #location{
+            display: block;
+        }
+    }
+
+    #selected{
+        padding: 20px;
+
+        span{
+            display: block;
+        }
+
+        #name{
+            font-size: 200%;
+        }
     }
 }
