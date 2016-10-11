@@ -1,10 +1,8 @@
 angular.module('Scheddy.Business')
     .controller('BusinessController',
-        ['$scope', '$stateParams',
-            function($scope, $stateParams){
-                $scope.selected = {
-                    service: undefined
-                };
+        ['$scope', '$stateParams', 'businessTime',
+            function($scope, $stateParams, businessTime){
+                $scope.selected = {};
                 $scope.selectedStep = 0;
 
                 function getBusiness(){
@@ -34,21 +32,10 @@ angular.module('Scheddy.Business')
                     $scope.business = getBusiness($stateParams.businessId)
                 }
 
-                function getFreeTime(duration){
-                    return {
-                        0: [{   
-                            from: '10:00',
-                            to: '18:00'
-                        }],
-                        2: [{
-                            from: '10:00',
-                            to: '18:00'
-                        },
-                        {
-                            from: '08:00',
-                            to: '09:00'
-                        }]
-                    }
+                function getFreeTime(date, duration){
+                    businessTime.getBusinessFreeTime(date, duration).then(function(times) {
+                        $scope.freeSlots = times;
+                    })
                 }
 
                 $scope.seleteSlot = function(timing) {
@@ -60,9 +47,15 @@ angular.module('Scheddy.Business')
                        return serivce.id == serviceId
                     })[0]
 
-                    $scope.freeSlots = getFreeTime($scope.selected.service['duration'])
                     $scope.selectedStep += 1;
                 }
+
+                $scope.$watch('selected.date', function(newVal, oldVal) {
+                    if(oldVal != newVal){
+                        getFreeTime(newVal, $scope.selected.service['duration'])
+                        $scope.selected.time = undefined
+                    }
+                })
 
                 init();
             }

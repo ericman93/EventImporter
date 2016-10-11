@@ -24,15 +24,19 @@
             </md-list>
         </md-tab>
         <md-tab label="מתי?">
-            <!--<md-tabs dir="rtl" md-dynamic-height md-border-bottom>
-                <md-tab ng-repeat="(day, slots) in freeSlots" label="{{day | weekDayName}}">
-                    <md-content class="md-padding">
-                        <duration ng-repeat="slot in slots" ng-click="seleteSlot(slot)" from="slot.from" to="slot.to"></duration>
-                    </md-content>
-                </md-tab>
-            </md-tabs>-->
-           
-            <day-selection date="selected.date"><day-selection>
+            <md-tab-body>
+                <div>
+                    <h2>יום</h2>
+                    <day-selection date="selected.date"></day-selection>
+                </div>
+                <div ng-show="selected.date && freeSlots">
+                    <h2>שעות</h2>
+                    <duration ng-show="freeSlots.length > 0" ng-repeat="slot in freeSlots" ng-click="seleteSlot(slot)" from="slot.from" to="slot.to"></duration>
+                    <p ng-show="freeSlots.length == 0">
+                        הכל תפוס :(
+                    </p>
+                </div>
+            </md-tab-body>
         </md-tab>
     </md-tabs>
 </div>
