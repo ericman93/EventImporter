@@ -7,6 +7,7 @@
 
     <div id="selected">
         <span id="name">{{selected.service.name}}<span>
+        <span id="date">{{selected.date | date:'dd/MM'}}<span>
         <duration ng-show="selected.time" from="selected.time.from" to="selected.time.to"></duration>
     </div>
 
@@ -23,13 +24,15 @@
             </md-list>
         </md-tab>
         <md-tab label="מתי?">
-            <md-tabs dir="rtl" md-dynamic-height md-border-bottom>
-            <md-tab ng-repeat="(day, slots) in freeSlots" label="{{day | weekDayName}}">
-                 <md-content class="md-padding">
-                    <duration ng-repeat="slot in slots" ng-click="seleteSlot(slot)" from="slot.from" to="slot.to"></duration>
-                 </md-content>
-            </md-tab>
-        </md-tabs>
+            <!--<md-tabs dir="rtl" md-dynamic-height md-border-bottom>
+                <md-tab ng-repeat="(day, slots) in freeSlots" label="{{day | weekDayName}}">
+                    <md-content class="md-padding">
+                        <duration ng-repeat="slot in slots" ng-click="seleteSlot(slot)" from="slot.from" to="slot.to"></duration>
+                    </md-content>
+                </md-tab>
+            </md-tabs>-->
+           
+            <day-selection date="selected.date"><day-selection>
         </md-tab>
     </md-tabs>
 </div>
