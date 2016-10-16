@@ -21,10 +21,14 @@
             font-size: 200%;
         }
     }
+
+    day-selection{
+        .day-option{
+            //display: inline;
+        }
+    }
 }
 
-day-selection{
-    .day-option{
-        //display: inline;
-    }
+.md-datepicker-calendar{
+    direction: initial;
 }

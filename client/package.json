@@ -10,7 +10,8 @@
   "dependencies": {
     "angular": "*",
     "angular-ui-router": "*",
-    "angular-material": "*"
+    "angular-material": "*",
+    "moment": "2.15.1"
   },
   "devDependencies": {
     "lite-server": "^2.1.0",

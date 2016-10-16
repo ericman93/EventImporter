@@ -5,6 +5,13 @@ angular.module('Scheddy.Business')
                 $scope.selected = {};
                 $scope.selectedStep = 0;
 
+                $scope.isDayFull = function(day){
+                    // return wether the day is full.
+                    // if the day is full, day could not be selected
+                    // use md-datepicker md-date-filter	property
+                    return true
+                }
+
                 function getBusiness(){
                     return {
                         name: 'YaYa',
@@ -29,7 +36,8 @@ angular.module('Scheddy.Business')
                 }
 
                 function init(){
-                    $scope.business = getBusiness($stateParams.businessId)
+                    $scope.business = getBusiness($stateParams.businessId);
+                    $scope.today = new Date();
                 }
 
                 function getFreeTime(date, duration){
@@ -60,4 +68,16 @@ angular.module('Scheddy.Business')
                 init();
             }
         ]
-    );
+    )
+    .config(function($mdDateLocaleProvider) {
+        $mdDateLocaleProvider.months = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי','אוגוסט','ספטמבר', 'אוקטובר','נובמבר','דצמבר'];
+        $mdDateLocaleProvider.shortMonths = ['ינו', 'פבר', 'מרץ', 'אפר', 'מאי', 'יוני', 'יולי','אוג','ספט', 'אוק','נוב','דצמ'];
+        $mdDateLocaleProvider.days = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת'];
+        $mdDateLocaleProvider.shortDays = ['א', 'ב', 'ג', 'ד','ה', 'ו', 'ש'];
+        $mdDateLocaleProvider.firstDayOfWeek = 0;
+        
+        $mdDateLocaleProvider.formatDate = function(date) {
+            var m = moment(date);
+            return date && m.isValid() ? m.format('L') : '';       
+        };
+    });

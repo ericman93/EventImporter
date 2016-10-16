@@ -1,42 +1,45 @@
 <div id="business">
-    <div id="head">
-        <span id="name">{{business.name}}</span>
-        <span id="location">{{business.location}}</span>
-        <hr>
-    </div>
+    <md-content layout-padding md-theme="default">
+        <div id="head">
+            <span id="name">{{business.name}}</span>
+            <span id="location">{{business.location}}</span>
+            <hr>
+        </div>
 
-    <div id="selected">
-        <span id="name">{{selected.service.name}}<span>
-        <span id="date">{{selected.date | date:'dd/MM'}}<span>
-        <duration ng-show="selected.time" from="selected.time.from" to="selected.time.to"></duration>
-    </div>
+        <div id="selected">
+            <span id="name">{{selected.service.name}}<span>
+            <span id="date">{{selected.date | date:'dd/MM'}}<span>
+            <duration ng-show="selected.time" from="selected.time.from" to="selected.time.to"></duration>
+        </div>
 
-    <md-tabs dir="rtl" md-dynamic-height md-border-bottom md-selected="selectedStep">
-        <md-tab label="מה?">
-            <md-list dir="rtl" flex>
-                <md-list-item class="md-3-line" ng-repeat="service in business.services" ng-click="serviceSelected(service.id)">
-                    <div class="md-list-item-text" layout="column">
-                        <h3>{{ service.name }}</h3>
-                        <h4>{{ service.duration / 60.0 }} שעות</h4>
-                        <p>{{ service.price }}₪</p>
+        <md-tabs md-dynamic-height md-border-bottom md-selected="selectedStep" dir="rtl">
+            <md-tab label="מה?">
+                <md-list dir="rtl" flex>
+                    <md-list-item class="md-3-line" ng-repeat="service in business.services" ng-click="serviceSelected(service.id)">
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{ service.name }}</h3>
+                            <h4>{{ service.duration / 60.0 }} שעות</h4>
+                            <p>{{ service.price }}₪</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-tab>
+            <md-tab label="מתי?">
+                <md-tab-body>
+                    <div>
+                        <h2>יום</h2>
+                        <day-selection date="selected.date"></day-selection>
+                        <md-datepicker md-min-date="today" ng-model="selected.date" md-placeholder="בחר תאריך"></md-datepicker>
                     </div>
-                </md-list-item>
-            </md-list>
-        </md-tab>
-        <md-tab label="מתי?">
-            <md-tab-body>
-                <div>
-                    <h2>יום</h2>
-                    <day-selection date="selected.date"></day-selection>
-                </div>
-                <div ng-show="selected.date && freeSlots">
-                    <h2>שעות</h2>
-                    <duration ng-show="freeSlots.length > 0" ng-repeat="slot in freeSlots" ng-click="seleteSlot(slot)" from="slot.from" to="slot.to"></duration>
-                    <p ng-show="freeSlots.length == 0">
-                        הכל תפוס :(
-                    </p>
-                </div>
-            </md-tab-body>
-        </md-tab>
-    </md-tabs>
+                    <div ng-show="selected.date && freeSlots">
+                        <h2>שעות</h2>
+                        <duration ng-show="freeSlots.length > 0" ng-repeat="slot in freeSlots" ng-click="seleteSlot(slot)" from="slot.from" to="slot.to"></duration>
+                        <p ng-show="freeSlots.length == 0">
+                            הכל תפוס :(
+                        </p>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+    </md-content>
 </div>
